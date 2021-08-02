@@ -3,6 +3,7 @@ import pathlib
 import ssl
 import websockets
 import json
+from cortex import Cortex
 
 
 #Setup a websocket connection to the Cortex API from Emotiv
@@ -68,7 +69,7 @@ async def hello():
         session_id = json.loads(response_current_session)['result'][0]['id']
         print(f"<Session_id: ******* {session_id}")
 
-
+        t = Train()
 
         stream = '{"id":1,"jsonrpc":"2.0","method":"subscribe", "params": {"cortexToken":' + f'"{token}"' + '"session":' + f'"{session_id}",' + '"streams":["mot"]}}'
         await websocket.send(stream)
