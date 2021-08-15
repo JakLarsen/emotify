@@ -5,6 +5,9 @@ import ssl
 import json
 from cortex import Cortex
 from secrets import secrets
+import threading
+
+
 
 
 # User object to send to Cortex
@@ -51,15 +54,26 @@ token = authorize_resp
 # jake.get_cortex_info()
 
 
-
+# Confused about how to extract data from the headset
+# def get_data_at_interval():
+#     interval = 3
+#     threading.Timer(interval, get_data_at_interval).start()
+#     print("Timer working")
+#     data = jake.extract_data_labels("mot",["col0", "col1"] )
+#     print(data)
 
 
 
 jake.do_prepare_steps()
 jake.sub_request(["mot"])
+# get_data_at_interval()
+
+
 #connect headset doesn't work behind the scenes either it just freezes out I think
 # jake.connect_headset(jake_user['headset_id'])
 #disconnect headset works
 # jake.disconnect_headset()
+
+
 
 

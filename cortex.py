@@ -260,8 +260,8 @@ class Cortex(Dispatcher):
     _events_ = ['new_data_labels','new_com_data', 'new_fe_data', 'new_eeg_data', 'new_mot_data', 'new_dev_data', 'new_met_data', 'new_pow_data']
 
     def sub_request(self, stream):
-        """Takes a list of streams that you would like to subscribe to (i.e. ["mot"] for motion stream"""
-        
+        """Takes a list of streams that you would like to subscribe to (i.e. ["mot"] for motion stream or ["fac"] for facial expression stream"""
+
         print('subscribe request --------------------------------')
         sub_request_json = {
             "jsonrpc": "2.0", 
@@ -294,6 +294,7 @@ class Cortex(Dispatcher):
             # handle data lable
             for stream in result_dic['result']['success']:
                 stream_name = stream['streamName']
+                # return(stream_name) #MC
                 stream_labels = stream['cols']
                 # ignore com and fac data label because they are handled in on_new_data
                 if stream_name != 'com' and stream_name != 'fac':
@@ -367,6 +368,7 @@ class Cortex(Dispatcher):
 
         data['labels'] = data_labels
         self.emit('new_data_labels', data=data)
+        # return ('new_data_labels', data) #MC
 
 
     def query_profile(self):
