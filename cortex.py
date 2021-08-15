@@ -131,12 +131,16 @@ class Cortex(Dispatcher):
         
         while True:
             result = self.ws.recv()
+            # return result #My code - careful
             result_dic = json.loads(result)
             if 'id' in result_dic:
                 if result_dic['id'] == AUTHORIZE_ID:
                     if self.debug:
                         print('auth result \n', json.dumps(result_dic, indent=4))
+
+
                     self.auth = result_dic['result']['cortexToken']
+                    # return self.auth #mc
                     break
 
 
@@ -148,7 +152,7 @@ class Cortex(Dispatcher):
             "method": "createSession",
             "params": {
                 "cortexToken": self.auth,
-                "headset": self.headset_id,
+                "headset": self.headset_id, #needs to be self.headset_id if using do_prepare_steps(), otherwise, change to headset_id MC
                 "status": "active"
             }
         }
@@ -164,6 +168,7 @@ class Cortex(Dispatcher):
             print('create session result \n', json.dumps(result_dic, indent=4))
 
         self.session_id = result_dic['result']['id']
+        # return self.session_id #MC
 
 
     def close_session(self):
@@ -253,7 +258,10 @@ class Cortex(Dispatcher):
                     break
 
     _events_ = ['new_data_labels','new_com_data', 'new_fe_data', 'new_eeg_data', 'new_mot_data', 'new_dev_data', 'new_met_data', 'new_pow_data']
+
     def sub_request(self, stream):
+        """Takes a list of streams that you would like to subscribe to (i.e. ["mot"] for motion stream"""
+        
         print('subscribe request --------------------------------')
         sub_request_json = {
             "jsonrpc": "2.0", 

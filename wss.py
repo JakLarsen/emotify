@@ -3,7 +3,10 @@ import pathlib
 import ssl
 import websockets
 import json
-from cortex import Cortex
+# from cortex import Cortex
+
+
+
 
 
 #Setup a websocket connection to the Cortex API from Emotiv
@@ -49,6 +52,8 @@ async def hello():
         response_license_info = await websocket.recv()
         print(f"< {response_license_info}")
 
+
+
         query_headset = '{"id":1,"jsonrpc":"2.0","method":"queryHeadsets", "params": {"id":"INSIGHT-A2D203D1"}}'
         await websocket.send(query_headset)
         response_query = await websocket.recv()
@@ -63,17 +68,15 @@ async def hello():
         await websocket.send(current_session)
         response_current_session = await websocket.recv()
 
-
-
         #Session ID
         session_id = json.loads(response_current_session)['result'][0]['id']
         print(f"<Session_id: ******* {session_id}")
 
-        t = Train()
 
         stream = '{"id":1,"jsonrpc":"2.0","method":"subscribe", "params": {"cortexToken":' + f'"{token}"' + '"session":' + f'"{session_id}",' + '"streams":["mot"]}}'
         await websocket.send(stream)
         response_stream = await websocket.recv()
+
         # {"error":{"code":-32700,"data":{"behavior":"unterminated object at offset 404"},"message":"Parse Error."},"id":null,"jsonrpc":"2.0"}
         # print(response_stream)
 
