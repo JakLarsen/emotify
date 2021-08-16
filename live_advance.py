@@ -1,5 +1,6 @@
 from cortex import Cortex
-from emotiv import jake_user
+# from emotiv import jake_user
+from secrets import secrets
 
 class LiveAdvance():
     """
@@ -167,37 +168,40 @@ class LiveAdvance():
     To get a client id and a client secret, you must connect to your Emotiv account on emotiv.com and create a Cortex app
     For training purpose, you should set empty string for license
 """
-user = {
-    "license" : "your emotivpro license, which could use for third party app",
-    "client_id" : "your client id",
-    "client_secret" : "your client secret",
-    "debit" : 100
+
+
+#User object used in LiveAdvanced class -> sent to Cortex Class for auth.
+jake_user = {
+    'client_id': secrets['client_id'],
+    'client_secret': secrets['client_secret'],
+    "headset_id": secrets['headset_id'],
+    "license": "", #don't generally need to specify license - cortext should find it based on client_id
+    "debit": 100
 }
 
 # name of training profile
 profile_name = 'Jake Main'
 
 # Init live advance
-l = LiveAdvance()
+jake = LiveAdvance()
 
 # do prepare steps
-l.do_prepare_steps()
+jake.do_prepare_steps()
 
 # load existed profile
-l.load_profile(profile_name)
+jake.load_profile(profile_name)
 
 # get active actions
-l.get_active_action(profile_name)
+jake.get_active_action(profile_name)
 
 # get sensitivity values of actions
-l.get_sensitivity(profile_name)
+jake.get_sensitivity(profile_name)
 
 # set sensitivity for active actions
 values = [7,7,5,5]
-l.set_sensitivity(profile_name, values)
-
+jake.set_sensitivity(profile_name, values)
 
 # live mental command data
-l.live(profile_name)
+jake.live(profile_name)
 
 # -----------------------------------------------------------

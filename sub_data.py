@@ -166,7 +166,6 @@ class Subcribe():
         data = kwargs.get('data')
         print('pow data: {}'.format(data))
 
-
 # -----------------------------------------------------------
 # 
 # SETTING
@@ -183,11 +182,6 @@ class Subcribe():
 # 
 # -----------------------------------------------------------
 
-"""
-    client_id, client_secret:
-    To get a client id and a client secret, you must connect to your Emotiv account on emotiv.com and create a Cortex app
-    To subscribe eeg you need to put a valid licese (PRO license)
-"""
 user = {
     'client_id': secrets['client_id'],
     'client_secret': secrets['client_secret'],
@@ -200,4 +194,4 @@ jake = Subcribe()
 jake.do_prepare_steps()
 streams = ['mot']
 jake.sub(streams)
-# -----------------------------------------------------------
+
