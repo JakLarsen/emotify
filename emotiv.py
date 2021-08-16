@@ -8,7 +8,7 @@ from secrets import secrets
 import threading
 
 
-
+#WORKING THROUGH CORTEX
 
 # User object to send to Cortex
 jake_user = {
