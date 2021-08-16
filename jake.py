@@ -7,6 +7,7 @@ from cortex import Cortex
 from secrets import secrets
 import threading
 from live_advance import LiveAdvance
+from sub_data import Subscribe
 
 
 #WORKING THROUGH CORTEX
@@ -21,9 +22,13 @@ jake_user = {
 }
 
 #LiveAdvance instance
-jake = LiveAdvance()
+# jake = LiveAdvance()
+# jake.do_prepare_steps()
+# jake.load_profile("Jake Main")
+# jake.live("Jake Main")
+# jake.on_new_data()
 
+#Subscribe Instance
+jake = Subcribe()
 jake.do_prepare_steps()
-jake.load_profile("Jake Main")
-jake.live("Jake Main")
-jake.on_new_data()
+jake.sub(["mot"])
