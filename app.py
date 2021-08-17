@@ -51,11 +51,13 @@ def background_thread():
     """Example of how to send server generated events to clients."""
     count = 0
     while True:
+        jake_data.append(1)
+        print(jake_data, flush = True)
         number = randint(0,5)
-        socketio.sleep(3)
+        socketio.sleep(2)
         count += 1
-        socketio.emit('data_response',
-                      {'data': jake_data, 'count': count})
+        socketio.emit('data_response', 
+            {'data': json.dumps(jake_data), 'count': count})
 #I need to set up a socket with Emotiv as well, which constantly emits the data like this thread instead of printing it.
 
 
@@ -183,11 +185,11 @@ def display_data_request(message):
     emit('data_response',
          {'data': message['data'], 'count': session['receive_count']})
 
-@socketio.event
-def new_com_data(message):
-    session['receive_count'] = session.get('receive_count', 0) + 1
-    emit('data_response',
-         {'data': message, 'count': session['receive_count']})
+# @socketio.event
+# def new_com_data(message):
+#     session['receive_count'] = session.get('receive_count', 0) + 1
+#     emit('data_response',
+#          {'data': message, 'count': session['receive_count']})
 
 @socketio.event
 def disconnect_request():
