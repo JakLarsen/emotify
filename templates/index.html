@@ -1,10 +1,29 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+
+
+
+    <!-- META -->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <!-- TITLE -->
+
     <title>Flask-SocketIO Test</title>
+
+
+
+    <!-- LINKS -->
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
+    
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {
             // Connect to the Socket.IO server.
@@ -29,30 +48,6 @@
                     cb();
             });
 
-            // Interval function that tests message latency by sending a "ping"
-            // message. The server then responds with a "pong" message and the
-            // round trip time is measured.
-            var ping_pong_times = [];
-            var start_time;
-            window.setInterval(function() {
-                start_time = (new Date).getTime();
-                $('#transport').text(socket.io.engine.transport.name);
-                socket.emit('my_ping');
-            }, 1000);
-
-            // Handler for the "pong" message. When the pong is received, the
-            // time from the ping is stored, and the average of the last 30
-            // samples is average and displayed.
-            socket.on('my_pong', function() {
-                var latency = (new Date).getTime() - start_time;
-                ping_pong_times.push(latency);
-                ping_pong_times = ping_pong_times.slice(-30); // keep last 30 samples
-                var sum = 0;
-                for (var i = 0; i < ping_pong_times.length; i++)
-                    sum += ping_pong_times[i];
-                $('#ping-pong').text(Math.round(10 * sum / ping_pong_times.length) / 10);
-            });
-
             // Handlers for the different forms in the page.
             // These accept data from the user and send it to the server in a
             // variety of ways
@@ -61,7 +56,7 @@
                 return false;
             });
             $('form#display-data').submit(function(event){
-                socket.emit('display_data_request', {data: ('Clicked to display realtime data.')});
+                socket.emit('display_data_request', {data: ('Clicked to display realtime data or send input to server.')});
                 return false;
             });
             $('form#disconnect').submit(function(event) {
@@ -70,14 +65,15 @@
             });
         });
     </script>
+
 </head>
+
+
+
+                    <!-- BODY -->
+
 <body>
     <h1>Neural Nav WebSocket with SocketIO</h1>
-    <!-- <p>
-      Async mode is: <b>{{ async_mode }}</b><br>
-      Current transport is: <b><span id="transport"></span></b><br>
-      Average ping/pong latency: <b><span id="ping-pong"></span>ms</b>
-    </p> -->
     <h2>Send message from client to Flask-server:</h2>
     <!-- <form id="emit" method="POST" action='#'>
         <input type="text" name="emit_data" id="emit_data" placeholder="Message">
@@ -86,9 +82,6 @@
     <form id="display-data" method="POST" action='#'>
         <input type="submit" value="Display Data">
     </form>
-</br>
-</br>
-</br>
     <form id="disconnect" method="POST" action="#">
         <input type="submit" value="Disconnect">
     </form>
@@ -98,10 +91,7 @@
         $(function() {
             $('a#stream-btn').on('click', function(e) {
                 e.preventDefault()
-                $.getJSON('/display_data',
-                    function(data) {
-                //do nothing
-                });
+                $.getJSON('/display_data', function(data) {});
                 return false;
             });
         });

@@ -51,7 +51,7 @@ def background_thread():
     count = 0
     while True:
         number = randint(0,5)
-        socketio.sleep(1)
+        socketio.sleep(3)
         count += 1
         socketio.emit('my_response',
                       {'data': f'Server generated event. Now to extract Emotiv data and put it here hmm hmm... Your number: {number}', 'count': count})
@@ -130,6 +130,8 @@ def my_event(message):
 
 @socketio.event
 def display_data_request(message):
+    print(message['data'], flush=True)
+    message['data'] = f"{message['data']} (has been received/edited by server)"
     session['receive_count'] = session.get('receive_count', 0) + 1
     emit('my_response',
          {'data': message['data'], 'count': session['receive_count']})
