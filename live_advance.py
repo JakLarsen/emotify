@@ -181,34 +181,36 @@ jake_user = {
     "license": "", #don't generally need to specify license - cortext should find it based on client_id
     "debit": 100
 }
+# name of training profile
+def open_stream():
+    profile_name = 'Jake Main'
 
-# # name of training profile
-# profile_name = 'Jake Main'
+    # Init live advance
+    jake = LiveAdvance()
 
-# # Init live advance
-# jake = LiveAdvance()
+    # do prepare steps
+    jake.do_prepare_steps()
 
-# # do prepare steps
-# jake.do_prepare_steps()
+    # load existed profile
+    jake.load_profile(profile_name)
 
-# # load existed profile
-# jake.load_profile(profile_name)
+    # get active actions
+    jake.get_active_action(profile_name)
 
-# # get active actions
-# jake.get_active_action(profile_name)
+    # get sensitivity values of actions
+    jake.get_sensitivity(profile_name)
 
-# # get sensitivity values of actions
-# jake.get_sensitivity(profile_name)
+    # set sensitivity for active actions
+    values = [7,7,5,5]
+    jake.set_sensitivity(profile_name, values)
 
-# # set sensitivity for active actions
-# values = [7,7,5,5]
-# jake.set_sensitivity(profile_name, values)
+    # live mental command data
+    jake.live(profile_name)
 
-# # live mental command data
-# jake.live(profile_name)
+open_stream()
 
 # -----------------------------------------------------------
 
-# open websocket from browser to flask server -> relay datastream from emotiv sdk to the browser
-# get data showing on client
+# open websocket from browser to flask server               DONE
+# -> relay datastream from emotiv sdk to the browser        HMM HMM
 # then use input to move slideshow side to side

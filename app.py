@@ -6,8 +6,8 @@ from flask import Flask, render_template, request, redirect, session, g, \
 from flask_socketio import SocketIO, emit, join_room, leave_room, \
     close_room, rooms, disconnect
 # from models import db, connect_db, User 
-from jake import open_stream
 from random import randint
+from cortex import Cortex, jake_data
 # import pdb
 
 
@@ -34,6 +34,7 @@ app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app, async_mode=async_mode)
 thread = None
 thread_lock = Lock()
+import json
 
 # connect_db(app)
 
@@ -53,9 +54,56 @@ def background_thread():
         number = randint(0,5)
         socketio.sleep(3)
         count += 1
-        socketio.emit('my_response',
-                      {'data': f'Server generated event. Now to extract Emotiv data and put it here hmm hmm... Your number: {number}', 'count': count})
+        socketio.emit('data_response',
+                      {'data': jake_data, 'count': count})
 #I need to set up a socket with Emotiv as well, which constantly emits the data like this thread instead of printing it.
+
+
+
+#-----------------------------------------------------------------
+                    #Cortex Connection
+#-----------------------------------------------------------------
+
+
+
+#User object in Cortex Class for auth.
+jake_user = {
+    'client_id': 'hVe4d7WF19ObiuGfJKL8yYo7aivjP692nWHiRzJw',
+    'client_secret': 'rjtEBdSANn6JGE6LsgrrgZdA9dKlItdF1d4w1inJx5iyGI3MjZD6Wus5BnLoaa3koMhIH1eOJ8U75VIUaW7DsKIicy4YyRDpJFP1Nhcs6MgWx6HcpYyideIIWSiUKApz',
+    "headset_id": "INSIGHT-A2D203D1",
+    "license": "", #don't generally need to specify license - cortext should find it based on client_id
+    "debit": 100
+}
+profile_name = 'Jake Main'
+
+def open_stream():
+
+    # Init Cortex Instance
+    jake = Cortex(jake_user)
+
+    # do preparation/auth steps
+    jake.do_prepare_steps()
+
+    # load existed profile
+    profiles = jake.query_profile()
+    if profile_name in profiles:
+        status = 'load'
+        jake.setup_profile(profile_name, status)
+    else:
+        print(f"Profile {profile_name} does not exist.")
+
+    # # get active actions
+    jake.get_mental_command_active_action(profile_name)
+
+    # get sensitivity values of actions
+    jake.get_mental_command_action_sensitivity(profile_name)
+
+    # set sensitivity for active actions
+    values = [7,7,5,5]
+    jake.set_mental_command_action_sensitivity(profile_name, values)
+
+    # live mental command data
+    jake.sub_request(stream=['com'])
 
 
 
@@ -130,11 +178,16 @@ def my_event(message):
 
 @socketio.event
 def display_data_request(message):
-    print(message['data'], flush=True)
-    message['data'] = f"{message['data']} (has been received/edited by server)"
     session['receive_count'] = session.get('receive_count', 0) + 1
-    emit('my_response',
+    message['data'] = f"{message['data']} (has been altered by server) + {jake_data}"
+    emit('data_response',
          {'data': message['data'], 'count': session['receive_count']})
+
+@socketio.event
+def new_com_data(message):
+    session['receive_count'] = session.get('receive_count', 0) + 1
+    emit('data_response',
+         {'data': message, 'count': session['receive_count']})
 
 @socketio.event
 def disconnect_request():
@@ -156,7 +209,7 @@ def connect():
     with thread_lock:
         if thread is None:
             thread = socketio.start_background_task(background_thread)
-    emit('my_response', {'data': 'Connected', 'count': 0})
+    emit('my_reponse', {'data': 'Connected', 'count': 0})
 
 
 @socketio.on('disconnect')

@@ -30,6 +30,7 @@ MENTAL_COMMAND_BRAIN_MAP_ID         =   17
 MENTAL_COMMAND_TRAINING_THRESHOLD   =   18
 SET_MENTAL_COMMAND_ACTIVE_ACTION_ID =   19
 
+jake_data = []
 
 class Cortex(Dispatcher):
     def __init__(self, user, debug_mode=False):
@@ -310,7 +311,13 @@ class Cortex(Dispatcher):
                 com_data['action'] = result_dic['com'][0]
                 com_data['power'] = result_dic['com'][1]
                 com_data['time'] = result_dic['time']
+                print("****************************************") #MC
+                print('Jakes mc data: {}'.format(com_data)) #MC
+                jake_data.append(com_data)
+                
+                # self.emit('my_response', data = com_data) #MC
                 self.emit('new_com_data', data=com_data)
+
             elif result_dic.get('fac') != None:
                 fe_data = {}
                 fe_data['eyeAct'] = result_dic['fac'][0]    #eye action
@@ -746,3 +753,59 @@ class Cortex(Dispatcher):
 # -------------------------------------------------------------------
 # -------------------------------------------------------------------
 # -------------------------------------------------------------------
+#User object in Cortex Class for auth.
+jake_user = {
+    'client_id': 'hVe4d7WF19ObiuGfJKL8yYo7aivjP692nWHiRzJw',
+    'client_secret': 'rjtEBdSANn6JGE6LsgrrgZdA9dKlItdF1d4w1inJx5iyGI3MjZD6Wus5BnLoaa3koMhIH1eOJ8U75VIUaW7DsKIicy4YyRDpJFP1Nhcs6MgWx6HcpYyideIIWSiUKApz',
+    "headset_id": "INSIGHT-A2D203D1",
+    "license": "", #don't generally need to specify license - cortext should find it based on client_id
+    "debit": 100
+}
+profile_name = 'Jake Main'
+
+# def on_new_data(self, *args, **kwargs):
+#         """
+#         To handle mental command data emitted from Cortex
+        
+#         Returns
+#         -------
+#         data: dictionary
+#              the format such as {'action': 'neutral', 'power': 0.0, 'time': 1590736942.8479}
+#         """
+#         data = kwargs.get('data')
+
+#         # print("****************************************") #MC
+#         print('mc data: {}'.format(data))
+#         return ('mc data: {}'.format(data)) #MC
+
+# name of training profile
+# def open_stream():
+
+#     # Init live advance
+#     jake = Cortex(jake_user)
+
+#     # do prepare steps
+#     jake.do_prepare_steps()
+
+#     # load existed profile
+#     profiles = jake.query_profile()
+#     if profile_name in profiles:
+#         status = 'load'
+#         jake.setup_profile(profile_name, status)
+#     else:
+#         print(f"Profile {profile_name} does not exist.")
+
+#     # # get active actions
+#     jake.get_mental_command_active_action(profile_name)
+
+#     # get sensitivity values of actions
+#     jake.get_mental_command_action_sensitivity(profile_name)
+
+#     # set sensitivity for active actions
+#     values = [7,7,5,5]
+#     jake.set_mental_command_action_sensitivity(profile_name, values)
+
+#     # live mental command data
+#     jake.sub_request(stream=['com'])
+
+# open_stream()
