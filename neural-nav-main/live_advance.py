@@ -1,6 +1,6 @@
 from cortex import Cortex
 # from emotiv import jake_user
-from user_info import secrets
+from secrets import secrets
 
 class LiveAdvance():
     """
@@ -72,10 +72,7 @@ class LiveAdvance():
              the format such as {'action': 'neutral', 'power': 0.0, 'time': 1590736942.8479}
         """
         data = kwargs.get('data')
-
-        # print("****************************************") #MC
         print('mc data: {}'.format(data))
-        return ('mc data: {}'.format(data)) #MC
 
     #load if profile existed
     def load_profile(self, profile_name):
@@ -175,40 +172,36 @@ class LiveAdvance():
 
 #User object used in LiveAdvanced class -> sent to Cortex Class for auth.
 jake_user = {
-    'client_id': 'hVe4d7WF19ObiuGfJKL8yYo7aivjP692nWHiRzJw',
-    'client_secret': 'rjtEBdSANn6JGE6LsgrrgZdA9dKlItdF1d4w1inJx5iyGI3MjZD6Wus5BnLoaa3koMhIH1eOJ8U75VIUaW7DsKIicy4YyRDpJFP1Nhcs6MgWx6HcpYyideIIWSiUKApz',
-    "headset_id": "INSIGHT-A2D203D1",
+    'client_id': secrets['client_id'],
+    'client_secret': secrets['client_secret'],
+    "headset_id": secrets['headset_id'],
     "license": "", #don't generally need to specify license - cortext should find it based on client_id
     "debit": 100
 }
 
-# # name of training profile
-# profile_name = 'Jake Main'
+# name of training profile
+profile_name = 'Jake Main'
 
-# # Init live advance
-# jake = LiveAdvance()
+# Init live advance
+jake = LiveAdvance()
 
-# # do prepare steps
-# jake.do_prepare_steps()
+# do prepare steps
+jake.do_prepare_steps()
 
-# # load existed profile
-# jake.load_profile(profile_name)
+# load existed profile
+jake.load_profile(profile_name)
 
-# # get active actions
-# jake.get_active_action(profile_name)
+# get active actions
+jake.get_active_action(profile_name)
 
-# # get sensitivity values of actions
-# jake.get_sensitivity(profile_name)
+# get sensitivity values of actions
+jake.get_sensitivity(profile_name)
 
-# # set sensitivity for active actions
-# values = [7,7,5,5]
-# jake.set_sensitivity(profile_name, values)
+# set sensitivity for active actions
+values = [7,7,5,5]
+jake.set_sensitivity(profile_name, values)
 
-# # live mental command data
-# jake.live(profile_name)
+# live mental command data
+jake.live(profile_name)
 
 # -----------------------------------------------------------
-
-# open websocket from browser to flask server -> relay datastream from emotiv sdk to the browser
-# get data showing on client
-# then use input to move slideshow side to side

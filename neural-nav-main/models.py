@@ -1,16 +1,16 @@
 """SQLAlchemy models for Emotify."""
 
 from datetime import datetime
-# from flask_bcrypt import Bcrypt
+from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 
-# bcrypt = Bcrypt()
+bcrypt = Bcrypt()
 db = SQLAlchemy()
 
 class User(db.Model):
-    """User in the system."""
+    """Users in system"""
 
-    __tablename__ = 'users'
+    __tablename__ = "users"
 
     id = db.Column(
         db.Integer,

@@ -4,7 +4,7 @@ import ssl
 # import websockets
 import json
 from cortex import Cortex
-from user_info import secrets
+from secrets import secrets
 import threading
 
 

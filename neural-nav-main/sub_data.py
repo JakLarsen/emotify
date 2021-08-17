@@ -1,7 +1,7 @@
 from cortex import Cortex
-from user_info import secrets
+from secrets import secrets
 
-class Subscribe():
+class Subcribe():
     """
     A class to subscribe data stream.
 
@@ -182,16 +182,16 @@ class Subscribe():
 # 
 # -----------------------------------------------------------
 
-# user = {
-#     'client_id': secrets['client_id'],
-#     'client_secret': secrets['client_secret'],
-#     "headset_id": secrets['headset_id'],
-#     "license": "", #don't generally need to specify license - cortext should find it based on client_id
-#     "debit": 100
-# }
+user = {
+    'client_id': secrets['client_id'],
+    'client_secret': secrets['client_secret'],
+    "headset_id": secrets['headset_id'],
+    "license": "", #don't generally need to specify license - cortext should find it based on client_id
+    "debit": 100
+}
 
-# jake = Subcribe()
-# jake.do_prepare_steps()
-# streams = ['mot']
-# jake.sub(streams)
+jake = Subcribe()
+jake.do_prepare_steps()
+streams = ['mot']
+jake.sub(streams)
 
