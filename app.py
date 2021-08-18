@@ -46,18 +46,18 @@ import json
 
 
                     # SERVER THREADING
-
+def clear_data(list):
+    list = []
 def background_thread():
     """Example of how to send server generated events to clients."""
     count = 0
     while True:
-        jake_data.append(1)
         print(jake_data, flush = True)
-        number = randint(0,5)
         socketio.sleep(2)
         count += 1
         socketio.emit('data_response', 
             {'data': json.dumps(jake_data), 'count': count})
+        clear_data(jake_data)
 #I need to set up a socket with Emotiv as well, which constantly emits the data like this thread instead of printing it.
 
 
