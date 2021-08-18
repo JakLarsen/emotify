@@ -45,7 +45,6 @@ import json
                     #-------------------------------------------------
                                         # NOTES
                     #-------------------------------------------------
-#need to set up a list handler class to manage the list data from headset???
 #or do I need to set up a listener through websocket-client here that can listen for events happening on the cortex side?
 #or do I need to convert cortex to use a socketio websocket? (or the client to use websocket-client instead?)
 ## - Do I need the same websocket library for both?
@@ -57,14 +56,21 @@ import json
                     # GLOBALS
 
 # CURR_USER_KEY = "curr_user"
-
 settings = {
     'input_threshold': 15
 }
     
-
 #Determine which input we are using - haven't tested in realtime yet
 def determine_input(data_obj):
+    """
+    Takes a DataContainer data_obj (in cortex.py)
+
+    Determines if there is a sequence of push or pull commands sent in succession
+    -data from the DataContainer sent
+
+    Returns "push", "pull", or "neutral" pending what is stored in DataContainer
+    """
+
     push_input = 0
     pull_input = 0
 
@@ -82,6 +88,14 @@ def determine_input(data_obj):
         return "neutral"
 
 def restrict_data(data_obj):
+    """
+    Reinstantiates our DataContainer with fewer entries
+    -Keeps it from bloating
+    -Let's us use only most recent inputs
+
+    Returns the DataContainer instance as data_obj
+    """
+
     if len(data_obj.data) > 5:
         #give just last input
         # data_obj.data = data_obj.data[-1]
@@ -91,12 +105,17 @@ def restrict_data(data_obj):
     else:
         pass
     return data_obj
+
+
+
                     # SERVER THREADING
 
 def background_thread():
     """Example of how to send server generated events to clients."""
+
     count = 0
     while True:
+
         restrict_data(jake_data)
         our_input = determine_input(jake_data)
 
@@ -126,6 +145,13 @@ jake_user = {
 profile_name = 'Jake Main'
 
 def open_stream():
+
+    """
+    Connects a turned on headset to Cortex API
+    -Does Auth and requests
+    -Loads Profile
+    -Opens mental command subscription
+    """
 
     # Init Cortex Instance
     jake = Cortex(jake_user)
