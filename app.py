@@ -39,25 +39,72 @@ import json
 # connect_db(app)
 
 
+
+
+
+                    #-------------------------------------------------
+                                        # NOTES
+                    #-------------------------------------------------
+#need to set up a list handler class to manage the list data from headset???
+#or do I need to set up a listener through websocket-client here that can listen for events happening on the cortex side?
+#or do I need to convert cortex to use a socketio websocket? (or the client to use websocket-client instead?)
+## - Do I need the same websocket library for both?
+
+
+
+
+
                     # GLOBALS
 
 # CURR_USER_KEY = "curr_user"
 
+settings = {
+    'input_threshold': 15
+}
+    
 
+#Determine which input we are using - haven't tested in realtime yet
+def determine_input(data_obj):
+    push_input = 0
+    pull_input = 0
 
+    for i in range(len(data_obj.data)):
+        if data_obj.data[i] == "push":
+            push_input += 1
+        if data_obj.data[i] == "pull":
+            pull_input += 1
+
+    if push_input >= settings['input_threshold']:
+        return "push"
+    elif pull_input >= settings['input_threshold']:
+        return "pull"
+    else:
+        return "neutral"
+
+def restrict_data(data_obj):
+    if len(data_obj.data) > 5:
+        #give just last input
+        # data_obj.data = data_obj.data[-1]
+        #last 5 inputs
+        #it's printing last 20 with 5 overlapping??? interesting
+        data_obj.data = data_obj.data[-5:-1]
+    else:
+        pass
+    return data_obj
                     # SERVER THREADING
-def clear_data(list):
-    list = []
+
 def background_thread():
     """Example of how to send server generated events to clients."""
     count = 0
     while True:
-        print(jake_data, flush = True)
+        restrict_data(jake_data)
+        our_input = determine_input(jake_data)
+
+        # print(jake_data.data, flush = True)
         socketio.sleep(2)
         count += 1
         socketio.emit('data_response', 
-            {'data': json.dumps(jake_data), 'count': count})
-        clear_data(jake_data)
+            {'data': json.dumps(jake_data.data), 'count': count, 'input': our_input})
 #I need to set up a socket with Emotiv as well, which constantly emits the data like this thread instead of printing it.
 
 
@@ -181,7 +228,7 @@ def my_event(message):
 @socketio.event
 def display_data_request(message):
     session['receive_count'] = session.get('receive_count', 0) + 1
-    message['data'] = f"{message['data']} (has been altered by server) + {jake_data}"
+    message['data'] = f"{message['data']} (has been altered by server) + {jake_data.data}"
     emit('data_response',
          {'data': message['data'], 'count': session['receive_count']})
 

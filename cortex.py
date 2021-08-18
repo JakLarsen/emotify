@@ -30,7 +30,11 @@ MENTAL_COMMAND_BRAIN_MAP_ID         =   17
 MENTAL_COMMAND_TRAINING_THRESHOLD   =   18
 SET_MENTAL_COMMAND_ACTIVE_ACTION_ID =   19
 
-jake_data = []
+class DataContainer():
+    def __init__(self):
+        self.data = []
+
+jake_data = DataContainer()
 
 class Cortex(Dispatcher):
     def __init__(self, user, debug_mode=False):
@@ -312,9 +316,8 @@ class Cortex(Dispatcher):
                 com_data['power'] = result_dic['com'][1]
                 com_data['time'] = result_dic['time']
                 print("****************************************") #MC
-                print('Jakes mc data: {}'.format(com_data)) #MC
-                jake_data.append(com_data)
-                
+                print('Jakes mc data from cortex: {}'.format(com_data)) #MC
+                jake_data.data.append(com_data['action']) #MC
                 # self.emit('my_response', data = com_data) #MC
                 self.emit('new_com_data', data=com_data)
 

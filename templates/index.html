@@ -50,7 +50,7 @@
 
             //HANDLER FOR HEADSET DATA
             socket.on('data_response', function(msg, cb) {
-                $('#log').append('<br>' + $('<div/>').text('HEADSET#' + msg.count + ': ' + msg.data).html());
+                $('#log').append('<br>' + $('<div/>').text('HEADSET#' + msg.count + ':' + ' Input: ' + msg.input + '. Data: ' + msg.data).html());
                 if (cb)
                     cb();
             });
