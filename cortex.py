@@ -356,7 +356,7 @@ class Cortex(Dispatcher):
 
                 #Append data from action to our DataContainer to use in Flask App MC
                 jake_data.data.append(com_data['action']) #MC
-                # jake_data.data.append(com_data['time']) #MC
+                jake_data.data.append(com_data['time']) #MC
                 self.emit('new_com_data', com_data)
 
             elif result_dic.get('fac') != None:
@@ -379,7 +379,6 @@ class Cortex(Dispatcher):
                 mot_data['mot'] = result_dic['mot']
                 mot_data['time'] = result_dic['time']
                 self.emit('new_mot_data', data=mot_data)
-
             elif result_dic.get('dev') != None:
                 dev_data = {}
                 dev_data['signal'] = result_dic['dev'][1]

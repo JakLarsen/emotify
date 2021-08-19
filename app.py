@@ -64,6 +64,8 @@ connect_db(app)
 
 
 
+
+
                     # GLOBALS
 
 
@@ -81,17 +83,21 @@ jake_user = {
 }
 profile_name = 'Jake Main'
 
+#Settings for mental action command threshold, interval of data display processing/display, etc
+#interval 2, 20 items(if time incl.) is about 10 inputs over 1s, no data processed for 1s, 20items over 1s, no data 1s
+#40 inputs over 2s has overlap about .5s and 2.5s spread of data ->interval needs to be higher to process
 settings = {
     'input_threshold': 13,
-    'interval': 2
+    'interval': 2,
+    'items': 20
 }
     
-#Determine which input we are using - haven't tested in realtime yet
+#Determine which input('neutral', 'push', 'pull', etc.) predominated last interval of data from headset
 def determine_input(data_obj):
     """
     Takes a DataContainer data_obj (in cortex.py)
 
-    Determines if there is a sequence of push or pull commands sent in succession
+    Determines if a given input surpassed a threshold to be used as a command
     -data from the DataContainer sent
 
     Returns "push", "pull", or "neutral" pending what is stored in DataContainer
@@ -115,8 +121,8 @@ def determine_input(data_obj):
 
     """Can comment out code above and just return any of the values for testing purposes"""
     # return "pull"
-    # # return "neutral"
-    # # return "push"
+    # return "neutral"
+    # return "push"
 
 def restrict_data(data_obj):
     """
@@ -128,8 +134,12 @@ def restrict_data(data_obj):
     """
     data_obj_copy = copy(data_obj)
     if len(data_obj_copy.data) > 5:
-        #We restrict data to last 20 at the time the data copy is made
-        data_obj_copy.data = data_obj_copy.data[-20:-1]
+        #We restrict data being processed to last 20 at the time the data copy is made
+        data_obj_copy.data = data_obj_copy.data[-(settings['items']):-1]
+        #Untested, but then we should recopy our old object to the 20 item dataset to maintain a reduced size
+        #If you skip this step, the original data_obj will bloat and copying and processing will suffer
+        #We don't need a log, only previous 20 (or whatever # - probably higher) inputs at the time of processing each interval
+        data_obj = copy(data_obj_copy)
     return data_obj_copy
 
 
@@ -157,8 +167,6 @@ def background_thread():
 
 
 
-jake = Cortex(jake_user)
-
 def open_stream():
 
     """
@@ -169,9 +177,9 @@ def open_stream():
     """
 
     # # Init Cortex Instance
-    # jake = Cortex(jake_user)
+    jake = Cortex(jake_user)
 
-    # do preparation/auth steps
+    # do preparation/auth steps in Cortex.py
     jake.do_prepare_steps()
 
     # load existed profile
@@ -182,19 +190,14 @@ def open_stream():
     else:
         print(f"Profile {profile_name} does not exist.")
 
-    # # get active actions
     jake.get_mental_command_active_action(profile_name)
-
-    # get sensitivity values of actions
     jake.get_mental_command_action_sensitivity(profile_name)
-
-    # set sensitivity for active actions
+    
     values = [7,7,5,5]
     jake.set_mental_command_action_sensitivity(profile_name, values)
 
     # live mental command data
     jake.sub_request(stream=['com'])
-
 
 
 
@@ -238,7 +241,6 @@ def index():
         return render_template('index.html', async_mode=socketio.async_mode)
     else:
         return render_template('index-anon.html')
-    return render_template('index.html', async_mode=socketio.async_mode)
 
 #rendering the HTML page which has the button
 @app.route('/data')
@@ -265,6 +267,8 @@ def display_data():
 def on_message(ws, message):
         print(message)
 
+
+
                     # SOCKETIO EVENT HANDLERS
 
 @socketio.event
@@ -282,7 +286,6 @@ def my_event(message):
 def display_data_request(message):
     """
     Listens for clientside data on 'display_data_request',
-    shows that it can be altered by server, 
     and emits to 'data_response' with altered data from headset
     """
 
