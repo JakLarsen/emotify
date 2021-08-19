@@ -93,10 +93,10 @@ def determine_input(data_obj):
             push_input += 1
         if data_obj.data[i] == "pull":
             pull_input += 1
-
-    if push_input >= settings['input_threshold']:
+    print(push_input, pull_input, flush = True)
+    if push_input >= 10:
         return "push"
-    elif pull_input >= settings['input_threshold']:
+    elif pull_input >= 10:
         return "pull"
     else:
         return "neutral"
@@ -115,11 +115,12 @@ def restrict_data(data_obj):
         # data_obj.data = data_obj.data[-1]
         #last 5 inputs
         #it's printing last 20 with 5 overlapping??? interesting
-        data_obj.data = data_obj.data[-5:-1]
+        #last 20 inputs
+        #Prints 60ish and reads first 20 of them it seems
+        data_obj.data = data_obj.data[-20:-1]
     else:
         pass
     return data_obj
-
 
 
                     # SERVER THREADING
@@ -132,9 +133,8 @@ def background_thread():
 
         restrict_data(jake_data)
         our_input = determine_input(jake_data)
-
         # print(jake_data.data, flush = True)
-        socketio.sleep(2)
+        socketio.sleep(5)
         count += 1
         socketio.emit('data_response', 
             {'data': json.dumps(jake_data.data), 'count': count, 'input': our_input})

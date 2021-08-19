@@ -343,6 +343,7 @@ class Cortex(Dispatcher):
 
                 #Append data from action to our DataContainer to use in Flask App MC
                 jake_data.data.append(com_data['action']) #MC
+                # jake_data.data.append(com_data['time']) #MC
                 # self.emit('my_response', data = com_data) #MC
 
                 self.emit('new_com_data', data=com_data)
