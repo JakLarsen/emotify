@@ -5,9 +5,11 @@ from flask import Flask, render_template, request, redirect, session, g, \
     copy_current_request_context
 from flask_socketio import SocketIO, emit, join_room, leave_room, \
     close_room, rooms, disconnect
+import websocket
 from models import db, connect_db, User 
 from random import randint
 from cortex import Cortex, jake_data
+from copy import copy
 import pdb
 
 
@@ -55,7 +57,10 @@ connect_db(app)
 #-- IT SEEMS like the function is reading the first 5 or 20 entries in the list, which means the functions are working
 #-- Need to send the restricted data object instead of using the global when printing is the SOLUTION - SOLVED
 
-
+#To prevent data race (if needed)
+#--Accumulate for 2s Pause for 1. 
+#--During Pause, we send the 2s of data for input processing and determination, so that it isn't constantly updating while running determination
+#OR, copy the list before you run tests, run tests on copied list
 
 
 
@@ -77,7 +82,8 @@ jake_user = {
 profile_name = 'Jake Main'
 
 settings = {
-    'input_threshold': 15
+    'input_threshold': 13,
+    'interval': 2
 }
     
 #Determine which input we are using - haven't tested in realtime yet
@@ -100,9 +106,9 @@ def determine_input(data_obj):
         if data_obj.data[i] == "pull":
             pull_input += 1
     print(push_input, pull_input, flush = True)
-    if push_input >= 10:
+    if push_input >= settings['input_threshold']:
         return "push"
-    elif pull_input >= 10:
+    elif pull_input >= settings['input_threshold']:
         return "pull"
     else:
         return "neutral"
@@ -120,20 +126,11 @@ def restrict_data(data_obj):
 
     Returns the reduced DataContainer instance as data_obj
     """
-
-    if len(data_obj.data) > 5:
-        #give just last input
-        # data_obj.data = data_obj.data[-1]
-        #last 5 inputs
-        #it's printing last 20 with 5 overlapping??? interesting
-        #last 20 inputs
-        #Prints 60ish and reads first 20 of them it seems
-        #We had a push then a swap to neutral with 11 neutrals followed by 18 pushes, so I'm pretty sure the function is reading from the top 20
-        #It can't be reading from base because following command was neutral and had over the threshold pushes at the end
-        data_obj.data = data_obj.data[-20:-1]
-    else:
-        pass
-    return data_obj
+    data_obj_copy = copy(data_obj)
+    if len(data_obj_copy.data) > 5:
+        #We restrict data to last 20 at the time the data copy is made
+        data_obj_copy.data = data_obj_copy.data[-20:-1]
+    return data_obj_copy
 
 
                     # SERVER THREADING
@@ -144,13 +141,12 @@ def background_thread():
     count = 0
     while True:
 
-        restrict_data(jake_data)
-        our_input = determine_input(jake_data)
-        # print(jake_data.data, flush = True)
-        socketio.sleep(5)
+        data_to_display = restrict_data(jake_data)
+        our_input = determine_input(data_to_display)
+        socketio.sleep(settings['interval'])
         count += 1
         socketio.emit('data_response', 
-            {'data': json.dumps(jake_data.data), 'count': count, 'input': our_input})
+            {'data': json.dumps(data_to_display.data), 'count': count, 'input': our_input})
 #I need to set up a socket with Emotiv as well, which constantly emits the data like this thread instead of printing it.
 
 
@@ -161,6 +157,8 @@ def background_thread():
 
 
 
+jake = Cortex(jake_user)
+
 def open_stream():
 
     """
@@ -170,8 +168,8 @@ def open_stream():
     -Opens mental command subscription
     """
 
-    # Init Cortex Instance
-    jake = Cortex(jake_user)
+    # # Init Cortex Instance
+    # jake = Cortex(jake_user)
 
     # do preparation/auth steps
     jake.do_prepare_steps()
@@ -196,6 +194,7 @@ def open_stream():
 
     # live mental command data
     jake.sub_request(stream=['com'])
+
 
 
 
@@ -263,6 +262,9 @@ def display_data():
 
 
 
+def on_message(ws, message):
+        print(message)
+
                     # SOCKETIO EVENT HANDLERS
 
 @socketio.event
@@ -289,9 +291,9 @@ def display_data_request(message):
     emit('data_response',
          {'data': message['data'], 'count': session['receive_count']})
 
-# @socketio.event #It wont be using socketio, but yeah
+
 # def new_com_data(message):
-# """Need a way to listen for emitted data from cortex file???"""
+#     """Need a way to listen for emitted data from cortex file???"""
 #     session['receive_count'] = session.get('receive_count', 0) + 1
 #     emit('data_response',
 #          {'data': message, 'count': session['receive_count']})

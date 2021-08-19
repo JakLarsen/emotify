@@ -8,6 +8,9 @@ import time
 import sys
 from pydispatch import Dispatcher
 
+# import _thread
+# import time
+
 
 # define request id
 QUERY_HEADSET_ID                    =   1
@@ -54,16 +57,15 @@ profile_name = 'Jake Main'
 
 
 
-
-
 #Wrapper Class for Emotiv's Cortex API Functioning
 class Cortex(Dispatcher):
     def __init__(self, user, debug_mode=False):
         url = "wss://localhost:6868"
         self.ws = websocket.create_connection(url,
-                                            sslopt={"cert_reqs": ssl.CERT_NONE})
+                                            sslopt={"cert_reqs": ssl.CERT_NONE}) #MC on_message=on_message
         self.user = user
         self.debug = debug_mode
+        self._events_
 
     def query_headset(self):
         print('query headset --------------------------------')
@@ -92,7 +94,6 @@ class Cortex(Dispatcher):
             }
         }
         self.ws.send(json.dumps(connect_headset_request, indent=4))
-
         # wait until connect completed
         while True:
             time.sleep(1)
@@ -284,11 +285,23 @@ class Cortex(Dispatcher):
                     break
 
     _events_ = ['new_data_labels','new_com_data', 'new_fe_data', 'new_eeg_data', 'new_mot_data', 'new_dev_data', 'new_met_data', 'new_pow_data']
+    
+    #MC
+    def on_my_event(self, value):
+
+        print('WE ARE HANDLING EMIT *****************************', flush=True)
+        print(value, flush=True)
+        print('WE ARE HANDLING EMIT *****************************', flush=True)
+
+
 
     def sub_request(self, stream):
         """Takes a list of streams that you would like to subscribe to (i.e. ["mot"] for motion stream or ["fac"] for facial expression stream"""
 
         print('subscribe request --------------------------------')
+        self.bind(new_com_data=self.on_my_event) #MC
+        self.emit('new_com_data', 1) #MC
+
         sub_request_json = {
             "jsonrpc": "2.0", 
             "method": "subscribe", 
@@ -344,9 +357,7 @@ class Cortex(Dispatcher):
                 #Append data from action to our DataContainer to use in Flask App MC
                 jake_data.data.append(com_data['action']) #MC
                 # jake_data.data.append(com_data['time']) #MC
-                # self.emit('my_response', data = com_data) #MC
-
-                self.emit('new_com_data', data=com_data)
+                self.emit('new_com_data', com_data)
 
             elif result_dic.get('fac') != None:
                 fe_data = {}
@@ -784,8 +795,9 @@ class Cortex(Dispatcher):
 # -------------------------------------------------------------------
 # -------------------------------------------------------------------
 
+jake = Cortex(jake_user)
 
-# name of training profile
+# # name of training profile
 # def open_stream():
 
 #     # Init live advance
