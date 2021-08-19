@@ -49,6 +49,12 @@ connect_db(app)
 #or do I need to convert cortex to use a socketio websocket? (or the client to use websocket-client instead?)
 ## - Do I need the same websocket library for both?
 
+#In determine_input 
+#-- List is being populated by 20 instead of 5 or 59/60 instead of 20.
+#-- I believe this might be due to some sort of data race
+#-- IT SEEMS like the function is reading the first 5 or 20 entries in the list, which means the functions are working
+#-- Need to send the restricted data object instead of using the global when printing is the SOLUTION - SOLVED
+
 
 
 
@@ -100,6 +106,11 @@ def determine_input(data_obj):
         return "pull"
     else:
         return "neutral"
+
+    """Can comment out code above and just return any of the values for testing purposes"""
+    # return "pull"
+    # # return "neutral"
+    # # return "push"
 
 def restrict_data(data_obj):
     """

@@ -37,6 +37,18 @@ GIVEN SOMEONE IS LOGGED IN FROM THE HOMEPAGE -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
     
     <script type="text/javascript" charset="utf-8">
+        function update_page(input){
+            if (input == 'push'){
+                $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON PUSH COMMAND').html());
+                $('body').css('background-color', 'blue');
+            }
+            else{
+                $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON NEUTRAL COMMAND').html());
+                $('body').css('background-color', 'red');
+            }
+        }
+
+
         $(document).ready(function() {
             // Connect to the Socket.IO server.
             // The connection URL has the following format, relative to the current page:
@@ -68,6 +80,7 @@ GIVEN SOMEONE IS LOGGED IN FROM THE HOMEPAGE -->
                 $('#log').append('<br>' + $('<div/>').text('HEADSET #' + msg.count + ':' + ' Input: ' + msg.input + '. Data: ' + msg.data).html());
                 if (cb)
                     cb();
+                update_page(msg.input)
             });
 
             // Handlers for the form buttons to emit data to server from client.
