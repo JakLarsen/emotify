@@ -234,10 +234,10 @@ def do_logout():
 def index():
     """Display home if logged in or home-anon if user not in session"""
 
-    # if g.user:
-    #     return render_template('index.html', async_mode=socketio.async_mode)
-    # else:
-    #     return render_template('index-anon.html')
+    if g.user:
+        return render_template('index.html', async_mode=socketio.async_mode)
+    else:
+        return render_template('index-anon.html')
     return render_template('index.html', async_mode=socketio.async_mode)
 
 #rendering the HTML page which has the button
@@ -300,9 +300,7 @@ def display_data_request(message):
 
 @socketio.event
 def disconnect_request():
-    """
-    On disconnect button submit, disconnect
-    """
+    """On disconnect button submit, disconnect"""
 
     @copy_current_request_context
     def can_disconnect():
@@ -318,9 +316,7 @@ def disconnect_request():
 
 @socketio.event
 def connect():
-    """
-    Instantiate a thread for server generated events when connected
-    """
+    """Instantiate a thread for server generated events when connected"""
 
     global thread
     with thread_lock:
@@ -344,9 +340,7 @@ def test_disconnect():
 
 @app.after_request
 def add_header(req):
-    """
-    Add non-caching headers on every request
-    """
+    """Add non-caching headers on every request"""
 
     req.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
     req.headers["Pragma"] = "no-cache"
