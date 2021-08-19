@@ -117,6 +117,8 @@ def restrict_data(data_obj):
         #it's printing last 20 with 5 overlapping??? interesting
         #last 20 inputs
         #Prints 60ish and reads first 20 of them it seems
+        #We had a push then a swap to neutral with 11 neutrals followed by 18 pushes, so I'm pretty sure the function is reading from the top 20
+        #It can't be reading from base because following command was neutral and had over the threshold pushes at the end
         data_obj.data = data_obj.data[-20:-1]
     else:
         pass
