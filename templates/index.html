@@ -1,3 +1,11 @@
+<!-- THIS ENTIRE PAGE SHOULD NOT BE INDEX.HTML AND SHOULD BE MOVED TO BE RETURNED BY THE /display_data ROUTE
+GIVEN SOMEONE IS LOGGED IN FROM THE HOMEPAGE -->
+
+
+
+
+
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -40,7 +48,7 @@
 
             // Event handler for server sent data.
             // The callback function is invoked whenever the server emits data
-            // to the client. The data is then displayed in the "Received"
+            // to the client with the 'my_response' identifier. The data is then displayed in the "Received"
             // section of the page.
             socket.on('my_response', function(msg, cb) {
                 $('#log').append('<br>' + $('<div/>').text('Received #' + msg.count + ': ' + msg.data).html());
@@ -48,20 +56,23 @@
                     cb();
             });
 
-            //HANDLER FOR HEADSET DATA
+            // Event handler for Headset sent data (Handled by server).
+            // The callback function is invoked whenever the server emits data
+            // to the client with the 'data_response' identifier. The data is then displayed in the "Received"
+            // section of the page.
             socket.on('data_response', function(msg, cb) {
-                $('#log').append('<br>' + $('<div/>').text('HEADSET#' + msg.count + ':' + ' Input: ' + msg.input + '. Data: ' + msg.data).html());
+                $('#log').append('<br>' + $('<div/>').text('HEADSET #' + msg.count + ':' + ' Input: ' + msg.input + '. Data: ' + msg.data).html());
                 if (cb)
                     cb();
             });
 
-            // Handlers for the different forms in the page.
-            // These accept data from the user and send it to the server in a
-            // variety of ways
-            $('form#emit').submit(function(event) {
-                socket.emit('my_event', {data: $('#emit_data').val()});
-                return false;
-            });
+            // Handlers for the form buttons to emit data to server from client.
+            // On submit, data is emitted across websocket to 'display_data_request' etc. handlers on server
+
+            // $('form#emit').submit(function(event) {
+            //     socket.emit('my_event', {data: $('#emit_data').val()});
+            //     return false;
+            // });
             $('form#display-data').submit(function(event){
                 socket.emit('display_data_request', {data: ('Clicked to display realtime data or send input to server.')});
                 return false;

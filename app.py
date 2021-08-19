@@ -5,10 +5,10 @@ from flask import Flask, render_template, request, redirect, session, g, \
     copy_current_request_context
 from flask_socketio import SocketIO, emit, join_room, leave_room, \
     close_room, rooms, disconnect
-# from models import db, connect_db, User 
+from models import db, connect_db, User 
 from random import randint
 from cortex import Cortex, jake_data
-# import pdb
+import pdb
 
 
 
@@ -36,7 +36,7 @@ thread = None
 thread_lock = Lock()
 import json
 
-# connect_db(app)
+connect_db(app)
 
 
 
@@ -55,7 +55,21 @@ import json
 
                     # GLOBALS
 
-# CURR_USER_KEY = "curr_user"
+
+
+#Global logged-in User
+CURR_USER_KEY = "curr_user"
+
+#User object in Cortex Class for auth.
+jake_user = {
+    'client_id': 'hVe4d7WF19ObiuGfJKL8yYo7aivjP692nWHiRzJw',
+    'client_secret': 'rjtEBdSANn6JGE6LsgrrgZdA9dKlItdF1d4w1inJx5iyGI3MjZD6Wus5BnLoaa3koMhIH1eOJ8U75VIUaW7DsKIicy4YyRDpJFP1Nhcs6MgWx6HcpYyideIIWSiUKApz',
+    "headset_id": "INSIGHT-A2D203D1",
+    "license": "", #don't generally need to specify license - cortext should find it based on client_id
+    "debit": 100
+}
+profile_name = 'Jake Main'
+
 settings = {
     'input_threshold': 15
 }
@@ -91,9 +105,9 @@ def restrict_data(data_obj):
     """
     Reinstantiates our DataContainer with fewer entries
     -Keeps it from bloating
-    -Let's us use only most recent inputs
+    -Lets us use only most recent inputs
 
-    Returns the DataContainer instance as data_obj
+    Returns the reduced DataContainer instance as data_obj
     """
 
     if len(data_obj.data) > 5:
@@ -111,7 +125,7 @@ def restrict_data(data_obj):
                     # SERVER THREADING
 
 def background_thread():
-    """Example of how to send server generated events to clients."""
+    """Emit server generated events to client at 'data_response'"""
 
     count = 0
     while True:
@@ -133,16 +147,6 @@ def background_thread():
 #-----------------------------------------------------------------
 
 
-
-#User object in Cortex Class for auth.
-jake_user = {
-    'client_id': 'hVe4d7WF19ObiuGfJKL8yYo7aivjP692nWHiRzJw',
-    'client_secret': 'rjtEBdSANn6JGE6LsgrrgZdA9dKlItdF1d4w1inJx5iyGI3MjZD6Wus5BnLoaa3koMhIH1eOJ8U75VIUaW7DsKIicy4YyRDpJFP1Nhcs6MgWx6HcpYyideIIWSiUKApz',
-    "headset_id": "INSIGHT-A2D203D1",
-    "license": "", #don't generally need to specify license - cortext should find it based on client_id
-    "debit": 100
-}
-profile_name = 'Jake Main'
 
 def open_stream():
 
@@ -190,25 +194,25 @@ def open_stream():
 
                     # USER LOGIN HANDLERS
 
-# @app.before_request
-# def add_user_to_g():
-#     """If we're logged in, add curr user to Flask global."""
+@app.before_request
+def add_user_to_g():
+    """If we're logged in, add curr user to Flask global."""
 
-#     if CURR_USER_KEY in session:
-#         g.user = User.query.get(session[CURR_USER_KEY])
-#     else:
-#         g.user = None
+    if CURR_USER_KEY in session:
+        g.user = User.query.get(session[CURR_USER_KEY])
+    else:
+        g.user = None
 
-# def do_login(user):
-#     """Log in a User."""
+def do_login(user):
+    """Log in a User."""
 
-#     session[CURR_USER_KEY] = user.id
+    session[CURR_USER_KEY] = user.id
 
-# def do_logout():
-#     """Logout a User."""
+def do_logout():
+    """Logout a User."""
 
-#     if CURR_USER_KEY in session:
-#         del session[CURR_USER_KEY]
+    if CURR_USER_KEY in session:
+        del session[CURR_USER_KEY]
 
 
 
@@ -227,11 +231,14 @@ def index():
 #rendering the HTML page which has the button
 @app.route('/data')
 def data():
+    """Display a page dedicated to showing data from headset inputs"""
     return render_template('data.html')
 
 #background process happening without any refreshing
 @app.route('/display_data')
 def display_data():
+    """Opens subscription stream to Emotiv Headset"""
+
     print (f"Opening Stream", flush =  True)
     print("******************************************", flush =  True)
     print("******************************************", flush =  True)
@@ -247,25 +254,41 @@ def display_data():
 
 @socketio.event
 def my_event(message):
+    """
+    Listens for clientside data on 'my_event',
+    and emits to 'my_response'
+    """
+
     session['receive_count'] = session.get('receive_count', 0) + 1
     emit('my_response',
          {'data': message['data'], 'count': session['receive_count']})
 
 @socketio.event
 def display_data_request(message):
+    """
+    Listens for clientside data on 'display_data_request',
+    shows that it can be altered by server, 
+    and emits to 'data_response' with altered data from headset
+    """
+
     session['receive_count'] = session.get('receive_count', 0) + 1
     message['data'] = f"{message['data']} (has been altered by server) + {jake_data.data}"
     emit('data_response',
          {'data': message['data'], 'count': session['receive_count']})
 
-# @socketio.event
+# @socketio.event #It wont be using socketio, but yeah
 # def new_com_data(message):
+# """Need a way to listen for emitted data from cortex file???"""
 #     session['receive_count'] = session.get('receive_count', 0) + 1
 #     emit('data_response',
 #          {'data': message, 'count': session['receive_count']})
 
 @socketio.event
 def disconnect_request():
+    """
+    On disconnect button submit, disconnect
+    """
+
     @copy_current_request_context
     def can_disconnect():
         disconnect()
@@ -280,6 +303,10 @@ def disconnect_request():
 
 @socketio.event
 def connect():
+    """
+    Instantiate a thread for server generated events when connected
+    """
+
     global thread
     with thread_lock:
         if thread is None:
@@ -302,7 +329,9 @@ def test_disconnect():
 
 @app.after_request
 def add_header(req):
-    """Add non-caching headers on every request."""
+    """
+    Add non-caching headers on every request
+    """
 
     req.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
     req.headers["Pragma"] = "no-cache"
