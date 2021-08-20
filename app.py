@@ -1,12 +1,14 @@
 import os
 # # from flask_debugtoolbar import DebugToolbarExtension
 from threading import Lock
-from flask import Flask, render_template, request, redirect, session, g, \
+from flask import Flask, render_template, flash, request, redirect, session, g, \
     copy_current_request_context
 from flask_socketio import SocketIO, emit, join_room, leave_room, \
     close_room, rooms, disconnect
 import websocket
+from sqlalchemy.exc import IntegrityError
 from models import db, connect_db, User 
+from forms import LoginForm, UserAddForm
 from random import randint
 from cortex import Cortex, jake_data
 from copy import copy
@@ -62,7 +64,7 @@ connect_db(app)
 #--During Pause, we send the 2s of data for input processing and determination, so that it isn't constantly updating while running determination
 #OR, copy the list before you run tests, run tests on copied list
 
-
+#Could probably move restrict_data and determine_input functions along with settings object into DataContainer class.
 
 
 
@@ -92,7 +94,6 @@ settings = {
     'items': 20
 }
     
-#Determine which input('neutral', 'push', 'pull', etc.) predominated last interval of data from headset
 def determine_input(data_obj):
     """
     Takes a DataContainer data_obj (in cortex.py)
@@ -112,6 +113,7 @@ def determine_input(data_obj):
         if data_obj.data[i] == "pull":
             pull_input += 1
     print(push_input, pull_input, flush = True)
+
     if push_input >= settings['input_threshold']:
         return "push"
     elif pull_input >= settings['input_threshold']:
@@ -157,7 +159,6 @@ def background_thread():
         count += 1
         socketio.emit('data_response', 
             {'data': json.dumps(data_to_display.data), 'count': count, 'input': our_input})
-#I need to set up a socket with Emotiv as well, which constantly emits the data like this thread instead of printing it.
 
 
 
@@ -242,13 +243,67 @@ def index():
     else:
         return render_template('index-anon.html')
 
-#rendering the HTML page which has the button
+@app.route('/signup', methods=["GET", "POST"])
+def signup():
+    """
+    Handle user signup.
+    Create new user and add to DB. Redirect to home page.
+    If form not valid, present form.
+    If the there already is a user with that username: flash message and re-present form.
+    """
+
+    form = UserAddForm()
+
+    if form.validate_on_submit():
+        try:
+            user = User.signup(
+                username=form.username.data,
+                password=form.password.data,
+            )
+            db.session.commit()
+        except IntegrityError:
+            flash("Username already taken", 'danger')
+            return render_template('users/signup.html', form=form)
+
+        do_login(user)
+
+        return redirect("/")
+
+    else:
+        return render_template('users/signup.html', form=form)
+
+@app.route('/login', methods=["GET", "POST"])
+def login():
+    """Handle user login."""
+
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.authenticate(form.username.data,
+                                 form.password.data)
+
+        if user:
+            do_login(user)
+            flash(f"Hello, {user.username}!", "success")
+            return redirect("/")
+            
+        flash("Invalid credentials.", 'danger')
+
+    return render_template('users/login.html', form=form)
+
+@app.route('/logout')
+def logout():
+    """Handle logout of user."""
+
+    do_logout()  
+
+    return redirect('/login')
+
 @app.route('/data')
 def data():
     """Display a page dedicated to showing data from headset inputs"""
+
     return render_template('data.html')
 
-#background process happening without any refreshing
 @app.route('/display_data')
 def display_data():
     """Opens subscription stream to Emotiv Headset"""
@@ -259,7 +314,7 @@ def display_data():
     print("******************************************", flush =  True)
 
     open_stream()
-    
+
     return ("nothing")
 
 

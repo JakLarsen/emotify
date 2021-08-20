@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+</head>
+<body>
+    
+    <h2>Welcome back.</h2>
+
+    <form method="POST" id="user_form">
+        {{ form.hidden_tag() }}
+
+        {% for field in form if field.widget.input_type != 'hidden' %}
+            {% for error in field.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        {{ field(placeholder=field.label.text, class="form-control") }}
+        {% endfor %}
+
+        <button>Log in</button>
+    </form>
+
+</body>
+</html>
