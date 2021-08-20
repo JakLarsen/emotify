@@ -97,23 +97,18 @@ settings = {
 def determine_input(data_obj):
     """
     Takes a DataContainer data_obj (in cortex.py)
-
     Determines if a given input surpassed a threshold to be used as a command
-    -data from the DataContainer sent
-
+    --data from the DataContainer sent
     Returns "push", "pull", or "neutral" pending what is stored in DataContainer
     """
-
     push_input = 0
     pull_input = 0
-
     for i in range(len(data_obj.data)):
         if data_obj.data[i] == "push":
             push_input += 1
         if data_obj.data[i] == "pull":
             pull_input += 1
     print(push_input, pull_input, flush = True)
-
     if push_input >= settings['input_threshold']:
         return "push"
     elif pull_input >= settings['input_threshold']:
@@ -131,7 +126,6 @@ def restrict_data(data_obj):
     Reinstantiates our DataContainer with fewer entries
     -Keeps it from bloating
     -Lets us use only most recent inputs
-
     Returns the reduced DataContainer instance as data_obj
     """
     data_obj_copy = copy(data_obj)
@@ -149,10 +143,8 @@ def restrict_data(data_obj):
 
 def background_thread():
     """Emit server generated events to client at 'data_response'"""
-
     count = 0
     while True:
-
         data_to_display = restrict_data(jake_data)
         our_input = determine_input(data_to_display)
         socketio.sleep(settings['interval'])
@@ -169,20 +161,16 @@ def background_thread():
 
 
 def open_stream():
-
     """
     Connects a turned on headset to Cortex API
     -Does Auth and requests
     -Loads Profile
     -Opens mental command subscription
     """
-
     # # Init Cortex Instance
     jake = Cortex(jake_user)
-
     # do preparation/auth steps in Cortex.py
     jake.do_prepare_steps()
-
     # load existed profile
     profiles = jake.query_profile()
     if profile_name in profiles:
@@ -190,13 +178,11 @@ def open_stream():
         jake.setup_profile(profile_name, status)
     else:
         print(f"Profile {profile_name} does not exist.")
-
     jake.get_mental_command_active_action(profile_name)
     jake.get_mental_command_action_sensitivity(profile_name)
-    
+    #set values for mental command action sensitivity
     values = [7,7,5,5]
     jake.set_mental_command_action_sensitivity(profile_name, values)
-
     # live mental command data
     jake.sub_request(stream=['com'])
 
@@ -213,7 +199,6 @@ def open_stream():
 @app.before_request
 def add_user_to_g():
     """If we're logged in, add curr user to Flask global."""
-
     if CURR_USER_KEY in session:
         g.user = User.query.get(session[CURR_USER_KEY])
     else:
@@ -221,12 +206,10 @@ def add_user_to_g():
 
 def do_login(user):
     """Log in a User."""
-
     session[CURR_USER_KEY] = user.id
 
 def do_logout():
     """Logout a User."""
-
     if CURR_USER_KEY in session:
         del session[CURR_USER_KEY]
 
@@ -237,7 +220,6 @@ def do_logout():
 @app.route('/')
 def index():
     """Display home if logged in or home-anon if user not in session"""
-
     if g.user:
         return render_template('index.html', async_mode=socketio.async_mode)
     else:
@@ -251,9 +233,7 @@ def signup():
     If form not valid, present form.
     If the there already is a user with that username: flash message and re-present form.
     """
-
     form = UserAddForm()
-
     if form.validate_on_submit():
         try:
             user = User.signup(
@@ -264,57 +244,44 @@ def signup():
         except IntegrityError:
             flash("Username already taken", 'danger')
             return render_template('users/signup.html', form=form)
-
         do_login(user)
-
         return redirect("/")
-
     else:
         return render_template('users/signup.html', form=form)
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
     """Handle user login."""
-
     form = LoginForm()
     if form.validate_on_submit():
         user = User.authenticate(form.username.data,
                                  form.password.data)
-
         if user:
             do_login(user)
             flash(f"Hello, {user.username}!", "success")
             return redirect("/")
-            
         flash("Invalid credentials.", 'danger')
-
     return render_template('users/login.html', form=form)
 
 @app.route('/logout')
 def logout():
     """Handle logout of user."""
-
     do_logout()  
-
     return redirect('/login')
 
 @app.route('/data')
 def data():
     """Display a page dedicated to showing data from headset inputs"""
-
     return render_template('data.html')
 
 @app.route('/display_data')
 def display_data():
     """Opens subscription stream to Emotiv Headset"""
-
     print (f"Opening Stream", flush =  True)
     print("******************************************", flush =  True)
     print("******************************************", flush =  True)
     print("******************************************", flush =  True)
-
     open_stream()
-
     return ("nothing")
 
 
@@ -332,7 +299,6 @@ def my_event(message):
     Listens for clientside data on 'my_event',
     and emits to 'my_response'
     """
-
     session['receive_count'] = session.get('receive_count', 0) + 1
     emit('my_response',
          {'data': message['data'], 'count': session['receive_count']})
@@ -343,7 +309,6 @@ def display_data_request(message):
     Listens for clientside data on 'display_data_request',
     and emits to 'data_response' with altered data from headset
     """
-
     session['receive_count'] = session.get('receive_count', 0) + 1
     message['data'] = f"{message['data']} (has been altered by server) + {jake_data.data}"
     emit('data_response',
@@ -359,7 +324,6 @@ def display_data_request(message):
 @socketio.event
 def disconnect_request():
     """On disconnect button submit, disconnect"""
-
     @copy_current_request_context
     def can_disconnect():
         disconnect()
@@ -375,7 +339,6 @@ def disconnect_request():
 @socketio.event
 def connect():
     """Instantiate a thread for server generated events when connected"""
-
     global thread
     with thread_lock:
         if thread is None:
@@ -399,7 +362,6 @@ def test_disconnect():
 @app.after_request
 def add_header(req):
     """Add non-caching headers on every request"""
-
     req.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
     req.headers["Pragma"] = "no-cache"
     req.headers["Expires"] = "0"

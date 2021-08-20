@@ -9,7 +9,6 @@ db = SQLAlchemy()
 
 class User(db.Model):
     """User in the system."""
-
     __tablename__ = 'users'
 
     id = db.Column(
@@ -28,40 +27,31 @@ class User(db.Model):
 
     @classmethod
     def signup(cls, username, password):
-        """Sign up user.
-
-        Hashes password and adds user to system.
         """
-
+        Sign a User up
+        Hashes password and adds User to database: Emotify
+        """
         hashed_pwd = bcrypt.generate_password_hash(password).decode('UTF-8')
-
         user = User(
             username=username,
             password=hashed_pwd,
         )
-
         db.session.add(user)
         db.session.commit()
         return user
 
     @classmethod
     def authenticate(cls, username, password):
-        """Find user with `username` and `password`.
-
-        This is a class method (call it on the class, not an individual user.)
-        It searches for a user whose password hash matches this password
-        and, if it finds such a user, returns that user object.
-
-        If can't find matching user (or if password is wrong), returns False.
         """
-
+        Find User with given username
+        Checks password against a given salted and hashed password value
+        Returns the User if correct and found, otherwise False
+        """
         user = cls.query.filter_by(username=username).first()
-
         if user:
             is_auth = bcrypt.check_password_hash(user.password, password)
             if is_auth:
                 return user
-
         return False
 
 
@@ -79,7 +69,7 @@ class User(db.Model):
 
 
 def connect_db(app):
-    """Connect this database to provided Flask app."""
+    """Connect this database to provided Flask app"""
 
     db.app = app
     db.init_app(app)
