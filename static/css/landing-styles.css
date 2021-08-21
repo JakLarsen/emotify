@@ -1,0 +1,140 @@
+
+
+
+                    /* GENERAL FORMATTING */
+
+
+
+body, #body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fff;
+    /* overflow: hidden; */
+}
+h1{
+    margin: 0;
+    padding: 0;
+}
+#body{
+    /* background-color: red; */
+    position: relative;
+    display: flex;
+}
+
+
+
+                    /* MAIN CONTAINER */
+
+
+
+#main-con{
+    background: linear-gradient(#008c7e, #272727);
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+
+                    /* LANDING PAGE MAIN CARD */
+
+
+
+#main-card{
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+
+    margin: 2rem;
+    max-width: 75%;
+}
+#main-card-img{
+    max-width: 11rem;
+    border-radius: 8px;
+    box-shadow: 0 0 100px rgba(0,0,0,0.2);
+    margin-bottom: 2rem;
+}
+#main-card-banner{
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+}
+#main-card-title{
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 2rem;
+}
+.main-card-ul{
+    /* background-color: pink; */
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
+}
+.main-card-li-wrap{
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    /* background-color: aqua; */
+    width: 20rem;
+    height: 3.5rem;
+    margin-bottom: 1rem;
+}
+.main-card-li{
+    /* background-color: blue; */
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    width: 18rem;
+    height: 3rem;
+}
+.main-card-li a{
+    background-color: #fff;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05rem;
+    color: #272727;
+    height: 3.2rem;
+    border-radius: 25px;
+}
+#main-card-li-signup a{
+    background-color: #b50000;
+    color: #fff;
+}
+#main-card a:link, 
+#main-card a:visited,
+#main-card a:active{
+    text-decoration: none;
+}
+.main-card-li:hover{
+    text-decoration: none;
+    height: 3.2rem;
+    width: 19rem;    
+}
+.main-card-li a:hover{
+    font-size: 0.74rem;
+}
+#main-card-li-signup a:hover{
+    background-color: #c70f0f;
+    color: #fff;
+}
