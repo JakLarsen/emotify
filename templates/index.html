@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- LINKS -->
-  <link rel="stylesheet/css" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/styles.css">
 
 
 </head>
@@ -26,18 +26,33 @@
 
 
 <body>
-    <h1>Home Page</h1>
-    {% if not g.user %}
-      <li><a href="/signup">Sign up</a></li>
-      <li><a href="/login">Log in</a></li>
-      {% else %}
-      <li>
-        <a href="/users/{{ g.user.id }}">
-          <img src="{{ g.user.image_url }}" alt="{{ g.user.username }}">
-        </a>
-      </li>
-      <li><a href="/logout">Log out</a></li>
-      {% endif %}
+
+
+
+
+
+
+  <div id="body">
+    <div id="main-con">
+      <h1>Home Page</h1>
+      <ul>
+        {% if not g.user %}
+          <li><a href="/signup">Sign up</a></li>
+          <li><a href="/login">Log in</a></li>
+        {% else %}
+          <li><a href="/users/{{ g.user.id }}"><img src="{{ g.user.image_url }}" alt="{{ g.user.username }}"></a></li>
+          <li><a href="/logout">Log out</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+
+
+
+
+
+
+
 </body>
 
 </html>
