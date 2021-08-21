@@ -48,8 +48,10 @@
             <div class="main-card-li-wrap">
               <div class="main-card-li" id="main-card-li-demo"><a id ="demo-btn" class="main-card-a" href="/">EMOTIFY DEMO</a></div>
             </div>
-              <div class="main-card-log">Already have an account?</div>
-            <a id ="login-btn" class="main-card-a" href="/login">LOG IN</a>
+            <div id="main-card-log">Already have an account?</div>
+            <div class="main-card-login-wrap">
+              <a id ="login-btn" class="main-card-a" href="/login">LOG IN</a>
+            </div>
           {% else %}
           <div class="main-card-li-wrap">
             <div class="main-card-li"><a class="main-card-a" href="/users/{{ g.user.id }}"><img src="{{ g.user.image_url }}" alt="{{ g.user.username }}"></a></div>

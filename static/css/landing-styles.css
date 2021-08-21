@@ -92,9 +92,10 @@ h1{
     justify-content: center;
     align-items: center;
     /* background-color: aqua; */
-    width: 20rem;
+    width: 19rem;
     height: 3.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 25px;
 }
 .main-card-li{
     /* background-color: blue; */
@@ -113,13 +114,13 @@ h1{
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.05rem;
-    color: #272727;
+    color: #444;
     height: 3.2rem;
     border-radius: 25px;
 }
 #main-card-li-signup a{
-    background-color: #b50000;
-    color: #fff;
+    background-color: #a71111;
+    color: #eee;
 }
 #main-card a:link, 
 #main-card a:visited,
@@ -135,6 +136,37 @@ h1{
     font-size: 0.74rem;
 }
 #main-card-li-signup a:hover{
-    background-color: #c70f0f;
+    background-color: #ba1212;
     color: #fff;
+}
+#main-card-log{
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    margin-top: 1.5rem;
+}
+.main-card-login-wrap{
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    /* background-color: purple; */
+    height: 2rem;
+    margin-top: 0.75rem;
+}
+#login-btn{
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+#login-btn:hover{
+    letter-spacing: 2px;
+    font-size: 0.83rem;
+}
+#login-btn:link, 
+#login-btn:visited,
+#login-btn:active{
+    color: #fff;
+    text-decoration: none;
 }
