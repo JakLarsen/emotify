@@ -37,7 +37,7 @@
       <div id="main-card">
         <img id="main-card-img" src="/static/img/emo2sq.png"> 
         <h1 id="main-card-banner">Think your way through music</h1>
-        <h1 id="main-card-title">with Emotify</h1>
+        <h1 id="main-card-title">with <span id="emotify">Emotify</span></h1>
         <div class="main-card-ul">
           {% if not g.user %}
             <div class="main-card-li-wrap">
@@ -48,9 +48,11 @@
             <div class="main-card-li-wrap">
               <div class="main-card-li" id="main-card-li-demo"><a id ="demo-btn" class="main-card-a" href="/">EMOTIFY DEMO</a></div>
             </div>
-            <div id="main-card-log">Already have an account?</div>
-            <div class="main-card-login-wrap">
-              <a id ="login-btn" class="main-card-a" href="/login">LOG IN</a>
+            <div id="main-card-login-con-wrap">
+              <div id="main-card-log">Already have an account?</div>
+              <div class="main-card-login-wrap">
+                <a id ="login-btn" class="main-card-a" href="/login">LOG IN</a>
+              </div>
             </div>
           {% else %}
           <div class="main-card-li-wrap">

@@ -21,6 +21,10 @@ h1{
     /* background-color: red; */
     position: relative;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
 }
 
 
@@ -55,7 +59,6 @@ h1{
     text-align: center;
     margin: 0;
     padding: 0;
-
     margin: 2rem;
     max-width: 75%;
 }
@@ -63,18 +66,23 @@ h1{
     max-width: 11rem;
     border-radius: 8px;
     box-shadow: 0 0 100px rgba(0,0,0,0.2);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 #main-card-banner{
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+    width: 20rem;
     font-weight: 700;
     color: #fff;
 }
 #main-card-title{
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: #fff;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+}
+#emotify{
+    font-size: 1.4rem;
+    color: #fff;
 }
 .main-card-ul{
     /* background-color: pink; */
@@ -86,13 +94,13 @@ h1{
     width: 20rem;
 }
 .main-card-li-wrap{
+    /* background-color: aqua; */
     position: relative;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    /* background-color: aqua; */
-    width: 19rem;
+    width: 20rem;
     height: 3.5rem;
     margin-bottom: 0.5rem;
     border-radius: 25px;
@@ -102,7 +110,7 @@ h1{
     position: relative;
     display: flex;
     flex-flow: column nowrap;
-    width: 18rem;
+    width: 19rem;
     height: 3rem;
 }
 .main-card-li a{
@@ -111,9 +119,9 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 0.05rem;
+    letter-spacing: 0.1rem;
     color: #444;
     height: 3.2rem;
     border-radius: 25px;
@@ -130,7 +138,7 @@ h1{
 .main-card-li:hover{
     text-decoration: none;
     height: 3.2rem;
-    width: 19rem;    
+    width: 20rem;    
 }
 .main-card-li a:hover{
     font-size: 0.74rem;
@@ -139,19 +147,28 @@ h1{
     background-color: #ba1212;
     color: #fff;
 }
-#main-card-log{
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #fff;
-    margin-top: 1.5rem;
-}
-.main-card-login-wrap{
+#main-card-login-con-wrap{
+    /* background-color: salmon; */
     position: relative;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+    width: 20rem;
+    margin-top: 1.5rem;
+}
+#main-card-log{
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #fff;
+}
+.main-card-login-wrap{
     /* background-color: purple; */
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
     height: 2rem;
     margin-top: 0.75rem;
 }
@@ -170,3 +187,51 @@ h1{
     color: #fff;
     text-decoration: none;
 }
+
+
+
+                    /* 602-1012 */
+
+
+
+@media only screen and (min-width: 602px) and (max-width: 1012px){
+#body{
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(/static/img/sp1.JPG);
+}
+#main-con{
+    width: 26rem;
+    height: 40rem;
+    border-radius: 8px;
+}
+#main-card-img{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    max-width: 15rem;
+    border-radius: 8px;
+    box-shadow: 0 0 100px rgba(0,0,0,0.2);
+}
+#main-card-banner{
+    font-size: 1.2rem;
+    width: 20rem;
+}
+#main-card-title{
+    margin-bottom: 2rem;
+}
+#main-card-login-con-wrap{
+    /* background-color: salmon; */
+    flex-flow: row nowrap;
+    margin-top: 1rem;
+}
+.main-card-login-wrap{
+    margin-top: 0;
+    margin-left: 0rem;
+    width: 5rem;
+}
+
+
+}
+
+/* @media only screen and (min-width: 1013px){
+} */
+
+
