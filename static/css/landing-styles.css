@@ -193,8 +193,8 @@ h1{
                     /* 602-1012 */
 
 
-
-@media only screen and (min-width: 602px) and (max-width: 1012px){
+/* and (max-width: 1012px) */
+@media only screen and (min-width: 602px){
 #body{
     background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(/static/img/sp1.JPG);
 }
