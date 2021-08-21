@@ -193,45 +193,101 @@ h1{
                     /* 602-1012 */
 
 
-/* and (max-width: 1012px) */
-@media only screen and (min-width: 602px){
-#body{
-    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(/static/img/sp1.JPG);
-}
-#main-con{
-    width: 26rem;
-    height: 40rem;
-    border-radius: 8px;
-}
-#main-card-img{
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    max-width: 15rem;
-    border-radius: 8px;
-    box-shadow: 0 0 100px rgba(0,0,0,0.2);
-}
-#main-card-banner{
-    font-size: 1.2rem;
-    width: 20rem;
-}
-#main-card-title{
-    margin-bottom: 2rem;
-}
-#main-card-login-con-wrap{
-    /* background-color: salmon; */
-    flex-flow: row nowrap;
-    margin-top: 1rem;
-}
-.main-card-login-wrap{
-    margin-top: 0;
-    margin-left: 0rem;
-    width: 5rem;
-}
+
+@media only screen and (min-width: 602px) and (max-width: 1012px){
+    #body{
+        background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(/static/img/sp1.JPG);
+    }
+    #main-con{
+        width: 26rem;
+        height: 40rem;
+        border-radius: 8px;
+    }
+    #main-card-img{
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        max-width: 15rem;
+        border-radius: 8px;
+        box-shadow: 0 0 100px rgba(0,0,0,0.2);
+    }
+    #main-card-banner{
+        font-size: 1.2rem;
+        width: 20rem;
+    }
+    #main-card-title{
+        margin-bottom: 2rem;
+    }
+    #main-card-login-con-wrap{
+        /* background-color: salmon; */
+        flex-flow: row nowrap;
+        margin-top: 1rem;
+    }
+    .main-card-login-wrap{
+        margin-top: 0;
+        margin-left: 0rem;
+        width: 5rem;
+    }
 
 
 }
 
-/* @media only screen and (min-width: 1013px){
-} */
+@media only screen and (min-width: 1013px){
+    #body{
+        background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(/static/img/sp1.JPG);
+    }
+    #main-con{
+        width: 51rem;
+        height: 26rem;
+        border-radius: 8px;
+    }
+    #main-card{
+        flex-flow: row nowrap;
+    }
+    #main-card-left-wrap{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background-color: blue; */
+        height: 20rem;
+        width: 25rem;
+        margin-right: 3rem;
+    }
+    #main-card-img{
+        margin: 0;
+        max-width: 19rem;
+        border-radius: 8px;
+        box-shadow: 0 0 100px rgba(0,0,0,0.2);
+    }
+    #main-card-right-wrap{
+        position: relative;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+        /* background-color: red; */
+        height: 20rem;
+        width: 20rem;
+    }
+    #main-card-banner{
+        font-size: 1.4rem;
+        width: 23rem;
+    }
+    #main-card-title{
+        margin-bottom: 2rem;
+    }
+    #main-card-login-con-wrap{
+        /* background-color: salmon; */
+        flex-flow: row nowrap;
+        margin-top: 1rem;
+    }
+    .main-card-login-wrap{
+        margin-top: 0;
+        margin-left: 0rem;
+        width: 5rem;
+    }
+    
+    
+}
 
 

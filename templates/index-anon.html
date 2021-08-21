@@ -35,33 +35,37 @@
   <div id="body">
     <div id="main-con">
       <div id="main-card">
-        <img id="main-card-img" src="/static/img/emo2sq.png"> 
-        <h1 id="main-card-banner">Think your way through music</h1>
-        <h1 id="main-card-title">with <span id="emotify">Emotify</span></h1>
-        <div class="main-card-ul">
-          {% if not g.user %}
-            <div class="main-card-li-wrap">
-              <div class="main-card-li" id="main-card-li-signup">
-                <a id ="signup-btn" class="main-card-a" href="/signup">SIGN UP FREE</a>
+        <div id="main-card-left-wrap">
+          <img id="main-card-img" src="/static/img/emo2sq.png"> 
+        </div>
+        <div id ="main-card-right-wrap">
+          <h1 id="main-card-banner">Think your way through music</h1>
+          <h1 id="main-card-title">with <span id="emotify">Emotify</span></h1>
+          <div class="main-card-ul">
+            {% if not g.user %}
+              <div class="main-card-li-wrap">
+                <div class="main-card-li" id="main-card-li-signup">
+                  <a id ="signup-btn" class="main-card-a" href="/signup">SIGN UP FREE</a>
+                </div>
               </div>
+              <div class="main-card-li-wrap">
+                <div class="main-card-li" id="main-card-li-demo"><a id ="demo-btn" class="main-card-a" href="/">EMOTIFY DEMO</a></div>
+              </div>
+              <div id="main-card-login-con-wrap">
+                <div id="main-card-log">Already have an account?</div>
+                <div class="main-card-login-wrap">
+                  <a id ="login-btn" class="main-card-a" href="/login">LOG IN</a>
+                </div>
+              </div>
+            {% else %}
+            <div class="main-card-li-wrap">
+              <div class="main-card-li"><a class="main-card-a" href="/users/{{ g.user.id }}"><img src="{{ g.user.image_url }}" alt="{{ g.user.username }}"></a></div>
             </div>
             <div class="main-card-li-wrap">
-              <div class="main-card-li" id="main-card-li-demo"><a id ="demo-btn" class="main-card-a" href="/">EMOTIFY DEMO</a></div>
+              <div class="main-card-li"><a class="main-card-a" href="/logout">LOG OUT</a></div>
             </div>
-            <div id="main-card-login-con-wrap">
-              <div id="main-card-log">Already have an account?</div>
-              <div class="main-card-login-wrap">
-                <a id ="login-btn" class="main-card-a" href="/login">LOG IN</a>
-              </div>
-            </div>
-          {% else %}
-          <div class="main-card-li-wrap">
-            <div class="main-card-li"><a class="main-card-a" href="/users/{{ g.user.id }}"><img src="{{ g.user.image_url }}" alt="{{ g.user.username }}"></a></div>
+            {% endif %}
           </div>
-          <div class="main-card-li-wrap">
-            <div class="main-card-li"><a class="main-card-a" href="/logout">LOG OUT</a></div>
-          </div>
-          {% endif %}
         </div>
       </div>
     </div>
