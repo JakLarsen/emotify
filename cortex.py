@@ -287,11 +287,12 @@ class Cortex(Dispatcher):
     _events_ = ['new_data_labels','new_com_data', 'new_fe_data', 'new_eeg_data', 'new_mot_data', 'new_dev_data', 'new_met_data', 'new_pow_data']
     
     #MC
+    #-------------------------------------------------------------
     def on_my_event(self, value):
-
         print('WE ARE HANDLING EMIT *****************************', flush=True)
         print(value, flush=True)
         print('WE ARE HANDLING EMIT *****************************', flush=True)
+    #-------------------------------------------------------------
 
 
 
@@ -299,8 +300,12 @@ class Cortex(Dispatcher):
         """Takes a list of streams that you would like to subscribe to (i.e. ["mot"] for motion stream or ["fac"] for facial expression stream"""
 
         print('subscribe request --------------------------------')
+
+        #MC
+        #-------------------------------------------------------------
         self.bind(new_com_data=self.on_my_event) #MC
         self.emit('new_com_data', 1) #MC
+        #-------------------------------------------------------------
 
         sub_request_json = {
             "jsonrpc": "2.0", 
