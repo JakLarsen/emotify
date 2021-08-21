@@ -22,6 +22,13 @@ h1{
     position: relative;
     display: flex;
 }
+
+
+
+                    /* MAIN CONTAINER */
+
+
+
 #main-con{
     background: linear-gradient(#008c7e, #272727);
     position: relative;
@@ -33,6 +40,12 @@ h1{
     height: 100vh;
 }
 
+
+
+                    /* LANDING PAGE MAIN CARD */
+
+
+
 #main-card{
     position: relative;
     display: flex;
@@ -41,10 +54,15 @@ h1{
     justify-content: center;
     text-align: center;
 }
-#main-card-ul{
+#main-card-banner{
+    color: #fff;
+}
+.main-card-ul{
     list-style-type: none;
 }
-#main-card a:link{
+#main-card a:link, 
+#main-card a:visited,
+#main-card a:active{
     text-decoration: none;
     color: #fff;
 }

@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- LINKS -->
-  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/landing-styles.css">
 
 
 </head>
@@ -35,14 +35,14 @@
   <div id="body">
     <div id="main-con">
       <div id="main-card">
-        <h1 id="main-card-h1">Emotify - Think Your Way Through Music</h1>
-        <ul id="main-card-ul">
+        <h1 id="main-card-banner">Emotify - Think Your Way Through Music</h1>
+        <div class="main-card-ul">
           {% if not g.user %}
-            <li><a class="main-card-a" href="/signup">Sign up</a></li>
-            <li><a class="main-card-a" href="/login">Log in</a></li>
+            <div class="main-card-li"><a class="main-card-a" href="/signup">Sign up</a></div>
+            <div class="main-card-li"><a class="main-card-a" href="/login">Log in</a></div>
           {% else %}
-            <li><a class="main-card-a" href="/users/{{ g.user.id }}"><img src="{{ g.user.image_url }}" alt="{{ g.user.username }}"></a></li>
-            <li><a class="main-card-a" href="/logout">Log out</a></li>
+            <div class="main-card-li"><a class="main-card-a" href="/users/{{ g.user.id }}"><img src="{{ g.user.image_url }}" alt="{{ g.user.username }}"></a></div>
+            <div class="main-card-li"><a class="main-card-a" href="/logout">Log out</a></div>
           {% endif %}
         </ul>
       </div>
