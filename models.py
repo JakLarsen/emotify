@@ -24,6 +24,11 @@ class User(db.Model):
         db.Text,
         nullable=False,
     )
+    email = db.Column(
+        db.Text,
+        nullable = True,
+        unique = True,
+    )
 
     @classmethod
     def signup(cls, username, password):

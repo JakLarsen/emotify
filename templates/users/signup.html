@@ -1,24 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <!-- META -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- TITLE -->
     <title>Sign Up</title>
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- LINKS -->
+    <link rel="stylesheet" href="/static/css/signup.css">
+
 </head>
+
+
+
 <body>
-    <h1>Sign Up</h1>
-    <h2>Create An Account</h2>
-    <form method="POST" id="user_form">
-        {{ form.hidden_tag() }}
-        {% for field in form if field.widget.input_type != 'hidden' %}
-            {% for error in field.errors %}
-            <span>{{ error }}</span>
-            {% endfor %}
-        {{ field(placeholder=field.label.text, class="form-control") }}
-        {% endfor %}
-        <button id="signup-btn">Sign me up!</button>
-    </form>
+
+
+    <div id="body">
+        <div id="main-con">
+            <div id="main-con-logo">
+                <h1 id="logo">Emotify</h1>
+            </div>
+            <div id="main-con-banner">
+                <h1>Sign up to start experiencing Emotify today.</h1>
+            </div>
+            <div id="main-con-sub-banner">
+                <h2>Create an account</h2>
+            </div>
+            <div id="main-con-msg">
+                {% for category, message in get_flashed_messages(with_categories=True) %}
+                    <div class="{{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+            <div id="main-con-form">
+                <form method="POST" id="user-form">
+                    {{ form.hidden_tag() }}
+                    {% for field in form if field.widget.input_type != 'hidden' %}
+                        {% for error in field.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    {{ field(placeholder=field.label.text, class="form-control") }}
+                    {% endfor %}
+                    <button id="signup-btn">Sign me up!</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
 
 </body>
 </html>

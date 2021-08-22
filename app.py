@@ -139,6 +139,7 @@ def restrict_data(data_obj):
     return data_obj_copy
 
 
+
                     # SERVER THREADING
 
 def background_thread():
@@ -260,14 +261,14 @@ def login():
             do_login(user)
             flash(f"Hello, {user.username}!", "success")
             return redirect("/")
-        flash("Invalid credentials.", 'danger')
+        flash("Invalid credentials.")
     return render_template('users/login.html', form=form)
 
 @app.route('/logout')
 def logout():
     """Handle logout of user."""
     do_logout()  
-    return redirect('/login')
+    return redirect('/')
 
 @app.route('/data')
 def data():
