@@ -34,6 +34,7 @@
             <div id="main-con-banner">
                 <h1>Sign up to start experiencing Emotify today.</h1>
             </div>
+            <div id="main-con-spacer"></div>
             <div id="main-con-sub-banner">
                 <h2>Create an account</h2>
             </div>
@@ -49,7 +50,8 @@
                         {% for error in field.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
-                    {{ field(placeholder=field.label.text, class="form-control") }}
+                    <div class="field-label">{{ field.label}}</div>
+                    {{ field (class="form-control") }}
                     {% endfor %}
                     <button id="signup-btn">Sign me up!</button>
                 </form>

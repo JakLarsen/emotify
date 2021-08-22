@@ -55,6 +55,16 @@ h1{
     text-align: center;
     font-size: 0.75rem;
     margin-top: 3rem;
+    padding-bottom: 1.5rem;
+}
+#main-con-spacer{
+    /* background-color: brown; */
+    position: relative;
+    display: flex;
+    align-self: center;
+    border-bottom: 1px solid #6d0000;
+    width: 20rem;
+    height: 1rem;
 }
 #main-con-sub-banner{
     /* background-color: tomato; */
@@ -63,14 +73,40 @@ h1{
     justify-content: center;
     text-align: center;
     font-size: 0.65rem;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
 }
-#user-form{
-    background-color: yellow;
+#main-con-form{
+    /* background-color: beige; */
     position: relative;
     display: flex;
     flex-flow: column nowrap;
 }
+#user-form{
+    /* background-color: yellow; */
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+.field-label{
+    /* background-color: aliceblue; */
+    width: 25rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+}
+.field-label:first-of-type{
+    margin-top: 0;
+}
 .form-control{
-    background-color: aqua;
+    /* background-color: aqua; */
+    border-style: 0.2px solid rgb(141, 141, 141);
+    border-width: thin;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    height: 3rem;
+    font-size: 0.9rem;
+    width: 24.25rem;
+    margin-left: 0.25rem;
+    padding-left: 0.5rem;
 }
