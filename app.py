@@ -224,7 +224,7 @@ def index():
     if g.user:
         return render_template('index.html', async_mode=socketio.async_mode)
     else:
-        return render_template('index-anon.html')
+        return render_template('landing.html')
 
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
@@ -234,21 +234,24 @@ def signup():
     If form not valid, present form.
     If the there already is a user with that username: flash message and re-present form.
     """
-    form = UserAddForm()
-    if form.validate_on_submit():
-        try:
-            user = User.signup(
-                username=form.username.data,
-                password=form.password.data,
-            )
-            db.session.commit()
-        except IntegrityError:
-            flash("Username already taken", 'danger')
-            return render_template('users/signup.html', form=form)
-        do_login(user)
-        return redirect("/")
+    if g.user:
+        return render_template('index.html', async_mode=socketio.async_mode)
     else:
-        return render_template('users/signup.html', form=form)
+        form = UserAddForm()
+        if form.validate_on_submit():
+            try:
+                user = User.signup(
+                    username=form.username.data,
+                    password=form.password.data,
+                )
+                db.session.commit()
+            except IntegrityError:
+                flash("Username already taken", 'danger')
+                return render_template('users/signup.html', form=form)
+            do_login(user)
+            return redirect("/")
+        else:
+            return render_template('users/signup.html', form=form)
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
