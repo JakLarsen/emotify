@@ -17,28 +17,47 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- LINKS -->
-    <!-- <link rel="stylesheet" href="/static/login.css"> -->
+    <link rel="stylesheet" href="/static/css/login.css">
 
 </head>
 
 
 <body>
     
-    <h2>Welcome back.</h2>
-
-    {% for category, message in get_flashed_messages(with_categories=True) %}
-        <div class="{{ category }}">{{ message }}</div>
-    {% endfor %}
-    <form method="POST" id="user_form">
-        {{ form.hidden_tag() }}
-        {% for field in form if field.widget.input_type != 'hidden' %}
-            {% for error in field.errors %}
-            <span>{{ error }}</span>
-            {% endfor %}
-        {{ field(placeholder=field.label.text, class="form-control") }}
-        {% endfor %}
-        <button>Log in</button>
-    </form>
+    <div id="body">
+        <div id="main-con">
+            <div id="main-con-logo">
+                <h1 id="logo">Emotify</h1>
+            </div>
+            <!-- <div id="main-con-banner">
+                <h1>Welcome back.</h1>
+            </div> -->
+            <div id="main-con-spacer"></div>
+            <div id="main-con-sub-banner">
+                <h2>To continue, please log in to Emotify.</h2>
+            </div>
+            <div id="main-con-msg">
+                {% for category, message in get_flashed_messages(with_categories=True) %}
+                    <div class="{{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+            <div id="main-con-form">
+                <form method="POST" id="user-form">
+                    {{ form.hidden_tag() }}
+                    {% for field in form if field.widget.input_type != 'hidden' %}
+                        {% for error in field.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    <div class="field-label">{{ field.label}}</div>
+                    {{ field (class="form-control") }}
+                    {% endfor %}
+                    <div id="btn-wrap">
+                        <button id="login-btn">LOG IN</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

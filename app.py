@@ -49,16 +49,25 @@ connect_db(app)
                     #-------------------------------------------------
                                         # NOTES
                     #-------------------------------------------------
-#or do I need to set up a listener through websocket-client here that can listen for events happening on the cortex side?
+
+#####SEE ALTERNATE SOLUTION#####
+#Do I need to set up a listener through websocket-client here that can listen for events happening on the cortex side?
 #or do I need to convert cortex to use a socketio websocket? (or the client to use websocket-client instead?)
 ## - Do I need the same websocket library for both?
 
-#In determine_input 
+#####ALTERNATE SOLUTION#####
+#Using list handler of a shared list to dump data and read from.
+#I clear the data each interval it is handled to prevent bloating and data race problems
+
+
+#####SOLVED#####
+#In determine_input
 #-- List is being populated by 20 instead of 5 or 59/60 instead of 20.
 #-- I believe this might be due to some sort of data race
 #-- IT SEEMS like the function is reading the first 5 or 20 entries in the list, which means the functions are working
 #-- Need to send the restricted data object instead of using the global when printing is the SOLUTION - SOLVED
 
+#####SOLVED#####
 #To prevent data race (if needed)
 #--Accumulate for 2s Pause for 1. 
 #--During Pause, we send the 2s of data for input processing and determination, so that it isn't constantly updating while running determination
@@ -128,6 +137,8 @@ def restrict_data(data_obj):
     -Lets us use only most recent inputs
     Returns the reduced DataContainer instance as data_obj
     """
+    #Takes a snapshot to prevent dealing with new incoming data during processing
+    #Dealing with new incoming data is still predictable, but the output is harder to read and it bloats the object
     data_obj_copy = copy(data_obj)
     if len(data_obj_copy.data) > 5:
         #We restrict data being processed to last 20 at the time the data copy is made

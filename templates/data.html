@@ -38,9 +38,15 @@ GIVEN SOMEONE IS LOGGED IN FROM THE HOMEPAGE -->
     
     <script type="text/javascript" charset="utf-8">
         function update_page(input){
+            //called when data_response handler receives an event (in intervals from server side)
+            //updates page based on push, pull, or neutral input received
             if (input == 'push'){
                 $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON PUSH COMMAND').html());
                 $('body').css('background-color', 'blue');
+            }
+            else if (input == 'pull'){
+                $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON PULL COMMAND').html());
+                $('body').css('background-color', 'yellow');
             }
             else{
                 $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON NEUTRAL COMMAND').html());
@@ -51,8 +57,6 @@ GIVEN SOMEONE IS LOGGED IN FROM THE HOMEPAGE -->
 
         $(document).ready(function() {
             // Connect to the Socket.IO server.
-            // The connection URL has the following format, relative to the current page:
-            //     http[s]://<domain>:<port>[/<namespace>]
             var socket = io();
 
             // Event handler for new connections.
@@ -83,13 +87,16 @@ GIVEN SOMEONE IS LOGGED IN FROM THE HOMEPAGE -->
                 update_page(msg.input)
             });
 
+
+
             // Handlers for the form buttons to emit data to server from client.
-            // On submit, data is emitted across websocket to 'display_data_request' etc. handlers on server
 
             // $('form#emit').submit(function(event) {
             //     socket.emit('my_event', {data: $('#emit_data').val()});
             //     return false;
             // });
+            
+            // On submit, data is emitted across websocket to 'display_data_request' etc. handlers on server
             $('form#display-data').submit(function(event){
                 socket.emit('display_data_request', {data: ('Clicked to display realtime data or send input to server.')});
                 return false;

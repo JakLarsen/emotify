@@ -1,0 +1,131 @@
+
+
+
+                    /* GENERAL FORMATTING */
+
+
+
+body, #body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fff;
+    /* overflow: hidden; */
+}
+h1{
+    margin: 0;
+    padding: 0;
+}
+#body{
+    /* background-color: red; */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    width: 100vw;
+    height: 100vh;
+}
+
+
+
+                    /* MAIN CONTAINER */
+
+
+
+#main-con{
+    /* background-color: pink; */
+    position: relative;
+    display: flex;
+    flex-flow:column nowrap;
+    padding: 2rem;
+}
+#main-con-logo{
+    /* background-color: teal; */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    font-size: 0.6rem;
+}
+#main-con-spacer{
+    /* background-color: brown; */
+    position: relative;
+    display: flex;
+    align-self: center;
+    border-bottom: 1px solid #6d0000;
+    width: 20rem;
+    height: 1.75rem;
+}
+#main-con-sub-banner{
+    /* background-color: tomato; */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.65rem;
+    margin-top: 1.5rem;
+}
+#main-con-form{
+    /* background-color: beige; */
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+}
+#user-form{
+    /* background-color: yellow; */
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+.field-label{
+    /* background-color: aliceblue; */
+    width: 25rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+}
+.field-label:first-of-type{
+    margin-top: 0;
+}
+.form-control{
+    /* background-color: aqua; */
+    border-style: 0.2px solid rgb(141, 141, 141);
+    border-width: thin;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    height: 3rem;
+    font-size: 0.9rem;
+    width: 24.25rem;
+    margin-left: 0.25rem;
+    padding-left: 0.5rem;
+}
+#btn-wrap{
+    /* background-color: cadetblue; */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    width: 10rem;
+    margin-top: 2rem;
+}
+#login-btn{
+    border-style: none;
+    background-color: #a71111;
+    color: #eee;
+    border-radius: 50px;
+    height: 3.5rem;
+    width: 9rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+#login-btn:hover{
+    cursor: pointer;
+    background-color: #ba1212;
+    color: #fff;
+    font-size: 0.95rem;
+    height: 4rem;
+    width: 9.5rem;
+}

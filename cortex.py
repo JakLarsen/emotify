@@ -287,6 +287,7 @@ class Cortex(Dispatcher):
     _events_ = ['new_data_labels','new_com_data', 'new_fe_data', 'new_eeg_data', 'new_mot_data', 'new_dev_data', 'new_met_data', 'new_pow_data']
     
     #MC
+    #I would like a handler in app.py that can receive events emitted from this file - Thoughts?
     #-------------------------------------------------------------
     def on_my_event(self, value):
         print('WE ARE HANDLING EMIT *****************************', flush=True)
