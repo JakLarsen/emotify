@@ -18,7 +18,7 @@ h1{
     padding: 0;
 }
 #body{
-    background-color: red;
+    /* background-color: red; */
     position: relative;
     display: flex;
     flex-flow: row nowrap;
@@ -35,7 +35,7 @@ h1{
 
 
 #main-con{
-    background-color: yellow;
+    /* background-color: yellow; */
     position: relative;
     display: flex;
     width: 100vw;
@@ -49,7 +49,7 @@ h1{
 
 
 #left-con{
-    background-color: blue;
+    /* background-color: blue; */
     position: relative;
     display: flex;
     flex-flow: column nowrap;
@@ -57,7 +57,7 @@ h1{
     height: 100vh;
 }
 #top-left-con{
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
     position: fixed;
     display: flex;
     flex-flow: column nowrap;
@@ -67,13 +67,69 @@ h1{
     left: 0px;
     z-index: 2;
 }
+#logo-wrap{
+    /* background-color: yellow; */
+    position: relative;
+    display: flex;
+    height: 4rem;
+    padding: 0.5rem 0 0 0.5rem;
+}
+#icon{
+    /* background-color: teal; */
+    position: relative;
+    display: flex;
+    max-width: 5rem;
+    height: 4rem;
+    z-index: 3;
+}
+#title{
+    /* background-color: teal; */
+    position: relative;
+    display: flex;
+    height: 4rem;
+    color: #272727;
+    font-weight: 600;
+    font-size: 1.2rem;
+    justify-content: center;
+    align-items: center;
+}
+#home-wrap{
+    /* background-color: yellow; */
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    padding-left: 1.25rem;
+}
+#home-icon{
+   /* background-color: purple; */
+   position: relative;
+   display: flex;
+   max-width: 3rem;
+   height: 3rem;
+   opacity: 0.8;
+}
+#home{
+   position: relative;
+   display: flex;
+   height: 4rem;
+   color: #272727;
+   font-weight: 600;
+   font-size: 0.85rem;
+   justify-content: center;
+   align-items: center;
+   padding-top: 0.55rem;
+}
+
+
 #mid-left-con{
     background-color: rgb(0, 90, 169);
     position: relative;
     display: flex;
     flex-flow: column nowrap;
     width: 15rem;
-    height:100%;
+    height: 25rem;
+    top: 15rem;
 }
 #bot-left-con{
     background-color: rgb(3, 42, 77);
