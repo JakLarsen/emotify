@@ -128,3 +128,48 @@ h1{
     width: 100%;
     height: 100%;
 }
+#bot-mid-con{
+    background-color: rgb(17, 0, 6);
+    position: fixed;
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    height: 14rem;
+    z-index: 2;
+    bottom: 0px;
+}
+
+
+
+                    /* RIGHT CONTAINER */
+
+
+
+#right-con{
+    background-color: rgb(149, 253, 230);
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    width: 13rem;
+    height: 100vh;
+    z-index: 3;
+}
+#top-right-con{
+    background-color: rgb(0, 174, 136);
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    width: 14rem;
+    height: 100%;
+    z-index: 3;
+}
+#bot-right-con{
+    background-color: rgb(85, 124, 116);
+    position: fixed;
+    display: flex;
+    flex-flow: column nowrap;
+    width: 14rem;
+    height: 14rem;
+    bottom: 0px;
+    z-index: 3;
+}
