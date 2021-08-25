@@ -110,24 +110,24 @@ def determine_input(data_obj):
     --data from the DataContainer sent
     Returns "push", "pull", or "neutral" pending what is stored in DataContainer
     """
-    push_input = 0
-    pull_input = 0
-    for i in range(len(data_obj.data)):
-        if data_obj.data[i] == "push":
-            push_input += 1
-        if data_obj.data[i] == "pull":
-            pull_input += 1
-    print(push_input, pull_input, flush = True)
-    if push_input >= settings['input_threshold']:
-        return "push"
-    elif pull_input >= settings['input_threshold']:
-        return "pull"
-    else:
-        return "neutral"
+    # push_input = 0
+    # pull_input = 0
+    # for i in range(len(data_obj.data)):
+    #     if data_obj.data[i] == "push":
+    #         push_input += 1
+    #     if data_obj.data[i] == "pull":
+    #         pull_input += 1
+    # print(push_input, pull_input, flush = True)
+    # if push_input >= settings['input_threshold']:
+    #     return "push"
+    # elif pull_input >= settings['input_threshold']:
+    #     return "pull"
+    # else:
+    #     return "neutral"
 
     """Can comment out code above and just return any of the values for testing purposes"""
     # return "pull"
-    # return "neutral"
+    return "neutral"
     # return "push"
 
 def restrict_data(data_obj):
@@ -230,10 +230,10 @@ def do_logout():
                     # MAIN VIEW FUNCTIONS
 
 @app.route('/')
-def index():
+def app_home():
     """Display home if logged in or home-anon if user not in session"""
     if g.user:
-        return render_template('index.html', async_mode=socketio.async_mode)
+        return render_template('app.html', async_mode=socketio.async_mode)
     else:
         return render_template('landing.html')
 
@@ -246,7 +246,7 @@ def signup():
     If the there already is a user with that username: flash message and re-present form.
     """
     if g.user:
-        return render_template('index.html', async_mode=socketio.async_mode)
+        return render_template('app.html', async_mode=socketio.async_mode)
     else:
         form = UserAddForm()
         if form.validate_on_submit():

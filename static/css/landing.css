@@ -69,7 +69,7 @@ h1{
     margin-bottom: 1.5rem;
 }
 #main-card-banner{
-    font-size: 1.2rem;
+    font-size: 1rem;
     width: 20rem;
     font-weight: 700;
     color: #fff;
@@ -78,7 +78,7 @@ h1{
     font-size: 1.2rem;
     font-weight: 700;
     color: #fff;
-    margin-bottom: 1.5rem;
+    margin: 1.5rem 0;
 }
 #emotify{
     font-size: 1.4rem;
@@ -211,16 +211,18 @@ h1{
         box-shadow: 0 0 100px rgba(0,0,0,0.2);
     }
     #main-card-banner{
-        font-size: 1.2rem;
         width: 20rem;
     }
     #main-card-title{
         margin-bottom: 2rem;
     }
+    #emotify{
+        font-size: 1.5rem;
+    }
     #main-card-login-con-wrap{
         /* background-color: salmon; */
         flex-flow: row nowrap;
-        margin-top: 1rem;
+        margin-top: 0.75rem;
     }
     .main-card-login-wrap{
         margin-top: 0;
@@ -270,11 +272,10 @@ h1{
         width: 20rem;
     }
     #main-card-banner{
-        font-size: 1.4rem;
-        width: 23rem;
+        width: 22rem;
     }
     #main-card-title{
-        margin-bottom: 2rem;
+        margin: 1rem 0;
     }
     #main-card-login-con-wrap{
         /* background-color: salmon; */

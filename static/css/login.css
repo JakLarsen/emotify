@@ -56,6 +56,14 @@ h1{
     width: 20rem;
     height: 1.75rem;
 }
+#main-con-banner{
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 0.7rem;
+    margin-top: 1.5rem;
+}
 #main-con-sub-banner{
     /* background-color: tomato; */
     position: relative;
