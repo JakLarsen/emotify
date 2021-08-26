@@ -72,7 +72,6 @@ h1{
     position: relative;
     display: flex;
     height: 4rem;
-    padding: 0.5rem 0 0 0.5rem;
 }
 #icon{
     /* background-color: teal; */
@@ -93,32 +92,35 @@ h1{
     justify-content: center;
     align-items: center;
 }
-#home-wrap{
+#search-wrap{
+    margin-top: 1.5rem;
+}
+.tl-wrap{
     /* background-color: yellow; */
     position: relative;
     display: flex;
+    flex-flow: row nowrap;
     align-items: center;
     height: 3rem;
-    padding-left: 1.25rem;
+    padding-left: 0.25rem;
 }
-#home-icon{
-   /* background-color: purple; */
-   position: relative;
-   display: flex;
-   max-width: 3rem;
-   height: 3rem;
-   opacity: 0.8;
+.tl-icon{
+    /* background-color: purple; */
+    position: relative;
+    display: flex;
+    max-width: 3rem;
+    height: 3rem;
 }
-#home{
-   position: relative;
-   display: flex;
-   height: 4rem;
-   color: #272727;
-   font-weight: 600;
-   font-size: 0.85rem;
-   justify-content: center;
-   align-items: center;
-   padding-top: 0.55rem;
+.tl-desc{
+    /* background-color: bisque; */
+    position: relative;
+    display: flex;
+    height: 3rem;
+    color: #272727;
+    font-weight: 600;
+    font-size: 0.85rem;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -128,7 +130,7 @@ h1{
     display: flex;
     flex-flow: column nowrap;
     width: 15rem;
-    height: 25rem;
+    height: 100%;
     top: 15rem;
 }
 #bot-left-con{
