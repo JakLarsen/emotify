@@ -60,7 +60,35 @@ class User(db.Model):
         return False
 
 
+class Song(db.Model):
+    """User in the system."""
+    __tablename__ = 'songs'
 
+    id = db.Column(
+        db.Integer,
+        primary_key=True,
+        )
+    title = db.Column(
+        db.Text,
+        nullable = False,
+    )
+    artist = db.Column(
+        db.Text,
+        nullable = False,
+    )
+    duration = db.Column(
+        db.Integer,
+        nullable = False,
+    )
+    img = db.Column(
+        db.Text,
+        nullable = False,
+    )
+    file= db.Column(
+        db.Text,
+        nullable = False,
+    )
+    
 
 
 

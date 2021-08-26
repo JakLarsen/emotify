@@ -153,8 +153,7 @@ h1{
     display: flex;
     flex-flow: column nowrap;
     width: 15rem;
-    height: 30rem;
-    z-index: 1;
+    min-height: 15rem;
     overflow-y: auto;
 }
 #ml-create-playlist-wrap{
@@ -204,7 +203,7 @@ h1{
     justify-content: center;
     align-items: center;
     width: 15rem;
-    height: 12rem;
+    min-height: 10rem;
 }
 #bl-border{
     align-self: center;
@@ -302,7 +301,7 @@ h1{
     height: 100%;
 }
 #bot-mid-con{
-    background-color: rgb(17, 0, 6);
+    /* background-color: rgb(17, 0, 6); */
     position: fixed;
     display: flex;
     flex-flow: row nowrap;
