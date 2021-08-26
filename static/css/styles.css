@@ -68,7 +68,7 @@ h1{
     z-index: 2;
 }
 #logo-wrap{
-    /* background-color: yellow; */
+    background-color: #ff1515;
     position: relative;
     display: flex;
     height: 4rem;
@@ -86,7 +86,7 @@ h1{
     position: relative;
     display: flex;
     height: 4rem;
-    color: #272727;
+    color: #fff;
     font-weight: 600;
     font-size: 1.2rem;
     justify-content: center;
@@ -103,6 +103,14 @@ h1{
     align-items: center;
     height: 3rem;
     padding-left: 0.25rem;
+    color: #000000;
+    opacity:0.75;
+}
+.tl-wrap:hover{
+    cursor: pointer;
+    color: #ff1515;
+    opacity: 1;
+    transition: 0.25s ease-in-out;
 }
 .tl-icon{
     /* background-color: purple; */
@@ -116,7 +124,6 @@ h1{
     position: relative;
     display: flex;
     height: 3rem;
-    color: #272727;
     font-weight: 600;
     font-size: 0.85rem;
     justify-content: center;

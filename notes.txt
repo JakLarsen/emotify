@@ -2,3 +2,4 @@ Colors
 #008c7e - green
 #a71111; - dark red
 ba1212 - lighter red
+BRIGHT RED - #ff1515;
