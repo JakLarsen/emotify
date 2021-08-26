@@ -69,13 +69,6 @@ h1{
     opacity: 0.8;
     z-index: 2;
 }
-#tl-border{
-    align-self: center;
-    margin-top: 1rem;
-    width: 13rem;
-    border-bottom: solid 1px #ff4a4a;
-    opacity: 0.3;
-}
 #logo-wrap{
     background-color: #ff1515;
     position: relative;
@@ -142,6 +135,13 @@ h1{
     justify-content: center;
     align-items: center;
 }
+#tl-border{
+    align-self: center;
+    margin-top: 1rem;
+    width: 12em;
+    border-bottom: solid 1px #ff4a4a;
+    opacity: 0.3;
+}
 
 
 
@@ -182,7 +182,7 @@ h1{
 }
 #ml-playlist-wrap:hover{
     cursor: pointer;
-    background-color: #ff1515;
+    background-color: #ff4a4a;
     color: #fff;
     opacity: 0.9;
     transition: 0.5s ease-in-out;
@@ -197,14 +197,66 @@ h1{
 /* BOT LEFT */
 
 #bot-left-con{
-    background-color: rgb(3, 42, 77);
+    /* background-color: rgb(3, 42, 77); */
     position: relative;
     display: flex;
     flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
     width: 15rem;
     height: 12rem;
-    bottom: 0px;
-    z-index: 2;
+}
+#bl-border{
+    align-self: center;
+    width: 12rem;
+    border-top: solid 1px #ff4a4a;
+    opacity: 0.3;
+}
+#bl-add-song-wrap{
+    /* background-color: red; */
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+#bl-add-song-title{
+    /* background-color: green; */
+    color: #000;
+    font-weight: 700;
+}
+#bl-add-song-btn-wrap{
+    /* background-color: grey; */
+    position: relative;
+    display: flex;
+    height: 3.5rem;
+    width: 7.5rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+#bl-add-song-btn{
+    /* background-color: greenyellow; */
+    background-color: #272727;
+    color: #eee;
+    border-style: none;
+    font-weight: 700;
+    height: 3rem;
+    width: 7rem;
+    border-radius: 50px;  
+    opacity: 0.85;  
+}
+#bl-add-song-btn:hover{
+    background-color: #ff4a4a;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.25s ease-in-out;
+    height: 3.2rem;
+    width: 7.5rem;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    opacity: 1;
 }
 
 
