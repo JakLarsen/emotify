@@ -66,11 +66,10 @@ h1{
     flex-flow: column nowrap;
     width: 15rem;
     height: 15rem;
-    opacity: 0.8;
     z-index: 2;
 }
 #logo-wrap{
-    background-color: #ff1515;
+    background-color: #000;
     position: relative;
     display: flex;
     height: 4rem;
@@ -100,6 +99,7 @@ h1{
 }
 .tl-wrap{
     /* background-color: yellow; */
+    opacity: 0.9;
     position: relative;
     display: flex;
     flex-flow: row nowrap;
@@ -297,7 +297,7 @@ h1{
     text-decoration: none;
 }
 .ball-spacer{
-    background-color: #272727;
+    background-color: #fff;
     border-radius: 50px;
     height: 0.35rem;
     width: 0.35rem;
@@ -313,6 +313,7 @@ h1{
     position: relative;
     display: flex;
     flex-flow: column nowrap;
+    color: #000;
     width: 100%;
     min-height: 29.5rem;
     overflow-y: auto;

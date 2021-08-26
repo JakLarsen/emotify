@@ -38,7 +38,7 @@
       <div id="left-con">
         <div id="top-left-con">
           <div id="logo-wrap">
-            <div id="icon"><img id="icon-img" src="/static/img/logo1.png"/></div>
+            <div id="icon"><img id="icon-img" src="/static/img/logore1.png"/></div>
             <div id="title"><i>Emotify</i></div>
           </div>
           <div id="search-wrap" class="tl-wrap">
@@ -105,7 +105,7 @@
           <div id="bl-border"></div>
           <div id="bl-add-song-wrap">
             <div id="bl-add-song-title">Add Song To Library</div>
-            <form id="bl-add-song-form" action="">
+            <form id="bl-add-song-form" action="/add-song">
               <span id="bl-add-song-btn-wrap">
                 <button id="bl-add-song-btn">New Song</button>
               </span>  
@@ -124,7 +124,8 @@
           
         </div>
         <div id="mid-mid-con">
-
+          {% block content %}
+          {% endblock %}
         </div>
         <div id="bot-mid-con">
 

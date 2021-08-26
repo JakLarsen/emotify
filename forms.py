@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, TextAreaField
 from wtforms import validators
+from wtforms.fields.core import IntegerField
 from wtforms.validators import DataRequired, Length #need to add email validator
 
 class UserAddForm(FlaskForm):
@@ -15,3 +16,13 @@ class LoginForm(FlaskForm):
 
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired(), Length(min=6)])
+
+class AddSongForm(FlaskForm):
+    """Form for adding a new song"""
+
+    title = StringField('What is the song title', validators=[DataRequired()])
+    artist = StringField('Who is it by', validators=[DataRequired()])
+    img = StringField('Add a link to the album cover', validators=[DataRequired()])
+    file = StringField('Upload the audio file', validators=[DataRequired()])
+    duration =  IntegerField('How long is it in seconds', validators=[DataRequired()])
+
