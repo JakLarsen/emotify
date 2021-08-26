@@ -101,8 +101,8 @@
             <div class="ml-playlist">Playlist.title</div>
           </div>
         </div>
-        <div id="bl-border"></div>
         <div id="bot-left-con">
+          <div id="bl-border"></div>
           <div id="bl-add-song-wrap">
             <div id="bl-add-song-title">Add Song To Library</div>
             <form id="bl-add-song-form" action="">
@@ -116,9 +116,12 @@
       
       <div id="mid-con">
         <div id="top-mid-con">
-          <div id="nav-mid-con">
-
-          </div>
+          <div id="welcome">Welcome back, {{g.user.username}}.</div>
+          <div class="ball-spacer"></div>
+          <div id="connect"><a class="mid-con-link" href="/">Connect Headset</a></div>
+          <div class="ball-spacer"></div>
+          <div id="logout"><a class="mid-con-link" href="/logout">Logout</a></div>
+          
         </div>
         <div id="mid-mid-con">
 
