@@ -7,6 +7,51 @@ from flask_sqlalchemy import SQLAlchemy
 bcrypt = Bcrypt()
 db = SQLAlchemy()
 
+
+class Song(db.Model):
+    """User in the system."""
+    __tablename__ = 'songs'
+
+    id = db.Column(
+        db.Integer,
+        primary_key=True,
+        )
+    title = db.Column(
+        db.Text,
+        nullable = False,
+    )
+    artist = db.Column(
+        db.Text,
+        nullable = False,
+    )
+    duration = db.Column(
+        db.Integer,
+        nullable = False,
+    )
+    img = db.Column(
+        db.Text,
+        nullable = False,
+    )
+    file= db.Column(
+        db.Text,
+        nullable = False,
+    )
+
+class Usersong(db.Model):
+    """Connection of users <--> songs"""
+    __tablename__ = 'usersongs'
+
+    user_id = db.Column(
+        db.Integer,
+        db.ForeignKey('users.id', ondelete="cascade"),
+        primary_key = True,
+    )
+    song_id = db.Column(
+        db.Integer,
+        db.ForeignKey('songs.id', ondelete="cascade"),
+        primary_key = True,
+    )
+
 class User(db.Model):
     """User in the system."""
     __tablename__ = 'users'
@@ -59,38 +104,15 @@ class User(db.Model):
                 return user
         return False
 
+    usersongs = db.relationship(
+        "User",
+        secondary="usersongs",
+        primaryjoin=(Usersong.user_id == id),
+        secondaryjoin=(Usersong.song_id == id)
+    )
 
-class Song(db.Model):
-    """User in the system."""
-    __tablename__ = 'songs'
 
-    id = db.Column(
-        db.Integer,
-        primary_key=True,
-        )
-    title = db.Column(
-        db.Text,
-        nullable = False,
-    )
-    artist = db.Column(
-        db.Text,
-        nullable = False,
-    )
-    duration = db.Column(
-        db.Integer,
-        nullable = False,
-    )
-    img = db.Column(
-        db.Text,
-        nullable = False,
-    )
-    file= db.Column(
-        db.Text,
-        nullable = False,
-    )
     
-
-
 
 
 

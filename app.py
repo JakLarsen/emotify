@@ -7,7 +7,7 @@ from flask_socketio import SocketIO, emit, join_room, leave_room, \
     close_room, rooms, disconnect
 import websocket
 from sqlalchemy.exc import IntegrityError
-from models import db, connect_db, User 
+from models import db, connect_db, User, Song, Usersong
 from forms import LoginForm, UserAddForm
 from random import randint
 from cortex import Cortex, jake_data
@@ -17,8 +17,6 @@ import pdb
 
 
                     # FLASK APP CONFIG
-
-
 
 # Set this variable to "threading", "eventlet" or "gevent" to test the
 # different async modes, or leave it set to None for the application to choose
@@ -267,16 +265,20 @@ def signup():
 @app.route('/login', methods=["GET", "POST"])
 def login():
     """Handle user login."""
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = User.authenticate(form.username.data,
-                                 form.password.data)
-        if user:
-            do_login(user)
-            flash(f"Hello, {user.username}!", "success")
-            return redirect("/")
-        flash("Invalid credentials.")
-    return render_template('users/login.html', form=form)
+
+    if g.user:
+        return render_template('app.html', async_mode=socketio.async_mode)
+    else:
+        form = LoginForm()
+        if form.validate_on_submit():
+            user = User.authenticate(form.username.data,
+                                    form.password.data)
+            if user:
+                do_login(user)
+                flash(f"Hello, {user.username}!", "success")
+                return redirect("/")
+            flash("Invalid credentials.")
+        return render_template('users/login.html', form=form)
 
 @app.route('/logout')
 def logout():
@@ -298,6 +300,11 @@ def display_data():
     print("******************************************", flush =  True)
     open_stream()
     return ("nothing")
+
+@app.route('/add-song')
+def add_song():
+    """Add song to library"""
+
 
 
 
@@ -385,6 +392,6 @@ def add_header(req):
 
 
 
-if __name__ == '__main__':
-    socketio.run(app)
+# if __name__ == '__main__':
+#     socketio.run(app)
 
