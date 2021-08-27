@@ -1,3 +1,41 @@
+Todo:
+
+-Fix nav styling
+
+-Add Playlist model
+-Add Playlist view functions
+-Create Playlist Form and styling
+-Create Playlist complete
+
+-Add songs to Playlist functionality
+
+-Home App Screen with playlists and songs and stuff to fill
+
+-Figure out audio files (upload or maybe stream from youtube or another source?)
+--Uploading files isn't the point of the app but cleaner maybe
+
+-Play audio files of playlists
+
+-Create Audio Player
+
+-Connect Emotiv to audio player inputs
+
+-Styling, touch ups
+
+
+
+***Future updates***
+-Right con: Most listened to tracks or playlists
+-Search functionality through song library
+
+
+
+
+
+
+
+
+
 Colors
 #008c7e - green
 #a71111; - dark red
