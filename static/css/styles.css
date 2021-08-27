@@ -83,7 +83,7 @@ h1{
     z-index: 3;
     /* margin-left: 0.45rem; */
 }
-#title{
+#icon-title{
     /* background-color: teal; */
     position: relative;
     display: flex;
@@ -153,7 +153,7 @@ h1{
     display: flex;
     flex-flow: column nowrap;
     width: 15rem;
-    max-height: 28rem;
+    height: 100%;
     overflow-y: auto;
 }
 #ml-create-playlist-wrap{
@@ -195,6 +195,9 @@ h1{
 
 /* BOT LEFT */
 
+#bl-spacer{
+    min-height: 11rem;
+}
 #bot-left-con{
     background-color: #fff;
     position: fixed;
@@ -255,7 +258,6 @@ h1{
     height: 3.2rem;
     width: 7.5rem;
     font-size: 0.85rem;
-    letter-spacing: 1px;
     opacity: 1;
 }
 
@@ -315,8 +317,108 @@ h1{
     flex-flow: column nowrap;
     color: #000;
     width: 100%;
-    min-height: 29.5rem;
+    height: 100%;
     overflow-y: auto;
+}
+
+
+
+
+
+                    /* ADD SONG FORM */
+
+
+
+
+                    
+#add-song-wrapper{
+    /* background-color: red; */
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+#add-song-title{
+    /* background-color: yellow; */
+    position:relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+    font-size: 2rem;
+    margin: 1rem;
+}
+#add-song-form{
+    /* background-color: aqua; */
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    color: #272727;
+}
+.add-song-field-label{
+    /* background-color: teal; */
+    position: relative;
+    display: flex;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.add-song-form-control{
+    /* background-color: tomato; */
+    position: relative;
+    display: flex;
+    height: 1.5rem;
+    width: 30rem;
+    color: #272727;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0.2);
+    margin-bottom: 1rem;
+}
+.add-song-form-control:hover{
+    border: 1px solid rgba(0,0,0,0.8);
+    transition: 0.25s ease-in-out;
+}
+#add-song-btn-wrap{
+    /* background-color: grey; */
+    position: relative;
+    display: flex;
+    height: 3.5rem;
+    width: 7.5rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+#add-song-btn{
+    /* background-color: greenyellow; */
+    background-color: #272727;
+    color: #eee;
+    border-style: none;
+    font-weight: 700;
+    height: 3rem;
+    width: 7rem;
+    border-radius: 50px;  
+    opacity: 0.85;  
+}
+#add-song-btn:hover{
+    background-color: #ff4a4a;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.25s ease-in-out;
+    height: 3.2rem;
+    width: 7.5rem;
+    font-size: 0.85rem;
+    opacity: 1;
+}
+
+
+
+/* BOT MID */
+
+#bm-spacer{
+    min-height: 17rem;
 }
 #bot-mid-con{
     /* background-color: blue; */
