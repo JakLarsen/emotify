@@ -1,40 +1,55 @@
 Todo:
 
-###-Fix nav styling 
+8/28
+###-Fix nav 
+
 ###-Add Playlist model
 ###-Add Playlist view functions
 ###-Create Playlist Form and styling
 ###-Create Playlist complete
 
+###- Library Page
+###- Ability to Play songs in library
+###- Library Page Styling
+###- Library Page Complete (for now)
 
--Library to display songs
+8/29-9/2?
+- Your Playlists Page
+- Individual playlists pages
+- Play songs from playlists pages
 
--Add songs to Playlist functionality
+- Add song to playlist functionality from display songs
+- Add song to playlist functionality from display other playlists
 
--Home App Screen with playlists and songs and stuff to fill
+- Home App Screen with playlists and songs and stuff to fill
+- Add songs to playlists from Home
+-- Most listened to playlists and songs at top
 
--Figure out audio files (upload or maybe stream from youtube or another source?)
---Uploading files isn't the point of the app but cleaner maybe
+- Create Audio Player
+- Proper song logic handling
+- Connect Emotiv to audio player inputs
 
--Play audio files of playlists
-
--Create Audio Player
-
--Connect Emotiv to audio player inputs
-
--Styling, touch ups
-
+-Login/Signup logic
 -force lowercase when processing usernames to ensure no duplicates
 -force 6 letters+ when entering a password signing up
 -restrict username length, etc
+--Logic/Signup authentication/route permissions/etc.
 
-- Style submit.html
+-Style submit.html
+-Styling, touch ups
+-Icon reboots
+-Right Divs
+
 
 
 
 ***Future updates***
 -Right con: Most listened to tracks or playlists
 -Search functionality through song library
+-Most listened-to songs playlist
+--If more than 10 plays and in order
+-Liked Songs added to a specific playlist
+
 
 
 
@@ -48,3 +63,5 @@ BRIGHT RED - #ff1515;
 #ff4a4a
 #1f1f1f - dark grey
 #272727 - mid grey
+linear-gradient(#291111, #ff4a4a);
+background: linear-gradient(#ff4a4a, #6f3838);
