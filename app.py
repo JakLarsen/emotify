@@ -7,7 +7,7 @@ from flask_socketio import SocketIO, emit, join_room, leave_room, \
     close_room, rooms, disconnect
 import websocket
 from sqlalchemy.exc import IntegrityError
-from models import db, connect_db, User, Song, Usersong
+from models import db, connect_db, User, Song, Userplaylist
 from forms import LoginForm, UserAddForm, AddSongForm
 from random import randint
 from cortex import Cortex, jake_data

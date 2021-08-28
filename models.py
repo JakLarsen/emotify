@@ -38,18 +38,40 @@ class Song(db.Model):
         nullable = False,
     )
 
-class Usersong(db.Model):
-    """Connection of users <--> songs"""
-    __tablename__ = 'usersongs'
+class Playlist(db.Model):
+    """A user's Playlist"""
+    __tablename__= 'playlists'
+
+    id = db.Column(
+        db.Integer,
+        primary_key=True,
+    )
+    title = db.Column(
+        db.Text,
+        nullable = False,
+    )
+    description = db.Column(
+        db.Text,
+        nullable = False,
+    )
+    img = db.Column(
+        db.Text,
+        nullable = True,
+        default = 'img.url'
+    )
+
+class Userplaylist(db.Model):
+    """Connection of users <--> playlists"""
+    __tablename__ = 'userplaylists'
 
     user_id = db.Column(
         db.Integer,
         db.ForeignKey('users.id', ondelete="cascade"),
         primary_key = True,
     )
-    song_id = db.Column(
+    playlist_id = db.Column(
         db.Integer,
-        db.ForeignKey('songs.id', ondelete="cascade"),
+        db.ForeignKey('playlists.id', ondelete="cascade"),
         primary_key = True,
     )
 
@@ -105,11 +127,11 @@ class User(db.Model):
                 return user
         return False
 
-    usersongs = db.relationship(
+    userplaylists = db.relationship(
         "User",
-        secondary="usersongs",
-        primaryjoin=(Usersong.user_id == id),
-        secondaryjoin=(Usersong.song_id == id)
+        secondary="userplaylists",
+        primaryjoin=(Userplaylist.user_id == id),
+        secondaryjoin=(Userplaylist.playlist_id == id)
     )
 
 
