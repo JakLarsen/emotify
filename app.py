@@ -334,7 +334,6 @@ def add_song():
     else:
         return render_template('users/add-song.html', form=form)
 
-
 @app.route('/create-playlist', methods=["GET","POST"])
 def create_playlist():
     """Create a Playlist and associate it with a User"""
@@ -364,6 +363,17 @@ def create_playlist():
 
     else:
         return render_template('users/create-playlist.html', form=form)
+
+
+@app.route('/library')
+def show_songs():
+    """Library of songs added by all Users"""
+
+    return render_template('/users/library.html')
+
+
+
+
 
 
 

@@ -40,19 +40,37 @@
         <div id="top-left-con">
           <div id="logo-wrap">
             <div id="icon"><img id="icon-img" src="/static/img/logore1.png"/></div>
-            <div id="icon-title"><i>Emotify</i></div>
+            <div id="icon-title"><i><a id="icon-title-link" href="/">Emotify</a></i></div>
           </div>
           <div id="search-wrap" class="tl-wrap">
-            <div id="search-icon" class="tl-icon"><img id="search-img" class="icon-img" src="/static/img/search1.png"/></div>
-            <div id="tl-search" class="tl-desc">Search</div>
+            <form id="tl-search-form" class ="link-form" action="/library">
+              <span id="tl-search-btn-wrap" class="link-btn-wrap">
+                <button id="tl-create-search-btn" class="link-btn">
+                  <div id="search-icon" class="tl-icon"><img id="search-img" class="icon-img" src="/static/img/search1.png"/></div>
+                  <div id="tl-search" class="tl-desc">Search</div>
+                </button>
+              </span>  
+            </form>
           </div>
           <div id="library-wrap" class="tl-wrap">
-            <div id="library-icon" class="tl-icon"><img id="library-img" class="icon-img" src="/static/img/songs1.png"/></div>
-            <div id="tl-library" class="tl-desc">Your Songs</div>
+            <form id="tl-library-form" class ="link-form" action="/library">
+              <span id="tl-library-btn-wrap" class="link-btn-wrap">
+                <button id="tl-create-library-btn" class="link-btn">
+                  <div id="library-icon" class="tl-icon"><img id="library-img" class="icon-img" src="/static/img/songs1.png"/></div>
+                  <div id="tl-library" class="tl-desc">Your Songs</div>
+                </button>
+              </span>  
+            </form>
           </div>
           <div id="tl-playlist-wrap" class="tl-wrap">
-            <div id="tl-playlist-icon" class="tl-icon"><img id="playlist-img" class="icon-img" src="/static/img/playlists.png"/></div>
-            <div id="tl-playlist" class="tl-desc">Your Playlists</div>
+            <form id="tl-playlist-form" class ="link-form" action="/create-playlist">
+              <span id="tl-playlist-btn-wrap" class="link-btn-wrap">
+                <button id="tl-create-playlist-btn" class="link-btn">
+                  <div id="tl-playlist-icon" class="tl-icon"><img id="playlist-img" class="icon-img" src="/static/img/playlists.png"/></div>
+                  <div id="tl-playlist" class="tl-desc">Your Playlists</div>
+                </button>
+              </span>  
+            </form>
           </div>
           <div id="tl-border"></div>
         </div>
@@ -62,7 +80,7 @@
             <form id="ml-create-playlist-form" action="/create-playlist">
               <span id="ml-create-playlist-btn-wrap">
                 <button id="ml-create-playlist-btn">
-                  <div id="ml-plus-icon" class="tl-icon"><img id="plsu-img" class="icon-img" src="/static/img/plus_bl.png"/></div>
+                  <div id="ml-plus-icon" class="tl-icon"><img id="plus-img" class="icon-img" src="/static/img/plus_bl.png"/></div>
                   <div id="ml-plus-desc" class="tl-desc">Create Playlist</div>
                 </button>
               </span>  

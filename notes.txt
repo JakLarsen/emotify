@@ -8,6 +8,7 @@ Todo:
 
 
 -Library to display songs
+
 -Add songs to Playlist functionality
 
 -Home App Screen with playlists and songs and stuff to fill

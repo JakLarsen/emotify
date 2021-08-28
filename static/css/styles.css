@@ -13,7 +13,7 @@ body, #body{
     background-color: #fff;
     /* overflow: hidden; */
 }
-h1{
+h1, button{
     margin: 0;
     padding: 0;
 }
@@ -94,6 +94,15 @@ h1{
     justify-content: center;
     align-items: center;
 }
+#icon-title-link{
+    text-decoration: none;
+    color: #fff;
+}
+#icon-title-link:hover{
+    cursor: pointer;
+    color: #ff4a4a;
+    transition: 0.25s ease-in-out;
+}
 #search-wrap{
     margin-top: 1rem;
 }
@@ -120,6 +129,7 @@ h1{
     display: flex;
     padding-right: 0.5rem;
     opacity: 1;
+    margin-left: 0.25rem;
 }
 .icon-img{
     max-width: 2rem;
@@ -144,7 +154,6 @@ h1{
 }
 
 
-
 /* MIDLEFT */
 
 #mid-left-con{
@@ -162,7 +171,7 @@ h1{
     display: flex;
     align-items: center;
     height: 5rem;
-    margin: 1rem 0 0.5rem 0.25rem;
+    margin: 1rem 0 0.5rem -0.25rem;
 }
 #ml-plus-icon{
 }
@@ -175,7 +184,7 @@ h1{
     min-height: 2rem;
     align-items: center;
     margin: 0 0 0.35rem 0;
-    padding-left: 1.25rem;
+    padding-left: 1.5rem;
     color: #000;
     opacity: 0.75;
 }
@@ -197,6 +206,7 @@ h1{
     display: flex;
     align-items: center;
     border-style: none;
+    padding-left: 0.5rem;
     width: 12rem;
 }
 #ml-create-playlist-btn:hover{
@@ -276,7 +286,28 @@ h1{
     font-size: 0.85rem;
     opacity: 1;
 }
-
+.link-form{
+    background-color: aqua;
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+}
+.link-btn-wrap{
+}
+.link-btn{
+    background-color: #fff;
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 13rem;
+    border-style: none;
+}
+.link-btn:hover{
+    cursor: pointer;
+    color: #ff1515;
+    opacity: 1;
+    transition: 0.25s ease-in-out;
+}
 
 
                     /* MID CONTAINER */
