@@ -1,6 +1,6 @@
 Todo:
 
--Fix nav styling
+###-Fix nav styling 
 
 -Add Playlist model
 -Add Playlist view functions
@@ -32,13 +32,11 @@ Todo:
 
 
 
-
-
-
-
 Colors
 #008c7e - green
 #a71111; - dark red
 ba1212 - lighter red
 BRIGHT RED - #ff1515;
 #ff4a4a
+#1f1f1f - dark grey
+#272727 - mid grey
