@@ -50,6 +50,9 @@ Todo:
 --If more than 10 plays and in order
 -Liked Songs added to a specific playlist
 
+--unittests
+--integration tests
+
 
 
 
