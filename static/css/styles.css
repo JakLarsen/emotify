@@ -69,6 +69,7 @@ h1, button{
     z-index: 2;
 }
 #logo-wrap{
+    /* background: linear-gradient(#ff4a4a, #272727); */
     background-color: #1f1f1f;
     position: relative;
     display: flex;
@@ -315,7 +316,8 @@ h1, button{
 
 
 #mid-con{
-    /* background-color: rgb(253, 149, 189); */
+    background-color: #ff4a4a;
+    /* background-color: rgb(22, 22, 22); */
     position: relative;
     display: flex;
     flex-flow: column nowrap;
@@ -397,7 +399,7 @@ h1, button{
     justify-content: center;
     align-items: center;
     min-height: 12rem;
-    margin: 1rem 1.5rem 1.5rem;
+    margin: 1.5rem 1.5rem 1.5rem;
     border-radius: 10px;
 }
 
@@ -415,7 +417,7 @@ h1, button{
     height: 100vh;
 }
 #top-right-con{
-    background-color: rgb(0, 102, 102);
+    background-color: rgb(22, 22, 22);
     position: relative;
     display: flex;
     flex-flow: column nowrap;
@@ -423,8 +425,8 @@ h1, button{
     height: 100%;
 }
 #br-spacer{
-    min-height: 21rem;
-    background-color: aqua;
+    background: linear-gradient(#ff4a4a, #272727);
+    min-height: 13rem;
 }
 
 
@@ -536,11 +538,13 @@ h1, button{
     flex-flow: column nowrap;
     height: 100%;
 }
+
 #lib-top{
     /* background-color: red; */
     position: relative;
     display: flex;
     flex-flow: column nowrap;
+    margin-bottom: 2rem;
 }
 #lib-top-top{
     /* background-color: yellow; */
@@ -549,13 +553,16 @@ h1, button{
     align-items: center;
     height:3rem;
     margin-left: 2rem;
+    margin-top: 1rem;
 }
 #lib-top-bot{
     /* background-color: brown; */
     position: relative;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: center;
+    /* justify-content: center; */
+    margin-left: 2rem;
+    margin-top: 1rem;
 }
 #lib-tl{
     /* background-color: blue; */
@@ -591,6 +598,93 @@ h1, button{
     padding-left: 0.35rem;
 }
 
+#lib-bot{
+    background-color: rgba(0,0,0,0.7);
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#lib-bot-nav, .lib-bot-song{
+    /* background-color: purple; */
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    color: rgb(181, 181, 181);
+    font-weight: 400;
+    font-size: 0.8rem;
+}
+#lib-bot-nav-id{
+    /* background-color: green; */
+    margin-left: 3rem;
+    font-weight: 700;
+}
+.lib-bot-song-id{
+    font-weight: 700;
+}
+#lib-bot-nav-title, .lib-bot-song-title{
+    width: 14rem;
+} 
+#lib-bot-nav-album, .lib-bot-song-album{
+    width: 8rem;
+}
+#lib-bot-nav-duration-img{
+    max-width: 2rem;
+}
+.lib-bot-nav-items, .lib-bot-song-items{
+    margin-left: 1.5rem;
+}
+
+.library-spacer{
+    /* background-color: red; */
+    border-bottom: 1px solid rgba(94, 94, 94, 0.8);
+    align-self: center;
+    width: 95%;
+}
+
+/* SONGS OBJECT */
+.lib-bot-song{
+    /* background-color: orange; */
+    width: 90%;
+    margin: 1rem 0 0 1.5rem;
+    border-radius: 5px;
+    height: 4rem;
+}
+.lib-bot-song:hover{
+    cursor: pointer;
+    background-color: #1c0707;
+    color: #FFF;
+    font-weight: 600;
+}
+.lib-bot-song-title-wrap{
+    /* background-color: blue; */
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+.lib-bot-song-img{
+    /* background-color: red; */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#lib-bot-song-title-img{
+    max-width: 3rem;
+}
+.lib-bot-song-title-artist-wrap{
+    /* background-color: pink; */
+    position:relative;
+    display: flex;
+    flex-flow: column nowrap;
+    margin-left: 0.5rem;
+}
+.lib-bot-song-title-name{
+    color: #fff;
+    font-weight: 600;
+}
 
 
 
