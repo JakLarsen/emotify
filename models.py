@@ -25,6 +25,10 @@ class Song(db.Model):
         db.Text,
         nullable = False,
     )
+    album =  db.Column(
+        db.Text,
+        nullable = False,
+    )
     duration = db.Column(
         db.Integer,
         nullable = False,

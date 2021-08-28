@@ -1,9 +1,7 @@
 {% extends 'app.html' %}
 {% block content %}
 
-
 <div id="lib-wrap">
-
     <div id="lib-top">
         <div id="lib-top-top">
             <a class="back-arrow" href="/"><</a>
@@ -14,7 +12,7 @@
             </div>
             <div id="lib-tr">
                 <div id="lib-title">Library</div>
-                <div id="lib-caption">All of the top hits. Updated daily.</div>
+                <div id="lib-caption">All of your top hits. Updated daily.</div>
             </div>
         </div>
     </div>
@@ -28,106 +26,28 @@
         </div>
         <div class="library-spacer"></div>
         
-        <div class="lib-bot-song">
-            <div class="lib-bot-song-id lib-bot-song-items">1</div>
+        {%for song in songs%}
+        <div class="lib-bot-song" id="{{song.id}}">
+            <audio id="audio_{{song.id}}" src="../../static/audio/{{song.file}}"></audio>
+            </span>
+            
+            <div id="{{song.id}}" class="lib-bot-song-id lib-bot-song-items">{{song.id}}</div>
             <div class="lib-bot-song-title lib-bot-song-items">
                 <div class="lib-bot-song-title-wrap">
-                    <div class="lib-bot-song-img"><img id="lib-bot-song-title-img" src="https://upload.wikimedia.org/wikipedia/en/6/60/GunsnRosesAppetiteforDestructionalbumcover.jpg"></div>
+                    <div class="lib-bot-song-img"><img id="lib-bot-song-title-img" src="{{song.img}}"></div>
                     <div class="lib-bot-song-title-artist-wrap">
-                        <div class="lib-bot-song-title-name">Welcome to the Jungle</div>
-                        <div class="lib-bot-song-title-artist">Guns and Roses</div>
+                        <div class="lib-bot-song-title-name">{{song.title}}</div>
+                        <div class="lib-bot-song-title-artist">{{song.artist}}</div>
                     </div>
                 </div>
             </div>
-            <div class="lib-bot-song-album lib-bot-song-items">Appetite for Destruction</div>
-            <div class="lib-bot-song-duration lib-bot-song-items">4:32</div>
+            <div class="lib-bot-song-album lib-bot-song-items">{{song.album}}</div>
+            <div class="lib-bot-song-duration lib-bot-song-items">{{song.duration//60}}:{{song.duration%60}}</div>
         </div>
-        <div class="lib-bot-song">
-            <div class="lib-bot-song-id lib-bot-song-items">2</div>
-            <div class="lib-bot-song-title lib-bot-song-items">
-                <div class="lib-bot-song-title-wrap">
-                    <div class="lib-bot-song-img"><img id="lib-bot-song-title-img" src="https://images-na.ssl-images-amazon.com/images/I/61ixUFg2veL._SY355_.jpg"></div>
-                    <div class="lib-bot-song-title-artist-wrap">
-                        <div class="lib-bot-song-title-name">Point of Know Return</div>
-                        <div class="lib-bot-song-title-artist">Kansas</div>
-                    </div>
-                </div>
-            </div>
-            <div class="lib-bot-song-album lib-bot-song-items">Point of Know Return</div>
-            <div class="lib-bot-song-duration lib-bot-song-items">3:13</div>
-        </div>
-        <div class="lib-bot-song">
-            <div class="lib-bot-song-id lib-bot-song-items">1</div>
-            <div class="lib-bot-song-title lib-bot-song-items">
-                <div class="lib-bot-song-title-wrap">
-                    <div class="lib-bot-song-img"><img id="lib-bot-song-title-img" src="https://upload.wikimedia.org/wikipedia/en/6/60/GunsnRosesAppetiteforDestructionalbumcover.jpg"></div>
-                    <div class="lib-bot-song-title-artist-wrap">
-                        <div class="lib-bot-song-title-name">Welcome to the Jungle</div>
-                        <div class="lib-bot-song-title-artist">Guns and Roses</div>
-                    </div>
-                </div>
-            </div>
-            <div class="lib-bot-song-album lib-bot-song-items">Appetite for Destruction</div>
-            <div class="lib-bot-song-duration lib-bot-song-items">4:32</div>
-        </div>
-        <div class="lib-bot-song">
-            <div class="lib-bot-song-id lib-bot-song-items">1</div>
-            <div class="lib-bot-song-title lib-bot-song-items">
-                <div class="lib-bot-song-title-wrap">
-                    <div class="lib-bot-song-img"><img id="lib-bot-song-title-img" src="https://upload.wikimedia.org/wikipedia/en/6/60/GunsnRosesAppetiteforDestructionalbumcover.jpg"></div>
-                    <div class="lib-bot-song-title-artist-wrap">
-                        <div class="lib-bot-song-title-name">Welcome to the Jungle</div>
-                        <div class="lib-bot-song-title-artist">Guns and Roses</div>
-                    </div>
-                </div>
-            </div>
-            <div class="lib-bot-song-album lib-bot-song-items">Appetite for Destruction</div>
-            <div class="lib-bot-song-duration lib-bot-song-items">4:32</div>
-        </div>
-        <div class="lib-bot-song">
-            <div class="lib-bot-song-id lib-bot-song-items">1</div>
-            <div class="lib-bot-song-title lib-bot-song-items">
-                <div class="lib-bot-song-title-wrap">
-                    <div class="lib-bot-song-img"><img id="lib-bot-song-title-img" src="https://upload.wikimedia.org/wikipedia/en/6/60/GunsnRosesAppetiteforDestructionalbumcover.jpg"></div>
-                    <div class="lib-bot-song-title-artist-wrap">
-                        <div class="lib-bot-song-title-name">Welcome to the Jungle</div>
-                        <div class="lib-bot-song-title-artist">Guns and Roses</div>
-                    </div>
-                </div>
-            </div>
-            <div class="lib-bot-song-album lib-bot-song-items">Appetite for Destruction</div>
-            <div class="lib-bot-song-duration lib-bot-song-items">4:32</div>
-        </div>
-        <div class="lib-bot-song">
-            <div class="lib-bot-song-id lib-bot-song-items">1</div>
-            <div class="lib-bot-song-title lib-bot-song-items">
-                <div class="lib-bot-song-title-wrap">
-                    <div class="lib-bot-song-img"><img id="lib-bot-song-title-img" src="https://upload.wikimedia.org/wikipedia/en/6/60/GunsnRosesAppetiteforDestructionalbumcover.jpg"></div>
-                    <div class="lib-bot-song-title-artist-wrap">
-                        <div class="lib-bot-song-title-name">Welcome to the Jungle</div>
-                        <div class="lib-bot-song-title-artist">Guns and Roses</div>
-                    </div>
-                </div>
-            </div>
-            <div class="lib-bot-song-album lib-bot-song-items">Appetite for Destruction</div>
-            <div class="lib-bot-song-duration lib-bot-song-items">4:32</div>
-        </div>
-        <div class="lib-bot-song">
-            <div class="lib-bot-song-id lib-bot-song-items">1</div>
-            <div class="lib-bot-song-title lib-bot-song-items">
-                <div class="lib-bot-song-title-wrap">
-                    <div class="lib-bot-song-img"><img id="lib-bot-song-title-img" src="https://upload.wikimedia.org/wikipedia/en/6/60/GunsnRosesAppetiteforDestructionalbumcover.jpg"></div>
-                    <div class="lib-bot-song-title-artist-wrap">
-                        <div class="lib-bot-song-title-name">Welcome to the Jungle</div>
-                        <div class="lib-bot-song-title-artist">Guns and Roses</div>
-                    </div>
-                </div>
-            </div>
-            <div class="lib-bot-song-album lib-bot-song-items">Appetite for Destruction</div>
-            <div class="lib-bot-song-duration lib-bot-song-items">4:32</div>
-        </div>
+        {%endfor%}
     </div>
-    
-</div>
+</div>  
 
+<script src="../../static/js/audio.js"></script>
+   
 {% endblock %}

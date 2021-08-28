@@ -315,6 +315,7 @@ def add_song():
         try:
             title = form.title.data
             artist = form.artist.data
+            album = form.album.data
             img = form.img.data
             file= form.file.data
             duration = form.duration.data
