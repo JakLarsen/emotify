@@ -369,7 +369,9 @@ def create_playlist():
 def show_songs():
     """Library of songs added by all Users"""
 
-    return render_template('/users/library.html')
+    songs = Song.query.all()
+
+    return render_template('/users/library.html', songs=songs)
 
 
 
