@@ -57,7 +57,7 @@ class Playlist(db.Model):
     img = db.Column(
         db.Text,
         nullable = True,
-        default = 'img.url'
+        default = 'img.url',
     )
 
 class Userplaylist(db.Model):

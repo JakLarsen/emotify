@@ -7,8 +7,8 @@ from flask_socketio import SocketIO, emit, join_room, leave_room, \
     close_room, rooms, disconnect
 import websocket
 from sqlalchemy.exc import IntegrityError
-from models import db, connect_db, User, Song, Userplaylist
-from forms import LoginForm, UserAddForm, AddSongForm
+from models import db, connect_db, User, Song, Userplaylist, Playlist
+from forms import LoginForm, UserAddForm, AddSongForm, AddPlaylistForm
 from random import randint
 from cortex import Cortex, jake_data
 from copy import copy
@@ -333,6 +333,37 @@ def add_song():
 
     else:
         return render_template('users/add-song.html', form=form)
+
+
+@app.route('/create-playlist', methods=["GET","POST"])
+def create_playlist():
+    """Create a Playlist and associate it with a User"""
+
+    if not g.user:
+        flash("Access unauthorized.")
+        return redirect('/')
+    
+    form = AddPlaylistForm()
+    if form.validate_on_submit():
+        try:
+            title = form.title.data
+            description = form.description.data
+            img = form.img.data
+
+            new_playlist = Playlist(title=title, description=description, img=img)
+
+            db.session.add(new_playlist)
+            db.session.commit()
+
+        #this except isn't working
+        except:
+            flash("Song already in library, or something went wrong")
+            return render_template('users/create-playlist.html', form=form)
+
+        return render_template('users/submit.html', form=form)
+
+    else:
+        return render_template('users/create-playlist.html', form=form)
 
 
 

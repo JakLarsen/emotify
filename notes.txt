@@ -1,12 +1,13 @@
 Todo:
 
 ###-Fix nav styling 
+###-Add Playlist model
+###-Add Playlist view functions
+###-Create Playlist Form and styling
+###-Create Playlist complete
 
--Add Playlist model
--Add Playlist view functions
--Create Playlist Form and styling
--Create Playlist complete
 
+-Library to display songs
 -Add songs to Playlist functionality
 
 -Home App Screen with playlists and songs and stuff to fill
@@ -25,6 +26,8 @@ Todo:
 -force lowercase when processing usernames to ensure no duplicates
 -force 6 letters+ when entering a password signing up
 -restrict username length, etc
+
+- Style submit.html
 
 
 

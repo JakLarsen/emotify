@@ -59,8 +59,14 @@
 
         <div id="mid-left-con">
           <div id="ml-create-playlist-wrap" class="tl-wrap">
-            <div id="ml-plus-icon" class="tl-icon"><img id="plsu-img" class="icon-img" src="/static/img/plus_bl.png"/></div>
-            <div id="ml-plus-desc" class="tl-desc">Create Playlist</div>
+            <form id="ml-create-playlist-form" action="/create-playlist">
+              <span id="ml-create-playlist-btn-wrap">
+                <button id="ml-create-playlist-btn">
+                  <div id="ml-plus-icon" class="tl-icon"><img id="plsu-img" class="icon-img" src="/static/img/plus_bl.png"/></div>
+                  <div id="ml-plus-desc" class="tl-desc">Create Playlist</div>
+                </button>
+              </span>  
+            </form>
           </div>
           <div id="ml-playlist-wrap">
             <div class="ml-playlist">Playlist.title</div>

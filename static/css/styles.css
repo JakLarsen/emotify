@@ -191,6 +191,22 @@ h1{
     font-weight: 600;
 }
 
+#ml-create-playlist-btn{
+    background-color: #fff;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-style: none;
+    width: 12rem;
+}
+#ml-create-playlist-btn:hover{
+    cursor: pointer;
+    background-color: #ff4a4a;
+    color: #fff;
+    opacity: 0.9;
+    transition: 0.5s ease-in-out;
+}
+
 
 
 /* BOT LEFT */
@@ -330,6 +346,7 @@ h1{
     /* background-color: rgb(255, 190, 215); */
     position: relative;
     display: flex;
+    justify-content: center;
     flex-flow: column nowrap;
     color: #000;
     width: 100%;

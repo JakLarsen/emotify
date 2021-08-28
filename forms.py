@@ -26,3 +26,11 @@ class AddSongForm(FlaskForm):
     file = StringField('Upload the audio file', validators=[DataRequired()])
     duration =  IntegerField('How long is it in seconds', validators=[DataRequired()])
 
+class AddPlaylistForm(FlaskForm):
+    """Form for adding a new playlist"""
+
+    title = StringField('What would you like to call it', validators=[DataRequired()])
+    description = StringField('Tell me a bit about it', validators=[DataRequired()])
+    img = StringField('Add an image link to display with it', validators=[])
+
+

@@ -1,0 +1,22 @@
+{% extends 'app.html' %}
+{% block content %}
+
+<div id="add-song-wrapper">
+    <h1 id="add-song-title">Create a Playlist.</h1>
+    <form method="POST" id="add-song-form">
+        {{ form.hidden_tag() }}
+        {% for field in form if field.widget.input_type != 'hidden' %}
+            <div class="add-song-field-label">{{field.label}}</div>
+            {{ field (class="add-song-form-control") }}
+            {% for error in field.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+        {% endfor %}
+        <div id="add-song-btn-wrap">
+            <button id="add-song-btn">Done</button>
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}
