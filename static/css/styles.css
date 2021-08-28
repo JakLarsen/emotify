@@ -269,13 +269,13 @@ h1, button{
 #bl-add-song-btn{
     /* background-color: greenyellow; */
     background-color: #1f1f1f;
-    color: #eee;
+    color: rgb(255, 255, 255);
     border-style: none;
     font-weight: 700;
     height: 3rem;
     width: 7rem;
     border-radius: 50px;  
-    opacity: 0.85;  
+    opacity: 1;  
 }
 #bl-add-song-btn:hover{
     background-color: #ff4a4a;
@@ -288,7 +288,7 @@ h1, button{
     opacity: 1;
 }
 .link-form{
-    background-color: aqua;
+    /* background-color: aqua; */
     position: relative;
     display: flex;
     flex-flow: row nowrap;
@@ -316,8 +316,9 @@ h1, button{
 
 
 #mid-con{
-    background-color: #ff4a4a;
+    /* background-color: #ff4a4a; */
     /* background-color: rgb(22, 22, 22); */
+    /* background: linear-gradient(#291111, #ff4a4a); */
     position: relative;
     display: flex;
     flex-flow: column nowrap;
@@ -392,7 +393,9 @@ h1, button{
 /* BOT MID */
 
 #bot-mid-con{
-    background-color: #ff4a4a;
+    /* background-color: #ff4a4a; */
+    background-color: rgb(22, 22, 22);
+    /* background: linear-gradient(#ff4a4a, #6f3838); */
     position: relative;
     display: flex;
     flex-flow: column nowrap;
@@ -400,7 +403,7 @@ h1, button{
     align-items: center;
     min-height: 12rem;
     margin: 1.5rem 1.5rem 1.5rem;
-    border-radius: 10px;
+    border-radius: 7px;
 }
 
 
@@ -415,18 +418,24 @@ h1, button{
     display: flex;
     flex-flow: column nowrap;
     height: 100vh;
+    width: 20rem;
 }
 #top-right-con{
     background-color: rgb(22, 22, 22);
+    /* background: linear-gradient(to left, #6f3838,#ff4a4a); */
     position: relative;
     display: flex;
     flex-flow: column nowrap;
-    width: 14rem;
     height: 100%;
+    margin: 1.5rem;
+    border-radius: 7px;
 }
-#br-spacer{
-    background: linear-gradient(#ff4a4a, #272727);
-    min-height: 13rem;
+#bot-right-con{
+    background-color: rgb(22, 22, 22);
+    /* background: linear-gradient(135deg, #ff4a4a, #6f3838); */
+    min-height: 12rem;
+    margin: 1.5rem;
+    border-radius: 7px;
 }
 
 
@@ -479,7 +488,7 @@ h1, button{
     display: flex;
     height: 1.5rem;
     width: 25rem;
-    color: #272727;
+    color: #fff;
     font-size: 0.8rem;
     border-radius: 5px;
     border: 1px solid rgba(0,0,0,0.2);
@@ -502,13 +511,13 @@ h1, button{
 #add-song-btn{
     /* background-color: greenyellow; */
     background-color: #1f1f1f;
-    color: #eee;
+    color: #fff;
     border-style: none;
     font-weight: 700;
     height: 3rem;
     width: 7rem;
     border-radius: 50px;  
-    opacity: 0.85;  
+    opacity: 1;  
 }
 #add-song-btn:hover{
     background-color: #ff4a4a;
@@ -532,11 +541,11 @@ h1, button{
 
 
 #lib-wrap{
-    background: linear-gradient(#272727, #ff4a4a);
+    background: linear-gradient(#291111, #ff4a4a);
     position: relative;
     display: flex;
     flex-flow: column nowrap;
-    height: 100%;
+    top: 5.5rem;
 }
 
 #lib-top{
@@ -603,6 +612,7 @@ h1, button{
     position: relative;
     display: flex;
     flex-flow: column nowrap;
+    padding-bottom: 1rem;
 }
 
 #lib-bot-nav, .lib-bot-song{

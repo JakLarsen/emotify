@@ -320,7 +320,7 @@ def add_song():
             file= form.file.data
             duration = form.duration.data
 
-            new_song = Song(title=title, artist=artist, img=img, file=file, duration=duration)
+            new_song = Song(title=title, artist=artist, album=album, img=img, file=file, duration=duration)
 
             db.session.add(new_song)
             db.session.commit()
