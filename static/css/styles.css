@@ -28,6 +28,22 @@ h1, button{
     height: 100vh;
 }
 
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 12px;
+    padding: 2px;
+  }
+  ::-webkit-scrollbar-track {
+    /* box-shadow: inset 0 0 1px grey; */
+    background: #fff;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
 
 
                     /* MAIN CONTAINER */
@@ -378,6 +394,8 @@ h1, button{
 
 #mid-mid-con{
     /* background-color: rgb(255, 190, 215); */
+    /* background: linear-gradient(#ff4a4a, #291111); */
+    /* background: linear-gradient(#291111, #ff4a4a); */
     position: relative;
     display: flex;
     justify-content: center;
@@ -449,13 +467,14 @@ h1, button{
 
              
 #add-song-wrapper{
-    /* background-color: red; */
+    /* background-color: #fff; */
     position: relative;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
     margin: 1rem;
+    /* padding: 5rem 0; */
 }
 #add-song-title{
     /* background-color: yellow; */
@@ -539,13 +558,18 @@ h1, button{
 
 
 
-
-#lib-wrap{
+/* #lib-top-spacer{
+    position: relative;
+    margin-top: 10rem;
+} */
+#lib-con{
     background: linear-gradient(#291111, #ff4a4a);
+    /* background-color: red; */
     position: relative;
     display: flex;
     flex-flow: column nowrap;
-    top: 5.5rem;
+    height: 100%;
+    overflow-y: auto;
 }
 
 #lib-top{
@@ -560,7 +584,7 @@ h1, button{
     position: relative;
     display: flex;
     align-items: center;
-    height:3rem;
+    height: 3rem;
     margin-left: 2rem;
     margin-top: 1rem;
 }
