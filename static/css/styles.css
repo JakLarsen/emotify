@@ -835,7 +835,11 @@ h1, button{
     width: 14rem;
 } 
 #lib-bot-nav-album, .lib-bot-song-album{
-    width: 8rem;
+    width: 14rem;
+}
+.lib-bot-nav-items, .lib-bot-song-items{
+    /* background-color: #fff; */
+    margin-left: 1.5rem;
 }
 #lib-bot-nav-duration-img{
     max-width: 1rem;
@@ -845,9 +849,9 @@ h1, button{
     /* background-color: #fff; */
     max-width: 1rem;
 }
-.lib-bot-nav-items, .lib-bot-song-items{
-    /* background-color: #fff; */
-    margin-left: 1.5rem;
+#lib-bot-nav-duration, .lib-bot-song-duration{
+    /* background-color: teal; */
+    margin-left: 7rem;
 }
 
 .library-spacer{
