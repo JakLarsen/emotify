@@ -34,7 +34,7 @@ h1{
 
 
 #main-con{
-    background: linear-gradient(#008c7e, #272727);
+    background: linear-gradient(#e23636, #111);
     position: relative;
     display: flex;
     flex-flow: column nowrap;
@@ -196,7 +196,7 @@ h1{
 
 @media only screen and (min-width: 602px) and (max-width: 1012px){
     #body{
-        background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(/static/img/sp1.JPG);
+        background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(/static/img/em1.JPG);
     }
     #main-con{
         width: 26rem;
@@ -235,7 +235,7 @@ h1{
 
 @media only screen and (min-width: 1013px){
     #body{
-        background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(/static/img/sp1.JPG);
+        background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(/static/img/em1.JPG);
     }
     #main-con{
         width: 51rem;
