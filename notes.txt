@@ -1,26 +1,5 @@
 Todo:
 
-8/28
-###-Fix nav 
-###-Add Playlist model
-###-Add Playlist view functions
-###-Create Playlist Form and styling
-###-Create Playlist complete
-###- Library Page
-###- Ability to Play songs in library
-###- Library Page Styling
-###- Library Page Complete (for now)
-
-8/29
-###- Design audio app
-###- Design and layout prev, curr, and next songs
-###- Errors and layout spacing corrections
-###- Main site design cohesive, solidified. 
-###- Heart icon, pause icon, play icon, duration icon.
-
-8/30
-###- 
-
 - Your Playlists Page
 - Individual playlists pages
 - Play songs from playlists pages
@@ -49,7 +28,6 @@ Todo:
 
 
 
-
 ***Future updates***
 -Right con: Most listened to tracks or playlists
 -Search functionality through song library
@@ -60,6 +38,25 @@ Todo:
 --unittests
 --integration tests
 --Proper responsiveness
+
+
+8/29
+###- Design audio app
+###- Design and layout prev, curr, and next songs
+###- Errors and layout spacing corrections
+###- Main site design cohesive, solidified. 
+###- Heart icon, pause icon, play icon, duration icon.
+
+8/28
+###-Fix nav 
+###-Add Playlist model
+###-Add Playlist view functions
+###-Create Playlist Form and styling
+###-Create Playlist complete
+###- Library Page
+###- Ability to Play songs in library
+###- Library Page Styling
+###- Library Page Complete (for now)
 
 
 

@@ -625,8 +625,8 @@ h1, button{
     background-color: rgb(22, 22, 22);
     /* background: linear-gradient(135deg, #ff4a4a, #6f3838); */
     min-height: 12rem;
-    margin: 1.5rem;
-    border-radius: 7px;
+    /* margin: 1.5rem; */
+    /* border-radius: 7px; */
 }
 
 
