@@ -431,18 +431,46 @@ h1, button{
 
 
 #curr-playing-con{
-    background-color: red;
+    /* background-color: red; */
     position: relative;
     display: flex;
     justify-self: flex-start;
+    /* justify-content: center; */
+    align-items: center;
     height: 7rem;
     width: 20rem;
 }
-#curr-playing-wrap{
-    background-color: blue;
+#curr-playing-song-img{
+    max-height: 5rem;
+    /* background-color: #fff; */
+    /* border-radius: 100%; */
+    justify-content: center;
+    align-items: center;
+    margin-left: 1rem;
+    box-shadow: 0 0 15px rgba(0,0,0,1);
+}
+#curr-playing-text-wrap{
+    /* background-color: blue; */
     position: relative;
     display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    /* align-items: center; */
+    margin-left: 1rem;
+    width: 12rem;
+    height: 5rem;
 }
+#curr-playing-song-title{
+    color: #fff;
+    font-weight: 600;
+}
+#curr-playing-song-artist{
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+
+
 #audio-controls-con{
     background-color: yellow;
     position: relative;
