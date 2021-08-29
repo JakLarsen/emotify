@@ -38,7 +38,7 @@ h1, button{
     background: #fff;
   }
   ::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #111;
   }
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
@@ -412,16 +412,43 @@ h1, button{
 
 #bot-mid-con{
     /* background-color: #ff4a4a; */
-    background-color: rgb(22, 22, 22);
+    background-color: #111;
     /* background: linear-gradient(#ff4a4a, #6f3838); */
     position: relative;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     min-height: 12rem;
-    margin: 1.5rem 1.5rem 1.5rem;
-    border-radius: 7px;
+    /* margin: 1.5rem 1.5rem 1.5rem; */
+    /* border-radius: 7px; */
+}
+
+
+
+                    /* BOT SONG APP */
+
+
+
+#curr-playing-con{
+    background-color: red;
+    position: relative;
+    display: flex;
+    justify-self: flex-start;
+    height: 7rem;
+    width: 20rem;
+}
+#curr-playing-wrap{
+    background-color: blue;
+    position: relative;
+    display: flex;
+}
+#audio-controls-con{
+    background-color: yellow;
+    position: relative;
+    display: flex;
+    height: 5rem;
+    width: 30rem;
 }
 
 
@@ -719,6 +746,9 @@ h1, button{
     color: #fff;
     font-weight: 600;
 }
+
+
+
 
 
 
