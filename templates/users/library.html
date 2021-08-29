@@ -21,7 +21,8 @@
             <div id="lib-bot-nav-id" class="lib-bot-nav-items">#</div>
             <div id="lib-bot-nav-title" class="lib-bot-nav-items">TITLE</div>
             <div id="lib-bot-nav-album" class="lib-bot-nav-items">ALBUM</div>
-            <div id="lib-bot-nav-duration" class="lib-bot-nav-items"><img id="lib-bot-nav-duration-img" src="../../static/img/search1.png"></div>
+            <div id="lib-bot-nav-like" class="lib-bot-nav-items"><img id="lib-bot-nav-like-img" src="../../static/img/heart1.png"></div>
+            <div id="lib-bot-nav-duration" class="lib-bot-nav-items"><img id="lib-bot-nav-duration-img" src="../../static/img/clock2.png"></div>
         </div>
         <div class="library-spacer"></div>
         
@@ -41,6 +42,7 @@
                 </div>
             </div>
             <div class="lib-bot-song-album lib-bot-song-items">{{song.album}}</div>
+            <img class="lib-bot-song-like lib-bot-song-items" src="/static/img/heart1.png">
             <div class="lib-bot-song-duration lib-bot-song-items">{{song.duration//60}}:{{song.duration%60}}</div>
         </div>
         {%endfor%}

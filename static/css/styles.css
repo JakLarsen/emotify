@@ -768,10 +768,11 @@ h1, button{
     color: rgb(181, 181, 181);
     font-weight: 400;
     font-size: 0.8rem;
+    height: 1.5rem;
 }
 #lib-bot-nav-id{
     /* background-color: green; */
-    margin-left: 3rem;
+    margin-left: 2.7rem;
     font-weight: 700;
 }
 .lib-bot-song-id{
@@ -784,9 +785,15 @@ h1, button{
     width: 8rem;
 }
 #lib-bot-nav-duration-img{
-    max-width: 2rem;
+    max-width: 1rem;
+    margin-left: 0.25rem;
+}
+#lib-bot-nav-like-img{
+    /* background-color: #fff; */
+    max-width: 1rem;
 }
 .lib-bot-nav-items, .lib-bot-song-items{
+    /* background-color: #fff; */
     margin-left: 1.5rem;
 }
 
@@ -839,6 +846,14 @@ h1, button{
     color: #fff;
     font-weight: 600;
 }
+.lib-bot-song-like{
+    max-width: 1rem;
+    opacity: 0.7;
+}
+.lib-bot-song-like:hover{
+    opacity: 1;
+}
+
 
 
 
