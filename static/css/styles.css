@@ -441,7 +441,7 @@ h1, button{
     align-items: center;
     height: 5rem;
     width: 20rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     border-radius: 4px;
 }
 .song-player-con{
@@ -537,12 +537,65 @@ h1, button{
     align-items: center;
 }
 #audio-controls-con{
-    background-color: #272727;
+    background-color: #111;
     position: relative;
     display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
     height: 4.5rem;
     width: 30rem;
+    color: #eee;
 }
+#audio-controls-wrap{
+    /* background-color: red; */
+    color: #eee;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#previous, #next{
+    /* background-color: yellow; */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+}
+#play-pause{
+    background-color: #fff;
+    color: #000;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 100%;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+#play-pause-con{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.1rem;
+    width: 2.1rem;
+    margin: 0 1.5rem;
+}
+#play-pause:hover{
+    height: 2.1rem;
+    width: 2.1rem;
+}
+#duration-bar{
+    /* background-color: blue; */
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
 
 
 
@@ -565,8 +618,8 @@ h1, button{
     display: flex;
     flex-flow: column nowrap;
     height: 100%;
-    margin: 1.5rem;
-    border-radius: 7px;
+    /* margin: 1.5rem; */
+    /* border-radius: 7px; */
 }
 #bot-right-con{
     background-color: rgb(22, 22, 22);
