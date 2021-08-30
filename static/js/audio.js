@@ -60,8 +60,20 @@ function stop(currSongIDTarget){
     audio.currentTime = 0;
     
 }
-function changeCurrSongDiv(songDivID){
-    console.log(`${songDivID} is playing.`)
+function changeCurrSongDiv(entireSongDiv){
+    console.debug('changeCurrSongDiv called')
+
+    let currTitle = document.getElementById('curr-playing-song-title')
+    let currArtist = document.getElementById('curr-playing-song-artist')
+    let currImg = document.getElementById('curr-playing-song-img')
+
+    let changeToTitle = entireSongDiv.querySelector('.lib-bot-song-title-name').innerText
+    let changeToArtist = entireSongDiv.querySelector('.lib-bot-song-title-artist').innerText
+    let changeToImg = entireSongDiv.querySelector('#lib-bot-song-title-img').src
+
+    currTitle.innerText = `${changeToTitle}`
+    currArtist.innerText = `${changeToArtist}`
+    currImg.src = `${changeToImg}`
 }
 
 
@@ -74,6 +86,7 @@ function changeCurrSongDiv(songDivID){
 
 songDiv.addEventListener("click", function(evt){
 
+    let entireSongDiv = evt.path[1]
     let songDivID = evt.path[0].id
     //this is the ID we want for document.getEle... to use audio. commands on
     let songIDTarget = `audio_${songDivID}`
@@ -105,7 +118,7 @@ songDiv.addEventListener("click", function(evt){
                 console.log(`currSong is ${currSong}`)
                 stop(currSong)
             }
-            changeCurrSongDiv(songIDTarget)
+            changeCurrSongDiv(entireSongDiv)
             console.log(`SongIDTarget is: ${songIDTarget}`)
             updateCurrSong(songIDTarget)
             play(songIDTarget)
