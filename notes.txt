@@ -25,6 +25,8 @@ Todo:
 -Styling, touch ups
 -Icon reboots
 -Right Divs
+-Typography
+-Gif for playing vs paused
 
 
 
