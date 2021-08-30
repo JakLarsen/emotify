@@ -306,6 +306,8 @@ def display_data():
 def add_song():
     """Add song to library"""
 
+    my_playlists = g.user.userplaylists
+
     if not g.user:
         flash("Access unauthorized.")
         return redirect("/")
@@ -329,16 +331,18 @@ def add_song():
         #this except isn't working
         except:
             flash("Song already in library, or something went wrong")
-            return render_template('users/add-song.html', form=form)
+            return render_template('users/add-song.html', form=form, my_playlists=my_playlists)
 
-        return render_template('users/song-submit.html', form=form)
+        return render_template('users/submit.html', form=form, my_playlists=my_playlists)
 
     else:
-        return render_template('users/add-song.html', form=form)
+        return render_template('users/add-song.html', form=form, my_playlists=my_playlists)
 
 @app.route('/create-playlist', methods=["GET","POST"])
 def create_playlist():
     """Create a Playlist and associate it with a User"""
+
+    my_playlists=g.user.userplaylists
 
     if not g.user:
         flash("Access unauthorized.")
@@ -359,12 +363,12 @@ def create_playlist():
         #this except isn't working
         except:
             flash("Song already in library, or something went wrong")
-            return render_template('users/create-playlist.html', form=form)
+            return render_template('users/create-playlist.html', form=form, my_playlists=my_playlists)
 
-        return render_template('users/submit.html', form=form)
+        return render_template('users/submit.html', form=form, my_playlists=my_playlists)
 
     else:
-        return render_template('users/create-playlist.html', form=form)
+        return render_template('users/create-playlist.html', form=form, my_playlists=my_playlists)
 
 
 @app.route('/library')
@@ -372,8 +376,9 @@ def show_songs():
     """Library of songs added by all Users"""
 
     songs = Song.query.all()
+    my_playlists=g.user.userplaylists
 
-    return render_template('/users/library.html', songs=songs)
+    return render_template('/users/library.html', songs=songs, my_playlists=my_playlists)
 
 
 

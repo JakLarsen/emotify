@@ -24,7 +24,7 @@ class AddSongForm(FlaskForm):
     artist = StringField('Who is it by', validators=[DataRequired()])
     album = StringField ('Which album is it in', validators=[DataRequired()])
     img = StringField('Add a link to the album cover', validators=[DataRequired()])
-    file = StringField('Upload the audio file', validators=[DataRequired()])
+    file = StringField('What is the name of the audio file', validators=[DataRequired()])
     duration =  IntegerField('How long is it in seconds', validators=[DataRequired()])
 
 class AddPlaylistForm(FlaskForm):
