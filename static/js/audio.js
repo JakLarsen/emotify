@@ -6,6 +6,8 @@
 
 
 let songDiv = document.getElementById('lib-bot')
+let playPause = document.getElementById('play-pause')
+
 let isPlaying = false
 let currSong = null
 
@@ -37,6 +39,7 @@ function updateIsPlaying(){
         console.log(`isPlaying is now: ${isPlaying}`)
     }
 }
+//UPDATE CURRENT SONG TARGET
 function updateCurrSong(songIDTarget){
     currSong = songIDTarget
 }
@@ -52,7 +55,6 @@ function pause(songIDTarget){
     console.log(`Trying to pause song: ${audio}`)
     audio.pause();   
 }
-
 function stop(currSongIDTarget){
     let audio = document.getElementById(currSongIDTarget)
     console.log(`Trying to stop song: ${audio}`)
@@ -60,20 +62,25 @@ function stop(currSongIDTarget){
     audio.currentTime = 0;
     
 }
+//UPDATE CURRENT SONG IN AUDIO APP
 function changeCurrSongDiv(entireSongDiv){
     console.debug('changeCurrSongDiv called')
 
     let currTitle = document.getElementById('curr-playing-song-title')
     let currArtist = document.getElementById('curr-playing-song-artist')
     let currImg = document.getElementById('curr-playing-song-img')
+    let currSongData = document.getElementById('curr-song-audio-control-con').dataset
 
     let changeToTitle = entireSongDiv.querySelector('.lib-bot-song-title-name').innerText
     let changeToArtist = entireSongDiv.querySelector('.lib-bot-song-title-artist').innerText
     let changeToImg = entireSongDiv.querySelector('#lib-bot-song-title-img').src
+    let changeToSongData = entireSongDiv.id
 
     currTitle.innerText = `${changeToTitle}`
     currArtist.innerText = `${changeToArtist}`
     currImg.src = `${changeToImg}`
+    currSongData.song = changeToSongData
+    console.log(`currSongData: ${currSongData}`)
 }
 
 
@@ -81,8 +88,42 @@ function changeCurrSongDiv(entireSongDiv){
                     //AUDIO PLAYER HANDLERS
 
 
+function songValidated(songIDTarget){
+    return endsWithNumber(songIDTarget)
+}
 
-//MAIN AUDIO HANDLER
+function isCurrSong(songIDTarget){
+    return songIDTarget == currSong
+}
+
+function audioHandler(songIDTarget){
+    if(songValidated(songIDTarget)){
+        if(isCurrSong(songIDTarget)){
+            if(isPlaying){
+                pause(songIDTarget)
+            }
+            else{
+                play(songIDTarget)
+            }
+            updateIsPlaying()
+        }
+        else{
+            if(currSong){
+                stop(currSong)
+            }
+            updateCurrSong(songIDTarget)
+            play(songIDTarget)
+            updateIsPlaying()
+        }
+    }
+    else{
+        console.log('Not a proper song Div ID')
+    }  
+}
+      
+
+
+//MAIN LIBRARY AUDIO HANDLER
 
 songDiv.addEventListener("click", function(evt){
 
@@ -97,7 +138,6 @@ songDiv.addEventListener("click", function(evt){
         console.log('We clicked a proper song ID')
         //Is it the previously targetted songDiv that is already playing or paused?
         //-Then pause/play it and update isPlaying
-        console.log(songIDTarget)
         if (songIDTarget == currSong){
             console.log(`Our target: ${songIDTarget} is the same as current song: ${currSong}`)
             if (isPlaying){
@@ -128,4 +168,19 @@ songDiv.addEventListener("click", function(evt){
     else{
         console.log('Not a proper song Div ID')
     }  
+})
+
+
+
+//BOT APP AUDIO HANDLER
+
+
+
+playPause.addEventListener('click', function(evt){
+    console.log(evt)
+    let songID = evt.path[4].dataset.song
+    console.log(songID)
+    let songIDTarget = `audio_${songID}`
+
+    audioHandler(songIDTarget)    
 })

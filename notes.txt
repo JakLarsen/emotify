@@ -1,8 +1,11 @@
 Todo:
 
 
-
+- UserCreatedSongs model
+- Delete Songs route (only user created songs should be deletable by that user)
+- Playlistsongs model
 - Your Playlists Page
+- Library as a Playlist Model
 - Individual playlists pages
 - Play songs from playlists pages
 - Add song to playlist functionality from display songs
@@ -13,7 +16,9 @@ Todo:
 -- Most listened to playlists and songs at top
 
 - Create Audio Player
-- Proper song logic handling
+- Proper song logic handling 
+--prev/next on playlists working
+--Library prev/next working
 - Connect Emotiv to audio player inputs
 
 -Login/Signup logic
@@ -42,7 +47,16 @@ Todo:
 --unittests
 --integration tests
 --Proper responsiveness
+--Smooth Transition to previous or next song.
 
+8/30
+###- Fixed create playlist
+###- Playlists shown globally now
+###- Updated add song Form
+###- Populated Library
+###- Clickable track number plays song in Library
+###- Main audio logic functioning (Play, pause, stop current when play another)
+###- Main audio app updating current song being played div
 
 8/29
 ###- Design audio app
