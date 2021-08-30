@@ -830,12 +830,28 @@ h1, button{
 }
 #lib-bot-nav-id{
     /* background-color: green; */
+    padding: 0 0.7rem 0 1rem;
     margin-left: 2.7rem;
     font-weight: 700;
 }
+
 .lib-bot-song-id{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-weight: 700;
+    height: 2rem;
+    width: 2rem;
 }
+.lib-bot-song-id:hover{
+    cursor: pointer;
+    background-color: #fff;
+    color: #000;
+    border-radius: 100%;
+
+}
+
 #lib-bot-nav-title, .lib-bot-song-title{
     width: 14rem;
 } 
@@ -875,7 +891,6 @@ h1, button{
     height: 4rem;
 }
 .lib-bot-song:hover{
-    cursor: pointer;
     background-color: #1c0707;
     color: #FFF;
     font-weight: 600;
@@ -913,6 +928,7 @@ h1, button{
     opacity: 0.7;
 }
 .lib-bot-song-like:hover{
+    cursor: pointer;
     opacity: 1;
 }
 
