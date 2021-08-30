@@ -351,7 +351,7 @@ def create_playlist():
             img = form.img.data
 
             new_playlist = Playlist(title=title, description=description, img=img)
-
+            g.user.userplaylists.append(new_playlist)
             db.session.add(new_playlist)
             db.session.commit()
 
