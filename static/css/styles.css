@@ -198,23 +198,27 @@ h1, button{
     /* background-color: rebeccapurple; */
     position: relative;
     display: flex;
+    flex-flow: column nowrap;
     min-height: 2rem;
+}
+.ml-playlist{
+    /* background-color: yellow; */
+    position: relative;
+    display: flex;
     align-items: center;
-    margin: 0 0 0.35rem 0;
-    padding-left: 1.5rem;
+    min-height: 2rem;
     color: #000;
     opacity: 0.75;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding-left: 1.5rem;
 }
-#ml-playlist-wrap:hover{
+.ml-playlist:hover{
     cursor: pointer;
     background-color: #ff4a4a;
     color: #fff;
     opacity: 0.9;
     transition: 0.5s ease-in-out;
-}
-.ml-playlist{
-    font-size: 0.8rem;
-    font-weight: 600;
 }
 
 #ml-create-playlist-btn{

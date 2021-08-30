@@ -131,13 +131,6 @@ class User(db.Model):
                 return user
         return False
 
-    # userplaylists = db.relationship(
-    #     "Playlist",
-    #     secondary="userplaylists",
-    #     primaryjoin=(Userplaylist.user_id == id),
-    #     secondaryjoin=(Userplaylist.playlist_id == id)
-    # )
-
     userplaylists = db.relationship(
         'Playlist',
         secondary="userplaylists"

@@ -231,7 +231,8 @@ def do_logout():
 def app_home():
     """Display home if logged in or home-anon if user not in session"""
     if g.user:
-        return render_template('app.html', async_mode=socketio.async_mode)
+        my_playlists = g.user.userplaylists
+        return render_template('app.html', async_mode=socketio.async_mode, my_playlists=my_playlists)
     else:
         return render_template('landing.html')
 
