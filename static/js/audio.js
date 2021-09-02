@@ -124,7 +124,7 @@ function audioHandler(songIDTarget){
 
 
 //MAIN LIBRARY AUDIO HANDLER
-
+//
 songDiv.addEventListener("click", function(evt){
 
     let entireSongDiv = evt.path[1]

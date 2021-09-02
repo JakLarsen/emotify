@@ -1,7 +1,6 @@
 Todo:
 
-
-- UserCreatedSongs model
+- Usersongs model
 - Delete Songs route (only user created songs should be deletable by that user)
 - Playlistsongs model
 - Your Playlists Page
@@ -34,6 +33,9 @@ Todo:
 -Typography
 -Gif for playing vs paused
 -Fix clickable area for song play in Library
+
+
+--Add headset logo to headset usable features
 
 
 
