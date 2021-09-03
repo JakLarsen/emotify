@@ -2,7 +2,7 @@ import os
 # # from flask_debugtoolbar import DebugToolbarExtension
 from threading import Lock
 from flask import Flask, render_template, flash, request, redirect, session, g, \
-    copy_current_request_context
+    copy_current_request_context, jsonify
 from flask_socketio import SocketIO, emit, join_room, leave_room, \
     close_room, rooms, disconnect
 import websocket
@@ -380,10 +380,14 @@ def show_songs():
 
     return render_template('/users/library.html', songs=songs, my_playlists=my_playlists)
 
+@app.route('/home')
+def show_home():
+    """Home Content"""
 
+    songs = Song.query.all()
+    my_playlists=g.user.userplaylists
 
-
-
+    return render_template('/users/home.html', songs=songs, my_playlists=my_playlists)
 
 
 

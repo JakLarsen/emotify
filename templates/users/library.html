@@ -1,5 +1,3 @@
-{% extends 'app.html' %}
-{% block content %}
 <div id="lib-con">
     <div id="lib-top">
         <div id="lib-top-top">
@@ -29,7 +27,6 @@
         {%for song in songs%}
         <div class="lib-bot-song" id="{{song.id}}">
             <audio id="audio_{{song.id}}" src="../../static/audio/{{song.file}}"></audio>
-            
             <div id="{{song.id}}" class="lib-bot-song-id lib-bot-song-items">{{song.id}}</div>
             <div class="lib-bot-song-title lib-bot-song-items">
                 <div class="lib-bot-song-title-wrap">
@@ -47,4 +44,3 @@
         {%endfor%}
     </div>
 </div>  
-{% endblock %}
