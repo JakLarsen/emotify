@@ -232,7 +232,8 @@ def app_home():
     """Display home if logged in or home-anon if user not in session"""
     if g.user:
         my_playlists = g.user.userplaylists
-        return render_template('app.html', async_mode=socketio.async_mode, my_playlists=my_playlists)
+        songs = Song.query.all()
+        return render_template('app.html', async_mode=socketio.async_mode, songs=songs, my_playlists=my_playlists)
     else:
         return render_template('landing.html')
 

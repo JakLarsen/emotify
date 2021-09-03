@@ -51,6 +51,10 @@ Todo:
 --Proper responsiveness
 --Smooth Transition to previous or next song.
 
+CURRENT ERRORS
+--jquery isn't always loading in time or properly???
+--Need to update audio player from lib and then play from there instead of playing from Lib
+
 8/30
 ###- Fixed create playlist
 ###- Playlists shown globally now
