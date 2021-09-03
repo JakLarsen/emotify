@@ -415,8 +415,8 @@ h1, button{
 /* BOT MID */
 
 #bot-mid-con{
-    /* background-color: #ff4a4a; */
     background-color: #111;
+    /* background-color: #ff4a4a; */
     /* background: linear-gradient(#ff4a4a, #6f3838); */
     position: relative;
     display: flex;

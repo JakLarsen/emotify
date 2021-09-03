@@ -29,7 +29,6 @@
         {%for song in songs%}
         <div class="lib-bot-song" id="{{song.id}}">
             <audio id="audio_{{song.id}}" src="../../static/audio/{{song.file}}"></audio>
-            </span>
             
             <div id="{{song.id}}" class="lib-bot-song-id lib-bot-song-items">{{song.id}}</div>
             <div class="lib-bot-song-title lib-bot-song-items">
@@ -48,5 +47,4 @@
         {%endfor%}
     </div>
 </div>  
-
 {% endblock %}
