@@ -24,7 +24,7 @@
         
         {%for song in songs%}
         <div class="lib-bot-song" id="{{song.id}}">
-            <audio id="audio_{{song.id}}" src="../../static/audio/{{song.file}}"></audio>
+            <div data-song="audio_{{song.id}}" data-src="../static/audio/{{song.file}}"></div>
             <div id="{{song.id}}" class="lib-bot-song-id lib-bot-song-items">{{song.id}}</div>
             <div class="lib-bot-song-title lib-bot-song-items">
                 <div class="lib-bot-song-title-wrap">
@@ -34,7 +34,7 @@
                         <div class="lib-bot-song-title-artist">{{song.artist}}</div>
                     </div>
                 </div>
-            </div>
+            </div>`
             <div class="lib-bot-song-album lib-bot-song-items">{{song.album}}</div>
             <img class="lib-bot-song-like lib-bot-song-items" src="/static/img/heart1.png">
             <div class="lib-bot-song-duration lib-bot-song-items">{{song.duration//60}}:{{song.duration%60}}</div>
