@@ -389,6 +389,15 @@ def show_home():
 
     return render_template('/users/home.html', songs=songs, my_playlists=my_playlists)
 
+@app.route('/your-playlists')
+def show_playlists():
+    """All Playlists Content"""
+
+    songs = Song.query.all()
+    my_playlists=g.user.userplaylists
+
+    return render_template('/users/your-playlists.html', songs=songs, my_playlists=my_playlists)
+
 
 
 def on_message(ws, message):

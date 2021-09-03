@@ -19,17 +19,14 @@
 
   <!-- LINKS -->
   <link rel="stylesheet" href="/static/css/styles.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-
 
 </head>
 
 
 
 <body>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 
   <div id="body">
@@ -65,14 +62,14 @@
             <!-- </form> -->
           </div>
           <div id="tl-playlist-wrap" class="tl-wrap">
-            <form id="tl-playlist-form" class ="link-form" action="/">
+            <!-- <form id="tl-playlist-form" class ="link-form" action="/"> -->
               <span id="tl-playlist-btn-wrap" class="link-btn-wrap">
-                <button id="tl-create-playlist-btn" class="link-btn">
+                <div id="tl-create-playlist-btn" class="link-btn">
                   <div id="tl-playlist-icon" class="tl-icon"><img id="playlist-img" class="icon-img" src="/static/img/playlists.png"/></div>
                   <div id="tl-playlist" class="tl-desc">Your Playlists</div>
-                </button>
+                </div>
               </span>  
-            </form>
+            <!-- </form> -->
           </div>
           <div id="tl-border"></div>
         </div>
@@ -183,7 +180,6 @@
  
   <script src="../../static/js/audio.js"></script>
   <script src="../../static/js/app.js"></script>
-  <script src="../../static/js/library.js"></script>
   
 </body>
 

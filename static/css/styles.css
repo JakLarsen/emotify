@@ -90,6 +90,7 @@ h1, button{
     position: relative;
     display: flex;
     height: 4rem;
+    margin-bottom: 1rem;
 }
 #icon{
     /* background-color: teal; */
@@ -765,7 +766,7 @@ h1, button{
     align-items: center;
     height: 3rem;
     margin-left: 2rem;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
 }
 #lib-top-bot{
     /* background-color: brown; */

@@ -1,6 +1,14 @@
 
 
 
+//GLOBALS
+
+
+
+let songDiv = document.getElementById('lib-bot')
+
+
+
 //MAIN LIBRARY AUDIO HANDLER
 
 

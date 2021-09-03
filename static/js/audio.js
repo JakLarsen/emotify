@@ -5,7 +5,6 @@
 
 
 
-let songDiv = document.getElementById('lib-bot')
 let playPause = document.getElementById('play-pause')
 
 let isPlaying = false
@@ -139,7 +138,7 @@ function audioHandler(songIDTarget){
 
 playPause.addEventListener('click', function(evt){
     console.log('playpause clicked')
-    
+
     console.log(evt)
     let songID = evt.path[4].dataset.song
     console.log(songID)
@@ -147,3 +146,4 @@ playPause.addEventListener('click', function(evt){
 
     audioHandler(songIDTarget)    
 })
+
