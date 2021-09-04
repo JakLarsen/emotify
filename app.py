@@ -303,6 +303,28 @@ def display_data():
     open_stream()
     return ("nothing")
 
+@app.route('/song-data/<int:song_id>')
+def retrieve_song_data(song_id):
+
+    song = Song.query.get(song_id)
+    songs = len(Song.query.all())
+    id = song.id
+    title = song.title
+    artist = song.artist
+    img = song.img
+    file = song.file
+    total_songs = songs
+
+
+    return jsonify({
+        'id':id,
+        'title':title,
+        'artist':artist,
+        'img':img,
+        'file':file,
+        'total_songs': total_songs
+    })
+
 @app.route('/add-song', methods=["GET", "POST"])
 def add_song():
     """Add song to library"""

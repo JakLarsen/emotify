@@ -73,7 +73,15 @@ function stop(currSongIDTarget){
     audio.currentTime = 0;
     console.log("Song stopped")
 }
-
+function songValidated(songIDTarget){
+    console.log('songValidated() called')
+    console.log(`songIDTarget: ${songIDTarget}`)
+    return endsWithNumber(songIDTarget)
+}
+function isCurrSong(songIDTarget){
+    console.log('isCurrSong() called')
+    return songIDTarget == currSong
+}
 function handleSRC(src){
     srcFrontClip = `..${JSON.stringify(src).substr(3)}`
     newSRC = srcFrontClip.substr(0, srcFrontClip.length-1)
@@ -107,15 +115,49 @@ function changeCurrSongDiv(entireSongDiv){
     currSongAudio.src = changeToAudioSRC
     currHeart.src = "../static/img/heart1.png"
 }
-function songValidated(songIDTarget){
-    console.log('songValidated() called')
-    console.log(`songIDTarget: ${songIDTarget}`)
-    return endsWithNumber(songIDTarget)
+function changePrevSongDiv(currentSongDiv){
+    let prevTitle = document.getElementById('prev-playing-song-title')
+    let prevArtist = document.getElementById('prevplaying-song-artist')
+    let prevImg = document.getElementById('prev-playing-song-img')
+    let prevSongData = document.getElementById('prev-playing-con').dataset
+    let prevSongAudio = document.querySelector('.audio')
+    let prevHeart = document.getElementById('prev-song-heart')
+
+    console.log(currentSongDiv)
+
+    prevTitle.innerText = 'Prev Song Test'
+
 }
-function isCurrSong(songIDTarget){
-    console.log('isCurrSong() called')
-    return songIDTarget == currSong
+async function changeNextSongDiv(currentSongDiv){
+    let nextTitle = document.getElementById('next-playing-song-title')
+    let nextArtist = document.getElementById('next-playing-song-artist')
+    let nextImg = document.getElementById('next-playing-song-img')
+    let nextSongData = document.getElementById('next-playing-con').dataset
+    let nextSongAudio = document.querySelector('.audio')
+    let nextHeart = document.getElementById('next-song-heart')
+
+
+    currID = parseInt(currentSongDiv.id)
+    let currSongData = await axios.get(`/song-data/${currID}`)
+    total_songs = currSongData.data.total_songs
+
+    nextID = currID + 1
+    if (total_songs == currID){
+        nextID = 1
+    }
+
+    let resp = await axios.get(`/song-data/${nextID}`)
+
+    nextTitle.innerText = resp.data.title
+    nextArtist.innerText = resp.data.artist
+    // nextImg.src = 
+    // nextSongData = 
+    // nextSongAudio = 
+    nextHeart.src = "../static/img/heart1.png"
 }
+
+
+
 
 
 
@@ -139,6 +181,8 @@ function audioHandler(songToPlay, newSongDiv){
                 else{
                     stop(currSong)
                     changeCurrSongDiv(newSongDiv)
+                    changePrevSongDiv(newSongDiv)
+                    changeNextSongDiv(newSongDiv)
                     updateCurrSong(songToPlay)
                     play(songToPlay)
                     isPlaying = true
@@ -154,6 +198,8 @@ function audioHandler(songToPlay, newSongDiv){
                 //Is it a different song?
                 else{
                     changeCurrSongDiv(newSongDiv)
+                    changePrevSongDiv(newSongDiv)
+                    changeNextSongDiv(newSongDiv)
                     updateCurrSong(songToPlay)
                     play(songToPlay)
                     isPlaying = true
@@ -164,6 +210,8 @@ function audioHandler(songToPlay, newSongDiv){
         //No current song
         else{
             changeCurrSongDiv(newSongDiv)
+            changePrevSongDiv(newSongDiv)
+            changeNextSongDiv(newSongDiv)
             updateCurrSong(songToPlay)
             play(songToPlay)
             isPlaying = true

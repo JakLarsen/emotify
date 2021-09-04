@@ -1,5 +1,17 @@
 Todo:
 
+- Populate previous and next based on song clicked
+- Handle logic of shifting between them
+- Connect headset to shifting between them
+- Deploy and stabilize working library and headset inputs online
+- Move on to next sections of SpringBoard while constantly updating
+
+
+
+
+
+
+- Headset icon to represent headset functionality 
 - Usersongs model
 - Delete Songs route (only user created songs should be deletable by that user)
 - Playlistsongs model
@@ -9,15 +21,16 @@ Todo:
 - Play songs from playlists pages
 - Add song to playlist functionality from display songs
 - Add song to playlist functionality from display other playlists
+- Delete Playlists route (only user created playlists should be deleteable)
 
 - Home App Screen with playlists and songs and stuff to fill
 - Add songs to playlists from Home
 -- Most listened to playlists and songs at top
 
-- Create Audio Player
-- Proper song logic handling 
+###- Create Audio Player
+###- Proper song logic handling 
 --prev/next on playlists working
---Library prev/next working
+###--Library prev/next working
 - Connect Emotiv to audio player inputs
 
 -Login/Signup logic
@@ -38,7 +51,6 @@ Todo:
 --Add headset logo to headset usable features
 
 
-
 ***Future updates***
 -Right con: Most listened to tracks or playlists
 -Search functionality through song library
@@ -52,8 +64,13 @@ Todo:
 --Smooth Transition to previous or next song.
 
 CURRENT ERRORS
---jquery isn't always loading in time or properly???
---Need to update audio player from lib and then play from there instead of playing from Lib
+
+SOLVED--jquery isn't always loading in time or properly???
+SOLVED--Need to update audio player from lib and then play from there instead of playing from Lib
+
+9/2-9/3
+###- Changed the way pages were rendered and handled to not refresh page to maintain audio
+###- Redesigned the audio logic to coordinate across all pages 
 
 8/30
 ###- Fixed create playlist
@@ -81,8 +98,6 @@ CURRENT ERRORS
 ###- Ability to Play songs in library
 ###- Library Page Styling
 ###- Library Page Complete (for now)
-
-
 
 
 
