@@ -95,7 +95,7 @@ function changeCurrSongDiv(entireSongDiv){
     let currArtist = document.getElementById('curr-playing-song-artist')
     let currImg = document.getElementById('curr-playing-song-img')
     let currSongData = document.getElementById('curr-song-audio-control-con').dataset
-    let currSongAudio = document.querySelector('.audio')
+    let currSongAudio = document.querySelector('.curr-audio')
     let currHeart = document.getElementById('curr-song-heart')
 
     let changeToTitle = entireSongDiv.querySelector('.lib-bot-song-title-name').innerText
@@ -121,7 +121,7 @@ function changePrevSongDiv(currentSongDiv){
     let prevArtist = document.getElementById('prevplaying-song-artist')
     let prevImg = document.getElementById('prev-playing-song-img')
     let prevSongData = document.getElementById('prev-playing-con').dataset
-    let prevSongAudio = document.querySelector('.audio')
+    let prevSongAudio = document.querySelector('.prev-audio')
     let prevHeart = document.getElementById('prev-song-heart')
 
     console.log(currentSongDiv)
@@ -134,9 +134,8 @@ async function changeNextSongDiv(currentSongDiv){
     let nextArtist = document.getElementById('next-playing-song-artist')
     let nextImg = document.getElementById('next-playing-song-img')
     let nextSongData = document.getElementById('next-playing-con').dataset
-    let nextSongAudio = document.querySelector('.audio')
+    let nextSongAudio = document.querySelector('.next-audio')
     let nextHeart = document.getElementById('next-song-heart')
-
 
     currID = parseInt(currentSongDiv.id)
     let currSongData = await axios.get(`/song-data/${currID}`)
@@ -153,8 +152,8 @@ async function changeNextSongDiv(currentSongDiv){
     nextArtist.innerText = resp.data.artist
     nextImg.src = resp.data.img
     nextSongData.song = resp.data.id
-    // nextSongAudio.id =  `audio_${nextID}`
-    // nextSongAudio.src = 
+    nextSongAudio.id =  `audio_${nextID}`
+    nextSongAudio.src = `../static/audio/${resp.data.file}`
     nextHeart.src = "../static/img/heart1.png"
 }
 
