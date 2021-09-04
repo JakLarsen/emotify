@@ -114,6 +114,7 @@ function changeCurrSongDiv(entireSongDiv){
     currSongAudio.id = changeToAudioID
     currSongAudio.src = changeToAudioSRC
     currHeart.src = "../static/img/heart1.png"
+
 }
 function changePrevSongDiv(currentSongDiv){
     let prevTitle = document.getElementById('prev-playing-song-title')
@@ -150,9 +151,10 @@ async function changeNextSongDiv(currentSongDiv){
 
     nextTitle.innerText = resp.data.title
     nextArtist.innerText = resp.data.artist
-    // nextImg.src = 
-    // nextSongData = 
-    // nextSongAudio = 
+    nextImg.src = resp.data.img
+    nextSongData.song = resp.data.id
+    // nextSongAudio.id =  `audio_${nextID}`
+    // nextSongAudio.src = 
     nextHeart.src = "../static/img/heart1.png"
 }
 
