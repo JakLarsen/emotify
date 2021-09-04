@@ -116,18 +116,31 @@ function changeCurrSongDiv(entireSongDiv){
     currHeart.src = "../static/img/heart1.png"
 
 }
-function changePrevSongDiv(currentSongDiv){
+async function changePrevSongDiv(currentSongDiv){
     let prevTitle = document.getElementById('prev-playing-song-title')
-    let prevArtist = document.getElementById('prevplaying-song-artist')
+    let prevArtist = document.getElementById('prev-playing-song-artist')
     let prevImg = document.getElementById('prev-playing-song-img')
     let prevSongData = document.getElementById('prev-playing-con').dataset
     let prevSongAudio = document.querySelector('.prev-audio')
     let prevHeart = document.getElementById('prev-song-heart')
 
-    console.log(currentSongDiv)
+    currID = parseInt(currentSongDiv.id)
+    let currSongData = await axios.get(`/song-data/${currID}`)
+    total_songs = currSongData.data.total_songs
 
-    prevTitle.innerText = 'Prev Song Test'
+    prevID = currID - 1
+    if (currID == 1){
+        prevID = total_songs
+    }
+    let resp = await axios.get(`/song-data/${prevID}`)
 
+    prevTitle.innerText = resp.data.title
+    prevArtist.innerText = resp.data.artist
+    prevImg.src = resp.data.img
+    prevSongData.song = resp.data.id
+    prevSongAudio.id =  `audio_${prevID}`
+    prevSongAudio.src = `../static/audio/${resp.data.file}`
+    prevHeart.src = "../static/img/heart1.png"
 }
 async function changeNextSongDiv(currentSongDiv){
     let nextTitle = document.getElementById('next-playing-song-title')
