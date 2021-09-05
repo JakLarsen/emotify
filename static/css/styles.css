@@ -393,6 +393,7 @@ h1, button{
     margin-right: 3rem;
 }
 .mid-con-link:hover{
+    cursor: pointer;
     color: #ff4a4a;
     transition: 0.25s ease-in-out;
 }

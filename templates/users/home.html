@@ -1,4 +1,34 @@
 
 
 
-<h1>HOME!</h1>
+<h1>Neural Nav WebSocket with SocketIO</h1>
+<h2>Send message from client to Flask-server:</h2>
+<!-- <form id="emit" method="POST" action='#'>
+    <input type="text" name="emit_data" id="emit_data" placeholder="Message">
+    <input type="submit" value="Echo">
+</form> -->
+<form id="display-data" method="POST" action='#'>
+    <input type="submit" value="Display Data">
+</form>
+<form id="disconnect" method="POST" action="#">
+    <input type="submit" value="Disconnect">
+</form>
+
+<!-- On button press -> AJAX call to /display_data route to open stream -->
+<script type=text/javascript>
+    $(function() {
+        $('a#stream-btn').on('click', function(e) {
+            e.preventDefault()
+            $.getJSON('/display_data', function(data) {});
+            return false;
+        });
+    });
+</script>
+
+<div class='container'>
+    <h3>Open DataStream</h3>
+    <form><a href=# id=stream-btn><button class='btn btn-default'>Open Stream</button></a></form>
+</div>
+
+<h2>Received:</h2>
+<div id="log"></div>

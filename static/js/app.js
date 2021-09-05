@@ -35,3 +35,15 @@ $('#ml-create-playlist-form').click(function(){
 });
 
 
+
+                    // OPEN STREAM
+
+
+                    
+$(function() {
+    $('#connect-headset').on('click', function(e) {
+        e.preventDefault()
+        $.getJSON('/display_data', function(data) {});
+        return false;
+    });
+});

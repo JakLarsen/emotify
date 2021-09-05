@@ -302,19 +302,9 @@ async function audioHandler(songToPlay, newSongDiv){
                     //BOT APP AUDIO HANDLER
 
 
-
-playPause.addEventListener('click', function(evt){
-    console.log('playpause clicked')
-
-    let songID = evt.path[4].dataset.song
-    let songToPlay = `audio_${songID}`
-    let newSongDiv = document.getElementById('curr-song-audio-control-con')
-
-    audioHandler(songToPlay, newSongDiv)    
-})
-
-nextBtn.addEventListener('click', async function(evt){
-    console.log('nextBtn clicked')
+                    
+async function nextEvent(){
+    console.log('nextEvent Triggered')
 
     let newSongDiv = document.getElementById('next-playing-con')
     let songToPlay = `audio_${newSongDiv.dataset.song}`
@@ -327,9 +317,10 @@ nextBtn.addEventListener('click', async function(evt){
     else{
         console.log('No current songs in app')
     }  
-})
-prevBtn.addEventListener('click', async function(evt){
-    console.log('prevBtn clicked')
+}
+
+async function prevEvent(){
+    console.log('prevEvent Triggered')
 
     let newSongDiv = document.getElementById('prev-playing-con')
     let songToPlay = `audio_${newSongDiv.dataset.song}`
@@ -342,4 +333,29 @@ prevBtn.addEventListener('click', async function(evt){
     else{
         console.log('No current songs in app')
     }  
+}
+
+function playPauseEvent(evt){
+    console.log('playPauseEvent Triggered')
+
+    let newSongDiv = document.getElementById('curr-song-audio-control-con')
+    let songToPlay = `audio_${newSongDiv.dataset.song}`
+
+    audioHandler(songToPlay, newSongDiv)    
+}
+
+
+playPause.addEventListener('click', function(evt){
+    console.log('playPauseBtn clicked')
+    playPauseEvent(evt)
+})
+
+nextBtn.addEventListener('click', async function(evt){
+    console.log('nextBtn clicked')
+    nextEvent()
+})
+
+prevBtn.addEventListener('click', async function(evt){
+    console.log('prevBtn clicked')
+    prevEvent()
 })
