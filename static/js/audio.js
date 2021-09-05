@@ -6,6 +6,8 @@
 
 
 let playPause = document.getElementById('play-pause')
+let nextBtn = document.getElementById('next-btn')
+let prevBtn = document.getElementById('prev-btn')
 
 let isPlaying = false
 let currSong = null
@@ -75,13 +77,19 @@ function isCurrSong(songIDTarget){
     console.log('isCurrSong() called')
     return songIDTarget == currSong
 }
-function handleSRC(src){
-    srcFrontClip = `..${JSON.stringify(src).substr(3)}`
+function handleSRC(src, containerType){
+    if (containerType == 'libsong'){
+        clipAmount = 3
+    }
+    else if (containerType == 'next-btn' || containerType == 'prev-btn'){
+        clipAmount = 22
+    }
+    srcFrontClip = `..${JSON.stringify(src).substr(clipAmount)}`
     newSRC = srcFrontClip.substr(0, srcFrontClip.length-1)
     return newSRC
 }
 //UPDATE CURRENT SONG HTML IN AUDIO APP
-function changeCurrSongDiv(newSongDiv){
+async function changeCurrSongDiv(newSongDiv, containerType){
     let currTitle = document.getElementById('curr-playing-song-title')
     let currArtist = document.getElementById('curr-playing-song-artist')
     let currImg = document.getElementById('curr-playing-song-img')
@@ -89,23 +97,54 @@ function changeCurrSongDiv(newSongDiv){
     let currSongAudio = document.querySelector('.curr-audio')
     let currHeart = document.getElementById('curr-song-heart')
 
-    let changeToTitle = newSongDiv.querySelector('.lib-bot-song-title-name').innerText
-    let changeToArtist = newSongDiv.querySelector('.lib-bot-song-title-artist').innerText
-    let changeToImg = newSongDiv.querySelector('#lib-bot-song-title-img').src
-    let changeToSongData = newSongDiv.id
-    let changeToAudioID = newSongDiv.firstChild.nextSibling.dataset.song
-    let changeToAudioSRC = newSongDiv.firstChild.nextSibling.dataset.src
+    let changeToTitle = ""
+    let changeToArtist = ""
+    let changeToImg = ""
+    let changeToSongData = ""
+    let changeToAudioID = ""
+    let changeToAudioSRC = ""
 
-    changeToAudioSRC = handleSRC(changeToAudioSRC)
+    console.log(`containerType: ${containerType} is typeof: ${typeof containerType}`)
 
+    if (containerType == 'libsong'){
+        console.log('containerType is libsong')
+
+        changeToTitle = newSongDiv.querySelector('.lib-bot-song-title-name').innerText
+        changeToArtist = newSongDiv.querySelector('.lib-bot-song-title-artist').innerText
+        changeToImg = newSongDiv.querySelector('#lib-bot-song-title-img').src
+        changeToSongData = newSongDiv.id
+        changeToAudioID = newSongDiv.firstChild.nextSibling.dataset.song
+        changeToAudioSRC = newSongDiv.firstChild.nextSibling.dataset.src
+        changeToAudioSRC = handleSRC(changeToAudioSRC, containerType)
+    }
+    else if (containerType == 'next-btn'){
+        changeToTitle = newSongDiv.querySelector('#next-playing-song-title').innerText
+        changeToArtist = newSongDiv.querySelector('#next-playing-song-artist').innerText
+        changeToImg = newSongDiv.querySelector('#next-playing-song-img').src
+        changeToSongData = newSongDiv.dataset.song
+        changeToAudioID = `audio_${newSongDiv.dataset.song}`
+        changeToAudioSRC = newSongDiv.firstChild.nextSibling.src
+        changeToAudioSRC = handleSRC(changeToAudioSRC, containerType)
+    }
+    else if (containerType == 'prev-btn'){
+        changeToTitle = newSongDiv.querySelector('#prev-playing-song-title').innerText
+        changeToArtist = newSongDiv.querySelector('#prev-playing-song-artist').innerText
+        changeToImg = newSongDiv.querySelector('#prev-playing-song-img').src
+        changeToSongData = newSongDiv.dataset.song
+        changeToAudioID = `audio_${newSongDiv.dataset.song}`
+        changeToAudioSRC = newSongDiv.firstChild.nextSibling.src
+        changeToAudioSRC = handleSRC(changeToAudioSRC, containerType)
+    }
+    else{
+        console.log(containerType)
+    }
     currTitle.innerText = `${changeToTitle}`
     currArtist.innerText = `${changeToArtist}`
     currImg.src = `${changeToImg}`
     currSongData.song = changeToSongData
     currSongAudio.id = changeToAudioID
     currSongAudio.src = changeToAudioSRC
-    currHeart.src = "../static/img/heart1.png"
-
+    currHeart.src = "../static/img/heart1.png"  
 }
 async function changePrevSongDiv(newSongDiv){
     let prevTitle = document.getElementById('prev-playing-song-title')
@@ -115,7 +154,7 @@ async function changePrevSongDiv(newSongDiv){
     let prevSongAudio = document.querySelector('.prev-audio')
     let prevHeart = document.getElementById('prev-song-heart')
 
-    newID = parseInt(newSongDiv.id)
+    newID = parseInt(newSongDiv.dataset.song)
     let newSongData = await axios.get(`/song-data/${newID}`)
     total_songs = newSongData.data.total_songs
 
@@ -141,7 +180,7 @@ async function changeNextSongDiv(newSongDiv){
     let nextSongAudio = document.querySelector('.next-audio')
     let nextHeart = document.getElementById('next-song-heart')
 
-    newID = parseInt(newSongDiv.id)
+    newID = parseInt(newSongDiv.dataset.song)
     let newSongData = await axios.get(`/song-data/${newID}`)
     total_songs = newSongData.data.total_songs
 
@@ -168,6 +207,9 @@ async function changeNextSongDiv(newSongDiv){
 
 
 async function audioHandler(songToPlay, newSongDiv){
+    console.log(`in audiohandler with songToPlay: ${songToPlay} and newSongDiv____`)
+    let containerType = newSongDiv.dataset.containertype
+
     //Valid Audio Target?
     if(songValidated(songToPlay)){
         //Is there already a current song?
@@ -181,9 +223,9 @@ async function audioHandler(songToPlay, newSongDiv){
                 }
                 //Is it a different song?
                 else{
+                    await changeCurrSongDiv(newSongDiv, containerType)
                     await changePrevSongDiv(newSongDiv)
                     await changeNextSongDiv(newSongDiv)
-                    changeCurrSongDiv(newSongDiv)
                     updateCurrSong(songToPlay)
                     play(songToPlay)
                     isPlaying = true
@@ -198,9 +240,9 @@ async function audioHandler(songToPlay, newSongDiv){
                 }
                 //Is it a different song?
                 else{
+                    await changeCurrSongDiv(newSongDiv, containerType)
                     await changePrevSongDiv(newSongDiv)
                     await changeNextSongDiv(newSongDiv)
-                    changeCurrSongDiv(newSongDiv)
                     updateCurrSong(songToPlay)
                     play(songToPlay)
                     isPlaying = true
@@ -210,9 +252,9 @@ async function audioHandler(songToPlay, newSongDiv){
         }
         //No current song
         else{
+            await changeCurrSongDiv(newSongDiv, containerType)
             await changePrevSongDiv(newSongDiv)
             await changeNextSongDiv(newSongDiv)
-            await changeCurrSongDiv(newSongDiv)
             updateCurrSong(songToPlay)
             play(songToPlay)
             isPlaying = true
@@ -236,7 +278,38 @@ playPause.addEventListener('click', function(evt){
 
     let songID = evt.path[4].dataset.song
     let songToPlay = `audio_${songID}`
+    let newSongDiv = document.getElementById('curr-song-audio-control-con')
 
-    audioHandler(songToPlay)    
+    audioHandler(songToPlay, newSongDiv)    
 })
 
+nextBtn.addEventListener('click', async function(evt){
+    console.log('nextBtn clicked')
+
+    let newSongDiv = document.getElementById('next-playing-con')
+    let songToPlay = `audio_${newSongDiv.dataset.song}`
+    console.log(newSongDiv.dataset.song)
+
+    if(currSong){
+        console.log('shift to next song')
+        audioHandler(songToPlay, newSongDiv)
+    }
+    else{
+        console.log('No current songs in app')
+    }  
+})
+prevBtn.addEventListener('click', async function(evt){
+    console.log('prevBtn clicked')
+
+    let newSongDiv = document.getElementById('prev-playing-con')
+    let songToPlay = `audio_${newSongDiv.dataset.song}`
+    console.log(newSongDiv.dataset.song)
+
+    if(currSong){
+        console.log('shift to prev song')
+        audioHandler(songToPlay, newSongDiv)
+    }
+    else{
+        console.log('No current songs in app')
+    }  
+})
