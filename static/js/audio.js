@@ -153,6 +153,7 @@ async function changePrevSongDiv(newSongDiv){
     let prevSongData = document.getElementById('prev-playing-con').dataset
     let prevSongAudio = document.querySelector('.prev-audio')
     let prevHeart = document.getElementById('prev-song-heart')
+    let nextDuration = document.getElementById('prev-playing-con').dataset
 
     newID = parseInt(newSongDiv.dataset.song)
     let newSongData = await axios.get(`/song-data/${newID}`)
@@ -168,9 +169,11 @@ async function changePrevSongDiv(newSongDiv){
     prevArtist.innerText = resp.data.artist
     prevImg.src = resp.data.img
     prevSongData.song = resp.data.id
+    nextDuration.duration = resp.data.duration
     prevSongAudio.id =  `audio_${prevID}`
     prevSongAudio.src = `../static/audio/${resp.data.file}`
     prevHeart.src = "../static/img/heart1.png"
+    
 }
 async function changeNextSongDiv(newSongDiv, containerType){
     let nextTitle = document.getElementById('next-playing-song-title')
@@ -179,6 +182,7 @@ async function changeNextSongDiv(newSongDiv, containerType){
     let nextSongData = document.getElementById('next-playing-con').dataset
     let nextSongAudio = document.querySelector('.next-audio')
     let nextHeart = document.getElementById('next-song-heart')
+    let nextDuration = document.getElementById('next-playing-con').dataset
 
     newID = parseInt(newSongDiv.dataset.song)
     let newSongData = await axios.get(`/song-data/${newID}`)
@@ -212,6 +216,7 @@ async function changeNextSongDiv(newSongDiv, containerType){
     nextArtist.innerText = resp.data.artist
     nextImg.src = resp.data.img
     nextSongData.song = resp.data.id
+    nextDuration.duration = resp.data.duration
     nextSongAudio.id =  `audio_${nextID}`
     nextSongAudio.src = `../static/audio/${resp.data.file}`
     nextHeart.src = "../static/img/heart1.png"

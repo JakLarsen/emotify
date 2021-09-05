@@ -409,6 +409,7 @@ def retrieve_song_data(song_id):
     title = song.title
     artist = song.artist
     img = song.img
+    duration = song.duration
     file = song.file
     total_songs = songs
 
@@ -419,6 +420,7 @@ def retrieve_song_data(song_id):
         'artist':artist,
         'img':img,
         'file':file,
+        'duration':duration,
         'total_songs': total_songs
     })
 
