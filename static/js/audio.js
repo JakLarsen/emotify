@@ -52,14 +52,17 @@ function pause(songIDTarget){
     console.log('pause() called')
     let audio = document.getElementById(songIDTarget)
     console.log(`Trying to pause song: ${songIDTarget}`)
+    console.log('Our audio element to be paused_______')
+    console.log(audio)
     audio.pause();  
     console.log("Song paused") 
 }
-async function stop(currSongIDTarget){
+function stop(currSongIDTarget){
     console.log('(8) stop() called')
     console.log(`(9) Trying to stop ${currSongIDTarget}`)
 
     let audio = document.getElementById(currSongIDTarget)
+    console.log(document.getElementById(currSongIDTarget).parentElement)
 
 
     console.log('Our audio element to be stopped_______')
@@ -79,8 +82,6 @@ function handleSRC(src){
 }
 //UPDATE CURRENT SONG HTML IN AUDIO APP
 function changeCurrSongDiv(newSongDiv){
-    console.log(`(13) changeCurrSongDiv`)
-
     let currTitle = document.getElementById('curr-playing-song-title')
     let currArtist = document.getElementById('curr-playing-song-artist')
     let currImg = document.getElementById('curr-playing-song-img')
@@ -92,9 +93,7 @@ function changeCurrSongDiv(newSongDiv){
     let changeToArtist = newSongDiv.querySelector('.lib-bot-song-title-artist').innerText
     let changeToImg = newSongDiv.querySelector('#lib-bot-song-title-img').src
     let changeToSongData = newSongDiv.id
-    console.log(`(13) new song id should be 2: ${changeToSongData}`)
     let changeToAudioID = newSongDiv.firstChild.nextSibling.dataset.song
-    console.log(`(13) new song data id should be 2: ${changeToSongData}`)
     let changeToAudioSRC = newSongDiv.firstChild.nextSibling.dataset.src
 
     changeToAudioSRC = handleSRC(changeToAudioSRC)
@@ -109,9 +108,6 @@ function changeCurrSongDiv(newSongDiv){
 
 }
 async function changePrevSongDiv(newSongDiv){
-    console.log(`(11) changePrevSongDiv called with NEW song div object______`)
-    console.log(newSongDiv)
-
     let prevTitle = document.getElementById('prev-playing-song-title')
     let prevArtist = document.getElementById('prev-playing-song-artist')
     let prevImg = document.getElementById('prev-playing-song-img')
@@ -119,11 +115,7 @@ async function changePrevSongDiv(newSongDiv){
     let prevSongAudio = document.querySelector('.prev-audio')
     let prevHeart = document.getElementById('prev-song-heart')
 
-    console.log(`(11) our new song id = currId: ${newSongDiv.id}`)
-    console.log(`(11) It should be 2 if we're testing from 3 to 2`)
-    console.log(`(11) currSong is currently should be audio_3: ${currSong}`)
     newID = parseInt(newSongDiv.id)
-    console.log(`(11) Awaiting axios.get data for song at id newID: ${newID}`)
     let newSongData = await axios.get(`/song-data/${newID}`)
     total_songs = newSongData.data.total_songs
 
@@ -131,24 +123,17 @@ async function changePrevSongDiv(newSongDiv){
     if (newID == 1){
         prevID = total_songs
     }
-    console.log(`(11) Awaiting axios.get data for song at id prevID: ${prevID}`)
+
     let resp = await axios.get(`/song-data/${prevID}`)
-    console.log(`(11) response data received`)
-    console.log(`(11) Updating Title; should be Welcome to the Jungle: ${resp.data.title}`)
     prevTitle.innerText = resp.data.title
     prevArtist.innerText = resp.data.artist
     prevImg.src = resp.data.img
-    console.log(`(11) Updating data-song; should be 1: ${resp.data.id}`)
     prevSongData.song = resp.data.id
-    console.log(`(11) Updating audio id; should be audio_1 but just 1: ${prevID}`)
     prevSongAudio.id =  `audio_${prevID}`
-    console.log(`(11) Updating audio src; should be welcometothejungle.mp3: ${resp.data.file}`)
     prevSongAudio.src = `../static/audio/${resp.data.file}`
     prevHeart.src = "../static/img/heart1.png"
 }
 async function changeNextSongDiv(newSongDiv){
-    console.log('(12) calling changeNextSongDiv')
-
     let nextTitle = document.getElementById('next-playing-song-title')
     let nextArtist = document.getElementById('next-playing-song-artist')
     let nextImg = document.getElementById('next-playing-song-img')
@@ -157,7 +142,6 @@ async function changeNextSongDiv(newSongDiv){
     let nextHeart = document.getElementById('next-song-heart')
 
     newID = parseInt(newSongDiv.id)
-    console.log(`(12) newID should be 2 if going from 3 to 2: ${newID}`)
     let newSongData = await axios.get(`/song-data/${newID}`)
     total_songs = newSongData.data.total_songs
 
@@ -166,9 +150,7 @@ async function changeNextSongDiv(newSongDiv){
         nextID = 1
     }
 
-    console.log(`(12) nextID should be 3 if going from 3 to 2: ${nextID}`)
     let resp = await axios.get(`/song-data/${nextID}`)
-    console.log(`(12) response data received`)
     
     nextTitle.innerText = resp.data.title
     nextArtist.innerText = resp.data.artist
@@ -187,34 +169,22 @@ async function changeNextSongDiv(newSongDiv){
 
 async function audioHandler(songToPlay, newSongDiv){
     //Valid Audio Target?
-    console.log('(2) Calling songValidated')
     if(songValidated(songToPlay)){
         //Is there already a current song?
         if (currSong){
-            console.log(`(4) checking if currSong exists (should be audio_3) currSong: ${currSong}`)
             //Is it playing?
             if (isPlaying){
-                console.log(`(5) Let's say currSong is playing so isPlaying is true: ${isPlaying}`)
                 //Is songToPlay the current song?
-                console.log(`(6) Calling isCurrSong(songToPlay). It should be false`)
                 if(isCurrSong(songToPlay)){
                     pause(currSong)
                     isPlaying = false
                 }
                 //Is it a different song?
                 else{
-                    console.log(`(7) isCurrSong is not songToPlay`)
-                    console.log(`(7.5) we are calling stop sending in (${currSong})`)
-                    await stop(currSong)
-                    console.log(`(11) calling to changePrevSongDiv`)
                     await changePrevSongDiv(newSongDiv)
-                    console.log(`(12) calling to changeNextSongDiv`)
                     await changeNextSongDiv(newSongDiv)
-                    console.log(`(13) calling to changeCurrSongDiv`)
                     changeCurrSongDiv(newSongDiv)
-                    console.log(`(14) calling to updateCurrSong`)
                     updateCurrSong(songToPlay)
-                    console.log(`(15) calling to play songToPlay: ${songToPlay}`)
                     play(songToPlay)
                     isPlaying = true
                 }
@@ -230,7 +200,7 @@ async function audioHandler(songToPlay, newSongDiv){
                 else{
                     await changePrevSongDiv(newSongDiv)
                     await changeNextSongDiv(newSongDiv)
-                    await changeCurrSongDiv(newSongDiv)
+                    changeCurrSongDiv(newSongDiv)
                     updateCurrSong(songToPlay)
                     play(songToPlay)
                     isPlaying = true
