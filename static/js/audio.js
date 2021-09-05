@@ -216,6 +216,11 @@ async function changeNextSongDiv(newSongDiv, containerType){
     nextSongAudio.src = `../static/audio/${resp.data.file}`
     nextHeart.src = "../static/img/heart1.png"
 }
+function updateDuration(newSongDiv){
+    let duration = newSongDiv.dataset.duration
+    let end = document.getElementById('end')
+    end.innerText = `${Math.floor(duration/60)}:${duration%60}`
+}
 
 
 
@@ -243,6 +248,7 @@ async function audioHandler(songToPlay, newSongDiv){
                     await changeCurrSongDiv(newSongDiv, containerType)
                     await changePrevSongDiv(newSongDiv)
                     await changeNextSongDiv(newSongDiv, containerType)
+                    updateDuration(newSongDiv)
                     updateCurrSong(songToPlay)
                     play(songToPlay)
                     isPlaying = true
@@ -260,6 +266,7 @@ async function audioHandler(songToPlay, newSongDiv){
                     await changeCurrSongDiv(newSongDiv, containerType)
                     await changePrevSongDiv(newSongDiv)
                     await changeNextSongDiv(newSongDiv, containerType)
+                    updateDuration(newSongDiv)
                     updateCurrSong(songToPlay)
                     play(songToPlay)
                     isPlaying = true
@@ -272,6 +279,7 @@ async function audioHandler(songToPlay, newSongDiv){
             await changeCurrSongDiv(newSongDiv, containerType)
             await changePrevSongDiv(newSongDiv)
             await changeNextSongDiv(newSongDiv, containerType)
+            updateDuration(newSongDiv)
             updateCurrSong(songToPlay)
             play(songToPlay)
             isPlaying = true

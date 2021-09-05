@@ -23,7 +23,7 @@
         <div class="library-spacer"></div>
         
         {%for song in songs%}
-        <div class="lib-bot-song" id="{{song.id}}" data-containertype="libsong" data-song="{{song.id}}">
+        <div class="lib-bot-song" id="{{song.id}}" data-containertype="libsong" data-song="{{song.id}}" data-duration="{{song.duration}}">
             <div data-song="audio_{{song.id}}" data-src="../static/audio/{{song.file}}"></div>
             <div id="{{song.id}}" class="lib-bot-song-id lib-bot-song-items">{{song.id}}</div>
             <div class="lib-bot-song-title lib-bot-song-items">
