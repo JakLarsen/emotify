@@ -18,6 +18,9 @@ if(typeof songDiv == 'undefined'){
         let entireSongDiv = evt.path[1]
         let songIDTarget = `audio_${evt.path[0].id}`
 
+        console.log(`(1) Clicked a song. Sending songIDTarget: ${songIDTarget} and entiresongdiv to audiohandler().`)
+        console.log(entireSongDiv)
+
         audioHandler(songIDTarget, entireSongDiv)
     })
 }
