@@ -124,9 +124,9 @@ def determine_input(data_obj):
         return "neutral"
 
     """Can comment out code above and just return any of the values for testing purposes"""
-    # return "pull"
-    # # return "neutral"
-    # return "push"
+    return "pull"
+    return "neutral"
+    return "push"
 
 def restrict_data(data_obj):
     """

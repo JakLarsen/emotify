@@ -68,6 +68,27 @@ CURRENT ERRORS
 SOLVED--jquery isn't always loading in time or properly???
 SOLVED--Need to update audio player from lib and then play from there instead of playing from Lib
 
+9/5
+### Next functionality working
+### Prev functionality working
+### Websockets added to actual site
+### System connectivity to headset, logic, etc working
+### Headset playing/pausing songs, next functionality on push, prev functionality pull
+### Consider requering 2 consecutive inputs for commands to be acted upon
+
+
+
+
+### IT LIVESSSSSSSSSSSSSSSS
+
+
+
+
+
+9/4
+### Lots of work on audio logic
+### Lots of work starting prev and next funcitonality
+
 9/2-9/3
 ###- Changed the way pages were rendered and handled to not refresh page to maintain audio
 ###- Redesigned the audio logic to coordinate across all pages 
