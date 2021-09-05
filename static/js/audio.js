@@ -172,7 +172,7 @@ async function changePrevSongDiv(newSongDiv){
     prevSongAudio.src = `../static/audio/${resp.data.file}`
     prevHeart.src = "../static/img/heart1.png"
 }
-async function changeNextSongDiv(newSongDiv){
+async function changeNextSongDiv(newSongDiv, containerType){
     let nextTitle = document.getElementById('next-playing-song-title')
     let nextArtist = document.getElementById('next-playing-song-artist')
     let nextImg = document.getElementById('next-playing-song-img')
@@ -184,10 +184,27 @@ async function changeNextSongDiv(newSongDiv){
     let newSongData = await axios.get(`/song-data/${newID}`)
     total_songs = newSongData.data.total_songs
 
-    nextID = newID + 1
-    if (total_songs == newID){
-        nextID = 1
+    nextID = 1
+    if (containerType != 'prev-btn'){
+        nextID = newID + 1
+        if (total_songs == newID){
+            nextID = 1
+        }
     }
+    else{
+        if (newID <= total_songs-2){
+            nextID = newID + 2
+        }
+        else if(newID == total_songs-1){
+            nextID = 1
+        }
+        else{
+            nextID = 2
+        }
+    }
+
+    console.log(`nextID: ${nextID}`)
+    
 
     let resp = await axios.get(`/song-data/${nextID}`)
     
@@ -225,7 +242,7 @@ async function audioHandler(songToPlay, newSongDiv){
                 else{
                     await changeCurrSongDiv(newSongDiv, containerType)
                     await changePrevSongDiv(newSongDiv)
-                    await changeNextSongDiv(newSongDiv)
+                    await changeNextSongDiv(newSongDiv, containerType)
                     updateCurrSong(songToPlay)
                     play(songToPlay)
                     isPlaying = true
@@ -242,7 +259,7 @@ async function audioHandler(songToPlay, newSongDiv){
                 else{
                     await changeCurrSongDiv(newSongDiv, containerType)
                     await changePrevSongDiv(newSongDiv)
-                    await changeNextSongDiv(newSongDiv)
+                    await changeNextSongDiv(newSongDiv, containerType)
                     updateCurrSong(songToPlay)
                     play(songToPlay)
                     isPlaying = true
@@ -254,7 +271,7 @@ async function audioHandler(songToPlay, newSongDiv){
         else{
             await changeCurrSongDiv(newSongDiv, containerType)
             await changePrevSongDiv(newSongDiv)
-            await changeNextSongDiv(newSongDiv)
+            await changeNextSongDiv(newSongDiv, containerType)
             updateCurrSong(songToPlay)
             play(songToPlay)
             isPlaying = true
