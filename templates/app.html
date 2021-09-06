@@ -33,17 +33,17 @@
           //updates page based on push, pull, or neutral input received
           if (input == 'push'){
               $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON PUSH COMMAND').html());
-              $('#mid-mid-con').css('background-color', 'blue');
+              // $('#mid-mid-con').css('background-color', 'blue');
               nextEvent()
           }
           else if (input == 'pull'){
               $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON PULL COMMAND').html());
-              $('#mid-mid-con').css('background-color', 'yellow');
+              // $('#mid-mid-con').css('background-color', 'yellow');
               prevEvent()
           }
           else{
               $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON NEUTRAL COMMAND').html());
-              $('#mid-mid-con').css('background-color', 'red');
+              // $('#mid-mid-con').css('background-color', 'red');
               // nextEvent()
               // playPauseEvent()
           }
@@ -182,12 +182,23 @@
               <span id="connect-headset" class="mid-con-link">Connect Headset<img id="hs-img-top" class="hs-img" src="../static/img/hs2.png"></span>
             </div>
           <div class="ball-spacer"></div>
-          <div id="mid-logout"><span class="mid-con-link" href="/logout">Logout</a></div>
+          <div id="mid-logout"><a class="mid-con-link" href="/logout">Logout</a></div>
           </div>
           
         </div>
         <div id="mid-mid-con">
           {% block content %}
+          <div id="home-con" class="template-con">
+            <div id="home-top" class="template-top">
+              <div id="home-tl" class="template-tl">
+                <img id="home-img"  class="template-img" src="https://i.redd.it/jt3kkegbrb661.jpg">
+              </div>
+              <div id="home-tr" class="template-tr">
+                <div id="home-banner" class="">Nice to see you</div>
+                <div id="home-caption" class="template-caption">Your music. At the ease of thought.</div>
+              </div>
+            </div>
+          </div>
           {% endblock %}
         </div>
         <div id="bm-spacer"></div>

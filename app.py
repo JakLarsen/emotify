@@ -277,7 +277,6 @@ def login():
                                     form.password.data)
             if user:
                 do_login(user)
-                flash(f"Hello, {user.username}!", "success")
                 return redirect("/")
             flash("Invalid credentials.")
         return render_template('users/login.html', form=form)
@@ -291,28 +290,37 @@ def logout():
 @app.route('/data')
 def data():
     """Display a page dedicated to showing data from headset inputs"""
-    return render_template('data.html')
+    if g.user:
+        return render_template('data.html')
+    else:
+        return redirect('/')
 
 @app.route('/display_data')
 def display_data():
     """Opens subscription stream to Emotiv Headset"""
-    print (f"Opening Stream", flush =  True)
-    print("******************************************", flush =  True)
-    print("******************************************", flush =  True)
-    print("******************************************", flush =  True)
-    open_stream()
-    return ("nothing")
+
+    if g.user:
+        print (f"Opening Stream", flush =  True)
+        print("******************************************", flush =  True)
+        print("******************************************", flush =  True)
+        print("******************************************", flush =  True)
+        open_stream()
+        return ("nothing")
+    else:
+        return redirect('/')
 
 
 @app.route('/add-song', methods=["GET", "POST"])
 def add_song():
     """Add song to library"""
 
-    my_playlists = g.user.userplaylists
-
     if not g.user:
         flash("Access unauthorized.")
         return redirect("/")
+
+    my_playlists = g.user.userplaylists
+
+
 
     form = AddSongForm()
     if form.validate_on_submit():
@@ -344,11 +352,11 @@ def add_song():
 def create_playlist():
     """Create a Playlist and associate it with a User"""
 
-    my_playlists=g.user.userplaylists
-
     if not g.user:
         flash("Access unauthorized.")
         return redirect('/')
+    
+    my_playlists=g.user.userplaylists
     
     form = AddPlaylistForm()
     if form.validate_on_submit():
@@ -377,6 +385,10 @@ def create_playlist():
 def show_songs():
     """Library of songs added by all Users"""
 
+    if not g.user:
+        flash("Access unauthorized.")
+        return redirect('/')
+
     songs = Song.query.all()
     my_playlists=g.user.userplaylists
 
@@ -384,6 +396,11 @@ def show_songs():
 
 @app.route('/playlist/<int:id>')
 def show_playlist(id):
+    """Show individual playlist"""
+
+    if not g.user:
+        flash("Access unauthorized.")
+        return redirect('/')
 
     playlist = Playlist.query.get_or_404(id)
     return render_template('users/playlist.html', playlist=playlist)
@@ -391,6 +408,10 @@ def show_playlist(id):
 @app.route('/home')
 def show_home():
     """Home Content"""
+
+    if not g.user:
+        flash("Access unauthorized.")
+        return redirect('/')
 
     songs = Song.query.all()
     my_playlists=g.user.userplaylists
@@ -401,6 +422,10 @@ def show_home():
 def show_playlists():
     """All Playlists Content"""
 
+    if not g.user:
+        flash("Access unauthorized.")
+        return redirect('/')
+
     songs = Song.query.all()
     my_playlists=g.user.userplaylists
 
@@ -408,6 +433,10 @@ def show_playlists():
 
 @app.route('/song-data/<int:song_id>')
 def retrieve_song_data(song_id):
+
+    if not g.user:
+        flash("Access unauthorized.")
+        return redirect('/')
 
     song = Song.query.get(song_id)
     songs = len(Song.query.all())

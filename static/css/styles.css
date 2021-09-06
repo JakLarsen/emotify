@@ -839,7 +839,6 @@ h1, button{
     font-size: 5rem;
     font-weight: 700;
     color: #fff;
-    width: 25rem;
 }
 .template-caption{
     /* background-color: orange; */
@@ -984,7 +983,7 @@ h1, button{
 
 
 #yp-con{
-    background: linear-gradient(#112926, #4afff6);
+    background: linear-gradient(#112926, #4affde);
 }
 #yp-playlists-con{
     /* background-color: rgba(0, 0, 0, 1); */
@@ -1089,15 +1088,62 @@ h1, button{
     position: relative;
     display: flex;
     /* background-color: red; */
+    width: 40rem;
 }
 #p-img{
     max-height: 20rem;
     min-height: 15rem;
     min-width: 15rem;
 }
+#p-title{
+    font-size: 3.5rem;
+}
+#
 
 
 
+                    /* HOME PAGE */
+
+
+
+#home-con{
+    background: linear-gradient(#112529, #4afff6);
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+}
+#home-top{
+    /* background-color: red; */
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 2rem;
+}
+#home-tl{
+    /* background-color: blue; */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#home-img{
+    max-width: 12rem;
+}
+#home-tr{
+    /* background-color: yellow; */
+    position: relative;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: 100%;
+    color: #fff;
+    margin-left: 2rem;
+}
+#home-banner{
+    font-weight: 700;
+    font-size: 3.5rem;
+}
 
 
 
