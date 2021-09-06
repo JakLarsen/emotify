@@ -154,9 +154,15 @@
               </span>  
             </form>
           </div>
-          <div id="ml-playlist-wrap">
+          <div id="ml-playlist-con">
             {% for playlist in my_playlists %}
-              <div class="ml-playlist" id="mid-playlist-{{playlist.id}}">{{playlist.title}}</div>
+            <div id="ml-playlist-wrap">
+              <div class="ml-playlist" id="mid-playlist-{{playlist.id}}" method="POST">{{playlist.title}}</div>
+              <form class="ml-del-btn-form" action="/playlist/{{playlist.id}}/delete">
+                <button class="ml-del-btn">X</button>
+              </form>
+            </div>
+              
             {% endfor %}
           </div>
         </div>

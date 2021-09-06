@@ -372,13 +372,46 @@ def create_playlist():
 
         #this except isn't working
         except:
-            flash("Song already in library, or something went wrong")
             return render_template('users/create-playlist.html', form=form, my_playlists=my_playlists)
 
-        return render_template('users/submit.html', form=form, my_playlists=my_playlists)
+        return redirect('/')
 
     else:
         return render_template('users/create-playlist.html', form=form, my_playlists=my_playlists)
+
+def validate_user_playlist(playlistLi, id):
+    """Validates that the playlist is one of the User's"""
+
+    for playlist in playlistLi:
+        if id == playlist.id:
+            return True
+    return False
+
+
+@app.route('/playlist/<int:id>/delete', methods=["GET","POST"])
+def delete_playlist(id):
+    """Delete a Playlist that a User has created"""
+
+    print("hit delete endpoint", flush=True)
+    if not g.user:
+        flash("Access unauthorized.")
+        return redirect('/')
+    
+    user_playlists = g.user.userplaylists
+    playlist = Playlist.query.get_or_404(id)
+
+    if validate_user_playlist(user_playlists, id):
+        db.session.delete(playlist)
+        db.session.commit()
+
+
+    return redirect("/")
+
+    # if validate_user_playlist(user_playlists, id):
+
+
+
+
 
 
 @app.route('/library')

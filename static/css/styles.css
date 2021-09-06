@@ -195,12 +195,19 @@ h1, button{
 }
 #ml-plus-desc{
 }
-#ml-playlist-wrap{
+#ml-playlist-con{
     /* background-color: rebeccapurple; */
     position: relative;
     display: flex;
     flex-flow: column nowrap;
     min-height: 2rem;
+}
+#ml-playlist-wrap{
+    /* background-color: springgreen; */
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
 }
 .ml-playlist{
     /* background-color: yellow; */
@@ -213,8 +220,29 @@ h1, button{
     font-size: 0.8rem;
     font-weight: 600;
     padding-left: 1.5rem;
+    width: 12rem;
 }
 .ml-playlist:hover{
+    cursor: pointer;
+    background-color: #ff4a4a;
+    color: #fff;
+    opacity: 0.9;
+    transition: 0.5s ease-in-out;
+}
+.ml-del-btn{
+    background-color: #fff;
+    border-style: none;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    text-decoration: none;
+    font-weight: 700;
+    color: #ff4a4a;
+}
+.ml-del-btn:hover{
     cursor: pointer;
     background-color: #ff4a4a;
     color: #fff;
@@ -1098,7 +1126,6 @@ h1, button{
 #p-title{
     font-size: 3.5rem;
 }
-#
 
 
 
