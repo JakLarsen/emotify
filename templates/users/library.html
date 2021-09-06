@@ -19,6 +19,7 @@
             <div id="lib-bot-nav-album" class="lib-bot-nav-items">ALBUM</div>
             <div id="lib-bot-nav-like" class="lib-bot-nav-items"><img id="lib-bot-nav-like-img" src="../../static/img/heart1.png"></div>
             <div id="lib-bot-nav-duration" class="lib-bot-nav-items"><img id="lib-bot-nav-duration-img" src="../../static/img/clock2.png"></div>
+            <div id="lib-bot-nav-delete" class="lib-bot-nav-items">X</div>
         </div>
         <div class="library-spacer"></div>
         
@@ -38,6 +39,12 @@
             <div class="lib-bot-song-album lib-bot-song-items">{{song.album}}</div>
             <img class="lib-bot-song-like lib-bot-song-items" src="/static/img/heart1.png">
             <div class="lib-bot-song-duration lib-bot-song-items">{{song.duration//60}}:{{song.duration%60}}</div>
+            {% if song.user_id == g.user.id %}
+                <form class="song-del-form" action="/song/{{song.id}}/delete" method="POST">
+                    <button id = "song-del-{{song.id}}" class="lib-bot-song-delete lib-bot-song-items">X</button> 
+                </form>
+                 
+            {% endif %}
         </div>
         {%endfor%}
     </div>

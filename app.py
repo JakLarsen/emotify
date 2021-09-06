@@ -7,7 +7,7 @@ from flask_socketio import SocketIO, emit, join_room, leave_room, \
     close_room, rooms, disconnect
 import websocket
 from sqlalchemy.exc import IntegrityError
-from models import db, connect_db, User, Song, Userplaylist, Playlist
+from models import db, connect_db, User, Song, Userplaylist, Playlist, Usersong
 from forms import LoginForm, UserAddForm, AddSongForm, AddPlaylistForm
 from random import randint
 from cortex import Cortex, jake_data
@@ -332,8 +332,9 @@ def add_song():
             img = form.img.data
             file= form.file.data
             duration = form.duration.data
+            user_id = g.user.id
 
-            new_song = Song(title=title, artist=artist, album=album, img=img, file=file, duration=duration)
+            new_song = Song(title=title, artist=artist, album=album, img=img, file=file, duration=duration, user_id=user_id)
 
             db.session.add(new_song)
             db.session.commit()
@@ -343,7 +344,7 @@ def add_song():
             flash("Song already in library, or something went wrong")
             return render_template('users/add-song.html', form=form, my_playlists=my_playlists)
 
-        return render_template('users/submit.html', form=form, my_playlists=my_playlists)
+        return redirect('/')
 
     else:
         return render_template('users/add-song.html', form=form, my_playlists=my_playlists)
@@ -409,7 +410,22 @@ def delete_playlist(id):
 
     # if validate_user_playlist(user_playlists, id):
 
+@app.route('/song/<int:id>/delete', methods=["POST"])
+def delete_song(id):
+    """Delete a Song that a User has created"""
 
+    print("hit delete endpoint", flush=True)
+    if not g.user:
+        flash("Access unauthorized.")
+        return redirect('/')
+    
+    songToDelete = Song.query.get(id)
+    
+    db.session.delete(songToDelete)
+    db.session.commit()
+
+
+    return redirect("/")
 
 
 

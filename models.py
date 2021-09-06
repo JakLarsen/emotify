@@ -41,6 +41,9 @@ class Song(db.Model):
         db.Text,
         nullable = False,
     )
+    user_id = db.Column(
+        db.Integer
+    )
 
 class Playlist(db.Model):
     """A user's Playlist"""
@@ -76,6 +79,21 @@ class Userplaylist(db.Model):
     playlist_id = db.Column(
         db.Integer,
         db.ForeignKey('playlists.id', ondelete="cascade"),
+        primary_key = True,
+    )
+
+class Usersong(db.Model):
+    """Connection of users <--> songs"""
+    __tablename__ = 'usersongs'
+
+    user_id = db.Column(
+        db.Integer,
+        db.ForeignKey('users.id', ondelete="cascade"),
+        primary_key = True,
+    )
+    song_id = db.Column(
+        db.Integer,
+        db.ForeignKey('songs.id', ondelete="cascade"),
         primary_key = True,
     )
 

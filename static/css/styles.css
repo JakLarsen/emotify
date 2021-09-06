@@ -241,6 +241,7 @@ h1, button{
     text-decoration: none;
     font-weight: 700;
     color: #ff4a4a;
+    opacity: 0.4;
 }
 .ml-del-btn:hover{
     cursor: pointer;
@@ -942,7 +943,13 @@ h1, button{
 }
 #lib-bot-nav-duration, .lib-bot-song-duration{
     /* background-color: teal; */
-    margin-left: 7rem;
+    width: 4rem;
+    margin-left: 5rem;
+}
+#lib-bot-nav-delete{
+    margin-left: 5rem;
+    font-weight: 600;
+
 }
 
 .library-spacer{
@@ -1002,6 +1009,25 @@ h1, button{
     cursor: pointer;
     opacity: 1;
 }
+.lib-bot-song-delete{
+    /* background-color: red; */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 2rem;
+    margin-left: 4.3rem;
+    font-weight: 600;
+    border-radius: 3px;
+}
+.lib-bot-song-delete:hover{
+    cursor: pointer;
+    background-color: #fff;
+    color:#ff1515;
+    transition: 0.3s ease;
+}
+
 
 
 
@@ -1102,8 +1128,7 @@ h1, button{
     background: linear-gradient(#111629, #4a83ff);
     position: relative;
     display: flex;
-    flex-flow: row nowrap;
-
+    flex-flow: column nowrap;
 }
 #p-tl{
     position: relative;
