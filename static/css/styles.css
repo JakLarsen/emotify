@@ -397,6 +397,21 @@ h1, button{
     color: #ff4a4a;
     transition: 0.25s ease-in-out;
 }
+#hs-img-top{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1rem;
+    margin-left: 0.5rem;
+}
+#connect-headset{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 #mid-mid-con{
     /* background-color: rgb(255, 190, 215); */
@@ -551,7 +566,7 @@ h1, button{
     justify-content: center;
     align-items: center;
     height: 4.5rem;
-    width: 30rem;
+    width: 31rem;
     color: #eee;
 }
 #audio-controls-wrap{
@@ -606,6 +621,14 @@ h1, button{
 #play-pause:hover{
     height: 3.1rem;
     width: 3.1rem;
+}
+#hs-img-audio{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1rem;
+    margin-left: 1rem;
 }
 
 #duration-bar{
