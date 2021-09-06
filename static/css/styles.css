@@ -985,24 +985,31 @@ h1, button{
     background: linear-gradient(#112926, #4afff6);
 }
 #yp-playlists-con{
-    /* background-color: yellow; */
+    /* background-color: rgba(0, 0, 0, 1); */
     position: relative;
     display: flex;
-    flex-flow: row nowrap;
-    margin: 0rem 2rem;
-    /* box-shadow: 0 0 20px rgba(0,0,0,0.2); */
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    padding: 1rem;
 }
 .yp-playlist{
     /* background-color: red; */
-    background-color: #707070;
+    background-color: #2e2e2e;
     position: relative;
     display: flex;
-    flex-flow: column nowrap;
-    height: 16rem;
-    width: 10rem;
-    margin:0.5rem 5rem;
+    flex-flow: row nowrap;
+    height: 10rem;
+    width: 25rem;
+    margin:0.5rem 1rem;
     box-shadow: 0 0 20px rgba(0,0,0,0.2);
     border-radius: 5px;
+}
+.yp-playlist:hover{
+    cursor: pointer;
+    background-color: rgba(49, 49, 49, 0.8);
+    transition: 0.3s ease;
 }
 .yp-playlist-1{
     /* background-color: blue; */
@@ -1015,6 +1022,12 @@ h1, button{
     width: 10rem;
     border-radius: 5px 0;
     box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+.yp-img:hover{
+    width: 9rem;
+    height: 9rem;
+    padding: 0.5rem;
+    transition: 0.3s ease;
 }
 .yp-img-0{
     /* margin-bottom: 1rem; */
