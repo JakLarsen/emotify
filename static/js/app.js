@@ -36,6 +36,20 @@ $('#ml-create-playlist-form').click(function(){
 
 
 
+                    //AUDIO CONTROL EVENTS
+
+
+
+// $('#prev-playing-con').click(function(){
+//     prevEvent()
+// });
+// $('#next-playing-con').click(function(){
+//     nextEvent()
+// });
+// $('#curr-song-audio-control-con').click(function(){
+//     playPauseEvent()
+// });
+
                     // OPEN STREAM
 
 

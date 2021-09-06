@@ -335,7 +335,7 @@ async function prevEvent(){
     }  
 }
 
-function playPauseEvent(evt){
+function playPauseEvent(){
     console.log('playPauseEvent Triggered')
 
     let newSongDiv = document.getElementById('curr-song-audio-control-con')
@@ -347,7 +347,7 @@ function playPauseEvent(evt){
 
 playPause.addEventListener('click', function(evt){
     console.log('playPauseBtn clicked')
-    playPauseEvent(evt)
+    playPauseEvent()
 })
 
 nextBtn.addEventListener('click', async function(evt){
@@ -359,3 +359,13 @@ prevBtn.addEventListener('click', async function(evt){
     console.log('prevBtn clicked')
     prevEvent()
 })
+
+$('#prev-playing-con').click(function(){
+    prevEvent()
+});
+$('#next-playing-con').click(function(){
+    nextEvent()
+});
+$('#curr-playing-con').click(function(){
+    playPauseEvent()
+});
