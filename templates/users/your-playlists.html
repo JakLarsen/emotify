@@ -12,11 +12,26 @@
         </div>
     </div>
 
-    <div id="yp-bot" class="template-bot">
-        <div id="yp-bot-nav" class="">
-
-        </div>
-        <div class="library-spacer"></div>
-
+    <div id="yp-playlists-con">
+        {%for playlist in my_playlists %}
+            {% if playlist.id % 2 == 0 %}
+                <div id="yp-playlist-{{playlist.id}}" class="yp-playlist yp-playlist-0">
+                <img id="yp-img-{{playlist.id}}" class="yp-img-0 yp-img" src="{{playlist.img}}">
+                <div id="" class="yp-text-wrap">
+                    <div id="yp-title-{{playlist.id}}" class="yp-title">{{playlist.title}}</div>
+                    <div id="yp-desc-{{playlist.id}}" class="yp-desc">{{playlist.description}}</div>
+                </div>
+                
+            {% else %} 
+                <div id="yp-playlist-{{playlist.id}}" class="yp-playlist yp-playlist-1">
+                <div id="" class="yp-text-wrap">    
+                    <div id="yp-title-{{playlist.id}}" class="yp-title">{{playlist.title}}</div>
+                    <div id="yp-desc-{{playlist.id}}" class="yp-desc">{{playlist.description}}</div>
+                </div>
+                <img id="yp-img-{{playlist.id}}" class="yp-img-1 yp-img" src="{{playlist.img}}">
+            {% endif %}
+            </div>
+            
+        {%endfor%}
     </div>
 </div>

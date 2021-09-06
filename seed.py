@@ -4,11 +4,11 @@ from app import db
 db.drop_all()
 db.create_all()
 
-u1 = User(username="Jake", password="123", email = "jake@com.com")
-u2 = User(username="Mike", password="1234", email = "mike@com.com")
-u3 = User(username="Abby", password="1234", email = "abby@com.com")
-u4 = User(username="Mikee", password="1234", email = "mikee@com.com")
-u5 = User(username="Mikeee", password="1234", email = "mikeee@com.com")
+u1 = User(username="Jake", password="asdasd", email = "jake@com.com")
+u2 = User(username="Mike", password="asdasd", email = "mike@com.com")
+u3 = User(username="Abby", password="asdasd", email = "abby@com.com")
+u4 = User(username="Mikee", password="asdasd", email = "mikee@com.com")
+u5 = User(username="Mikeee", password="asdasd", email = "mikeee@com.com")
 
 s1 = Song(title="Welcome to the Jungle", artist="Guns N' Roses", album="Appetite for Destruction", duration=271, img='https://images-na.ssl-images-amazon.com/images/I/51K7n%2Bp70OL.jpg', file="welcometothejungle.mp3")
 s3 = Song(title="Point of Know Return", artist="Kansas", album="Point of Know Return", duration=192, img='https://images-na.ssl-images-amazon.com/images/I/81DV-IyzlVL._SL1500_.jpg', file="pointofknowreturn.mp3")
