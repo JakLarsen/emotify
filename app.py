@@ -96,9 +96,9 @@ profile_name = 'Jake Main'
 #interval 2, 20 items(if time incl.) is about 10 inputs over 1s, no data processed for 1s, 20items over 1s, no data 1s
 #40 inputs over 2s has overlap about .5s and 2.5s spread of data ->interval needs to be higher to process
 settings = {
-    'input_threshold': 13,
-    'interval': 2,
-    'items': 20
+    'input_threshold': 25,
+    'interval': 4,
+    'items': 40
 }
     
 def determine_input(data_obj):

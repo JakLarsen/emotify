@@ -1,8 +1,8 @@
 Todo:
 
-- Populate previous and next based on song clicked
-- Handle logic of shifting between them
-- Connect headset to shifting between them
+###- Populate previous and next based on song clicked
+###- Handle logic of shifting between them
+###- Connect headset to shifting between them
 - Deploy and stabilize working library and headset inputs online
 - Move on to next sections of SpringBoard while constantly updating
 

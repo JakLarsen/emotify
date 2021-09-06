@@ -466,6 +466,7 @@ h1, button{
 .song-player-con:hover, #curr-playing-con:hover{
     cursor: pointer;
     background-color: rgb(99, 99, 99);
+    transition: 0.3s ease;
 }
 #curr-playing-song-img{
     max-height: 4rem;
@@ -745,7 +746,7 @@ h1, button{
 
 
 
-                    /* LIBRARY */
+                    /* LIBRARY AND TEMPLATE TOP*/
 
 
 
@@ -754,7 +755,7 @@ h1, button{
     position: relative;
     margin-top: 10rem;
 } */
-#lib-con{
+.template-con{
     background: linear-gradient(#291111, #ff4a4a);
     /* background-color: red; */
     position: relative;
@@ -764,14 +765,14 @@ h1, button{
     overflow-y: auto;
 }
 
-#lib-top{
+.template-top{
     /* background-color: red; */
     position: relative;
     display: flex;
     flex-flow: column nowrap;
     margin-bottom: 2rem;
 }
-#lib-top-top{
+.template-top-top{
     /* background-color: yellow; */
     position: relative;
     display: flex;
@@ -780,7 +781,7 @@ h1, button{
     margin-left: 2rem;
     /* margin-top: 1rem; */
 }
-#lib-top-bot{
+.template-top-bot{
     /* background-color: brown; */
     position: relative;
     display: flex;
@@ -789,18 +790,18 @@ h1, button{
     margin-left: 2rem;
     margin-top: 1rem;
 }
-#lib-tl{
+.template-tl{
     /* background-color: blue; */
     position: relative;
     display: flex;
     align-items: center;
     width: 12rem;
 }
-#lib-img{
+.template-img{
     max-width: 12rem;
     box-shadow: 0 0 25px rgba(0,0,0,0.5);
 }
-#lib-tr{
+.template-tr{
     /* background-color: blueviolet; */
     position: relative;
     display: flex;
@@ -808,14 +809,14 @@ h1, button{
     justify-content: flex-end;
     margin-left: 1rem;
 }
-#lib-title{
+.template-title{
     /* background-color: teal; */
     font-size: 5rem;
     font-weight: 700;
     color: #fff;
     width: 25rem;
 }
-#lib-caption{
+.template-caption{
     /* background-color: orange; */
     font-size: 0.9rem;
     font-weight: 700;
@@ -823,7 +824,7 @@ h1, button{
     padding-left: 0.35rem;
 }
 
-#lib-bot{
+.template-bot{
     background-color: rgba(0,0,0,0.7);
     position: relative;
     display: flex;
@@ -850,6 +851,8 @@ h1, button{
 }
 
 .lib-bot-song-id{
+    background-color: rgb(33, 4, 4);
+    color: #fff;
     position: relative;
     display: flex;
     justify-content: center;
@@ -857,6 +860,7 @@ h1, button{
     font-weight: 700;
     height: 2rem;
     width: 2rem;
+    border-radius: 100%;
 }
 .lib-bot-song-id:hover{
     cursor: pointer;
@@ -908,6 +912,7 @@ h1, button{
     background-color: #1c0707;
     color: #FFF;
     font-weight: 600;
+    transition: 0.3s ease;
 }
 .lib-bot-song-title-wrap{
     /* background-color: blue; */
@@ -946,6 +951,15 @@ h1, button{
     opacity: 1;
 }
 
+
+
+                    /* YOUR PLAYLIST PAGE */
+
+
+
+#yp-con{
+    background: linear-gradient(#112926, #4afff6);
+}
 
 
 
