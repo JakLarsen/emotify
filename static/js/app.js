@@ -33,22 +33,13 @@ $('#ml-create-playlist-form').click(function(){
     console.log('You clicked the logo')
     midCon.load("/create-playlist")
 });
+$('.ml-playlist').click(function(evt){
+    let target = evt.currentTarget.id
+    let playlistID = target.substr(13)
+    midCon.load(`/playlist/${playlistID}`)
+});
 
 
-
-                    //AUDIO CONTROL EVENTS
-
-
-
-// $('#prev-playing-con').click(function(){
-//     prevEvent()
-// });
-// $('#next-playing-con').click(function(){
-//     nextEvent()
-// });
-// $('#curr-song-audio-control-con').click(function(){
-//     playPauseEvent()
-// });
 
                     // OPEN STREAM
 

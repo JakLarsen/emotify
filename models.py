@@ -79,6 +79,21 @@ class Userplaylist(db.Model):
         primary_key = True,
     )
 
+class Playlistsong(db.Model):
+    """Connection of playlists <--> songs"""
+    __tablename__ = 'playlistsongs'
+
+    playlist_id = db.Column(
+        db.Integer,
+        db.ForeignKey('playlists.id', ondelete="cascade"),
+        primary_key = True,
+    )
+    song_id = db.Column(
+        db.Integer,
+        db.ForeignKey('songs.id', ondelete="cascade"),
+        primary_key = True,
+    )
+
 class User(db.Model):
     """User in the system."""
     __tablename__ = 'users'

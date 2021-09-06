@@ -382,6 +382,12 @@ def show_songs():
 
     return render_template('/users/library.html', songs=songs, my_playlists=my_playlists)
 
+@app.route('/playlist/<int:id>')
+def show_playlist(id):
+
+    playlist = Playlist.query.get_or_404(id)
+    return render_template('users/playlist.html', playlist=playlist)
+
 @app.route('/home')
 def show_home():
     """Home Content"""

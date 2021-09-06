@@ -156,7 +156,7 @@
           </div>
           <div id="ml-playlist-wrap">
             {% for playlist in my_playlists %}
-              <div class="ml-playlist">{{playlist.title}}</div>
+              <div class="ml-playlist" id="mid-playlist-{{playlist.id}}">{{playlist.title}}</div>
             {% endfor %}
           </div>
         </div>

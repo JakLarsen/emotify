@@ -1067,6 +1067,34 @@ h1, button{
 
 
 
+                    /* INDIVIDUAL PLAYLIST */
+
+
+
+#p-con{
+    background: linear-gradient(#111629, #4a83ff);
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+
+}
+#p-tl{
+    position: relative;
+    display: flex;
+    /* background-color: orchid; */
+    width: 15rem;
+    height: 15rem;
+}
+#p-tr{
+    position: relative;
+    display: flex;
+    /* background-color: red; */
+}
+#p-img{
+    max-height: 20rem;
+    min-height: 15rem;
+    min-width: 15rem;
+}
 
 
 
