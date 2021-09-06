@@ -1,21 +1,20 @@
+
+
+
+
+
 Todo:
 
-###- Populate previous and next based on song clicked
-###- Handle logic of shifting between them
-###- Connect headset to shifting between them
+
 - Deploy and stabilize working library and headset inputs online
 - Move on to next sections of SpringBoard while constantly updating
 
 
 
 
-
-
-- Headset icon to represent headset functionality 
 - Usersongs model
 - Delete Songs route (only user created songs should be deletable by that user)
 - Playlistsongs model
-- Your Playlists Page
 - Library as a Playlist Model
 - Individual playlists pages
 - Play songs from playlists pages
@@ -26,12 +25,6 @@ Todo:
 - Home App Screen with playlists and songs and stuff to fill
 - Add songs to playlists from Home
 -- Most listened to playlists and songs at top
-
-###- Create Audio Player
-###- Proper song logic handling 
---prev/next on playlists working
-###--Library prev/next working
-- Connect Emotiv to audio player inputs
 
 -Login/Signup logic
 -force lowercase when processing usernames to ensure no duplicates
@@ -45,10 +38,6 @@ Todo:
 -Right Divs
 -Typography
 -Gif for playing vs paused
--Fix clickable area for song play in Library
-
-
---Add headset logo to headset usable features
 
 
 ***Future updates***
@@ -68,6 +57,16 @@ CURRENT ERRORS
 SOLVED--jquery isn't always loading in time or properly???
 SOLVED--Need to update audio player from lib and then play from there instead of playing from Lib
 
+
+
+
+
+9/6
+###-Fix clickable area for song play in Library
+###- Headset icon to represent headset functionality 
+###-Add headset logo to headset usable features
+###- Your Playlists Page
+
 9/5
 ### Next functionality working
 ### Prev functionality working
@@ -75,7 +74,9 @@ SOLVED--Need to update audio player from lib and then play from there instead of
 ### System connectivity to headset, logic, etc working
 ### Headset playing/pausing songs, next functionality on push, prev functionality pull
 ### Consider requering 2 consecutive inputs for commands to be acted upon
-
+###- Populate previous and next based on song clicked
+###- Handle logic of shifting between them
+###- Connect headset to shifting between them
 
 
 
@@ -83,15 +84,17 @@ SOLVED--Need to update audio player from lib and then play from there instead of
 
 
 
-
-
 9/4
 ### Lots of work on audio logic
 ### Lots of work starting prev and next funcitonality
+###--Library prev/next working
+###- Connect Emotiv to audio player inputs
 
 9/2-9/3
 ###- Changed the way pages were rendered and handled to not refresh page to maintain audio
 ###- Redesigned the audio logic to coordinate across all pages 
+###- Create Audio Player
+###- Proper song logic handling 
 
 8/30
 ###- Fixed create playlist
@@ -119,6 +122,7 @@ SOLVED--Need to update audio player from lib and then play from there instead of
 ###- Ability to Play songs in library
 ###- Library Page Styling
 ###- Library Page Complete (for now)
+
 
 
 
