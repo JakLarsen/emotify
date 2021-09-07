@@ -17,7 +17,7 @@ if(typeof songDiv == 'undefined'){
 
        
         console.log(`(1) Clicked a song. Sending songIDTarget: ${songIDTarget} and entiresongdiv to audiohandler().`)
-        // console.log(entireSongDiv)
+        console.log(entireSongDiv)
 
         audioHandler(songIDTarget, entireSongDiv)
        

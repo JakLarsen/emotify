@@ -1011,6 +1011,9 @@ h1, button{
 }
 .lib-bot-song-delete{
     /* background-color: red; */
+    background-color: #000;
+    opacity: 0.5;
+    color: #fff;
     position: relative;
     display: flex;
     justify-content: center;
@@ -1020,11 +1023,13 @@ h1, button{
     margin-left: 4.3rem;
     font-weight: 600;
     border-radius: 3px;
+    border-style: none;
 }
 .lib-bot-song-delete:hover{
     cursor: pointer;
     background-color: #fff;
     color:#ff1515;
+    opacity: 1;
     transition: 0.3s ease;
 }
 
