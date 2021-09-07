@@ -29,7 +29,7 @@
         <div class="pl-spacer"></div>
 
         {%for song in songs%}
-            <div class="pl-song-wrap" data-songid="{{song.id}}" data-songidx="{{loop.index}}">
+            <div class="pl-song-wrap" data-songpl="{{playlist.id}}" data-songid="{{song.id}}" data-songidx="{{loop.index}}" data-songtitle="{{song.title}}" data-songartist="{{song.artist}}", data-songalbum="{{song.album}}", data-songduration="{{song.duration}}", data-songimg="{{song.img}}", data-songfile="{{song.file}}">
                 <div class="pl-song-index pl-song-item">{{loop.index}}</div>
                 <img class="pl-song-img pl-song-item" src="{{song.img}}">
                 <div class="pl-song-title-artist-wrap">
@@ -49,3 +49,4 @@
 
     </div>
 </div>  
+<script src="../../static/js/playlist.js"></script>

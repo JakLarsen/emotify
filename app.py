@@ -518,6 +518,29 @@ def retrieve_song_data(song_id):
         'total_songs': total_songs
     })
 
+@app.route('/playlist-data/<int:playlist_id>')
+def retrieve_playlist_data(playlist_id):
+    if not g.user:
+        flash("Access unauthorized.")
+        return redirect('/')
+
+    playlist = Playlist.query.get(playlist_id)
+    length = len(playlist.playlistsongs)
+    return('success')
+
+    id=playlist.id
+    title=playlist.title
+    description=playlist.description
+    img = playlist.img
+
+    return jsonify({
+        'id':id,
+        'title':title,
+        'description':description,
+        'img':img,
+        'length':length
+    })
+
 
 
 
