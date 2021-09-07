@@ -1,7 +1,22 @@
+                    
+                    
+                    
+                    // GLOBALS
+
+
+
+let playPause = document.getElementById('play-pause')
+let nextBtn = document.getElementById('next-btn')
+let prevBtn = document.getElementById('prev-btn')
+
 let isPlaying = false
 let currSong = null
 
-async function updateCurrSongDiv(song){
+
+
+
+
+function updateCurrSongDiv(song){
     let currTitle = document.getElementById('curr-playing-song-title')
     let currArtist = document.getElementById('curr-playing-song-artist')
     let currImg = document.getElementById('curr-playing-song-img')
@@ -9,20 +24,55 @@ async function updateCurrSongDiv(song){
     let currSongAudio = document.querySelector('.curr-audio')
     let currHeart = document.getElementById('curr-song-heart')
 
-    let changeToTitle = song.title
-    let changeToArtist = song.artist
-    let changeToImg = song.img
-    let changeToSongData = ""
-    let changeToAudioID = song.id
-    let changeToAudioSRC = `../static/audio/${song.file}`
-
-    currTitle.innerText = `${changeToTitle}`
-    currArtist.innerText = `${changeToArtist}`
-    currImg.src = `${changeToImg}`
-    currSongData.song = changeToSongData
-    currSongAudio.id = changeToAudioID
-    currSongAudio.src = changeToAudioSRC
+    currTitle.innerText = song.title
+    currArtist.innerText = song.artist
+    currImg.src = song.img
+    currSongData.songid = song.id
+    currSongData.songidx = song.idx
+    currSongData.pll = song.pll
+    currSongAudio.id = song.id
+    currSongAudio.src = `../static/audio/${song.file}`
     currHeart.src = "../static/img/heart1.png"  
+}
+function updateNextSongDiv(nextSong){
+    let nextTitle = document.getElementById('next-playing-song-title')
+    let nextArtist = document.getElementById('next-playing-song-artist')
+    let nextImg = document.getElementById('next-playing-song-img')
+    let nextSongData = document.getElementById('next-playing-con').dataset
+    let nextSongAudio = document.querySelector('.next-audio')
+    let nextHeart = document.getElementById('next-song-heart')
+    let nextDuration = document.getElementById('next-playing-con').dataset    
+    
+    nextTitle.innerText = nextSong.title
+    nextArtist.innerText = nextSong.artist
+    nextImg.src = nextSong.img
+    nextSongData.songid = nextSong.id
+    nextSongData.songidx =  nextSong.idx
+    nextSongData.pll = nextSong.pll
+    nextDuration.duration = nextSong.duration
+    nextSongAudio.id =  nextSong.id
+    nextSongAudio.src = `../static/audio/${nextSong.file}`
+    nextHeart.src = "../static/img/heart1.png"
+}
+function updatePrevSongDiv(prevSong){
+    let prevTitle = document.getElementById('prev-playing-song-title')
+    let prevArtist = document.getElementById('prev-playing-song-artist')
+    let prevImg = document.getElementById('prev-playing-song-img')
+    let prevSongData = document.getElementById('prev-playing-con').dataset
+    let prevSongAudio = document.querySelector('.prev-audio')
+    let prevHeart = document.getElementById('prev-song-heart')
+    let nextDuration = document.getElementById('prev-playing-con').dataset
+
+    prevTitle.innerText = prevSong.title
+    prevArtist.innerText = prevSong.artist
+    prevImg.src = prevSong.img
+    prevSongData.songid = prevSong.id
+    prevSongData.songidx = prevSong.idx
+    prevSongData.pll = prevSong.pll
+    nextDuration.duration = prevSong.duration
+    prevSongAudio.id =  prevSong.id
+    prevSongAudio.src = `../static/audio/${prevSong.file}`
+    prevHeart.src = "../static/img/heart1.png"
 }
 
 function updateCurrSong(song){
@@ -52,7 +102,7 @@ function pause(currSong){
 
 }
 
-async function audioHandler(song){
+function audioHandler(song, prevSong="", nextSong=""){
     console.log(`audioHandler() called`)
     
     //IS THERE A CURRENT SONG
@@ -68,8 +118,8 @@ async function audioHandler(song){
             //IS IT A DIFF SONG
             else{
                 updateCurrSongDiv(song)
-                // updatePrevSongDiv(song)
-                // updateNextSongDiv(song)
+                updatePrevSongDiv(prevSong)
+                updateNextSongDiv(nextSong)
                 updateCurrSong(song)
                 updateDuration(song)
                 play(song)
@@ -86,8 +136,8 @@ async function audioHandler(song){
             //IS IT A DIFF SONG
             else{
                 updateCurrSongDiv(song)
-                // updatePrevSongDiv(song)
-                // updateNextSongDiv(song)
+                updatePrevSongDiv(prevSong)
+                updateNextSongDiv(nextSong)
                 updateCurrSong(song)
                 updateDuration(song)
                 play(song)
@@ -98,8 +148,8 @@ async function audioHandler(song){
     //NO CURRENT SONG YET
     else{
         updateCurrSongDiv(song)
-        // updatePrevSongDiv(song)
-        // updateNextSongDiv(song)
+        updatePrevSongDiv(prevSong)
+        updateNextSongDiv(nextSong)
         updateCurrSong(song)
         updateDuration(song)
         play(song)
@@ -107,3 +157,111 @@ async function audioHandler(song){
     }
 
 }
+
+
+
+
+
+
+                    //BOT APP AUDIO HANDLER
+
+
+                    
+async function nextEvent(){
+    console.log('nextEvent Triggered')
+
+    if(currSong){
+        let currSongIDX = parseInt(document.getElementById('next-playing-con').dataset.songidx)
+        let pll = parseInt(document.getElementById('next-playing-con').dataset.pll)
+
+       
+        let nextSongIDX = ""
+        if (currSongIDX == pll){
+            nextSongIDX = 1
+        }
+        else{
+            nextSongIDX = currSongIDX + 1
+        }
+
+        let prevSongIDX = ""
+        if (currSongIDX == 1){
+            prevSongIDX = 6
+        }
+        else{
+            prevSongIDX = currSongIDX - 1
+        }
+
+
+        // console.log(`pll: ${pll}, prevSongIDX: ${prevSongIDX}, currSongIDX: ${currSongIDX}, nextSongIDX: ${nextSongIDX}`)
+
+        let song = await getSongData(currSongIDX)
+        let prevSong = await getSongData(prevSongIDX)
+        let nextSong = await getSongData(nextSongIDX)
+
+        audioHandler(song, prevSong, nextSong)
+    }
+}
+
+async function prevEvent(){
+    console.log('prevEvent Triggered')
+
+    if(currSong){
+        let currSongIDX = parseInt(document.getElementById('prev-playing-con').dataset.songidx)
+        let pll = parseInt(document.getElementById('prev-playing-con').dataset.pll)
+
+        let prevSongIDX = ""
+        if (currSongIDX == 1){
+            prevSongIDX = pll
+        }
+        else{
+            prevSongIDX = currSongIDX - 1
+        }
+
+        let nextSongIDX = ""
+        if (currSongIDX == pll){
+            nextSongIDX = 1
+        }
+        else{
+            nextSongIDX = currSongIDX + 1
+        }
+ 
+
+        // console.log(`pll: ${pll}, prevSongIDX: ${prevSongIDX}, currSongIDX: ${currSongIDX}, nextSongIDX: ${nextSongIDX}`)
+
+        let song = await getSongData(currSongIDX)
+        let prevSong = await getSongData(prevSongIDX)
+        let nextSong = await getSongData(nextSongIDX)
+
+        audioHandler(song, prevSong, nextSong)
+    }
+}
+
+//WORKS
+function playPauseEvent(){
+    console.log('playPauseEvent() called')
+    if(currSong){
+        audioHandler(currSong, "", "")  
+    } 
+}
+
+playPause.addEventListener('click', function(evt){
+    playPauseEvent()
+})
+
+nextBtn.addEventListener('click', async function(evt){
+    nextEvent()
+})
+
+prevBtn.addEventListener('click', async function(evt){
+    prevEvent()
+})
+
+$('#prev-playing-con').click(function(){
+    prevEvent()
+});
+$('#next-playing-con').click(function(){
+    nextEvent()
+});
+$('#curr-playing-con').click(function(){
+    playPauseEvent()
+});

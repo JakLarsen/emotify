@@ -4,10 +4,25 @@
 
 
 
+async function getSongData(songIDX){
 
+    let songDiv = document.getElementById(`pl-song-${songIDX}`)
+    let playlistData = await axios.get(`/playlist-data/${songDiv.dataset.songpl}`)
 
-
-
+    ourSong = {
+        id: songDiv.dataset.songid,
+        idx: songDiv.dataset.songidx,
+        title: songDiv.dataset.songtitle,
+        artist: songDiv.dataset.songartist,
+        album: songDiv.dataset.songalbum,
+        duration: songDiv.dataset.songduration,
+        img: songDiv.dataset.songimg,
+        file: songDiv.dataset.songfile,
+        playlist: songDiv.dataset.songpl,
+        pll: playlistData.data.length
+    }
+    return ourSong
+}
 
 if(typeof songArea == 'undefined'){
     let songArea = document.querySelector('.pl-con')
@@ -20,34 +35,28 @@ if(typeof songArea == 'undefined'){
         if (evt.path[0].classList.contains('pl-song-index')){
             console.log('clicked to play a song')
 
-            let id = evt.path[1].dataset.songid
-            let idx = evt.path[1].dataset.songidx
-            let title = evt.path[1].dataset.songtitle
-            let artist = evt.path[1].dataset.songartist
-            let album = evt.path[1].dataset.songalbum
-            let duration = evt.path[1].dataset.songduration
-            let img = evt.path[1].dataset.songimg
-            let file = evt.path[1].dataset.songfile
-            let playlist = evt.path[1].dataset.songpl
-
-            let playlistData = await axios.get(`/playlist-data/${playlist}`)
-            console.log(playlistData)
-
-            let newSong = {
-                id:id,
-                idx:idx,
-                title:title,
-                artist:artist,
-                album:album,
-                duration:duration,
-                img:img,
-                file:file,
-                playlist:playlist
+            let newSong = await getSongData(evt.path[1].dataset.songid)
+            console.log(newSong)
+        
+            //CATCH NEW SONG BEING FIRST SONG TO CIRCLE AROUND FOR PREV SONG
+            if (newSong.idx > 1){
+                prevSongIDX = parseInt(newSong.idx)-1
+            }
+            else{
+                prevSongIDX = newSong.pll
+            }
+            //CATCH NEW SONG BEING LAST SONG TO CIRCLE BACK FOR NEXT SONG
+            if (newSong.idx == newSong.pll){
+                nextSongIDX = 1
+            }
+            else{
+                nextSongIDX = parseInt(newSong.idx) + 1
             }
 
-            console.log(evt.path)
+            let prevSong = await getSongData(prevSongIDX)
+            let nextSong = await getSongData(nextSongIDX)
 
-            // audioHandler(newSong)
+            audioHandler(newSong, prevSong, nextSong)
         }
     })
 }

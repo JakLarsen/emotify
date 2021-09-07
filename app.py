@@ -526,7 +526,6 @@ def retrieve_playlist_data(playlist_id):
 
     playlist = Playlist.query.get(playlist_id)
     length = len(playlist.playlistsongs)
-    return('success')
 
     id=playlist.id
     title=playlist.title

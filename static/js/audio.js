@@ -309,7 +309,7 @@ async function audioHandler(songToPlay, newSongDiv){
 
 
                     
-async function nextEvent(){
+function nextEvent(){
     console.log('nextEvent Triggered')
 
     let newSongDiv = document.getElementById('next-playing-con')
@@ -325,7 +325,7 @@ async function nextEvent(){
     }  
 }
 
-async function prevEvent(){
+function prevEvent(){
     console.log('prevEvent Triggered')
 
     let newSongDiv = document.getElementById('prev-playing-con')
@@ -352,17 +352,14 @@ function playPauseEvent(){
 
 
 playPause.addEventListener('click', function(evt){
-    console.log('playPauseBtn clicked')
     playPauseEvent()
 })
 
 nextBtn.addEventListener('click', async function(evt){
-    console.log('nextBtn clicked')
     nextEvent()
 })
 
 prevBtn.addEventListener('click', async function(evt){
-    console.log('prevBtn clicked')
     prevEvent()
 })
 
