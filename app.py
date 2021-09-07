@@ -339,6 +339,7 @@ def add_song():
 
             new_song = Song(title=title, artist=artist, album=album, img=img, file=file, duration=duration, user_id=user_id)
             db.session.add(new_song)
+            db.session.commit()
             #Add new song to Library
             new_playlistsong = Playlistsong(playlist_id=1, song_id = new_song.id)
             db.session.add(new_playlistsong)

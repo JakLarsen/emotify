@@ -40,8 +40,8 @@
                 <div class="pl-song-like pl-song-item"><img class="pl-song-like-img" src="../../static/img/heart1.png"></div>
                 <div class="pl-song-duration pl-song-item">{{song.duration//60}}:{{song.duration%60}}</div>
                 {% if song.user_id == g.user.id %}
-                    <form class="song-del-form" action="/song/{{song.id}}/delete" method="POST">
-                        <button id = "song-del-{{song.id}}" class="pl-song-del pl-song-item">X</button> 
+                    <form class="pl-song-del-form pl-song-item" action="/song/{{song.id}}/delete" method="POST">
+                        <button id = "pl-song-del-{{song.id}}" class="pl-song-del-btn">X</button> 
                     </form>
                 {% endif %}
             </div>
