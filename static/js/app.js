@@ -55,3 +55,29 @@ $(function() {
         return false;
     });
 });
+
+
+
+// RIGHT CLICK HANDLER
+
+
+if (document.addEventListener) {
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+
+        //Draw right click menu
+        if (e.path[0].classList.contains('pl-song-wrap')){
+            alert('You hit a song with right click!')
+            
+
+        }
+
+
+    }, false);
+  } else {
+    document.attachEvent('oncontextmenu', function(e) {
+
+      alert("You've tried to open context menu");
+      window.event.returnValue = false;
+    });
+  }

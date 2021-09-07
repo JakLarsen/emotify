@@ -1130,7 +1130,7 @@ h1, button{
 
 /*TOP*/
 #p-con{
-    background: linear-gradient(hsl(9, 100%, 65%), #291711);
+    background: linear-gradient(#c46b6b, #291711);
     position: relative;
     display: flex;
     flex-flow: column nowrap;
