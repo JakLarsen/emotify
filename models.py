@@ -67,6 +67,11 @@ class Playlist(db.Model):
         default = 'img.url',
     )
 
+    playlistsongs = db.relationship(
+        'Song',
+        secondary="playlistsongs"
+    )
+
 class Userplaylist(db.Model):
     """Connection of users <--> playlists"""
     __tablename__ = 'userplaylists'

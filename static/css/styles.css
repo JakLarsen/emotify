@@ -1129,8 +1129,9 @@ h1, button{
 
 
 
+/*TOP*/
 #p-con{
-    background: linear-gradient(#111629, #4a83ff);
+    background: linear-gradient(#291711, hsl(9, 100%, 65%));
     position: relative;
     display: flex;
     flex-flow: column nowrap;
@@ -1156,6 +1157,162 @@ h1, button{
 #p-title{
     font-size: 3.5rem;
 }
+
+/*PL CONTAINER AND NAV*/
+.pl-con{
+    background-color: rgba(0,0,0,0.7);
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    padding-bottom: 1rem;
+}
+.pl-nav{
+    /* background-color: red; */
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 0.5rem 0;
+}
+.pl-nav-item{
+    /* background-color: blue; */
+    position: relative;
+    display: flex;
+    color: rgb(174, 174, 174);
+    padding-left: 1rem;
+    font-weight: 400;
+    font-size: 0.85rem;
+}
+.pl-nav-id{
+    /* background-color: pink; */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-left: 1rem;
+    width: 4rem;
+    padding-left: 0;
+    opacity: 0.8;
+    font-weight: 600;
+}
+.pl-nav-title{
+    /* background-color: blue; */
+    width: 14rem;
+}
+.pl-nav-album{
+    /* background-color: pink; */
+    width: 12rem;
+}
+.pl-nav-like{
+    /* background-color: blue; */
+    width: 5rem;
+}
+.pl-nav-like-img{
+    max-width: 1rem;
+}
+.pl-nav-duration{
+    /* background-color: pink; */
+    width: 5rem;
+}
+.pl-nav-duration-img{
+    max-width: 1rem;
+}
+.pl-nav-delete{
+    /* background-color: blue; */
+    width: 5rem;
+    font-weight: 600;
+    opacity: 0.8;
+}
+.pl-spacer{
+    position: relative;
+    display: flex;
+    align-self: center;
+    height: 1px;
+    background-color: #aaa;
+    margin-bottom: 0.5rem;
+    width: 95%;
+}
+
+
+/* EACH SONG */
+.pl-song-wrap{
+    /* background-color: chartreuse; */
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    height: 3.5rem;
+    padding: 0.5rem;
+}
+.pl-song-item{
+    padding-left: 1rem;
+}
+.pl-song-index{
+    background-color: #fff;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-left: 1.25rem;
+    margin-right: 0.75rem;
+    border-radius: 100%;
+    padding-left: 0rem;
+    color: #aaa;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+.pl-song-img{
+    /* background-color: red; */
+    padding-left: 0;
+    margin-left: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.pl-song-title-artist-wrap{
+    /* background-color: coral; */
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    height: 2.5rem;
+    padding-left: 0.5rem;
+    width: 12rem;
+}
+.pl-song-title{
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.85rem
+}
+.pl-song-artist{
+    color: #aaa;
+    font-size: 0.8rem;
+}
+.pl-song-album{
+    /* background-color: cornflowerblue; */
+    width: 12rem;
+    color: #aaa;
+    font-size: 0.8rem;
+}
+.pl-song-like{
+    /* background-color: crimson; */
+    position: relative;
+    display: flex;
+    width: 5rem;
+}
+.pl-song-like-img{
+    width: 1rem;
+    height: 1rem;  
+}
+.pl-song-duration{
+    /* background-color: crimson; */
+    width: 5rem;
+    color: #aaa;
+    font-size: 0.8rem;
+}
+
+
+
 
 
 

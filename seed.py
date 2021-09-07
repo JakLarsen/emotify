@@ -29,12 +29,14 @@ up4 = Userplaylist(user_id=2, playlist_id=3)
 up5 = Userplaylist(user_id=2, playlist_id=2)
 up6 = Userplaylist(user_id=2, playlist_id=4)
 
+# Seeding library with all songs
 ps1 = Playlistsong(playlist_id=1, song_id=1)
 ps2 = Playlistsong(playlist_id=1, song_id=2)
 ps3 = Playlistsong(playlist_id=1, song_id=3)
 ps4 = Playlistsong(playlist_id=1, song_id=4)
 ps5 = Playlistsong(playlist_id=1, song_id=5)
 
+#A random playlist
 ps6 = Playlistsong(playlist_id=2, song_id=1)
 ps7 = Playlistsong(playlist_id=2, song_id=2)
 ps8 = Playlistsong(playlist_id=2, song_id=4)

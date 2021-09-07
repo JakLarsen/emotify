@@ -17,35 +17,35 @@
     </div>
 
 
-    <div id="lib-bot" class="template-bot">
-        <div id="lib-bot-nav">
-            <div id="lib-bot-nav-id" class="lib-bot-nav-items">#</div>
-            <div id="lib-bot-nav-title" class="lib-bot-nav-items">TITLE</div>
-            <div id="lib-bot-nav-album" class="lib-bot-nav-items">ALBUM</div>
-            <div id="lib-bot-nav-like" class="lib-bot-nav-items"><img id="lib-bot-nav-like-img" src="../../static/img/heart1.png"></div>
-            <div id="lib-bot-nav-duration" class="lib-bot-nav-items"><img id="lib-bot-nav-duration-img" src="../../static/img/clock2.png"></div>
-            <div id="lib-bot-nav-delete" class="lib-bot-nav-items">X</div>
+    <div class="pl-con">
+        <div class="pl-nav">
+            <div class="pl-nav-id pl-nav-item">#</div>
+            <div class="pl-nav-title pl-nav-item">TITLE</div>
+            <div class="pl-nav-album pl-nav-item">ALBUM</div>
+            <div class="pl-nav-like pl-nav-item"><img class="pl-nav-like-img" src="../../static/img/heart1.png"></div>
+            <div class="pl-nav-duration pl-nav-item"><img class="pl-nav-duration-img" src="../../static/img/clock2.png"></div>
+            <div class="pl-nav-delete pl-nav-item">X</div>
         </div>
-        <div class="library-spacer"></div>
-        
+        <div class="pl-spacer"></div>
+
         {%for song in songs%}
-        <div class="lib-bot-song" id="{{song.id}}" data-containertype="libsong" data-song="{{song.id}}" data-duration="{{song.duration}}">
-            <div data-song="audio_{{song.id}}" data-src="../static/audio/{{song.file}}"></div>
-            <div id="{{song.id}}" class="lib-bot-song-id lib-bot-song-items">{{ loop.index }}</div>
-            <div class="lib-bot-song-title lib-bot-song-items">
-                <div class="lib-bot-song-title-wrap">
-                    <div class="lib-bot-song-img"><img id="lib-bot-song-title-img" src="{{song.img}}"></div>
-                    <div class="lib-bot-song-title-artist-wrap">
-                        <div class="lib-bot-song-title-name">{{song.title}}</div>
-                        <div class="lib-bot-song-title-artist">{{song.artist}}</div>
-                    </div>
+            <div class="pl-song-wrap" data-songid="{{song.id}}" data-songidx="{{loop.index}}">
+                <div class="pl-song-index pl-song-item">{{loop.index}}</div>
+                <img class="pl-song-img pl-song-item" src="{{song.img}}">
+                <div class="pl-song-title-artist-wrap">
+                    <div class="pl-song-title">{{song.title}}</div>
+                    <div class="pl-song-artist">{{song.artist}}</div>
                 </div>
+                <div class="pl-song-album">{{song.album}}</div>
+                <div class="pl-song-like pl-song-item"><img class="pl-song-like-img" src="../../static/img/heart1.png"></div>
+                <div class="pl-song-duration pl-song-item">{{song.duration//60}}:{{song.duration%60}}</div>
+                {% if song.user_id == g.user.id %}
+                    <form class="song-del-form" action="/song/{{song.id}}/delete" method="POST">
+                        <button id = "song-del-{{song.id}}" class="pl-song-del pl-song-item">X</button> 
+                    </form>
+                {% endif %}
             </div>
-            <div class="lib-bot-song-album lib-bot-song-items">{{song.album}}</div>
-            <img class="lib-bot-song-like lib-bot-song-items" src="/static/img/heart1.png">
-            <div class="lib-bot-song-duration lib-bot-song-items">{{song.duration//60}}:{{song.duration%60}}</div>
-        </div>
         {%endfor%}
+
     </div>
 </div>  
-</div>

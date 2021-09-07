@@ -7,7 +7,7 @@ from flask_socketio import SocketIO, emit, join_room, leave_room, \
     close_room, rooms, disconnect
 import websocket
 from sqlalchemy.exc import IntegrityError
-from models import db, connect_db, User, Song, Userplaylist, Playlist, Usersong
+from models import db, connect_db, User, Song, Userplaylist, Playlist, Usersong, Playlistsong
 from forms import LoginForm, UserAddForm, AddSongForm, AddPlaylistForm
 from random import randint
 from cortex import Cortex, jake_data
@@ -338,8 +338,10 @@ def add_song():
             user_id = g.user.id
 
             new_song = Song(title=title, artist=artist, album=album, img=img, file=file, duration=duration, user_id=user_id)
-
             db.session.add(new_song)
+            #Add new song to Library
+            new_playlistsong = Playlistsong(playlist_id=1, song_id = new_song.id)
+            db.session.add(new_playlistsong)
             db.session.commit()
 
         #this except isn't working
@@ -433,21 +435,20 @@ def delete_song(id):
 
     return redirect("/")
 
+# @app.route('/library')
+# def show_songs():
+#     """Library of songs added by all Users"""
 
+#     if not g.user:
+#         flash("Access unauthorized.")
+#         return redirect('/')
 
+#     songs = Song.query.all()
+#     my_playlists=g.user.userplaylists
 
-@app.route('/library')
-def show_songs():
-    """Library of songs added by all Users"""
-
-    if not g.user:
-        flash("Access unauthorized.")
-        return redirect('/')
-
-    songs = Song.query.all()
-    my_playlists=g.user.userplaylists
-
-    return render_template('/users/library.html', songs=songs, my_playlists=my_playlists)
+#     playlist = Playlist.get_or_404(1)
+#     return render_template('/users/playlist.html', playlist = playlist, songs=songs, my_playlists=my_playlists )
+#     # return render_template('/users/library.html', songs=songs, my_playlists=my_playlists)
 
 @app.route('/playlist/<int:id>')
 def show_playlist(id):
@@ -458,7 +459,9 @@ def show_playlist(id):
         return redirect('/')
 
     playlist = Playlist.query.get_or_404(id)
-    return render_template('users/playlist.html', playlist=playlist)
+    songsOfPlaylist = playlist.playlistsongs
+
+    return render_template('users/playlist.html', playlist=playlist, songs = songsOfPlaylist)
 
 @app.route('/home')
 def show_home():
