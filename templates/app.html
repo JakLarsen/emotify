@@ -158,11 +158,12 @@
             {% for playlist in my_playlists %}
             <div id="ml-playlist-wrap">
               <div class="ml-playlist" id="mid-playlist-{{playlist.id}}" method="POST">{{playlist.title}}</div>
+              {% if playlist.title != 'Library' %}
               <form class="ml-del-btn-form" action="/playlist/{{playlist.id}}/delete">
                 <button class="ml-del-btn">X</button>
               </form>
+              {% endif %}
             </div>
-              
             {% endfor %}
           </div>
         </div>

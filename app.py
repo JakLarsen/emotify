@@ -400,6 +400,9 @@ def delete_playlist(id):
     if not g.user:
         flash("Access unauthorized.")
         return redirect('/')
+    if id == 1:
+        flash("Access unauthorized.")
+        return redirect('/')
     
     user_playlists = g.user.userplaylists
     playlist = Playlist.query.get_or_404(id)
