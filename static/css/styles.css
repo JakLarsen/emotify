@@ -920,7 +920,6 @@ h1, button{
     background-color: #fff;
     color: #000;
     border-radius: 100%;
-
 }
 
 #lib-bot-nav-title, .lib-bot-song-title{
@@ -1241,25 +1240,41 @@ h1, button{
     align-items: center;
     height: 3.5rem;
     padding: 0.5rem;
+    color: #aaa;
+}
+.pl-song-wrap:hover{
+    background-color: #853d3d;
+    color: #FFF;
+    transition: 0.3s ease;
 }
 .pl-song-item{
     padding-left: 1rem;
 }
 .pl-song-index{
-    background-color: #fff;
+    background-color: #853d3d;
+    opacity: 1;
+    color: #fff;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    margin-left: 1.25rem;
-    margin-right: 0.75rem;
+    width: 2rem;
+    height: 2rem;
+    margin-left: 1.5rem;
+    margin-right: 1rem;
     border-radius: 100%;
     padding-left: 0rem;
-    color: #aaa;
     font-size: 0.7rem;
     font-weight: 600;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+.pl-song-index:hover{
+    cursor: pointer;
+    background-color: #fff;
+    opacity: 1;
+    color: #000;
+    border-radius: 100%;
+    transition: 0.3s ease;
 }
 .pl-song-img{
     /* background-color: red; */
@@ -1281,18 +1296,17 @@ h1, button{
 }
 .pl-song-title{
     color: #fff;
-    font-weight: 600;
     font-size: 0.85rem
 }
 .pl-song-artist{
-    color: #aaa;
     font-size: 0.8rem;
+    font-weight: 400;
 }
 .pl-song-album{
     /* background-color: cornflowerblue; */
     width: 12rem;
-    color: #aaa;
     font-size: 0.8rem;
+    font-weight: 400;
 }
 .pl-song-like{
     /* background-color: crimson; */
@@ -1307,7 +1321,6 @@ h1, button{
 .pl-song-duration{
     /* background-color: crimson; */
     width: 5rem;
-    color: #aaa;
     font-size: 0.8rem;
 }
 .pl-song-del-form{
