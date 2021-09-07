@@ -88,6 +88,7 @@ function handleSRC(src, containerType){
     newSRC = srcFrontClip.substr(0, srcFrontClip.length-1)
     return newSRC
 }
+
 //UPDATE CURRENT SONG HTML IN AUDIO APP
 async function changeCurrSongDiv(newSongDiv, containerType){
     let currTitle = document.getElementById('curr-playing-song-title')
@@ -146,6 +147,11 @@ async function changeCurrSongDiv(newSongDiv, containerType){
     currSongAudio.src = changeToAudioSRC
     currHeart.src = "../static/img/heart1.png"  
 }
+
+
+
+
+
 async function changePrevSongDiv(newSongDiv){
     let prevTitle = document.getElementById('prev-playing-song-title')
     let prevArtist = document.getElementById('prev-playing-song-artist')

@@ -202,6 +202,10 @@ def open_stream():
                     # APP VIEW FUNCTIONS
 #----------------------------------------------------------------------
 
+def addLibrary():
+    library = Playlist.query.get(1)
+    g.user.userplaylists.append(library)
+    db.session.commit()
 
 
                     # USER LOGIN HANDLERS
@@ -211,6 +215,7 @@ def add_user_to_g():
     """If we're logged in, add curr user to Flask global."""
     if CURR_USER_KEY in session:
         g.user = User.query.get(session[CURR_USER_KEY])
+        addLibrary()
     else:
         g.user = None
 
@@ -257,7 +262,6 @@ def signup():
                 )
                 db.session.commit()
             except IntegrityError:
-                flash("Username already taken", 'danger')
                 return render_template('users/signup.html', form=form)
             do_login(user)
             return redirect("/")
@@ -278,7 +282,6 @@ def login():
             if user:
                 do_login(user)
                 return redirect("/")
-            flash("Invalid credentials.")
         return render_template('users/login.html', form=form)
 
 @app.route('/logout')
