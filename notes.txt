@@ -2,43 +2,54 @@
 
 
 
-
-
-
 Todo:
 
-
-
+- Handler for different right click targets for adding song from a playlist
 - Home App Screen with playlists and songs and stuff to fill
--- Most listened to playlists and songs at top
 
--Login/Signup logic
--force lowercase when processing usernames to ensure no duplicates
--force 6 letters+ when entering a password signing up
--restrict username length, etc
---Logic/Signup authentication/route permissions/etc.
+- Basic login/signup authentication
+- force lowercase when processing usernames to ensure no duplicates
+- force 6 letters+ when entering a password signing up
+- restrict username length, etc
 
--Style submit.html
--Styling, touch ups
--Icon reboots
--Right Divs
--Typography
--Gif for playing vs paused
+- Styling touch ups, cohesion (including main logo)
+- Typography
+
 
 
 ***Future updates***
+
+
+
+(ACCESSIBILITY) - When you go to a new playlist, prev/curr/next should populate automatically and start playing from beginning
+-Play/pause btn
+-Current Playlist Highlighted
+-Next Playlist displayed
+-Traversal of Playlist on inputs
+-Realtime Duration bar
+
+-Gif for playing vs paused
+-Icon reboots
 -Right con: Most listened to tracks or playlists
 -Search functionality through song library
 -Most listened-to songs playlist
 --If more than 10 plays and in order
 -Liked Songs added to a specific playlist
-
-REBOOT AUDIO HANDLING - send entire playlist data behind the scenes so you don't need to stay on page to go prev/next
+-- Most listened to playlists and songs at top
+- Like Functionality
+- Liked playlist
 
 --unittests
 --integration tests
 --Proper responsiveness
---Smooth Transition to previous or next song.
+
+- state management when loading new mid html
+
+
+
+DEPLOY MAYBE SOMETIME OR TALK TO SPOTIFY OR APPLEMUSIC, ETC ABOUT IT
+
+
 
 CURRENT ERRORS
 
@@ -52,6 +63,9 @@ CURRENT ERRORS
 ###- Standardized styling a bit
 ###- Restyled hover and button states for playlists
 ###- Fixed multiple audio bugs after added songs to playlists
+###- Another audio bug
+###- Remove Song from a User's own Playlist, but only from Library if they added.
+
 
 9/7
 ###- Usersongs model

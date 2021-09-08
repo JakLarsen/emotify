@@ -216,7 +216,7 @@ h1, button{
     align-items: center;
     min-height: 2rem;
     color: #000;
-    opacity: 0.75;
+    opacity: 0.85;
     font-size: 0.8rem;
     font-weight: 600;
     padding-left: 1.5rem;
@@ -226,7 +226,7 @@ h1, button{
     cursor: pointer;
     background-color: #ff4a4a;
     color: #fff;
-    opacity: 0.9;
+    opacity: 1;
     transition: 0.5s ease-in-out;
 }
 .ml-del-btn{
@@ -798,17 +798,10 @@ h1, button{
 
 
 
-
-
-                    /* LIBRARY AND TEMPLATE TOP*/
-
+                    /* Playlist Templates*/
 
 
 
-/* #lib-top-spacer{
-    position: relative;
-    margin-top: 10rem;
-} */
 .template-con{
     /* background: linear-gradient(#291111, #51fdde); */
     position: relative;
@@ -876,165 +869,10 @@ h1, button{
     padding-left: 0.35rem;
 }
 
-.template-bot{
-    background-color: rgba(0,0,0,0.7);
-    position: relative;
-    display: flex;
-    flex-flow: column nowrap;
-    padding-bottom: 1rem;
-}
-
-#lib-bot-nav, .lib-bot-song{
-    /* background-color: purple; */
-    position: relative;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    color: rgb(181, 181, 181);
-    font-weight: 400;
-    font-size: 0.8rem;
-    height: 1.5rem;
-}
-#lib-bot-nav-id{
-    /* background-color: green; */
-    padding: 0 0.7rem 0 1rem;
-    margin-left: 2.7rem;
-    font-weight: 700;
-}
-
-.lib-bot-song-id{
-    background-color: rgb(33, 4, 4);
-    color: #fff;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
-    height: 2rem;
-    width: 2rem;
-    border-radius: 100%;
-}
-.lib-bot-song-id:hover{
-    cursor: pointer;
-    background-color: #fff;
-    color: #000;
-    border-radius: 100%;
-}
-
-#lib-bot-nav-title, .lib-bot-song-title{
-    width: 14rem;
-} 
-#lib-bot-nav-album, .lib-bot-song-album{
-    width: 14rem;
-}
-.lib-bot-nav-items, .lib-bot-song-items{
-    /* background-color: #fff; */
-    margin-left: 1.5rem;
-}
-#lib-bot-nav-duration-img{
-    max-width: 1rem;
-    margin-left: 0.25rem;
-}
-#lib-bot-nav-like-img{
-    /* background-color: #fff; */
-    max-width: 1rem;
-}
-#lib-bot-nav-duration, .lib-bot-song-duration{
-    /* background-color: teal; */
-    width: 4rem;
-    margin-left: 5rem;
-}
-#lib-bot-nav-delete{
-    margin-left: 5rem;
-    font-weight: 600;
-
-}
-
-.library-spacer{
-    /* background-color: red; */
-    border-bottom: 1px solid rgba(94, 94, 94, 0.8);
-    align-self: center;
-    width: 95%;
-}
-
-/* SONGS OBJECT */
-.lib-bot-song{
-    /* background-color: orange; */
-    width: 90%;
-    margin: 1rem 0 0 1.5rem;
-    border-radius: 5px;
-    height: 4rem;
-}
-.lib-bot-song:hover{
-    background-color: #1c0707;
-    color: #FFF;
-    font-weight: 600;
-    transition: 0.3s ease;
-}
-.lib-bot-song-title-wrap{
-    /* background-color: blue; */
-    position: relative;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-}
-.lib-bot-song-img{
-    /* background-color: red; */
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#lib-bot-song-title-img{
-    max-width: 3rem;
-}
-.lib-bot-song-title-artist-wrap{
-    /* background-color: pink; */
-    position:relative;
-    display: flex;
-    flex-flow: column nowrap;
-    margin-left: 0.5rem;
-}
-.lib-bot-song-title-name{
-    color: #fff;
-    font-weight: 600;
-}
-.lib-bot-song-like{
-    max-width: 1rem;
-    opacity: 0.7;
-}
-.lib-bot-song-like:hover{
-    cursor: pointer;
-    opacity: 1;
-}
-.lib-bot-song-delete{
-    /* background-color: red; */
-    background-color: #000;
-    opacity: 0.5;
-    color: #fff;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 2rem;
-    width: 2rem;
-    margin-left: 4.3rem;
-    font-weight: 600;
-    border-radius: 3px;
-    border-style: none;
-}
-.lib-bot-song-delete:hover{
-    cursor: pointer;
-    background-color: #fff;
-    color:#ff1515;
-    opacity: 1;
-    transition: 0.3s ease;
-}
 
 
 
-
-                    /* YOUR PLAYLIST PAGE (inhertiting from template class*/
+                    /* YOUR PLAYLIST PAGE (inhertiting some from Templates)*/
 
 
 
@@ -1353,8 +1191,9 @@ h1, button{
                     /* RIGHT CLICK MENU */
 
 
+
 #rc-menu{
-    background-color: #272727;
+    background-color: #444;
     position:absolute;
     display: flex;
     flex-flow: column nowrap;
@@ -1378,29 +1217,26 @@ h1, button{
 #rc-add-song:hover{
     display: flex;
     cursor: pointer;
-    background-color: #444; 
+    background-color: #777; 
 }    
 
-
 #rc-playlists{
-    background-color: #444;
+    background-color: #333;
     position:absolute;
     display: none;
     flex-flow: column nowrap;
-    height: 2rem;
     width: 9rem;
     box-shadow: 0 0 20px rgba(0,0,0,0.7);
     z-index: 1000;
+    padding: 0.25rem;
 }
 #rc-playlists:hover{
-    display: flex;
-    cursor: pointer;
-    background-color: #666; 
+
 }
 .rc-pl-form{
 }
 .rc-pl-btn{
-    background-color: #272727;
+    background-color: #333;
     position: relative;
     display: flex;
     justify-content: center;
@@ -1415,8 +1251,10 @@ h1, button{
 .rc-pl-btn:hover{
     display: flex;
     cursor: pointer;
-    background-color: #444; 
+    background-color: #666; 
 }  
+
+
 
                     /* HOME PAGE */
 
@@ -1476,22 +1314,4 @@ h1, button{
 
 
 
-/* BACK ARROW */
 
-.back-arrow{
-    background-color: rgba(0,0,0,1);
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 100%;
-    text-decoration: none;
-    box-shadow: 0 0 20px rgba(0,0,0,0.7);
-}
-.back-arrow:hover{
-    background-color: rgba(19, 19, 19, 0.8);
-    cursor: pointer;
-}

@@ -90,7 +90,7 @@ function showMenu(e){
     menu.style.top = e.pageY-80 + 'px'
 
     playlists.style.display = 'flex'
-    playlists.style.left = e.pageX-106 + 'px'
+    playlists.style.left = e.pageX-110 + 'px'
     playlists.style.top = e.pageY-80+ 'px'
 
 }
