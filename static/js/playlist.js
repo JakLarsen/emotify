@@ -60,3 +60,12 @@ if(typeof songArea == 'undefined'){
         }
     })
 }
+
+//RIGHT CLICK FORM PLAYLIST FORM HANDLER
+
+$('.rc-pl-btn').click(function(evt){
+    console.log('rc-pl-form clicked')
+    let target = evt.currentTarget.id
+    let playlistID = target.substr(10)
+    midCon.load(`/playlist/${playlistID}`)
+});

@@ -436,21 +436,6 @@ def delete_song(id):
 
     return redirect("/")
 
-# @app.route('/library')
-# def show_songs():
-#     """Library of songs added by all Users"""
-
-#     if not g.user:
-#         flash("Access unauthorized.")
-#         return redirect('/')
-
-#     songs = Song.query.all()
-#     my_playlists=g.user.userplaylists
-
-#     playlist = Playlist.get_or_404(1)
-#     return render_template('/users/playlist.html', playlist = playlist, songs=songs, my_playlists=my_playlists )
-#     # return render_template('/users/library.html', songs=songs, my_playlists=my_playlists)
-
 @app.route('/playlist/<int:id>')
 def show_playlist(id):
     """Show individual playlist"""
@@ -461,8 +446,9 @@ def show_playlist(id):
 
     playlist = Playlist.query.get_or_404(id)
     songsOfPlaylist = playlist.playlistsongs
+    my_playlists = g.user.userplaylists
 
-    return render_template('users/playlist.html', playlist=playlist, songs = songsOfPlaylist)
+    return render_template('users/playlist.html', playlist=playlist, songs = songsOfPlaylist, my_playlists=my_playlists)
 
 @app.route('/home')
 def show_home():

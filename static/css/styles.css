@@ -1340,8 +1340,73 @@ h1, button{
 
 
 
+                    /* RIGHT CLICK MENU */
 
 
+#rc-menu{
+    background-color: #272727;
+    position:absolute;
+    display: flex;
+    flex-flow: column nowrap;
+    height: 2rem;
+    width: 9rem;
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    display: none;
+    z-index: 1000;
+}     
+#rc-add-song{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    width: 9rem;
+    height: 2rem;
+}    
+#rc-add-song:hover{
+    display: flex;
+    cursor: pointer;
+    background-color: #444; 
+}    
+
+
+#rc-playlists{
+    background-color: #444;
+    position:absolute;
+    display: none;
+    flex-flow: column nowrap;
+    height: 2rem;
+    width: 9rem;
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    z-index: 1000;
+}
+#rc-playlists:hover{
+    display: flex;
+    cursor: pointer;
+    background-color: #666; 
+}
+.rc-pl-form{
+}
+.rc-pl-btn{
+    background-color: #272727;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    width: 9rem;
+    height: 2rem;
+    border-style: none;
+}
+.rc-pl-btn:hover{
+    display: flex;
+    cursor: pointer;
+    background-color: #444; 
+}  
 
                     /* HOME PAGE */
 

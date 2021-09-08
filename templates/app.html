@@ -158,7 +158,7 @@
             {% for playlist in my_playlists %}
               {% if playlist.title != 'Library' %}
                 <div id="ml-playlist-wrap">
-                  <div class="ml-playlist" id="mid-playlist-{{playlist.id}}" method="POST">{{playlist.title}}</div>
+                  <div class="ml-playlist" id="mid-playlist-{{playlist.id}}">{{playlist.title}}</div>
                   
                   <form class="ml-del-btn-form" action="/playlist/{{playlist.id}}/delete">
                     <button class="ml-del-btn">X</button>
@@ -208,6 +208,22 @@
               </div>
             </div>
           </div>
+
+          <!-- RIGHT CLICK MENU -->
+<!-- 
+          <div id="rc-menu">
+            <div id="rc-add-song">Add to playlist</div>
+          </div>
+          <div id="rc-playlists">
+            {% for playlist in my_playlists %}
+              {% if playlist.title != 'Library' %}
+                <form class="rc-pl-form" id="rc-pl-form-{{playlist.id}}" action="">
+                  <button class="rc-pl-btn" id="rc-pl-btn-{{playlist.id}}">{{playlist.title}}</button>
+                </form>
+              {% endif %}
+            {% endfor %}
+          </div> -->
+
           {% endblock %}
         </div>
         <div id="bm-spacer"></div>

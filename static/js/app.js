@@ -61,23 +61,53 @@ $(function() {
 // RIGHT CLICK HANDLER
 
 
+function hideMenu(){
+    document.getElementById('rc-menu').style.display = 'none'
+    document.getElementById('rc-playlists').style.display = 'none'
+}
+function showMenu(e){
+    let menu = document.getElementById('rc-menu')
+    let playlists =  document.getElementById('rc-playlists')
+    
+    menu.style.display = 'flex'
+    menu.style.left = e.pageX-250 + 'px'
+    menu.style.top = e.pageY-80 + 'px'
+
+    playlists.style.display = 'flex'
+    playlists.style.left = e.pageX-106 + 'px'
+    playlists.style.top = e.pageY-80+ 'px'
+
+}
+
 if (document.addEventListener) {
     document.addEventListener('contextmenu', function(e) {
         e.preventDefault();
+        console.log(e)
 
         //Draw right click menu
-        if (e.path[0].classList.contains('pl-song-wrap')){
-            alert('You hit a song with right click!')
-            
 
+        let menu = document.getElementById('rc-menu')
+
+        if (menu.style.display == 'flex'){
+            hideMenu()
         }
-
-
+        else{
+            if (e.path[0].classList.contains('pl-song-wrap') 
+            || e.path[0].classList.contains('pl-song-index') 
+            || e.path[0].classList.contains('pl-song-img')
+            || e.path[0].classList.contains('pl-song-title-artist-wrap')
+            || e.path[0].classList.contains('pl-song-title')
+            || e.path[0].classList.contains('pl-song-artist')
+            || e.path[0].classList.contains('pl-song-album')
+            || e.path[0].classList.contains('pl-song-like-img')
+            ){
+                showMenu(e)   
+             }
+        }
     }, false);
-  } else {
+} 
+else {
     document.attachEvent('oncontextmenu', function(e) {
-
-      alert("You've tried to open context menu");
-      window.event.returnValue = false;
+        window.event.returnValue = false;
     });
-  }
+}
