@@ -197,6 +197,7 @@
         </div>
         <div id="mid-mid-con">
           {% block content %}
+          
           <div id="home-con" class="template-con">
             <div id="home-top" class="template-top">
               <div id="home-tl" class="template-tl">
@@ -208,21 +209,6 @@
               </div>
             </div>
           </div>
-
-          <!-- RIGHT CLICK MENU -->
-<!-- 
-          <div id="rc-menu">
-            <div id="rc-add-song">Add to playlist</div>
-          </div>
-          <div id="rc-playlists">
-            {% for playlist in my_playlists %}
-              {% if playlist.title != 'Library' %}
-                <form class="rc-pl-form" id="rc-pl-form-{{playlist.id}}" action="">
-                  <button class="rc-pl-btn" id="rc-pl-btn-{{playlist.id}}">{{playlist.title}}</button>
-                </form>
-              {% endif %}
-            {% endfor %}
-          </div> -->
 
           {% endblock %}
         </div>

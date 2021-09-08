@@ -1,4 +1,4 @@
-
+let songToss = null
 
 
                     //GLOBALS
@@ -58,6 +58,29 @@ $(function() {
 
 
 
+
+
+
+function discernSongDivSongID(path){
+    console.log('in discernSongDivSongID')
+    console.log(path)
+
+    let songID = null
+
+    if (path[0].classList.contains('pl-song-wrap')){
+        songID = path[0].id.substr(8)
+    }
+
+    return songID
+}
+
+function putSongIDInDiv(e, songID){
+    e.path[0].dataset.songID = songID
+}
+
+
+
+
 // RIGHT CLICK HANDLER
 
 
@@ -82,7 +105,10 @@ function showMenu(e){
 if (document.addEventListener) {
     document.addEventListener('contextmenu', function(e) {
         e.preventDefault();
-        console.log(e)
+
+        let songID = discernSongDivSongID(e.path)
+        putSongIDInDiv(e, songID)
+        tossSong = songID
 
         //Draw right click menu
 

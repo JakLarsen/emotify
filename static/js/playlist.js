@@ -65,7 +65,13 @@ if(typeof songArea == 'undefined'){
 
 $('.rc-pl-btn').click(function(evt){
     console.log('rc-pl-form clicked')
+
+    let songID = tossSong
+    console.log(`we know tossSong from pl.js: ${tossSong}`)
+
     let target = evt.currentTarget.id
     let playlistID = target.substr(10)
-    midCon.load(`/playlist/${playlistID}`)
+    midCon.load(`/playlist/${playlistID}/add-song/${tossSong}`)
 });
+
+

@@ -526,6 +526,20 @@ def retrieve_playlist_data(playlist_id):
         'length':length
     })
 
+@app.route('/playlist/<int:playlist_id>/add-song/<int:song_id>')
+def add_song_to_playlist(playlist_id, song_id):
+    """Adds a song to a playlist"""
+
+    if not g.user:
+        return redirect('/')
+
+    playlist = Playlist.query.get_or_404(playlist_id)
+    songToAdd = Song.query.get_or_404(song_id)
+    playlist.playlistsongs.append(songToAdd)
+
+    db.session.commit()
+
+    return redirect(f'/playlist/{playlist.id}')
 
 
 
