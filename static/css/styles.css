@@ -810,8 +810,7 @@ h1, button{
     margin-top: 10rem;
 } */
 .template-con{
-    background: linear-gradient(#291111, #4affde);
-    /* background-color: red; */
+    /* background: linear-gradient(#291111, #51fdde); */
     position: relative;
     display: flex;
     flex-flow: column nowrap;
@@ -1041,7 +1040,7 @@ h1, button{
 
 
 #yp-con{
-    background: linear-gradient(#112926, #4affde);
+    background: linear-gradient(#183438, #4afaf1);
 }
 #yp-title{
     font-size: 4rem;
@@ -1081,11 +1080,8 @@ h1, button{
     justify-content: flex-end;
 }
 #yp-img{
-    /* justify-self: flex-start; */
-    /* padding: 0.5rem; */
     max-height: 12rem;
     width: 12rem;
-    border-radius: 5px 0;
     box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }
 .yp-img:hover{
@@ -1136,7 +1132,7 @@ h1, button{
 
 /*TOP*/
 #p-con{
-    background: linear-gradient(#c46b6b, #291711);
+    background: linear-gradient(#3cd3cc, #112529);
     position: relative;
     display: flex;
     flex-flow: column nowrap;
@@ -1249,7 +1245,7 @@ h1, button{
     color: #aaa;
 }
 .pl-song-wrap:hover{
-    background-color: #853d3d;
+    background-color: #41b8b2;
     color: #FFF;
     transition: 0.3s ease;
 }
@@ -1257,7 +1253,7 @@ h1, button{
     padding-left: 1rem;
 }
 .pl-song-index{
-    background-color: #853d3d;
+    background-color: #176a65;
     opacity: 1;
     color: #fff;
     position: relative;
@@ -1423,6 +1419,7 @@ h1, button{
     position: relative;
     display: flex;
     flex-flow: column nowrap;
+    /* padding-top: 2rem; */
 }
 #home-top{
     /* background-color: red; */
