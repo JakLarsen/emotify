@@ -70,7 +70,11 @@ if(typeof songArea == 'undefined'){
     })
 }
 
+
+
 //RIGHT CLICK FORM PLAYLIST FORM HANDLER
+
+
 
 $('.rc-pl-btn').click(function(evt){
     console.log('rc-pl-form clicked')
@@ -83,4 +87,11 @@ $('.rc-pl-btn').click(function(evt){
     midCon.load(`/playlist/${playlistID}/add-song/${tossSong}`)
 });
 
-
+$('.pl-song-del-btn').click(function(evt){
+    console.log('pl-song-del-btn clicked')
+    console.log(evt)
+    let target = evt.currentTarget.id
+    let playlistID = target.substr(3).slice(0,1)
+    let songID = target.substr(17).slice(0,1)
+    midCon.load(`/playlist/${playlistID}/remove/${songID}`)
+});

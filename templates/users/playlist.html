@@ -39,10 +39,18 @@
                 <div class="pl-song-album">{{song.album}}</div>
                 <div class="pl-song-like pl-song-item"><img class="pl-song-like-img" src="../../static/img/heart1.png"></div>
                 <div class="pl-song-duration pl-song-item">{{song.duration//60}}:{{song.duration%60}}</div>
-                {% if song.user_id == g.user.id %}
-                    <form class="pl-song-del-form pl-song-item" action="/song/{{song.id}}/delete" method="POST">
-                        <button id = "pl-song-del-{{song.id}}" class="pl-song-del-btn">X</button> 
-                    </form>
+                {% if playlist.id == 1 %}
+                    {% if song.user_id == g.user.id %}
+                        <form class="pl-song-del-form pl-song-item" action="/song/{{song.id}}/delete" method="POST">
+                            <button id = "pl-song-del-{{song.id}}" class="pl-song-del-btn">X</button> 
+                        </form>
+                    {% endif %}
+                {% endif %}
+                {% if playlist in my_playlists and playlist.id != 1 %}
+                
+                    <div class="pl-song-del-form pl-song-item">
+                        <button id = "pl-{{playlist.id}}-song-remove-{{song.id}}" class="pl-song-del-btn">X</button> 
+                    </div> 
                 {% endif %}
             </div>
         {%endfor%}

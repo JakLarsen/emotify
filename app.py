@@ -1,4 +1,5 @@
 import os
+import re
 # # from flask_debugtoolbar import DebugToolbarExtension
 from threading import Lock
 from flask import Flask, render_template, flash, request, redirect, session, g, \
@@ -436,6 +437,28 @@ def delete_song(id):
 
     return redirect("/")
 
+@app.route('/playlist/<int:playlist_id>/remove/<int:song_id>')
+def remove_song_from_playlist(playlist_id, song_id):
+    """Remove a song from one of YOUR Userplaylists"""
+
+    if not g.user:
+        return redirect('/')
+
+    myPlaylists = g.user.userplaylists
+    playlistToRemoveFrom = Playlist.query.get_or_404(playlist_id)
+    songToRemove = Song.query.get_or_404(song_id)
+
+    if playlistToRemoveFrom not in myPlaylists:
+        return redirect('/')
+    else:
+        playlistToRemoveFrom.playlistsongs.remove(songToRemove)
+        db.session.commit()
+
+    return redirect(f'/playlist/{playlistToRemoveFrom.id}')
+
+
+
+
 @app.route('/playlist/<int:id>')
 def show_playlist(id):
     """Show individual playlist"""
@@ -447,6 +470,8 @@ def show_playlist(id):
     playlist = Playlist.query.get_or_404(id)
     songsOfPlaylist = playlist.playlistsongs
     my_playlists = g.user.userplaylists
+
+    print(my_playlists, flush=True)
 
     return render_template('users/playlist.html', playlist=playlist, songs = songsOfPlaylist, my_playlists=my_playlists)
 

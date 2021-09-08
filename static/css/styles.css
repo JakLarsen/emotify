@@ -1274,7 +1274,7 @@ h1, button{
     cursor: pointer;
     background-color: #fff;
     opacity: 1;
-    color: #000;
+    color: #176a65;
     border-radius: 100%;
     transition: 0.3s ease;
 }
@@ -1328,6 +1328,7 @@ h1, button{
 .pl-song-del-form{
     /* background-color: red; */
     width: 5rem;
+    padding-left: 0.5rem;
 }
 .pl-song-del-btn{
     background-color: #000;
