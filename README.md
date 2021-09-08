@@ -12,7 +12,7 @@ Emotify utilizes Neural-Navigation, allowing users to navigate a Spotify-inspire
     - "push" 6s : Next Playlist
     - "pull" 4s : Prev Song
     - "pull" 6s : Prev Playlist
-- Cortex Library (MIT) is utilized in conjunction with Emotiv's Cortex API for connecting to headset via websocket with Python
+- Cortex Library (MIT) is utilized in conjunction with Emotiv's Cortex API for connecting to the headset via websocket with Python
   - https://github.com/Emotiv/cortex-v2-example/tree/master/python 
   - https://emotiv.gitbook.io/cortex-api/
 - Main site is built out with JavaScript/jQuery and Flask on the back end with PSQL to manage the database
