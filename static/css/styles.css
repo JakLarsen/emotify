@@ -810,7 +810,7 @@ h1, button{
     margin-top: 10rem;
 } */
 .template-con{
-    background: linear-gradient(#291111, #ff4a4a);
+    background: linear-gradient(#291111, #4affde);
     /* background-color: red; */
     position: relative;
     display: flex;
@@ -861,11 +861,11 @@ h1, button{
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-end;
-    margin-left: 1rem;
+    margin-left: 1.5rem;
 }
 .template-title{
     /* background-color: teal; */
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: 700;
     color: #fff;
 }
@@ -1043,6 +1043,12 @@ h1, button{
 #yp-con{
     background: linear-gradient(#112926, #4affde);
 }
+#yp-title{
+    font-size: 4rem;
+}
+#yp-caption{
+    font-size: 0.9rem;
+}
 #yp-playlists-con{
     /* background-color: rgba(0, 0, 0, 1); */
     position: relative;
@@ -1050,7 +1056,7 @@ h1, button{
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    margin: 2rem;
+    margin: 0rem 2rem 2rem 2rem;
     padding: 1rem;
 }
 .yp-playlist{
@@ -1074,11 +1080,11 @@ h1, button{
     /* background-color: blue; */
     justify-content: flex-end;
 }
-.yp-img{
+#yp-img{
     /* justify-self: flex-start; */
     /* padding: 0.5rem; */
-    max-height: 10rem;
-    width: 10rem;
+    max-height: 12rem;
+    width: 12rem;
     border-radius: 5px 0;
     box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }
@@ -1424,15 +1430,18 @@ h1, button{
     display: flex;
     flex-flow: row nowrap;
     margin: 2rem;
+    height: 12rem;
 }
 #home-tl{
-    /* background-color: blue; */
+    background-color: blue;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 12rem;
 }
 #home-img{
+    max-height: 12rem;
     max-width: 12rem;
 }
 #home-tr{
@@ -1448,7 +1457,10 @@ h1, button{
 }
 #home-banner{
     font-weight: 700;
-    font-size: 3.5rem;
+    font-size: 3rem;
+}
+#home-caption{
+    font-size: 0.9rem;
 }
 
 
