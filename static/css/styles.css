@@ -1339,6 +1339,13 @@ h1, button{
     height: 2rem;
     opacity: 0.5;
 }
+.pl-song-del-btn:hover{
+    background-color: white;
+    cursor: pointer;
+    opacity: 1;
+    color: #176a65;
+    transition: 0.3s ease;
+}
 
 
 

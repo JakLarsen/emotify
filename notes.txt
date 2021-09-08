@@ -3,14 +3,10 @@
 
 
 
+
+
 Todo:
 
-
-
-###- Play songs from playlists pages
-###- Add song to playlist functionality from display songs
-###- Add song to playlist functionality from display other playlists
-###- Add songs to playlists from Home
 
 
 - Home App Screen with playlists and songs and stuff to fill
@@ -53,6 +49,9 @@ CURRENT ERRORS
 ###- Add song to playlist functionality from display songs
 ###- Add song to playlist functionality from display other playlists
 ###- Add songs to playlists from Home
+###- Standardized styling a bit
+###- Restyled hover and button states for playlists
+###- Fixed multiple audio bugs after added songs to playlists
 
 9/7
 ###- Usersongs model
