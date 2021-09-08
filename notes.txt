@@ -6,24 +6,14 @@
 Todo:
 
 
-- Deploy and stabilize working library and headset inputs online
-- Move on to next sections of SpringBoard while constantly updating
 
+###- Play songs from playlists pages
+###- Add song to playlist functionality from display songs
+###- Add song to playlist functionality from display other playlists
+###- Add songs to playlists from Home
 
-
-
-- Usersongs model
-- Delete Songs route (only user created songs should be deletable by that user)
-- Playlistsongs model
-- Library as a Playlist Model
-- Individual playlists pages
-- Play songs from playlists pages
-- Add song to playlist functionality from display songs
-- Add song to playlist functionality from display other playlists
-- Delete Playlists route (only user created playlists should be deleteable)
 
 - Home App Screen with playlists and songs and stuff to fill
-- Add songs to playlists from Home
 -- Most listened to playlists and songs at top
 
 -Login/Signup logic
@@ -47,6 +37,8 @@ Todo:
 --If more than 10 plays and in order
 -Liked Songs added to a specific playlist
 
+REBOOT AUDIO HANDLING - send entire playlist data behind the scenes so you don't need to stay on page to go prev/next
+
 --unittests
 --integration tests
 --Proper responsiveness
@@ -54,26 +46,36 @@ Todo:
 
 CURRENT ERRORS
 
-SOLVED--jquery isn't always loading in time or properly???
-SOLVED--Need to update audio player from lib and then play from there instead of playing from Lib
 
 
+9/8
+###- Play songs from playlists pages
+###- Add song to playlist functionality from display songs
+###- Add song to playlist functionality from display other playlists
+###- Add songs to playlists from Home
 
-
+9/7
+###- Usersongs model
+###- Delete Songs route (only user created songs should be deletable by that user)
+###- Playlistsongs model
+###- Library as a Playlist Model
+###- Individual playlists pages
+###- Delete Playlists route (only user created playlists should be deleteable)
+###- AUDIO REBOOT
 
 9/6
-###-Fix clickable area for song play in Library
+###- Fix clickable area for song play in Library
 ###- Headset icon to represent headset functionality 
-###-Add headset logo to headset usable features
+###- Add headset logo to headset usable features
 ###- Your Playlists Page
 
 9/5
-### Next functionality working
-### Prev functionality working
-### Websockets added to actual site
-### System connectivity to headset, logic, etc working
-### Headset playing/pausing songs, next functionality on push, prev functionality pull
-### Consider requering 2 consecutive inputs for commands to be acted upon
+###- Next functionality working
+###- Prev functionality working
+###- Websockets added to actual site
+###- System connectivity to headset, logic, etc working
+###- Headset playing/pausing songs, next functionality on push, prev functionality pull
+###- Consider requering 2 consecutive inputs for commands to be acted upon
 ###- Populate previous and next based on song clicked
 ###- Handle logic of shifting between them
 ###- Connect headset to shifting between them
@@ -85,9 +87,9 @@ SOLVED--Need to update audio player from lib and then play from there instead of
 
 
 9/4
-### Lots of work on audio logic
-### Lots of work starting prev and next funcitonality
-###--Library prev/next working
+###- Lots of work on audio logic
+###- Lots of work starting prev and next funcitonality
+###- Library prev/next working
 ###- Connect Emotiv to audio player inputs
 
 9/2-9/3
@@ -113,11 +115,11 @@ SOLVED--Need to update audio player from lib and then play from there instead of
 ###- Heart icon, pause icon, play icon, duration icon.
 
 8/28
-###-Fix nav 
-###-Add Playlist model
-###-Add Playlist view functions
-###-Create Playlist Form and styling
-###-Create Playlist complete
+###- Fix nav 
+###- Add Playlist model
+###- Add Playlist view functions
+###- Create Playlist Form and styling
+###- Create Playlist complete
 ###- Library Page
 ###- Ability to Play songs in library
 ###- Library Page Styling
