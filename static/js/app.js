@@ -59,7 +59,7 @@ $(function() {
 
 
 
-// // RIGHT CLICK HANDLER
+// RIGHT CLICK HANDLER
 
 
 

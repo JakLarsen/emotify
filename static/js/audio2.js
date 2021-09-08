@@ -174,6 +174,9 @@ async function nextEvent(){
         let currSongIDX = parseInt(document.getElementById('next-playing-con').dataset.songidx)
         let pll = parseInt(document.getElementById('next-playing-con').dataset.pll)
 
+        console.log(`Our New Song IDX is : ${currSongIDX}`)
+        console.log(`Our playlist length is : ${pll}`)
+
        
         let nextSongIDX = ""
         if (currSongIDX == pll){
@@ -185,7 +188,7 @@ async function nextEvent(){
 
         let prevSongIDX = ""
         if (currSongIDX == 1){
-            prevSongIDX = 6
+            prevSongIDX = pll
         }
         else{
             prevSongIDX = currSongIDX - 1

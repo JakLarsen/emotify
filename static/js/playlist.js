@@ -5,11 +5,17 @@
 
 
 async function getSongData(songIDX){
+    console.log('getSongData() called')
 
+    console.log(`Our songIDX is : ${songIDX}`)
     let songDiv = document.getElementById(`pl-song-${songIDX}`)
+    console.log(`Our songDiv is : ${songDiv}`)
 
-    console.log(songDiv)
+    console.log(`Getting Playlist Data for Playlist: ${songDiv.dataset.songpl} `)
     let playlistData = await axios.get(`/playlist-data/${songDiv.dataset.songpl}`)
+    console.log(playlistData)
+
+    songDiv.dataset.pll = playlistData.data.length
 
     ourSong = {
         id: songDiv.dataset.songid,
@@ -21,7 +27,7 @@ async function getSongData(songIDX){
         img: songDiv.dataset.songimg,
         file: songDiv.dataset.songfile,
         playlist: songDiv.dataset.songpl,
-        pll: playlistData.data.length
+        pll: songDiv.dataset.pll
     }
     return ourSong
 }
@@ -30,17 +36,16 @@ if(typeof songArea == 'undefined'){
     let songArea = document.querySelector('.pl-con')
 
     songArea.addEventListener('click', async function(evt){
-        console.log('bot area was clicked')
+        console.log('Bot Area Clicked')
         
         //IF CLICKING ON A SONG INDEX BUTTON
         //-SEND SONG DATA TO AUDIO HANDLER
         if (evt.path[0].classList.contains('pl-song-index')){
-            console.log('clicked to play a song')
-
+            console.log('Song Index Clicked for Song_____')
             console.log(evt.path[1].dataset.songid)
 
             let newSong = await getSongData(evt.path[1].dataset.songidx)
-            console.log(newSong)
+            console.log(`newSong: ${newSong}`)
         
             //CATCH NEW SONG BEING FIRST SONG TO CIRCLE AROUND FOR PREV SONG
             if (newSong.idx > 1){
