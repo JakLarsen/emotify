@@ -7,6 +7,8 @@
 async function getSongData(songIDX){
 
     let songDiv = document.getElementById(`pl-song-${songIDX}`)
+
+    console.log(songDiv)
     let playlistData = await axios.get(`/playlist-data/${songDiv.dataset.songpl}`)
 
     ourSong = {
@@ -35,7 +37,9 @@ if(typeof songArea == 'undefined'){
         if (evt.path[0].classList.contains('pl-song-index')){
             console.log('clicked to play a song')
 
-            let newSong = await getSongData(evt.path[1].dataset.songid)
+            console.log(evt.path[1].dataset.songid)
+
+            let newSong = await getSongData(evt.path[1].dataset.songidx)
             console.log(newSong)
         
             //CATCH NEW SONG BEING FIRST SONG TO CIRCLE AROUND FOR PREV SONG
