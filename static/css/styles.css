@@ -1276,7 +1276,7 @@ h1, button{
     height: 12rem;
 }
 #home-tl{
-    background-color: blue;
+    /* background-color: blue; */
     position: relative;
     display: flex;
     justify-content: center;
@@ -1305,6 +1305,60 @@ h1, button{
 #home-caption{
     font-size: 0.9rem;
 }
+
+
+
+#home-bot{
+    /* background-color: aqua; */
+    position: relative;
+    display: flex;
+    margin: 0 2rem 2rem 2rem;
+}
+#home-fav-music-con{
+    /* background-color: blue; */
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+}
+#home-fav-music-banner{
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+}
+#home-fav-music-wrap{
+    /* background-color: pink; */
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+}
+#home-favorites-con{
+    background-color: #2e2e2e;
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    height: 15rem;
+    width: 25rem;
+    margin: 2rem;
+    border-radius: 5px;
+}
+#home-most-played-con{
+    background-color: #2e2e2e;
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    height: 15rem;
+    width: 25rem;
+    margin: 2rem;
+    border-radius: 5px;
+}
+
+#home-most-played-con:hover, #home-favorites-con:hover{
+    cursor: pointer;
+    background-color: rgba(49, 49, 49, 0.8);
+    transition: 0.3s ease;
+}
+
+
 
 
 

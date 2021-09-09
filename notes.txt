@@ -15,6 +15,11 @@ Todo:
 - Styling touch ups, cohesion (including main logo)
 - Typography
 
+DEMO VIDEO
+
+
+
+
 
 
 ***Future updates***
