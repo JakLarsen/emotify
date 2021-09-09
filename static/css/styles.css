@@ -1331,27 +1331,66 @@ h1, button{
     display: flex;
     flex-flow: row nowrap;
 }
-#home-favorites-con{
+#home-favorites-con, #home-most-played-con{
     background-color: #2e2e2e;
     position: relative;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     height: 15rem;
     width: 25rem;
     margin: 2rem;
     border-radius: 5px;
 }
-#home-most-played-con{
-    background-color: #2e2e2e;
+#home-fav-music-top-wrap, #home-most-played-top-wrap{
+    /* background-color: red; */
     position: relative;
     display: flex;
     flex-flow: row nowrap;
-    height: 15rem;
-    width: 25rem;
-    margin: 2rem;
-    border-radius: 5px;
 }
-
+#home-fav-music-img-wrap, #home-most-played-img-wrap{
+    /* background-color: violet; */
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    width: 11rem;
+    max-height: 11rem;
+    /* margin: 1rem 1rem 0 1rem; */
+}
+.home-fav-music-img{
+    max-width: 5.5rem;
+    max-height: 5.5rem;
+}
+#home-fav-music-img-1, #home-most-played-img-1{
+    border-radius: 5px 0 0 0;
+}
+#home-fav-music-artists-wrap, #home-most-played-artists-wrap{
+    /* background-color: green; */
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    height: 11rem;
+    width: 14rem;
+    justify-content: center;
+    align-items: center;
+}
+.home-fav-music-title{
+    margin-bottom: 0.5rem;
+    color: #ddd;
+    font-weight: 400;
+    font-size: 0.8rem;
+}
+#home-fav-music-caption, #home-most-played-caption{
+    background-color: rgb(114, 114, 114);
+    position: relative;
+    display: flex;
+    color: #fff;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+    border-radius: 0 0 5px 5px;
+}
 #home-most-played-con:hover, #home-favorites-con:hover{
     cursor: pointer;
     background-color: rgba(49, 49, 49, 0.8);
