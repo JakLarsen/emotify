@@ -1312,6 +1312,7 @@ h1, button{
     /* background-color: aqua; */
     position: relative;
     display: flex;
+    flex-flow: column nowrap;
     margin: 0 2rem 2rem 2rem;
 }
 #home-fav-music-con{
@@ -1320,8 +1321,8 @@ h1, button{
     display: flex;
     flex-flow: column nowrap;
 }
-#home-fav-music-banner{
-    font-size: 2rem;
+.home-banner{
+    font-size: 1.5rem;
     font-weight: 700;
     color: #fff;
 }
@@ -1395,6 +1396,54 @@ h1, button{
     cursor: pointer;
     background-color: rgba(49, 49, 49, 0.8);
     transition: 0.3s ease;
+}
+
+#home-your-playlists-con{
+    /* background-color: purple; */
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+}
+#home-your-playlists-banner{
+    /* background-color: red; */
+}
+#home-your-playlists-wrap{
+    /* background-color: pink; */
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    margin: 2rem 0 0 2rem;
+}
+.home-your-playlist-playlist{
+    background-color: #2e2e2e;
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    height: 6rem;
+    width: 17rem;
+    margin-right: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+}
+.home-your-playlist-playlist:hover{
+    cursor: pointer;
+    background-color: rgba(49, 49, 49, 0.8);
+    transition: 0.3s ease;
+}
+.home-your-playlist-img{
+    border-radius: 5px 0 0 5px;
+}
+.home-your-playlist-title{
+    /* background-color: red; */
+    position: relative;
+    display: flex;
+    width: 100%;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.85rem;
+    justify-content: flex-start;
+    align-items: center;
+    margin:0 0.5rem;
 }
 
 

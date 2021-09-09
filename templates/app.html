@@ -211,10 +211,10 @@
             </div>
 
             <div id="home-bot">
-              <div id="home-fav-music-con">
-                <div id="home-fav-music-banner">Some familiar sounds</div>
-                <div id="home-fav-music-wrap">
 
+              <div id="home-fav-music-con">
+                <div id="home-fav-music-banner" class="home-banner">Some familiar sounds</div>
+                <div id="home-fav-music-wrap">
                   <div id="home-favorites-con">
                     <div id="home-fav-music-top-wrap">
                       <div id="home-fav-music-img-wrap">
@@ -233,14 +233,13 @@
                     </div>
                     <div id="home-fav-music-caption">Your liked music</div>
                   </div>
-                  
                   <div id="home-most-played-con">
                     <div id="home-most-played-top-wrap">
                       <div id="home-most-played-img-wrap">
-                        <img id="home-most-played-img-1" class="home-fav-music-img" src="https://i.redd.it/jt3kkegbrb661.jpg">
-                        <img id="home-most-played-img-2" class="home-fav-music-img" src="https://i.pinimg.com/originals/7a/36/b2/7a36b24f8bc4a6b87823e75534fcad19.jpg">
-                        <img id="home-most-played-img-3" class="home-fav-music-img" src="https://i.pinimg.com/originals/7a/36/b2/7a36b24f8bc4a6b87823e75534fcad19.jpg">
-                        <img id="home-most-played-img-4" class="home-fav-music-img" src="https://i.redd.it/jt3kkegbrb661.jpg">
+                        <img id="home-most-played-img-1" class="home-fav-music-img" src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/The_Who_-_Greatest_Hits.jpg/220px-The_Who_-_Greatest_Hits.jpg">
+                        <img id="home-most-played-img-2" class="home-fav-music-img" src="https://upload.wikimedia.org/wikipedia/en/4/42/Beatles_-_Abbey_Road.jpg">
+                        <img id="home-most-played-img-3" class="home-fav-music-img" src="https://static01.nyt.com/images/2019/11/13/obituaries/11Freeman3/merlin_164214771_c6e96bd0-0579-49ea-82ff-a1962f393153-articleLarge.jpg?quality=75&auto=webp&disable=upscale">
+                        <img id="home-most-played-img-4" class="home-fav-music-img" src="https://i1.sndcdn.com/artworks-000104318939-99u92i-t500x500.jpg">
                       </div>
                       <div id="home-most-played-artists-wrap">
                         <div id="home-most-played-artist-1" class="home-fav-music-title">Thunderstruck</div>
@@ -253,18 +252,23 @@
                     <div id="home-most-played-caption">Most played songs</div>
                   </div>
                 </div>
-                
-              </div>
-
-
+              </div>  
 
               <div id="home-your-playlists-con">
+                <div id="home-your-playlists-banner" class="home-banner">Your Playlists</div>
+                <div id="home-your-playlists-wrap">
+                  {% for playlist in my_playlists %}
+                  <div class="home-your-playlist-playlist">
+                    <img id="home-playlist-img-{{playlist.id}}" class="home-your-playlist-img" src="{{playlist.img}}">
+                    <div id="home-playlist-title-{{playlist.id}}" class="home-your-playlist-title">{{playlist.title}}</div>
+                  </div>
+                  {% endfor %}
+                </div>
 
               </div>
-             
+
 
             </div>
-
           </div>
 
           {% endblock %}
