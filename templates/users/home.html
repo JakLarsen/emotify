@@ -62,7 +62,7 @@
       <div id="home-your-playlists-banner" class="home-banner">Your Playlists</div>
       <div id="home-your-playlists-wrap">
         {% for playlist in my_playlists %}
-        <div class="home-your-playlist-playlist">
+        <div class="home-your-playlist-playlist" id="home-playlist-{{playlist.id}}">
           <img id="home-playlist-img-{{playlist.id}}" class="home-your-playlist-img" src="{{playlist.img}}">
           <div id="home-playlist-title-{{playlist.id}}" class="home-your-playlist-title">{{playlist.title}}</div>
         </div>
@@ -74,3 +74,4 @@
 
   </div>
 </div>
+<script src="../../static/js/home.js"></script>

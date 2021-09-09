@@ -38,6 +38,12 @@ $('.ml-playlist').click(function(evt){
     let playlistID = target.substr(13)
     midCon.load(`/playlist/${playlistID}`)
 });
+$('.home-your-playlist-playlist').click(function(evt){
+    console.log(evt)
+    let target = evt.currentTarget.id
+    let playlistID = target.substr(14)
+    midCon.load(`/playlist/${playlistID}`)
+});
 
 
 
@@ -63,69 +69,69 @@ $(function() {
 
 
 
-function discernSongDivSongID(path){
-    console.log('in discernSongDivSongID')
-    console.log(path)
+// function discernSongDivSongID(path){
+//     console.log('in discernSongDivSongID')
+//     console.log(path)
 
-    let songID = null
+//     let songID = null
 
-    if (path[0].classList.contains('pl-song-wrap')){
-        songID = path[0].dataset.songid
-    }
+//     if (path[0].classList.contains('pl-song-wrap')){
+//         songID = path[0].dataset.songid
+//     }
 
-    return songID
-}
+//     return songID
+// }
 
 
-function hideMenu(){
-    document.getElementById('rc-menu').style.display = 'none'
-    document.getElementById('rc-playlists').style.display = 'none'
-}
-function showMenu(e){
-    let menu = document.getElementById('rc-menu')
-    let playlists =  document.getElementById('rc-playlists')
+// function hideMenu(){
+//     document.getElementById('rc-menu').style.display = 'none'
+//     document.getElementById('rc-playlists').style.display = 'none'
+// }
+// function showMenu(e){
+//     let menu = document.getElementById('rc-menu')
+//     let playlists =  document.getElementById('rc-playlists')
     
-    menu.style.display = 'flex'
-    menu.style.left = e.pageX-250 + 'px'
-    menu.style.top = e.pageY-80 + 'px'
+//     menu.style.display = 'flex'
+//     menu.style.left = e.pageX-250 + 'px'
+//     menu.style.top = e.pageY-80 + 'px'
 
-    playlists.style.display = 'flex'
-    playlists.style.left = e.pageX-110 + 'px'
-    playlists.style.top = e.pageY-80+ 'px'
+//     playlists.style.display = 'flex'
+//     playlists.style.left = e.pageX-110 + 'px'
+//     playlists.style.top = e.pageY-80+ 'px'
 
-}
+// }
 
-if (document.addEventListener) {
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
+// if (document.addEventListener) {
+//     document.addEventListener('contextmenu', function(e) {
+//         e.preventDefault();
 
-        let songID = discernSongDivSongID(e.path)
-        tossSong = songID
+//         let songID = discernSongDivSongID(e.path)
+//         tossSong = songID
 
-        //Draw right click menu
+//         //Draw right click menu
 
-        let menu = document.getElementById('rc-menu')
+//         let menu = document.getElementById('rc-menu')
 
-        if (menu.style.display == 'flex'){
-            hideMenu()
-        }
-        else{
-            if (e.path[0].classList.contains('pl-song-wrap') 
-            || e.path[0].classList.contains('pl-song-index') 
-            || e.path[0].classList.contains('pl-song-img')
-            || e.path[0].classList.contains('pl-song-title-artist-wrap')
-            || e.path[0].classList.contains('pl-song-title')
-            || e.path[0].classList.contains('pl-song-artist')
-            || e.path[0].classList.contains('pl-song-album')
-            || e.path[0].classList.contains('pl-song-like-img')
-            ){
-                showMenu(e)   
-             }
-        }
-    }, false);
-} 
-else {
-    document.attachEvent('oncontextmenu', function(e) {
-        window.event.returnValue = false;
-    });
-}
+//         if (menu.style.display == 'flex'){
+//             hideMenu()
+//         }
+//         else{
+//             if (e.path[0].classList.contains('pl-song-wrap') 
+//             || e.path[0].classList.contains('pl-song-index') 
+//             || e.path[0].classList.contains('pl-song-img')
+//             || e.path[0].classList.contains('pl-song-title-artist-wrap')
+//             || e.path[0].classList.contains('pl-song-title')
+//             || e.path[0].classList.contains('pl-song-artist')
+//             || e.path[0].classList.contains('pl-song-album')
+//             || e.path[0].classList.contains('pl-song-like-img')
+//             ){
+//                 showMenu(e)   
+//              }
+//         }
+//     }, false);
+// } 
+// else {
+//     document.attachEvent('oncontextmenu', function(e) {
+//         window.event.returnValue = false;
+//     });
+// }

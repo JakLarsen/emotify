@@ -14,6 +14,7 @@
 
     <div id="yp-playlists-con">
         {%for playlist in my_playlists %}
+        <!-- This check would actually be for userplaylists to swap properly but the randomness is kinda nice actually -->
             {% if playlist.id % 2 == 0 %}
                 <div id="yp-playlist-{{playlist.id}}" class="yp-playlist yp-playlist-0">
                 <img id="yp-img-{{playlist.id}}" class="yp-img-0 yp-img" src="{{playlist.img}}">
