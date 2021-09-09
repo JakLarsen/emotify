@@ -4,18 +4,14 @@
 
 Todo:
 
-- Handler for different right click targets for adding song from a playlist
-- Home App Screen with playlists and songs and stuff to fill
-
-- Basic login/signup authentication
-- force lowercase when processing usernames to ensure no duplicates
-- force 6 letters+ when entering a password signing up
-- restrict username length, etc
-
-- Styling touch ups, cohesion (including main logo)
-- Typography
-
+Train Inputs/Set up inputs on site
 DEMO VIDEO
+
+
+
+
+
+
 
 
 
@@ -25,8 +21,16 @@ DEMO VIDEO
 ***Future updates***
 
 
+- Basic login/signup authentication
+- force lowercase when processing usernames to ensure no duplicates
+- force 6 letters+ when entering a password signing up
+- restrict username length, etc
+
+- Styling touch ups, cohesion (including main logo)
+- Typography
 
 (ACCESSIBILITY) - When you go to a new playlist, prev/curr/next should populate automatically and start playing from beginning
+-Handler for different right click targets for adding song from a playlist
 -Play/pause btn
 -Current Playlist Highlighted
 -Next Playlist displayed
@@ -49,16 +53,24 @@ DEMO VIDEO
 --Proper responsiveness
 
 - state management when loading new mid html
-
+- onDelete of song or playlist confirmation
+- divs to explain errors logging in/signing up/accessing things
+- Favorites tracking
+- Favorites playlist
 
 
 DEPLOY MAYBE SOMETIME OR TALK TO SPOTIFY OR APPLEMUSIC, ETC ABOUT IT
 
 
+Drag/drop to order playlists? Advanced??
+
 
 CURRENT ERRORS
 
 
+
+9/9
+###- Home App Screen with playlists and songs and stuff to fill
 
 9/8
 ###- Play songs from playlists pages
