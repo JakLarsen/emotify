@@ -190,13 +190,13 @@ h1{
 
 
 
-                    /* 602-1012 */
+                    /* 602-1012px */
 
 
 
 @media only screen and (min-width: 602px) and (max-width: 1012px){
     #body{
-        background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(/static/img/em1.JPG);
+        background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(/static/img/em2.JPG);
     }
     #main-con{
         width: 26rem;
@@ -233,9 +233,15 @@ h1{
 
 }
 
+
+
+                    /* 1013px + */
+
+
+
 @media only screen and (min-width: 1013px){
     #body{
-        background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(/static/img/em1.JPG);
+        background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(/static/img/em2.JPG);
     }
     #main-con{
         width: 51rem;
@@ -286,9 +292,7 @@ h1{
         margin-top: 0;
         margin-left: 0rem;
         width: 5rem;
-    }
-    
-    
+    }  
 }
 
 

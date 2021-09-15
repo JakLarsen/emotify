@@ -97,9 +97,9 @@ profile_name = 'Jake Main'
 #interval 2, 20 items(if time incl.) is about 10 inputs over 1s, no data processed for 1s, 20items over 1s, no data 1s
 #40 inputs over 2s has overlap about .5s and 2.5s spread of data ->interval needs to be higher to process
 settings = {
-    'input_threshold': 25,
-    'interval': 4,
-    'items': 40
+    'input_threshold': 13,
+    'interval': 2,
+    'items': 30
 }
     
 def determine_input(data_obj):
@@ -202,6 +202,8 @@ def open_stream():
 #----------------------------------------------------------------------
                     # APP VIEW FUNCTIONS
 #----------------------------------------------------------------------
+
+
 
 def addLibrary():
     library = Playlist.query.get(1)
@@ -313,7 +315,6 @@ def display_data():
     else:
         return redirect('/')
 
-
 @app.route('/add-song', methods=["GET", "POST"])
 def add_song():
     """Add song to library"""
@@ -323,8 +324,6 @@ def add_song():
         return redirect("/")
 
     my_playlists = g.user.userplaylists
-
-
 
     form = AddSongForm()
     if form.validate_on_submit():
@@ -395,7 +394,6 @@ def validate_user_playlist(playlistLi, id):
             return True
     return False
 
-
 @app.route('/playlist/<int:id>/delete', methods=["GET","POST"])
 def delete_playlist(id):
     """Delete a Playlist that a User has created"""
@@ -417,8 +415,6 @@ def delete_playlist(id):
 
 
     return redirect("/")
-
-    # if validate_user_playlist(user_playlists, id):
 
 @app.route('/song/<int:id>/delete', methods=["POST"])
 def delete_song(id):
@@ -455,9 +451,6 @@ def remove_song_from_playlist(playlist_id, song_id):
         db.session.commit()
 
     return redirect(f'/playlist/{playlistToRemoveFrom.id}')
-
-
-
 
 @app.route('/playlist/<int:id>')
 def show_playlist(id):
@@ -575,6 +568,8 @@ def on_message(ws, message):
 
                     # SOCKETIO EVENT HANDLERS
 
+
+
 @socketio.event
 def my_event(message):
     """
@@ -595,13 +590,6 @@ def display_data_request(message):
     message['data'] = f"{message['data']} (has been altered by server) + {jake_data.data}"
     emit('data_response',
          {'data': message['data'], 'count': session['receive_count']})
-
-
-# def new_com_data(message):
-#     """Need a way to listen for emitted data from cortex file???"""
-#     session['receive_count'] = session.get('receive_count', 0) + 1
-#     emit('data_response',
-#          {'data': message, 'count': session['receive_count']})
 
 @socketio.event
 def disconnect_request():
