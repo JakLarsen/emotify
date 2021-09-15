@@ -8,11 +8,12 @@
 let playPause = document.getElementById('play-pause')
 let nextBtn = document.getElementById('next-btn')
 let prevBtn = document.getElementById('prev-btn')
-
 let isPlaying = false
 let currSong = null
 
 
+
+                    //MAIN UPDATE FUNCTIONS
 
 
 
@@ -74,7 +75,6 @@ function updatePrevSongDiv(prevSong){
     prevSongAudio.src = `../static/audio/${prevSong.file}`
     prevHeart.src = "../static/img/heart1.png"
 }
-
 function updateCurrSong(song){
     currSong = {
         id:song.id,
@@ -82,12 +82,17 @@ function updateCurrSong(song){
         playlist:song.playlist
     }
 }
-
 function updateDuration(song){
     let duration = song.duration
     let end = document.getElementById('end')
     end.innerText = `${Math.floor(duration/60)}:${duration%60}`
 }
+
+
+
+                    //MAIN AUDIO CONTROLS
+
+
 
 function play(song) {
     console.log('play() called')
@@ -99,8 +104,13 @@ function pause(currSong){
     console.log('pause() called')
     let audio = document.getElementById(currSong.id)
     audio.pause();  
-
 }
+
+
+
+                    //MAIN AUDIO LOGIC
+
+
 
 function audioHandler(song, prevSong="", nextSong=""){
     console.log(`audioHandler() called`)
@@ -115,7 +125,7 @@ function audioHandler(song, prevSong="", nextSong=""){
                 pause(currSong)
                 isPlaying = false
             }
-            //IS IT A DIFF SONG
+            //IS IT A DIFFERENT SONG
             else{
                 updateCurrSongDiv(song)
                 updatePrevSongDiv(prevSong)
@@ -133,7 +143,7 @@ function audioHandler(song, prevSong="", nextSong=""){
                 play(currSong)
                     isPlaying = true
             }
-            //IS IT A DIFF SONG
+            //IS IT A DIFFERENT SONG
             else{
                 updateCurrSongDiv(song)
                 updatePrevSongDiv(prevSong)
@@ -155,21 +165,15 @@ function audioHandler(song, prevSong="", nextSong=""){
         play(song)
         isPlaying = true
     }
-
 }
 
 
 
+                    //BOT APP AUDIO EVENT HANDLERS
 
 
-
-                    //BOT APP AUDIO HANDLER
-
-
-                    
+//GO TO NEXT SONG              
 async function nextEvent(){
-    console.log('nextEvent Triggered')
-
     if(currSong){
         let currSongIDX = parseInt(document.getElementById('next-playing-con').dataset.songidx)
         let pll = parseInt(document.getElementById('next-playing-con').dataset.pll)
@@ -177,7 +181,6 @@ async function nextEvent(){
         console.log(`Our New Song IDX is : ${currSongIDX}`)
         console.log(`Our playlist length is : ${pll}`)
 
-       
         let nextSongIDX = ""
         if (currSongIDX == pll){
             nextSongIDX = 1
@@ -193,21 +196,18 @@ async function nextEvent(){
         else{
             prevSongIDX = currSongIDX - 1
         }
-
-
         // console.log(`pll: ${pll}, prevSongIDX: ${prevSongIDX}, currSongIDX: ${currSongIDX}, nextSongIDX: ${nextSongIDX}`)
-
         let song = await getSongData(currSongIDX)
         let prevSong = await getSongData(prevSongIDX)
         let nextSong = await getSongData(nextSongIDX)
 
+        //SEND DATA FOR UPDATES TO OUR MAIN AUDIO HANDLER
         audioHandler(song, prevSong, nextSong)
     }
 }
 
+//GO TO PREV SONG
 async function prevEvent(){
-    console.log('prevEvent Triggered')
-
     if(currSong){
         let currSongIDX = parseInt(document.getElementById('prev-playing-con').dataset.songidx)
         let pll = parseInt(document.getElementById('prev-playing-con').dataset.pll)
@@ -227,10 +227,7 @@ async function prevEvent(){
         else{
             nextSongIDX = currSongIDX + 1
         }
- 
-
         // console.log(`pll: ${pll}, prevSongIDX: ${prevSongIDX}, currSongIDX: ${currSongIDX}, nextSongIDX: ${nextSongIDX}`)
-
         let song = await getSongData(currSongIDX)
         let prevSong = await getSongData(prevSongIDX)
         let nextSong = await getSongData(nextSongIDX)
@@ -239,7 +236,7 @@ async function prevEvent(){
     }
 }
 
-//WORKS
+//PLAY OR PAUSE
 function playPauseEvent(){
     console.log('playPauseEvent() called')
     if(currSong){
@@ -247,6 +244,7 @@ function playPauseEvent(){
     } 
 }
 
+//CLICK HANDLERS FOR BOT BUTTONS
 playPause.addEventListener('click', function(evt){
     playPauseEvent()
 })
@@ -259,6 +257,7 @@ prevBtn.addEventListener('click', async function(evt){
     prevEvent()
 })
 
+//CLICK HANDLERS FOR BOT DIVS
 $('#prev-playing-con').click(function(){
     prevEvent()
 });
