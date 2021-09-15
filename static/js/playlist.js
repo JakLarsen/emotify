@@ -1,9 +1,11 @@
 
 
 
+                    //MAIN PLAYLIST FUNCTIONS
 
 
 
+//GET SONG DATA TO SEND OUT TO AUDIO HANDLER
 async function getSongData(songIDX){
     console.log('getSongData() called')
 
@@ -32,6 +34,7 @@ async function getSongData(songIDX){
     return ourSong
 }
 
+//SEND SONG DATA FROM PLAYLIST TO AUDIO HANDLER
 if(typeof songArea == 'undefined'){
     let songArea = document.querySelector('.pl-con')
 
@@ -70,12 +73,7 @@ if(typeof songArea == 'undefined'){
     })
 }
 
-
-
-//RIGHT CLICK FORM PLAYLIST FORM HANDLER
-
-
-
+//RIGHT CLICK FORM ON PLAYLIST SONG HANDLER
 $('.rc-pl-btn').click(function(evt){
     console.log('rc-pl-form clicked')
 
@@ -87,6 +85,7 @@ $('.rc-pl-btn').click(function(evt){
     midCon.load(`/playlist/${playlistID}/add-song/${tossSong}`)
 });
 
+//DELETE SONG THAT YOU'VE ADDED
 $('.pl-song-del-btn').click(function(evt){
     console.log('pl-song-del-btn clicked')
     console.log(evt)
