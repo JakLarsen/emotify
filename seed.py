@@ -21,7 +21,6 @@ p4 = Playlist(title="Playlist 3", description="This is Playlist 3", img='https:/
 db.session.add_all([u1, u2, s1, s2, s3,s4,s5, p1, p2, p3, p4])
 db.session.commit()
 
-
 up1 = Userplaylist(user_id=1, playlist_id=1)
 up2 = Userplaylist(user_id=1, playlist_id=2)
 up3 = Userplaylist(user_id=2, playlist_id=1)

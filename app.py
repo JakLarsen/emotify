@@ -1,3 +1,12 @@
+                    
+
+
+#----------------------------------------------------------------------                    
+                    # IMPORTS
+#----------------------------------------------------------------------
+
+
+
 import os
 import re
 # # from flask_debugtoolbar import DebugToolbarExtension
@@ -17,7 +26,11 @@ import pdb
 
 
 
+#----------------------------------------------------------------------
                     # FLASK APP CONFIG
+#----------------------------------------------------------------------
+
+
 
 # Set this variable to "threading", "eventlet" or "gevent" to test the
 # different async modes, or leave it set to None for the application to choose
@@ -43,40 +56,9 @@ connect_db(app)
 
 
 
-
-
-                    #-------------------------------------------------
-                                        # NOTES
-                    #-------------------------------------------------
-
-#####SEE ALTERNATE SOLUTION#####
-#Do I need to set up a listener through websocket-client here that can listen for events happening on the cortex side?
-#or do I need to convert cortex to use a socketio websocket? (or the client to use websocket-client instead?)
-## - Do I need the same websocket library for both?
-
-#####ALTERNATE SOLUTION#####
-#Using list handler of a shared list to dump data and read from.
-#I clear the data each interval it is handled to prevent bloating and data race problems
-
-
-#####SOLVED#####
-#In determine_input
-#-- List is being populated by 20 instead of 5 or 59/60 instead of 20.
-#-- I believe this might be due to some sort of data race
-#-- IT SEEMS like the function is reading the first 5 or 20 entries in the list, which means the functions are working
-#-- Need to send the restricted data object instead of using the global when printing is the SOLUTION - SOLVED
-
-#####SOLVED#####
-#To prevent data race (if needed)
-#--Accumulate for 2s Pause for 1. 
-#--During Pause, we send the 2s of data for input processing and determination, so that it isn't constantly updating while running determination
-#OR, copy the list before you run tests, run tests on copied list
-
-#Could probably move restrict_data and determine_input functions along with settings object into DataContainer class.
-
-
-
+#----------------------------------------------------------------------
                     # GLOBALS
+#----------------------------------------------------------------------
 
 
 
@@ -93,6 +75,14 @@ jake_user = {
 }
 profile_name = 'Jake Main'
 
+
+
+#----------------------------------------------------------------------
+                    # HEADSET DATA PROCESSING 
+#----------------------------------------------------------------------
+
+
+
 #Settings for mental action command threshold, interval of data display processing/display, etc
 #interval 2, 20 items(if time incl.) is about 10 inputs over 1s, no data processed for 1s, 20items over 1s, no data 1s
 #40 inputs over 2s has overlap about .5s and 2.5s spread of data ->interval needs to be higher to process
@@ -101,7 +91,7 @@ settings = {
     'interval': 2,
     'items': 30
 }
-    
+
 def determine_input(data_obj):
     """
     Takes a DataContainer data_obj (in cortex.py)
@@ -123,7 +113,6 @@ def determine_input(data_obj):
         return "pull"
     else:
         return "neutral"
-
     """Can comment out code above and just return any of the values for testing purposes"""
     return "pull"
     return "neutral"
@@ -136,21 +125,22 @@ def restrict_data(data_obj):
     -Lets us use only most recent inputs
     Returns the reduced DataContainer instance as data_obj
     """
-    #Takes a snapshot to prevent dealing with new incoming data during processing
-    #Dealing with new incoming data is still predictable, but the output is harder to read and it bloats the object
+    #Takes a snapshot of the data coming in
     data_obj_copy = copy(data_obj)
     if len(data_obj_copy.data) > 5:
         #We restrict data being processed to last 20 at the time the data copy is made
         data_obj_copy.data = data_obj_copy.data[-(settings['items']):-1]
-        #Untested, but then we should recopy our old object to the 20 item dataset to maintain a reduced size
-        #If you skip this step, the original data_obj will bloat and copying and processing will suffer
-        #We don't need a log, only previous 20 (or whatever # - probably higher) inputs at the time of processing each interval
+        #Recopy to prevent bloat
         data_obj = copy(data_obj_copy)
     return data_obj_copy
 
 
 
+#----------------------------------------------------------------------
                     # SERVER THREADING
+#----------------------------------------------------------------------
+            
+
 
 def background_thread():
     """Emit server generated events to client at 'data_response'"""
@@ -206,12 +196,19 @@ def open_stream():
 
 
 def addLibrary():
+    """
+    Gives all users the library playlist
+    -Auth for removing songs is handled elsewhere
+    """
     library = Playlist.query.get(1)
     g.user.userplaylists.append(library)
     db.session.commit()
 
 
+
                     # USER LOGIN HANDLERS
+
+
 
 @app.before_request
 def add_user_to_g():
@@ -234,6 +231,8 @@ def do_logout():
 
 
                     # MAIN VIEW FUNCTIONS
+
+
 
 @app.route('/')
 def app_home():
@@ -293,9 +292,35 @@ def logout():
     do_logout()  
     return redirect('/')
 
+@app.route('/home')
+def show_home():
+    """Home Content"""
+
+    if not g.user:
+        flash("Access unauthorized.")
+        return redirect('/')
+
+    songs = Song.query.all()
+    my_playlists=g.user.userplaylists
+
+    return render_template('/users/home.html', songs=songs, my_playlists=my_playlists)
+
+@app.route('/your-playlists')
+def show_playlists():
+    """Your Playlists Page Content"""
+
+    if not g.user:
+        flash("Access unauthorized.")
+        return redirect('/')
+
+    songs = Song.query.all()
+    my_playlists=g.user.userplaylists
+
+    return render_template('/users/your-playlists.html', songs=songs, my_playlists=my_playlists)
+
 @app.route('/data')
 def data():
-    """Display a page dedicated to showing data from headset inputs"""
+    """Display a page dedicated to showing data from headset inputs - for dev"""
     if g.user:
         return render_template('data.html')
     else:
@@ -304,7 +329,6 @@ def data():
 @app.route('/display_data')
 def display_data():
     """Opens subscription stream to Emotiv Headset"""
-
     if g.user:
         print (f"Opening Stream", flush =  True)
         print("******************************************", flush =  True)
@@ -340,12 +364,12 @@ def add_song():
             new_song = Song(title=title, artist=artist, album=album, img=img, file=file, duration=duration, user_id=user_id)
             db.session.add(new_song)
             db.session.commit()
+
             #Add new song to Library
             new_playlistsong = Playlistsong(playlist_id=1, song_id = new_song.id)
             db.session.add(new_playlistsong)
             db.session.commit()
 
-        #this except isn't working
         except:
             flash("Song already in library, or something went wrong")
             return render_template('users/add-song.html', form=form, my_playlists=my_playlists)
@@ -354,6 +378,50 @@ def add_song():
 
     else:
         return render_template('users/add-song.html', form=form, my_playlists=my_playlists)
+
+@app.route('/song-data/<int:song_id>')
+def retrieve_song_data(song_id):
+
+    if not g.user:
+        flash("Access unauthorized.")
+        return redirect('/')
+
+    song = Song.query.get(song_id)
+    songs = len(Song.query.all())
+    id = song.id
+    title = song.title
+    artist = song.artist
+    img = song.img
+    duration = song.duration
+    file = song.file
+    total_songs = songs
+
+
+    return jsonify({
+        'id':id,
+        'title':title,
+        'artist':artist,
+        'img':img,
+        'file':file,
+        'duration':duration,
+        'total_songs': total_songs
+    })   
+    
+@app.route('/song/<int:id>/delete', methods=["POST"])
+def delete_song(id):
+    """Delete a Song that a User has created"""
+
+    print("hit delete endpoint", flush=True)
+    if not g.user:
+        flash("Access unauthorized.")
+        return redirect('/')
+    
+    songToDelete = Song.query.get(id)
+    
+    db.session.delete(songToDelete)
+    db.session.commit()
+
+    return redirect("/")
 
 @app.route('/create-playlist', methods=["GET","POST"])
 def create_playlist():
@@ -386,6 +454,22 @@ def create_playlist():
     else:
         return render_template('users/create-playlist.html', form=form, my_playlists=my_playlists)
 
+@app.route('/playlist/<int:id>')
+def show_playlist(id):
+    """Show individual playlist"""
+
+    if not g.user:
+        flash("Access unauthorized.")
+        return redirect('/')
+
+    playlist = Playlist.query.get_or_404(id)
+    songsOfPlaylist = playlist.playlistsongs
+    my_playlists = g.user.userplaylists
+
+    print(my_playlists, flush=True)
+
+    return render_template('users/playlist.html', playlist=playlist, songs = songsOfPlaylist, my_playlists=my_playlists)
+
 def validate_user_playlist(playlistLi, id):
     """Validates that the playlist is one of the User's"""
 
@@ -413,24 +497,6 @@ def delete_playlist(id):
         db.session.delete(playlist)
         db.session.commit()
 
-
-    return redirect("/")
-
-@app.route('/song/<int:id>/delete', methods=["POST"])
-def delete_song(id):
-    """Delete a Song that a User has created"""
-
-    print("hit delete endpoint", flush=True)
-    if not g.user:
-        flash("Access unauthorized.")
-        return redirect('/')
-    
-    songToDelete = Song.query.get(id)
-    
-    db.session.delete(songToDelete)
-    db.session.commit()
-
-
     return redirect("/")
 
 @app.route('/playlist/<int:playlist_id>/remove/<int:song_id>')
@@ -451,76 +517,6 @@ def remove_song_from_playlist(playlist_id, song_id):
         db.session.commit()
 
     return redirect(f'/playlist/{playlistToRemoveFrom.id}')
-
-@app.route('/playlist/<int:id>')
-def show_playlist(id):
-    """Show individual playlist"""
-
-    if not g.user:
-        flash("Access unauthorized.")
-        return redirect('/')
-
-    playlist = Playlist.query.get_or_404(id)
-    songsOfPlaylist = playlist.playlistsongs
-    my_playlists = g.user.userplaylists
-
-    print(my_playlists, flush=True)
-
-    return render_template('users/playlist.html', playlist=playlist, songs = songsOfPlaylist, my_playlists=my_playlists)
-
-@app.route('/home')
-def show_home():
-    """Home Content"""
-
-    if not g.user:
-        flash("Access unauthorized.")
-        return redirect('/')
-
-    songs = Song.query.all()
-    my_playlists=g.user.userplaylists
-
-    return render_template('/users/home.html', songs=songs, my_playlists=my_playlists)
-
-@app.route('/your-playlists')
-def show_playlists():
-    """All Playlists Content"""
-
-    if not g.user:
-        flash("Access unauthorized.")
-        return redirect('/')
-
-    songs = Song.query.all()
-    my_playlists=g.user.userplaylists
-
-    return render_template('/users/your-playlists.html', songs=songs, my_playlists=my_playlists)
-
-@app.route('/song-data/<int:song_id>')
-def retrieve_song_data(song_id):
-
-    if not g.user:
-        flash("Access unauthorized.")
-        return redirect('/')
-
-    song = Song.query.get(song_id)
-    songs = len(Song.query.all())
-    id = song.id
-    title = song.title
-    artist = song.artist
-    img = song.img
-    duration = song.duration
-    file = song.file
-    total_songs = songs
-
-
-    return jsonify({
-        'id':id,
-        'title':title,
-        'artist':artist,
-        'img':img,
-        'file':file,
-        'duration':duration,
-        'total_songs': total_songs
-    })
 
 @app.route('/playlist-data/<int:playlist_id>')
 def retrieve_playlist_data(playlist_id):
@@ -614,7 +610,6 @@ def connect():
         if thread is None:
             thread = socketio.start_background_task(background_thread)
     emit('my_reponse', {'data': 'Connected', 'count': 0})
-
 
 @socketio.on('disconnect')
 def test_disconnect():

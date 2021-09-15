@@ -7,7 +7,6 @@ from flask_sqlalchemy import SQLAlchemy
 bcrypt = Bcrypt()
 db = SQLAlchemy()
 
-
 class Song(db.Model):
     """User in the system."""
     __tablename__ = 'songs'
@@ -175,16 +174,9 @@ class User(db.Model):
     )
 
 
-    
-
-
-
-
-
 
 def connect_db(app):
     """Connect this database to provided Flask app"""
-
     db.app = app
     db.init_app(app)
 
