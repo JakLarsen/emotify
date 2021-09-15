@@ -1,37 +1,16 @@
-
-
-
-
-
-<!-- THIS ENTIRE PAGE SHOULD NOT BE INDEX.HTML AND SHOULD BE MOVED TO BE RETURNED BY THE /display_data ROUTE
-GIVEN SOMEONE IS LOGGED IN FROM THE HOMEPAGE -->
-
-
-
-
-
 <!DOCTYPE HTML>
 <html>
 <head>
 
-
-
     <!-- META -->
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-
     <!-- TITLE -->
-
     <title>Flask-SocketIO Test</title>
 
-
-
     <!-- LINKS -->
-
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
@@ -54,7 +33,6 @@ GIVEN SOMEONE IS LOGGED IN FROM THE HOMEPAGE -->
             }
         }
 
-
         $(document).ready(function() {
             // Connect to the Socket.IO server.
             var socket = io();
@@ -65,7 +43,6 @@ GIVEN SOMEONE IS LOGGED IN FROM THE HOMEPAGE -->
             socket.on('connect', function() {
                 socket.emit('my_event', {data: 'I\'m connected!'});
             });
-
             // Event handler for server sent data.
             // The callback function is invoked whenever the server emits data
             // to the client with the 'my_response' identifier. The data is then displayed in the "Received"
@@ -75,7 +52,6 @@ GIVEN SOMEONE IS LOGGED IN FROM THE HOMEPAGE -->
                 if (cb)
                     cb();
             });
-
             // Event handler for Headset sent data (Handled by server).
             // The callback function is invoked whenever the server emits data
             // to the client with the 'data_response' identifier. The data is then displayed in the "Received"
@@ -87,15 +63,6 @@ GIVEN SOMEONE IS LOGGED IN FROM THE HOMEPAGE -->
                 update_page(msg.input)
             });
 
-
-
-            // Handlers for the form buttons to emit data to server from client.
-
-            // $('form#emit').submit(function(event) {
-            //     socket.emit('my_event', {data: $('#emit_data').val()});
-            //     return false;
-            // });
-            
             // On submit, data is emitted across websocket to 'display_data_request' etc. handlers on server
             $('form#display-data').submit(function(event){
                 socket.emit('display_data_request', {data: ('Clicked to display realtime data or send input to server.')});
@@ -114,20 +81,17 @@ GIVEN SOMEONE IS LOGGED IN FROM THE HOMEPAGE -->
 
                     <!-- BODY -->
 
+
+
 <body>
     <h1>Neural Nav WebSocket with SocketIO</h1>
     <h2>Send message from client to Flask-server:</h2>
-    <!-- <form id="emit" method="POST" action='#'>
-        <input type="text" name="emit_data" id="emit_data" placeholder="Message">
-        <input type="submit" value="Echo">
-    </form> -->
     <form id="display-data" method="POST" action='#'>
         <input type="submit" value="Display Data">
     </form>
     <form id="disconnect" method="POST" action="#">
         <input type="submit" value="Disconnect">
     </form>
-
     <!-- On button press -> AJAX call to /display_data route to open stream -->
     <script type=text/javascript>
         $(function() {
@@ -138,12 +102,10 @@ GIVEN SOMEONE IS LOGGED IN FROM THE HOMEPAGE -->
             });
         });
     </script>
-    
     <div class='container'>
         <h3>Open DataStream</h3>
         <form><a href=# id=stream-btn><button class='btn btn-default'>Open Stream</button></a></form>
     </div>
-
     <h2>Received:</h2>
     <div id="log"></div>
 </body>
