@@ -111,24 +111,20 @@
             <div id="icon-title"><i><span id="icon-title-link">Emotify</span></i></div>
           </div>
           <div id="home-wrap" class="tl-wrap">
-            <!-- <form id="tl-search-form" class ="link-form" action="/"> -->
               <span id="tl-search-btn-wrap" class="link-btn-wrap">
                 <div id="tl-create-search-btn" class="link-btn">
                   <div id="search-icon" class="tl-icon"><img id="search-img" class="icon-img" src="/static/img/search1.png"/></div>
                   <div id="tl-search" class="tl-desc">Home</div>
                 </div>
               </span>  
-            <!-- </form> -->
           </div>
           <div id="library-wrap" class="tl-wrap">
-            <!-- <form id="tl-library-form" class ="link-form" action="/library"> -->
               <span id="tl-library-btn-wrap" class="link-btn-wrap">
                 <div id="tl-create-library-btn" class="link-btn">
                   <div id="library-icon" class="tl-icon"><img id="library-img" class="icon-img" src="/static/img/songs1.png"/></div>
                   <div id="tl-library" class="tl-desc">Library</div>
                 </div>
               </span>  
-            <!-- </form> -->
           </div>
           <div id="tl-playlist-wrap" class="tl-wrap">
               <span id="tl-playlist-btn-wrap" class="link-btn-wrap">
@@ -140,7 +136,6 @@
           </div>
           <div id="tl-border"></div>
         </div>
-
         <div id="mid-left-con">
           <div id="ml-create-playlist-wrap" class="tl-wrap">
             <form id="ml-create-playlist-form" action="/create-playlist">
@@ -157,11 +152,9 @@
               {% if playlist.title != 'Library' %}
                 <div id="ml-playlist-wrap">
                   <div class="ml-playlist" id="mid-playlist-{{playlist.id}}">{{playlist.title}}</div>
-                  
                   <form class="ml-del-btn-form" action="/playlist/{{playlist.id}}/delete">
                     <button class="ml-del-btn">X</button>
                   </form>
-                  
                 </div>
               {% endif %}
             {% endfor %}
@@ -180,7 +173,6 @@
           </div>
         </div>
       </div>
-      
       <div id="mid-con">
         <div id="top-mid-con">
           <div id="mid-welcome">Welcome back, {{g.user.username | title}}.</div>
@@ -191,13 +183,10 @@
           <div class="ball-spacer"></div>
           <div id="mid-logout"><a class="mid-con-link" href="/logout">Logout</a></div>
           </div>
-          
         </div>
         <div id="mid-mid-con">
           {% block content %}
-          
           <div id="home-con" class="template-con">
-
             <div id="home-top" class="template-top">
               <div id="home-tl" class="template-tl">
                 <img id="home-img"  class="template-img" src="https://i.redd.it/jt3kkegbrb661.jpg">
@@ -207,9 +196,7 @@
                 <div id="home-caption" class="template-caption">Your music. At the ease of thought.</div>
               </div>
             </div>
-
             <div id="home-bot">
-
               <div id="home-fav-music-con">
                 <div id="home-fav-music-banner" class="home-banner">Some familiar sounds</div>
                 <div id="home-fav-music-wrap">
@@ -251,7 +238,6 @@
                   </div>
                 </div>
               </div>  
-
               <div id="home-your-playlists-con">
                 <div id="home-your-playlists-banner" class="home-banner">Your Playlists</div>
                 <div id="home-your-playlists-wrap">
@@ -262,19 +248,13 @@
                   </div>
                   {% endfor %}
                 </div>
-
               </div>
-
-
             </div>
           </div>
-
           {% endblock %}
         </div>
         <div id="bm-spacer"></div>
-
         <div id="bot-mid-con">
-
           <div id="prev-playing-con" class="song-player-con" data-pll="" data-songidx="" data-songid="" data-containertype="prev-btn" data-duration="">
             <audio id="" data-pos="prev" class="audio prev-audio" src=''></audio>
             <img id="prev-playing-song-img" class="song-player-img" src=''>
@@ -285,9 +265,6 @@
             <img id="prev-song-heart" class="like-heart" src="">
             <img id="hs-img-audio" class="hs-img" src="../static/img/hs2.png">
           </div>
-
-
-
           <div id="curr-song-audio-control-con" data-pll="" data-songidx="" data-songid="" data-songpl="" data-containertype="play-pause-btn" data-duration="">
             <audio id="" data-pos="curr" class="audio curr-audio" src=''></audio>
             <div id="curr-playing-con">
@@ -299,9 +276,6 @@
               <img id="curr-song-heart" class="like-heart" src="">
               <img id="hs-img-audio" class="hs-img" src="../static/img/hs2.png">
             </div>
-
-
-
             <div id="audio-controls-con">
               <div id="audio-controls-wrap">
                 <div id="prev-btn-con" class="audio-control-con">
@@ -321,7 +295,6 @@
               </div>
             </div>
           </div>
-
           <div id="next-playing-con" class="song-player-con" data-pll="" data-songidx="" data-songid="" data-containertype="next-btn" data-duration="">
             <audio id="" data-pos="next" class="audio next-audio" src=''></audio>
             <img id="next-playing-song-img" class="song-player-img" src=''>
@@ -332,28 +305,24 @@
             <img id="next-song-heart" class="like-heart" src="">
             <img id="hs-img-audio" class="hs-img" src="../static/img/hs2.png">
           </div>
-
         </div>
-
       </div>
-
       <div id="right-con">
         <div id="top-right-con">
-          
         </div>
         <div id="bot-right-con"></div>
       </div>
-
     </div>
 
-
-
   </div>
+
 
 
   <!-- <script src="../../static/js/audio.js"></script> -->
   <script src="../../static/js/audio2.js"></script>
   <script src="../../static/js/app.js"></script>
+
+  
   
 </body>
 
