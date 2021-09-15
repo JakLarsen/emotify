@@ -1,4 +1,4 @@
-let tossSong= null
+
 
 
                     //GLOBALS
@@ -6,38 +6,44 @@ let tossSong= null
 
 
 let midCon = $('#mid-mid-con');
+let tossSong= null
 
 
 
-                    //MAIN PAGE SWAP HANDLERS
+                    //MAIN PAGE MID CONTENT AREA SWAP HANDLERS
 
 
-
+//LIBRARY BUTTON
 $('#library-wrap').click(function(){
-    console.log('libary Button clicked and attempt to load midCon')
     midCon.load("/playlist/1")
 });
+//HOME BUTTON
 $('#home-wrap').click(function(){
     console.log('Home Button clicked and attempt to load midCon')
     midCon.load("/home")
 });
+//YOUR PLAYLISTS BUTTON
 $('#tl-playlist-wrap').click(function(){
     console.log('Your Playlists Button clicked and attempt to load midCon')
     midCon.load("/your-playlists")
 });
+//LOGO CLICK
 $('#icon-title-link').click(function(){
     console.log('You clicked the logo')
     midCon.load("/home")
 });
+//CREATE PLAYLIST FORM
 $('#ml-create-playlist-form').click(function(){
-    console.log('You clicked the logo')
+    console.log('Create Playlist Form clicked')
     midCon.load("/create-playlist")
 });
+//INDIVIDUAL PLAYLISTS ON LEFT BAR
 $('.ml-playlist').click(function(evt){
     let target = evt.currentTarget.id
     let playlistID = target.substr(13)
     midCon.load(`/playlist/${playlistID}`)
 });
+//INDIVIDUAL PLAYLISTS FROM HOME PAGE
 $('.home-your-playlist-playlist').click(function(evt){
     console.log(evt)
     let target = evt.currentTarget.id
@@ -47,10 +53,7 @@ $('.home-your-playlist-playlist').click(function(evt){
 
 
 
-
-
-
-                    // OPEN STREAM
+                    // OPEN STREAM TO HEADSET
 
 
                     
@@ -64,29 +67,27 @@ $(function() {
 
 
 
-
-// RIGHT CLICK ADD SONG TO PLAYLIST HANDLER
-
+//RIGHT CLICK ADD SONG TO PLAYLIST HANDLER
 
 
-function discernSongDivSongID(path){
-    console.log('in discernSongDivSongID')
-    console.log(path)
-
+//DETERMINES THE SONG TO INTERACT WITH FROM DIFFERENT CLICKABLE ITEMS ON THE SONG DIV
+function discernSongDivSongID(path){ 
     let songID = null
 
+    //IF YOU CLICK ON THE SONG WRAPPER
     if (path[0].classList.contains('pl-song-wrap')){
         songID = path[0].dataset.songid
     }
-
+    //if [INSERT OTHER CLICKABLE AREAS LIKE TITLE]
     return songID
 }
 
-
+//HIDE RIGHT CLICK MENU ON SECOND RIGHT CLICK
 function hideMenu(){
     document.getElementById('rc-menu').style.display = 'none'
     document.getElementById('rc-playlists').style.display = 'none'
 }
+//SHOW RIGHT CLICK MENU ON FIRST RIGHT CLICK
 function showMenu(e){
     let menu = document.getElementById('rc-menu')
     let playlists =  document.getElementById('rc-playlists')
@@ -101,6 +102,7 @@ function showMenu(e){
 
 }
 
+//MAIN RIGHT CLICK MENU HANDLER
 if (document.addEventListener) {
     document.addEventListener('contextmenu', function(e) {
         e.preventDefault();
@@ -108,13 +110,12 @@ if (document.addEventListener) {
         let songID = discernSongDivSongID(e.path)
         tossSong = songID
 
-        //Draw right click menu
-
+        //DRAW MENU
         let menu = document.getElementById('rc-menu')
-
         if (menu.style.display == 'flex'){
             hideMenu()
         }
+        //IF YOU RIGHT CLICK A SONG DIV
         else{
             if (e.path[0].classList.contains('pl-song-wrap') 
             || e.path[0].classList.contains('pl-song-index') 
