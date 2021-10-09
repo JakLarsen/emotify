@@ -28,8 +28,10 @@
     ****** DONE ****** - ON SONG ID HOVER SHOWS PLAY BUTTON
     ****** DONE ****** - FIX NEW SONG BUTTON TEXT JITTER
     ****** DONE ****** - HIGHLIGHT CURRENT PLAYLIST
+    ****** DONE ****** - FIX DELETE 
+    ****** DONE ****** - POPULATE PLAYLISTS
 
-    - FIX DELETE
+
     - LIKED SONGS PLAYLIST
         - Give all users their OWN liked songs playlist
         - Make it so when clicking a heart. It adds the song to your liked-songs playlist 
@@ -42,7 +44,6 @@
     - Duration updating each second
         - a working duration bar
     - UPDATE LOGIC TO WORK FULLY
-    - POPULATE PLAYLISTS
 
 
     - Consider populating right sidebar (IF TIME)
@@ -67,6 +68,7 @@
 
     ***TO FIX
     - Deleting song from other playlists other than Library or Rock On doesn't work now...hmm 
+    - You need to sign up your users in seed.py so when you reset you have useable users.
     ****** DONE ****** - HOME is enforcing some sort of min-width that is displacing bot audio controller slightly
 
     ***IRRELEVANT TO PROOF OF CONCEPT

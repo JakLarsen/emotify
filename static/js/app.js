@@ -153,85 +153,85 @@ $(document).ready(function() {
 
 
 
-// //DETERMINES THE SONG TO INTERACT WITH FROM DIFFERENT CLICKABLE ITEMS ON THE SONG DIV
-// function discernSongDivSongID(path){ 
-//     let songID = null
+//DETERMINES THE SONG TO INTERACT WITH FROM DIFFERENT CLICKABLE ITEMS ON THE SONG DIV
+function discernSongDivSongID(path){ 
+    let songID = null
 
-//     //IF YOU CLICK ON THE SONG WRAPPER
-//     if (path[0].classList.contains('pl-song-wrap')){
-//         songID = path[0].dataset.songid
-//     }
-//     //if [INSERT OTHER CLICKABLE AREAS LIKE TITLE]
-//     return songID
-// }
+    //IF YOU CLICK ON THE SONG WRAPPER
+    if (path[0].classList.contains('pl-song-wrap')){
+        songID = path[0].dataset.songid
+    }
+    //if [INSERT OTHER CLICKABLE AREAS LIKE TITLE]
+    return songID
+}
 
-// //HIDE RIGHT CLICK MENU ON SECOND RIGHT CLICK
-// function hideMenu(){
-//     document.getElementById('rc-menu').style.display = 'none'
-//     document.getElementById('rc-playlists').style.display = 'none'
-// }
-// //SHOW RIGHT CLICK MENU ON FIRST RIGHT CLICK
-// function showMenu(e){
-//     let menu = document.getElementById('rc-menu')
-//     let playlists =  document.getElementById('rc-playlists')
+//HIDE RIGHT CLICK MENU ON SECOND RIGHT CLICK
+function hideMenu(){
+    document.getElementById('rc-menu').style.display = 'none'
+    document.getElementById('rc-playlists').style.display = 'none'
+}
+//SHOW RIGHT CLICK MENU ON FIRST RIGHT CLICK
+function showMenu(e){
+    let menu = document.getElementById('rc-menu')
+    let playlists =  document.getElementById('rc-playlists')
     
-//     menu.style.display = 'flex'
-//     menu.style.left = e.pageX-250 + 'px'
-//     menu.style.top = e.pageY-80 + 'px'
+    menu.style.display = 'flex'
+    menu.style.left = e.pageX-250 + 'px'
+    menu.style.top = e.pageY-80 + 'px'
 
-//     playlists.style.display = 'flex'
-//     playlists.style.left = e.pageX-110 + 'px'
-//     playlists.style.top = e.pageY-80+ 'px'
+    playlists.style.display = 'flex'
+    playlists.style.left = e.pageX-110 + 'px'
+    playlists.style.top = e.pageY-80+ 'px'
 
-// }
+}
 
-// //MAIN RIGHT CLICK MENU HANDLER
-// if (document.addEventListener) {
-//     document.addEventListener('contextmenu', function(e) {
-//         e.preventDefault();
+//MAIN RIGHT CLICK MENU HANDLER
+if (document.addEventListener) {
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
 
-//         let songID = discernSongDivSongID(e.path)
-//         tossSong = songID
+        let songID = discernSongDivSongID(e.path)
+        tossSong = songID
 
-//         //DRAW MENU
-//         let menu = document.getElementById('rc-menu')
-//         menu.addEventListener('click', function(){
-//             console.log('menu clicked')
-//             if (menu.style.display == 'flex'){
-//                 hideMenu()
-//             }
-//         })
+        //DRAW MENU
+        let menu = document.getElementById('rc-menu')
+        menu.addEventListener('click', function(){
+            console.log('menu clicked')
+            if (menu.style.display == 'flex'){
+                hideMenu()
+            }
+        })
         
-//         if (menu.style.display == 'flex'){
-//             hideMenu()
-//         }
-//         //IF YOU RIGHT CLICK A SONG DIV
-//         else{
-//             if (e.path[0].classList.contains('pl-song-wrap') 
-//             || e.path[0].classList.contains('pl-song-index') 
-//             || e.path[0].classList.contains('pl-song-img')
-//             || e.path[0].classList.contains('pl-song-title-artist-wrap')
-//             || e.path[0].classList.contains('pl-song-title')
-//             || e.path[0].classList.contains('pl-song-artist')
-//             || e.path[0].classList.contains('pl-song-album')
-//             || e.path[0].classList.contains('pl-song-like-img'))
-//             {
-//                 //SHOW MENU
-//                 showMenu(e) 
-//                 //ADD LISTENER TO RIGHT CLICK PLAYLIST MENU TO CLOSE MENU ON CLICK
-//                 let rcPlaylists = document.getElementById('rc-playlists')
-//                 rcPlaylists.addEventListener('click', function(){
-//                     console.log('RIGHT CLICK PLAYLIST CLICKED')
-//                     if (menu.style.display == 'flex'){
-//                         hideMenu()
-//                     }
-//                 })
-//             }
-//         }
-//     }, false);
-// } 
-// else {
-//     document.attachEvent('oncontextmenu', function(e) {
-//         window.event.returnValue = false;
-//     });
-// }
+        if (menu.style.display == 'flex'){
+            hideMenu()
+        }
+        //IF YOU RIGHT CLICK A SONG DIV
+        else{
+            if (e.path[0].classList.contains('pl-song-wrap') 
+            || e.path[0].classList.contains('pl-song-index') 
+            || e.path[0].classList.contains('pl-song-img')
+            || e.path[0].classList.contains('pl-song-title-artist-wrap')
+            || e.path[0].classList.contains('pl-song-title')
+            || e.path[0].classList.contains('pl-song-artist')
+            || e.path[0].classList.contains('pl-song-album')
+            || e.path[0].classList.contains('pl-song-like-img'))
+            {
+                //SHOW MENU
+                showMenu(e) 
+                //ADD LISTENER TO RIGHT CLICK PLAYLIST MENU TO CLOSE MENU ON CLICK
+                let rcPlaylists = document.getElementById('rc-playlists')
+                rcPlaylists.addEventListener('click', function(){
+                    console.log('RIGHT CLICK PLAYLIST CLICKED')
+                    if (menu.style.display == 'flex'){
+                        hideMenu()
+                    }
+                })
+            }
+        }
+    }, false);
+} 
+else {
+    document.attachEvent('oncontextmenu', function(e) {
+        window.event.returnValue = false;
+    });
+}

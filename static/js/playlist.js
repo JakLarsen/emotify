@@ -73,9 +73,9 @@ if(typeof songArea == 'undefined'){
     })
 }
 
+//ADDS A SONG BY ID TO A PLAYLIST BY ID
 async function addSongToPlaylist(playlistID, songID){
     let songToPlaylist = await axios.get(`/playlist/${playlistID}/add-song/${songID}`)
-    console.log(songToPlaylist)
 }
 
 //RIGHT CLICK FORM ON PLAYLIST SONG HANDLER
@@ -90,6 +90,7 @@ $('.rc-pl-btn').click(async function(evt){
     addSongToPlaylist(playlistID, songID)
 });
 
+//TAKES A TARGET SONG DIV ID TO MOVE FROM PLAYLIST AND FINDS HOW FAR TO USE SUBSTR METHOD TO STRIP LEFTSIDE
 function findLastNumberInTargetPlaylistID(target){
     console.log('in findLastNumberInTar...')
     let ourSubVal = 17  //A 1 digit pl in id pushes one space to 17, 2 digit = 18, etc.
@@ -105,6 +106,7 @@ function findLastNumberInTargetPlaylistID(target){
     return 'subVal not found'
 }
 
+//FINDS PLAYLIST ID FROM TARGET SONG DIV ID
 function findPlaylistID(target){
     let counter = 0
     target = target.substr(3)
