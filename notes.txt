@@ -19,9 +19,8 @@
     ****** DONE ****** - ACTUAL PLAY/PAUSE button
     ****** DONE ****** - ACTUAL NEXT AND PREVIOUS BUTTONS
     ****** DONE ****** - AUDIO GIF INSTEAD OF PAUSE OPTION
-
     ****** DONE ****** - ON SONG ID HOVER SHOWS PLAY BUTTON
-    - FIX NEW SONG BUTTON TEXT JITTER
+    ****** DONE ****** - FIX NEW SONG BUTTON TEXT JITTER
     - LIKED SONGS PLAYLIST
         - Give all users their OWN liked songs playlist
         - Make it so when clicking a heart. It adds the song to your liked-songs playlist 

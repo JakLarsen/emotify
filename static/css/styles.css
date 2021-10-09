@@ -343,9 +343,9 @@ h1, button{
     color: #fff;
     cursor: pointer;
     transition: 0.25s ease-in-out;
-    height: 3.2rem;
+    /* height: 3.2rem; */
     width: 7.5rem;
-    font-size: 0.85rem;
+    /* font-size: 0.85rem; */
     opacity: 1;
 }
 .link-form{
@@ -1423,9 +1423,9 @@ h1, button{
     color: #fff;
     cursor: pointer;
     transition: 0.25s ease-in-out;
-    height: 3.2rem;
+    /* height: 3.2rem; */
     width: 7.5rem;
-    font-size: 0.85rem;
+    /* font-size: 0.85rem; */
     opacity: 1;
 }
 
