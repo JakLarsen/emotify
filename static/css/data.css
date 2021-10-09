@@ -1,0 +1,124 @@
+
+
+
+                    /* GENERAL FORMATTING */
+
+
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fff;
+    /* overflow: hidden; */
+    height: 100vh;
+    width: 100vw;
+    padding: 1rem;
+}
+h1, button{
+    margin: 0;
+    padding: 0;
+}
+
+
+#data-main-container{
+    /* background-color: orange; */
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+}
+
+#data-title{
+    margin-top: 2rem;
+    /* background-color: pink; */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+#data-buttons-container{
+    /* background-color: blueviolet; */
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.btn{
+    margin-top: 2rem;
+    border-style: none;
+    background-color: #a71111;
+    color: #eee;
+    border-radius: 50px;
+    height: 3.5rem;
+    width: 9rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+.btn:hover{
+    cursor: pointer;
+    background-color: #ba1212;
+    color: #fff;
+}
+#disconnect-btn{
+    margin-left: 1rem;
+}
+
+#data-log-container{
+    margin-top: 2rem;
+    /* background-color: burlywood; */
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    border: 3px solid #ba1212;
+    border-radius: 5px;
+}
+.data-log-item{
+    /* background-color: cadetblue; */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-flow: column nowrap;
+    border: 3px solid #ba1212;
+}
+
+.data-command, .data-number{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    height: 5rem;
+    width: 4rem;
+    margin: 1rem;
+}
+.data-data{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    height: 5rem;
+    width: 50rem;
+    margin: 1rem;
+}
+
+
+.neutral{
+    background-color: cyan;
+}
+.push{
+    background-color: chartreuse;
+}
+.pull{
+    background-color: coral;
+}

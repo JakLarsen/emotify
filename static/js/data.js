@@ -7,32 +7,33 @@
 
 /** 
  * Takes in a mental command input from our server and handles action logic based on input
- * 
-*/
+ */
 function update_page(input){
-    console.log('in update_page', input)
     //called when data_response handler receives an event (in intervals from server side)
     //updates page based on push, pull, or neutral input received
 
-    let log = document.getElementById('log')
-    console.log(log)
     if (input == 'neutral'){
-        $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON COMMAND: ---NEUTRAL---').html());
-        $('#test-color').css('background-color', 'blue');
         // nextEvent()
     }
     else if (input == 'pull'){
-        $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON COMMAND: ---PULL---').html());
-        $('#test-color').css('background-color', 'yellow');
         // prevEvent()
     }
     else{
-        $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON COMMAND: ---PUSH---').html());
-        $('#test-color').css('background-color', 'red');
         // nextEvent()
         // playPauseEvent()
     }
 }
+
+/**
+ * On button press -> AJAX call to /display_data route to open stream
+ * */
+$(function() {
+    $('a#stream-btn').on('click', function(e) {
+        e.preventDefault()
+        $.getJSON('/display_data', function(data) {});
+        return false;
+    });
+});
 
 
 $(document).ready(function() {
@@ -62,7 +63,9 @@ $(document).ready(function() {
     // to the client with the 'data_response' identifier. The data is then displayed in the "Received"
     // section of the page.
     socket.on('data_response', function(msg, cb) {
-        $('#log').append('<br>' + $('<div/>').text('HEADSET #' + msg.count + ':' + ' Input: ' + msg.input + '. Data: ' + msg.data).html());
+        $('.data-log-number').append(`<div class="data-number">${msg.count}</div>`);
+        $('.data-log-command').append(`<div class="data-command ${msg.input}">${msg.input.toUpperCase()}</div>`);
+        $('.data-log-data').append(`<div class="data-data">${msg.data}</div>`);
         if (cb)
             cb();
         update_page(msg.input)
