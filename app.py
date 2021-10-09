@@ -205,6 +205,13 @@ def addLibrary():
     g.user.userplaylists.append(library)
     db.session.commit()
 
+def addLikedSongs():
+    """
+    Gives all users a SEPARATE 'Liked Songs' playlist
+    """
+    liked_songs = Playlist(title="Liked Songs", description="Your favorite music - all in one place", img="https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/1631/posts/34195/image/Cool%20Electro%20Album%20Cover%20Design%20Template%20copy.jpg")
+    g.user.userplaylists.append(liked_songs)
+    db.session.commit()
 
 
                     # USER LOGIN HANDLERS
@@ -217,6 +224,7 @@ def add_user_to_g():
     if CURR_USER_KEY in session:
         g.user = User.query.get(session[CURR_USER_KEY])
         addLibrary()
+
     else:
         g.user = None
 
@@ -235,6 +243,7 @@ def do_logout():
 
 
 
+
 @app.route('/')
 def app_home():
     """Display home if logged in or home-anon if user not in session"""
@@ -244,6 +253,13 @@ def app_home():
         return render_template('app.html', async_mode=socketio.async_mode, songs=songs, my_playlists=my_playlists)
     else:
         return render_template('landing.html')
+
+
+@app.route('/add-liked-playlist', methods=["GET"])
+def add_liked_songs_playlist():
+    """On signup, Add Liked Songs playlist"""
+    addLikedSongs()
+    return redirect('/')
 
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
@@ -265,9 +281,9 @@ def signup():
                 )
                 db.session.commit()
             except IntegrityError:
-                return render_template('users/signup.html', form=form)
+                return render_template('users/signup.html', form=form) 
             do_login(user)
-            return redirect("/")
+            return redirect("/add-liked-playlist")
         else:
             return render_template('users/signup.html', form=form)
 
