@@ -90,12 +90,45 @@ $('.rc-pl-btn').click(async function(evt){
     addSongToPlaylist(playlistID, songID)
 });
 
+function findLastNumberInTargetPlaylistID(target){
+    console.log('in findLastNumberInTar...')
+    let ourSubVal = 17  //A 1 digit pl in id pushes one space to 17, 2 digit = 18, etc.
+    //First 3 chars of id aren't mutable, so i-2 is our extended id (chars at 0,1,2)
+    //I.E. pl-1-song-remove-13 is pushed 1characters by 1
+    //I.E. pl-145-song-remove-13 is pushed 3characters by 145
+    for (let i = 10; i> 0; i--){
+        if (target[i] >= '0' && target[i] <='9') {
+           
+            return ourSubVal = 14 + i
+        }
+    }
+    return 'subVal not found'
+}
+
+function findPlaylistID(target){
+    let counter = 0
+    target = target.substr(3)
+    console.log('target', target)
+    for (let i = 0; i < 5; i++){
+        if (target[i] >= '0' && target[i] <='9') {
+            counter += 1
+        }
+    }
+    let ourPlaylistID = target.slice(0,counter)
+    return ourPlaylistID
+}
+
 //DELETE SONG THAT YOU'VE ADDED
 $('.pl-song-del-btn').click(function(evt){
     console.log('pl-song-del-btn clicked')
     console.log(evt)
+
     let target = evt.currentTarget.id
-    let playlistID = target.substr(3).slice(0,1)
-    let songID = target.substr(17).slice(0,1)
-    midCon.load(`/playlist/${playlistID}/remove/${songID}`)
+    let playlistID = findPlaylistID(target)
+    let ourVal = findLastNumberInTargetPlaylistID(target)
+    let ourSongID = target.substr(ourVal)
+
+    console.log('ourPlaylistID', playlistID)
+    console.log('songID to delete: ', ourSongID)
+    midCon.load(`/playlist/${playlistID}/remove/${ourSongID}`)
 });

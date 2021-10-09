@@ -233,7 +233,9 @@ h1, button{
     width: 12rem;
 }
 .ml-playlist-active{
-    background-color: springgreen;
+    /* #4afff6 */
+    background: linear-gradient(90deg, rgba(74, 255, 246, 1), rgba(74, 255, 246, 0));
+    /* color: #fff; */
 }
 .ml-playlist:hover{
     cursor: pointer;

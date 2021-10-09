@@ -7,7 +7,9 @@
 
 
 
+10/10
 
+10/9
     ****** DONE ****** **APP.HTML**
     ****** DONE ****** - See about moving the websocket events into a separate js file
     ****** DONE ****** - Same for data.html
@@ -25,6 +27,9 @@
     ****** DONE ****** - AUDIO GIF INSTEAD OF PAUSE OPTION
     ****** DONE ****** - ON SONG ID HOVER SHOWS PLAY BUTTON
     ****** DONE ****** - FIX NEW SONG BUTTON TEXT JITTER
+    ****** DONE ****** - HIGHLIGHT CURRENT PLAYLIST
+
+    - FIX DELETE
     - LIKED SONGS PLAYLIST
         - Give all users their OWN liked songs playlist
         - Make it so when clicking a heart. It adds the song to your liked-songs playlist 
@@ -36,44 +41,17 @@
     - MAKE LIKED OR FAVORITE SONGS PLAYLIST LOAD INITIALLY
     - Duration updating each second
         - a working duration bar
-    - HIGHLIGHT CURRENT PLAYLIST
     - UPDATE LOGIC TO WORK FULLY
     - POPULATE PLAYLISTS
-    - FIX DELETE
 
 
     - Consider populating right sidebar (IF TIME)
-
     - IF TIME, REBOOT AUDIO LOGIC TO REQUEST ALL PLAYLIST DATA ON SONG PLAY CLICK 
-
-
-    *****BUGS*****
-
-    ***TO FIX
-    - Deleting song from other playlists other than Library or Rock On doesn't work now...hmm 
-    ****** DONE ****** - HOME is enforcing some sort of min-width that is displacing bot audio controller slightly
-
-    ***IRRELEVANT TO PROOF OF CONCEPT
-    - Deleting song from Library stops music (Not going to worry about this right now - APP is Proof of Concept - State Management is NOT handled well in this app) 
-
-
-    **STYLING**
-
-    - Consider (time pending) adding more responsiveness. 
-    - Consider (time pending) rebooting icons.
-    - Consider (time pending) Color/Typography changes
-
 
     - Code a mock input flow to demonstrate (Play 5s, Pause 5s, Play 5s, Next 5s, Next playlist 5s, Pause 5s, Prev 5s)
     - Understand EVERYTHING
 
-
-
-
-
-
-
-- PLAYING GIF (IF TIME) FOR ID # OF SONG PLAYING
+    - PLAYING GIF (IF TIME) FOR ID # OF SONG PLAYING
 
 
 
@@ -85,6 +63,14 @@
 
 
 
+ *****BUGS*****
+
+    ***TO FIX
+    - Deleting song from other playlists other than Library or Rock On doesn't work now...hmm 
+    ****** DONE ****** - HOME is enforcing some sort of min-width that is displacing bot audio controller slightly
+
+    ***IRRELEVANT TO PROOF OF CONCEPT
+    - Deleting song from Library stops music (Not going to worry about this right now - APP is Proof of Concept - State Management is NOT handled well in this app) 
 --On song finish, nextEvent()
 --CLIP SONG TITLES THAT ARE TOO LONG WHEN MPUTTING INTO PREV/CURR/NEXT DIVS
 
@@ -136,7 +122,10 @@ DEPLOY MAYBE SOMETIME OR TALK TO SPOTIFY OR APPLEMUSIC, ETC ABOUT IT
 Drag/drop to order playlists? Advanced??
 
 
-CURRENT ERRORS
+
+
+
+
 
 
 
