@@ -666,19 +666,19 @@ h1, button{
 }
 #play-pause{
     background-color: #fff;
-    height: 3rem;
-    width: 3rem;
+    height: 2.75rem;
+    width: 2.75rem;
     font-size: 1.3rem;
 }
 #play-pause:hover{
-    height: 3.1rem;
-    width: 3.1rem;
+    height: 2.85rem;
+    width: 2.85rem;
 }
 #play-pause-img{
     background-color: #fff;
     border-radius: 100%;
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 2.35rem;
+    width: 2.35rem;
     padding: 0.25rem;
     font-size: 1.3rem;
 }
@@ -1235,6 +1235,7 @@ h1, button{
 }
 .pl-song-index{
     background-color: #176a65;
+    /* background: url('../img/play.png'); */
     opacity: 1;
     color: #fff;
     position: relative;
@@ -1252,12 +1253,17 @@ h1, button{
     box-shadow: 0 0 15px rgba(0,0,0,0.4);
 }
 .pl-song-index:hover{
+    /* background-color: #fff; */
+    background: url('../img/play_32px.png');
     cursor: pointer;
-    background-color: #fff;
+    /* background-color: #fff; */
     opacity: 1;
     color: #176a65;
     border-radius: 100%;
     transition: 0.3s ease;
+}
+.pl-song-index:hover .loop-idx{
+    display: none;
 }
 .pl-song-img{
     /* background-color: red; */

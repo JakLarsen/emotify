@@ -16,12 +16,11 @@
 
     ****** DONE ****** - REMAIN ON PAGE AFTER YOU ADD SONG TO A PLAYLIST - DO NOT REROUTE
     ****** DONE ****** - RIGHT CLICK HANDLER NEEDS TO GO AWAY ON LEFT CLICK
-
     ****** DONE ****** - ACTUAL PLAY/PAUSE button
     ****** DONE ****** - ACTUAL NEXT AND PREVIOUS BUTTONS
     ****** DONE ****** - AUDIO GIF INSTEAD OF PAUSE OPTION
-    - ON SONG ID HOVER SHOWS PLAY BUTTON
-    - PLAYING GIF (IF TIME) FOR ID # OF SONG PLAYING
+
+    ****** DONE ****** - ON SONG ID HOVER SHOWS PLAY BUTTON
     - FIX NEW SONG BUTTON TEXT JITTER
     - LIKED SONGS PLAYLIST
         - Give all users their OWN liked songs playlist
@@ -48,6 +47,7 @@
 
     ***TO FIX
     - Deleting song from other playlists other than Library or Rock On doesn't work now...hmm 
+    - HOME is enforcing some sort of min-width that is displacing bot audio controller slightly
 
     ***IRRELEVANT TO PROOF OF CONCEPT
     - Deleting song from Library stops music (Not going to worry about this right now - APP is Proof of Concept - State Management is NOT handled well in this app) 
@@ -69,11 +69,15 @@
 
 
 
+- PLAYING GIF (IF TIME) FOR ID # OF SONG PLAYING
 
 
 
 
 ***Future updates***
+
+- Song playing should have some sort of minor indication it is selected and playing
+-- Logic around this for audio gif if not hovered and playing, pause if hovered and playing, or play if not playing
 
 
 - Basic login/signup authentication
