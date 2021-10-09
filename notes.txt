@@ -4,69 +4,71 @@
 *** FOR DEMO ***
 
 
-****** DONE ****** **APP.HTML**
-****** DONE ****** - See about moving the websocket events into a separate js file
-****** DONE ****** - Same for data.html
-****** DONE ****** **DATA.HTML**
-****** DONE ****** - Think about a good way to display the data, and style BRIEFLY
+    ****** DONE ****** **APP.HTML**
+    ****** DONE ****** - See about moving the websocket events into a separate js file
+    ****** DONE ****** - Same for data.html
+
+    ****** DONE ****** **DATA.HTML**
+    ****** DONE ****** - Think about a good way to display the data, and style BRIEFLY
 
 
-**GENERAL**
+    **GENERAL**
 
-****** DONE ****** - REMAIN ON PAGE AFTER YOU ADD SONG TO A PLAYLIST - DO NOT REROUTE
-****** DONE ****** - RIGHT CLICK HANDLER NEEDS TO GO AWAY ON LEFT CLICK
-- ACTUAL PLAY/PAUSE button
-- ACTUAL NEXT AND PREVIOUS BUTTONS
-- PLAYING GIF (IF TIME) FOR ID # OF SONG PLAYING
-- FIX NEW SONG BUTTON TEXT JITTER
-- LIKED SONGS PLAYLIST
-    - Give all users their OWN liked songs playlist
-    - Make it so when clicking a heart. It adds the song to your liked-songs playlist 
-    - Make sure audio logic works on it like all playlists
-    - Liked songs show that way on all playlists
-    - Unliking a song from any playlist unlikes it everywhere
-- FAVORITE SONGS PLAYLIST
-    - Logic so after a song is played 10 times, it auto-adds to it
-- MAKE LIKED OR FAVORITE SONGS PLAYLIST LOAD INITIALLY
-- Duration updating each second
-    - a working duration bar
-- HIGHLIGHT CURRENT PLAYLIST
-- UPDATE LOGIC TO WORK FULLY
-- POPULATE PLAYLISTS
+    ****** DONE ****** - REMAIN ON PAGE AFTER YOU ADD SONG TO A PLAYLIST - DO NOT REROUTE
+    ****** DONE ****** - RIGHT CLICK HANDLER NEEDS TO GO AWAY ON LEFT CLICK
 
-
-- Consider populating right sidebar (IF TIME)
-
-- IF TIME, REBOOT AUDIO LOGIC TO REQUEST ALL PLAYLIST DATA ON SONG PLAY CLICK 
+    ****** DONE ****** - ACTUAL PLAY/PAUSE button
+    ****** DONE ****** - ACTUAL NEXT AND PREVIOUS BUTTONS
+    ****** DONE ****** - AUDIO GIF INSTEAD OF PAUSE OPTION
+    - ON SONG ID HOVER SHOWS PLAY BUTTON
+    - PLAYING GIF (IF TIME) FOR ID # OF SONG PLAYING
+    - FIX NEW SONG BUTTON TEXT JITTER
+    - LIKED SONGS PLAYLIST
+        - Give all users their OWN liked songs playlist
+        - Make it so when clicking a heart. It adds the song to your liked-songs playlist 
+        - Make sure audio logic works on it like all playlists
+        - Liked songs show that way on all playlists
+        - Unliking a song from any playlist unlikes it everywhere
+    - FAVORITE SONGS PLAYLIST
+        - Logic so after a song is played 10 times, it auto-adds to it
+    - MAKE LIKED OR FAVORITE SONGS PLAYLIST LOAD INITIALLY
+    - Duration updating each second
+        - a working duration bar
+    - HIGHLIGHT CURRENT PLAYLIST
+    - UPDATE LOGIC TO WORK FULLY
+    - POPULATE PLAYLISTS
 
 
+    - Consider populating right sidebar (IF TIME)
+
+    - IF TIME, REBOOT AUDIO LOGIC TO REQUEST ALL PLAYLIST DATA ON SONG PLAY CLICK 
 
 
-**STYLING**
+    *****BUGS*****
 
-- Consider (time pending) adding more responsiveness. 
-- Consider (time pending) rebooting icons.
-- Consider (time pending) Color/Typography changes
+    ***TO FIX
+    - Deleting song from other playlists other than Library or Rock On doesn't work now...hmm 
 
-
-
-
-- Code a mock input flow to demonstrate (Play 5s, Pause 5s, Play 5s, Next 5s, Next playlist 5s, Pause 5s, Prev 5s)
-- Understand EVERYTHING
+    ***IRRELEVANT TO PROOF OF CONCEPT
+    - Deleting song from Library stops music (Not going to worry about this right now - APP is Proof of Concept - State Management is NOT handled well in this app) 
 
 
+    **STYLING**
+
+    - Consider (time pending) adding more responsiveness. 
+    - Consider (time pending) rebooting icons.
+    - Consider (time pending) Color/Typography changes
+
+
+    - Code a mock input flow to demonstrate (Play 5s, Pause 5s, Play 5s, Next 5s, Next playlist 5s, Pause 5s, Prev 5s)
+    - Understand EVERYTHING
 
 
 
 
 
-*****BUGS*****
 
-***TO FIX
-- Deleting song from other playlists other than Library or Rock On doesn't work now...hmm 
 
-***IRRELEVANT TO PROOF OF CONCEPT
- - Deleting song from Library stops music (Not going to worry about this right now - APP is Proof of Concept - State Management is NOT handled well in this app)
 
 
 

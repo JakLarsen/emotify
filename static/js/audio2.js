@@ -124,6 +124,7 @@ function audioHandler(song, prevSong="", nextSong=""){
                 //PAUSE IT
                 pause(currSong)
                 isPlaying = false
+                swapPlayPause()
             }
             //IS IT A DIFFERENT SONG
             else{
@@ -134,6 +135,7 @@ function audioHandler(song, prevSong="", nextSong=""){
                 updateDuration(song)
                 play(song)
                 isPlaying = true
+                swapPlayPause()
             }
         }
         //IT IS NOT PLAYING
@@ -142,6 +144,7 @@ function audioHandler(song, prevSong="", nextSong=""){
             if(currSong.id == song.id){
                 play(currSong)
                     isPlaying = true
+                    swapPlayPause()
             }
             //IS IT A DIFFERENT SONG
             else{
@@ -152,6 +155,7 @@ function audioHandler(song, prevSong="", nextSong=""){
                 updateDuration(song)
                 play(song)
                 isPlaying = true
+                swapPlayPause()
             } 
         }
     }
@@ -164,6 +168,7 @@ function audioHandler(song, prevSong="", nextSong=""){
         updateDuration(song)
         play(song)
         isPlaying = true
+        swapPlayPause()
     }
 }
 
@@ -244,9 +249,21 @@ function playPauseEvent(){
     } 
 }
 
+function swapPlayPause(){
+    let playPauseImg = document.getElementById('play-pause-img')
+    if (isPlaying){
+        // playPauseImg.src="../static/img/pause.png"
+        playPauseImg.src="../static/img/audiogif.gif"
+    }
+    else{
+        playPauseImg.src="../static/img/play.png"
+    }
+}
+
 //CLICK HANDLERS FOR BOT BUTTONS
 playPause.addEventListener('click', function(evt){
     playPauseEvent()
+    swapPlayPause()
 })
 
 nextBtn.addEventListener('click', async function(evt){
