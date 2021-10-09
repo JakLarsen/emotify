@@ -67,72 +67,57 @@ $(function() {
 
 
 
-//                     // WEBSOCKET HANDLERS
+                     // WEBSOCKET HANDLERS
 
 
 
-// function update_page(input){
-//     //called when data_response handler receives an event (in intervals from server side)
-//     //updates page based on push, pull, or neutral input received
-//     if (input == 'push'){
-//         $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON PUSH COMMAND').html());
-//         // $('#mid-mid-con').css('background-color', 'blue');
-//         nextEvent()
-//     }
-//     else if (input == 'pull'){
-//         $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON PULL COMMAND').html());
-//         // $('#mid-mid-con').css('background-color', 'yellow');
-//         // prevEvent()
-//     }
-//     else{
-//         $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON NEUTRAL COMMAND').html());
-//         $('#mid-mid-con').css('background-color', 'red');
-//         // nextEvent()
-//         // playPauseEvent()
-//     }
-// }
-// $(document).ready(function() {
-//     // Connect to the Socket.IO server.
-//     var socket = io();
+function enactInputCommand(input){
+    if (input == 'neutral'){
+        console.log('NEUTRAL input received and processed.')
+    }
+    else if (input == 'push'){
+        console.log('PUSH input received and processed.')
+        nextEvent()
+    }
+    else if (input == 'pull'){
+        console.log('PULL input received and processed.')
+        prevEvent()
+    }
+}
+$(document).ready(function() {
+    // Connect to the Socket.IO server.
+    var socket = io();
 
-//     // Event handler for new connections.
-//     // The callback function is invoked when a connection with the
-//     // server is established.
-//     socket.on('connect', function() {
-//         socket.emit('my_event', {data: 'I\'m connected!'});
-//     });
+    //Event listenerfor new connections.
+    socket.on('connect', function() {
+        socket.emit('my_event', {data: 'I\'m connected!'});
+    });
 
-//     // Event handler for server sent data.
-//     // The callback function is invoked whenever the server emits data
-//     // to the client with the 'my_response' identifier. The data is then displayed in the "Received"
-//     // section of the page.
-//     socket.on('my_response', function(msg, cb) {
-//         $('#log').append('<br>' + $('<div/>').text('Received #' + msg.count + ': ' + msg.data).html());
-//         if (cb)
-//             cb();
-//     });
+    /**
+     * Event listener when websocket info is emitted to 'my_response'
+     * cb, a callback function, would be invoked whenever the server emits data to 'data_response'
+     */
+    socket.on('my_response', function(msg, cb) {
+        if (cb)
+            cb();
+    });
 
-//     // Event handler for Headset sent data (Handled by server).
-//     // The callback function is invoked whenever the server emits data
-//     // to the client with the 'data_response' identifier. The data is then displayed in the "Received"
-//     // section of the page.
-//     socket.on('data_response', function(msg, cb) {
-//         $('#log').append('<br>' + $('<div/>').text('HEADSET #' + msg.count + ':' + ' Input: ' + msg.input + '. Data: ' + msg.data).html());
-//         if (cb)
-//             cb();
-//         update_page(msg.input)
-//     });
+    /**
+     * Event listener when websocket info is emitted to 'data_response'
+     * Sends mental command input that has been processed to a logic handler (update_page())
+     * cb, a callback function, would be invoked whenever the server emits data to 'data_response'
+     */
+    socket.on('data_response', function(msg, cb) {
+        if (cb)
+            cb();
+        enactInputCommand(msg.input)
+    });
 
-
-//     $('form#display-data').submit(function(event){
-//         socket.emit('display_data_request', {data: ('Clicked to display realtime data or send input to server.')});
-//         return false;
-//     });
-//     $('form#disconnect').submit(function(event) {
-//         socket.emit('disconnect_request');
-//         return false;
-//     });
-// });
+    $('form#disconnect').submit(function(event) {
+        socket.emit('disconnect_request');
+        return false;
+    });
+});
 
 
 
@@ -172,37 +157,37 @@ function showMenu(e){
 
 }
 
-//MAIN RIGHT CLICK MENU HANDLER
-if (document.addEventListener) {
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
+// //MAIN RIGHT CLICK MENU HANDLER
+// if (document.addEventListener) {
+//     document.addEventListener('contextmenu', function(e) {
+//         e.preventDefault();
 
-        let songID = discernSongDivSongID(e.path)
-        tossSong = songID
+//         let songID = discernSongDivSongID(e.path)
+//         tossSong = songID
 
-        //DRAW MENU
-        let menu = document.getElementById('rc-menu')
-        if (menu.style.display == 'flex'){
-            hideMenu()
-        }
-        //IF YOU RIGHT CLICK A SONG DIV
-        else{
-            if (e.path[0].classList.contains('pl-song-wrap') 
-            || e.path[0].classList.contains('pl-song-index') 
-            || e.path[0].classList.contains('pl-song-img')
-            || e.path[0].classList.contains('pl-song-title-artist-wrap')
-            || e.path[0].classList.contains('pl-song-title')
-            || e.path[0].classList.contains('pl-song-artist')
-            || e.path[0].classList.contains('pl-song-album')
-            || e.path[0].classList.contains('pl-song-like-img')
-            ){
-                showMenu(e)   
-             }
-        }
-    }, false);
-} 
-else {
-    document.attachEvent('oncontextmenu', function(e) {
-        window.event.returnValue = false;
-    });
-}
+//         //DRAW MENU
+//         let menu = document.getElementById('rc-menu')
+//         if (menu.style.display == 'flex'){
+//             hideMenu()
+//         }
+//         //IF YOU RIGHT CLICK A SONG DIV
+//         else{
+//             if (e.path[0].classList.contains('pl-song-wrap') 
+//             || e.path[0].classList.contains('pl-song-index') 
+//             || e.path[0].classList.contains('pl-song-img')
+//             || e.path[0].classList.contains('pl-song-title-artist-wrap')
+//             || e.path[0].classList.contains('pl-song-title')
+//             || e.path[0].classList.contains('pl-song-artist')
+//             || e.path[0].classList.contains('pl-song-album')
+//             || e.path[0].classList.contains('pl-song-like-img')
+//             ){
+//                 showMenu(e)   
+//              }
+//         }
+//     }, false);
+// } 
+// else {
+//     document.attachEvent('oncontextmenu', function(e) {
+//         window.event.returnValue = false;
+//     });
+// }

@@ -4,21 +4,11 @@
 *** FOR DEMO ***
 
 
-
-**APP.PY**
-
-- Figure out where to add library
-
-
-**APP.HTML**
-
-- See about moving the websocket events into a separate js file
-- Same for data.html
-
-
-**DATA.HTML**
-
-- Think about a good way to display the data, and style BRIEFLY
+****** DONE ********APP.HTML**
+****** DONE ******- See about moving the websocket events into a separate js file
+****** DONE ******- Same for data.html
+****** DONE ********DATA.HTML**
+****** DONE ******- Think about a good way to display the data, and style BRIEFLY
 
 
 **GENERAL**
