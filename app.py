@@ -62,10 +62,10 @@ connect_db(app)
 
 
 
-#Global logged-in User
+#GLOBAL USER
 CURR_USER_KEY = "curr_user"
 
-#User object in Cortex Class for auth.
+#USER OBJECT FOR AUTHENTICATING HEADSET WITH EMOTIV'S CORTEX API
 jake_user = {
     'client_id': 'hVe4d7WF19ObiuGfJKL8yYo7aivjP692nWHiRzJw',
     'client_secret': 'rjtEBdSANn6JGE6LsgrrgZdA9dKlItdF1d4w1inJx5iyGI3MjZD6Wus5BnLoaa3koMhIH1eOJ8U75VIUaW7DsKIicy4YyRDpJFP1Nhcs6MgWx6HcpYyideIIWSiUKApz',
@@ -83,9 +83,11 @@ profile_name = 'Jake Main'
 
 
 
-#Settings for mental action command threshold, interval of data display processing/display, etc
-#interval 2, 20 items(if time incl.) is about 10 inputs over 1s, no data processed for 1s, 20items over 1s, no data 1s
+#Settings for mental action input threshold, interval of data display processing/display, etc
+
+#interval 2s, 20 items(if timestamp incl.) is about 10 inputs over 1s
 #40 inputs over 2s has overlap about .5s and 2.5s spread of data ->interval needs to be higher to process
+#30 inputs over 2s with NO timestamp is stable with no overlap.
 settings = {
     'input_threshold': 13,
     'interval': 2,
@@ -94,10 +96,9 @@ settings = {
 
 def determine_input(data_obj):
     """
-    Takes a DataContainer data_obj (in cortex.py)
-    Determines if a given input surpassed a threshold to be used as a command
-    --data from the DataContainer sent
-    Returns "push", "pull", or "neutral" pending what is stored in DataContainer
+    Takes a DataContainer(containing headset stream data) as input (in cortex.py)
+    -Determines if a given input surpassed a threshold to be used as a command
+    -Returns "push", "pull", or "neutral" pending what is stored in DataContainer
     """
     push_input = 0
     pull_input = 0
@@ -155,15 +156,15 @@ def background_thread():
 
 
 
-#-----------------------------------------------------------------
-                    #Cortex Connection
-#-----------------------------------------------------------------
+#----------------------------------------------------------------------
+                    # CORTEX CONNECTIon
+#----------------------------------------------------------------------
 
 
 
 def open_stream():
     """
-    Connects a turned on headset to Cortex API
+    Connects a turned on Emotiv headset to Cortex API
     -Does Auth and requests
     -Loads Profile
     -Opens mental command subscription
@@ -215,7 +216,7 @@ def add_user_to_g():
     """If we're logged in, add curr user to Flask global."""
     if CURR_USER_KEY in session:
         g.user = User.query.get(session[CURR_USER_KEY])
-        addLibrary()
+        addLibrary() #MOVE TO LOGIN PERHAPS
     else:
         g.user = None
 
@@ -248,9 +249,9 @@ def app_home():
 def signup():
     """
     Handle user signup.
-    Create new user and add to DB. Redirect to home page.
-    If form not valid, present form.
-    If the there already is a user with that username: flash message and re-present form.
+    -Create new user and add to DB. Redirect to home page.
+    -If form not valid, present form.
+    -If the there already is a user with that username: flash message and re-present form.
     """
     if g.user:
         return render_template('app.html', async_mode=socketio.async_mode)
@@ -279,8 +280,7 @@ def login():
     else:
         form = LoginForm()
         if form.validate_on_submit():
-            user = User.authenticate(form.username.data,
-                                    form.password.data)
+            user = User.authenticate(form.username.data, form.password.data)
             if user:
                 do_login(user)
                 return redirect("/")

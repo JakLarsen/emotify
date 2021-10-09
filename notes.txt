@@ -1,6 +1,75 @@
 
 
 
+*** FOR DEMO ***
+
+
+
+**APP.PY**
+
+- Figure out where to add library
+
+
+**APP.HTML**
+
+- See about moving the websocket events into a separate js file
+- Same for data.html
+
+
+**DATA.HTML**
+
+- Think about a good way to display the data, and style BRIEFLY
+
+
+**GENERAL**
+
+- REMAIN ON PAGE AFTER YOU ADD SONG TO A PLAYLIST - DO NOT REROUTE
+- ACTUAL PLAY/PAUSE button
+- ACTUAL NEXT AND PREVIOUS BUTTONS
+- PLAYING GIF (IF TIME) FOR ID # OF SONG PLAYING
+- FIX NEW SONG BUTTON TEXT JITTER
+- LIKED SONGS PLAYLIST
+    - Give all users their OWN liked songs playlist
+    - Make it so when clicking a heart. It adds the song to your liked-songs playlist 
+    - Make sure audio logic works on it like all playlists
+    - Liked songs show that way on all playlists
+    - Unliking a song from any playlist unlikes it everywhere
+- FAVORITE SONGS PLAYLIST
+    - Logic so after a song is played 10 times, it auto-adds to it
+- MAKE LIKED OR FAVORITE SONGS PLAYLIST LOAD INITIALLY
+- Duration updating each second
+    - a working duration bar
+- HIGHLIGHT CURRENT PLAYLIST
+- UPDATE LOGIC TO WORK FULLY
+- POPULATE PLAYLISTS
+
+
+- Consider populating right sidebar (IF TIME)
+
+- IF TIME, REBOOT AUDIO LOGIC TO REQUEST ALL PLAYLIST DATA ON SONG PLAY CLICK 
+
+
+
+
+**STYLING**
+
+- Consider (time pending) adding more responsiveness. 
+- Consider (time pending) rebooting icons.
+- Consider (time pending) Color/Typography changes
+
+
+
+
+- Code a mock input flow to demonstrate (Play 5s, Pause 5s, Play 5s, Next 5s, Next playlist 5s, Pause 5s, Prev 5s)
+- Understand EVERYTHING
+
+
+
+
+
+
+
+
 
 
 
