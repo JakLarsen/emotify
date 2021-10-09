@@ -17,9 +17,6 @@
     ****** DONE ****** **DATA.HTML**
     ****** DONE ****** - Think about a good way to display the data, and style BRIEFLY
 
-
-    **GENERAL**
-
     ****** DONE ****** - REMAIN ON PAGE AFTER YOU ADD SONG TO A PLAYLIST - DO NOT REROUTE
     ****** DONE ****** - RIGHT CLICK HANDLER NEEDS TO GO AWAY ON LEFT CLICK
     ****** DONE ****** - ACTUAL PLAY/PAUSE button
@@ -33,27 +30,27 @@
 
 
     - LIKED SONGS PLAYLIST
-        - Give all users their OWN liked songs playlist
+       ****** DONE ****** - Give all users their OWN liked songs playlist
         - Make it so when clicking a heart. It adds the song to your liked-songs playlist 
-        - Make sure audio logic works on it like all playlists
+       ****** DONE ****** - Make sure audio logic works on it like all playlists
         - Liked songs show that way on all playlists
         - Unliking a song from any playlist unlikes it everywhere
-    - FAVORITE SONGS PLAYLIST
-        - Logic so after a song is played 10 times, it auto-adds to it
     - MAKE LIKED OR FAVORITE SONGS PLAYLIST LOAD INITIALLY
-    - Duration updating each second
-        - a working duration bar
-    - UPDATE LOGIC TO WORK FULLY
-
-
-    - Consider populating right sidebar (IF TIME)
-    - IF TIME, REBOOT AUDIO LOGIC TO REQUEST ALL PLAYLIST DATA ON SONG PLAY CLICK 
 
     - Code a mock input flow to demonstrate (Play 5s, Pause 5s, Play 5s, Next 5s, Next playlist 5s, Pause 5s, Prev 5s)
     - Understand EVERYTHING
 
-    - PLAYING GIF (IF TIME) FOR ID # OF SONG PLAYING
 
+
+
+
+    - MOST PLAYED SONGS PLAYLIST
+        - Logic so after a song is played 10 times, it auto-adds to it
+    - Consider populating right sidebar (IF TIME)
+    - IF TIME, REBOOT AUDIO LOGIC TO REQUEST ALL PLAYLIST DATA ON SONG PLAY CLICK 
+    - PLAYING GIF (IF TIME) FOR ID # OF SONG PLAYING
+    - Duration updating each second
+    - Duration pausing on pause/resuming on play
 
 
 

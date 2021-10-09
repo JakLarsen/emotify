@@ -209,7 +209,7 @@ def addLikedSongs():
     """
     Gives all users a SEPARATE 'Liked Songs' playlist
     """
-    liked_songs = Playlist(title="Liked Songs", description="Your favorite music - all in one place", img="https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/1631/posts/34195/image/Cool%20Electro%20Album%20Cover%20Design%20Template%20copy.jpg")
+    liked_songs = Playlist(title="Liked Songs", description="Your liked music. Ready to be enjoyed.", img="https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/1631/posts/34195/image/Cool%20Electro%20Album%20Cover%20Design%20Template%20copy.jpg")
     g.user.userplaylists.append(liked_songs)
     db.session.commit()
 
