@@ -232,6 +232,9 @@ h1, button{
     padding-left: 1.5rem;
     width: 12rem;
 }
+.ml-playlist-active{
+    background-color: springgreen;
+}
 .ml-playlist:hover{
     cursor: pointer;
     background-color: #ff4a4a;
@@ -893,6 +896,7 @@ h1, button{
     position: relative;
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
     margin: 2rem 0 0 2rem;
 }
 .home-your-playlist-playlist{

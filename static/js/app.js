@@ -7,6 +7,7 @@
 
 let midCon = $('#mid-mid-con');
 let tossSong= null
+let currentPlaylist = null
 
 
 
@@ -50,6 +51,33 @@ $('.home-your-playlist-playlist').click(function(evt){
     let playlistID = target.substr(14)
     midCon.load(`/playlist/${playlistID}`)
 });
+
+
+
+                    //ACTIVE PLAYLIST COLOR
+
+
+
+function handleActivePlaylistSelect(playlist){
+    console.log('in handleActivePlaylistSelect', playlist)
+    //REMOVE ACTIVE CLASS FROM CURRENT
+    if (currentPlaylist){
+        currentPlaylist.classList.remove('ml-playlist-active')
+    }
+    //THEN UPDATE CURRENT TO NEW CURRENT AND READD
+    currentPlaylist = document.getElementById(playlist)
+    currentPlaylist.classList.add('ml-playlist-active')
+    
+}
+
+let playlistContainer = document.getElementById('ml-playlist-con')
+playlistContainer.addEventListener('click', function(e){
+    console.log('you clicked the playlist container')
+    // console.log(e.target.id.substr(13))
+    let playlist = e.target.id
+    handleActivePlaylistSelect(playlist)
+})
+
 
 
 

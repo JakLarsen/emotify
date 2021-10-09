@@ -1,7 +1,11 @@
 
 
 
-*** FOR DEMO ***
+
+
+                                        *** FOR DEMO ***
+
+
 
 
     ****** DONE ****** **APP.HTML**
@@ -74,7 +78,15 @@
 
 
 
-***Future updates***
+
+                                    ***Future updates***
+
+
+
+
+
+--On song finish, nextEvent()
+--CLIP SONG TITLES THAT ARE TOO LONG WHEN MPUTTING INTO PREV/CURR/NEXT DIVS
 
 - Song playing should have some sort of minor indication it is selected and playing
 -- Logic around this for audio gif if not hovered and playing, pause if hovered and playing, or play if not playing
