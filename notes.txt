@@ -35,6 +35,7 @@
     - HIGHLIGHT CURRENT PLAYLIST
     - UPDATE LOGIC TO WORK FULLY
     - POPULATE PLAYLISTS
+    - FIX DELETE
 
 
     - Consider populating right sidebar (IF TIME)
@@ -46,7 +47,7 @@
 
     ***TO FIX
     - Deleting song from other playlists other than Library or Rock On doesn't work now...hmm 
-    - HOME is enforcing some sort of min-width that is displacing bot audio controller slightly
+    ****** DONE ****** - HOME is enforcing some sort of min-width that is displacing bot audio controller slightly
 
     ***IRRELEVANT TO PROOF OF CONCEPT
     - Deleting song from Library stops music (Not going to worry about this right now - APP is Proof of Concept - State Management is NOT handled well in this app) 

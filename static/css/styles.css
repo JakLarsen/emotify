@@ -819,7 +819,7 @@ h1, button{
     display: flex;
     flex-flow: column nowrap;
     height: 15rem;
-    width: 25rem;
+    width: 24rem;
     margin: 2rem;
     border-radius: 5px;
 }
@@ -834,13 +834,13 @@ h1, button{
     position: relative;
     display: flex;
     flex-flow: row wrap;
-    width: 11rem;
-    max-height: 11rem;
+    width: 10rem;
+    max-height: 10rem;
     /* margin: 1rem 1rem 0 1rem; */
 }
 .home-fav-music-img{
-    max-width: 5.5rem;
-    max-height: 5.5rem;
+    max-width: 5rem;
+    max-height: 5rem;
 }
 #home-fav-music-img-1, #home-most-played-img-1{
     border-radius: 5px 0 0 0;
@@ -850,7 +850,7 @@ h1, button{
     position: relative;
     display: flex;
     flex-flow: column nowrap;
-    height: 11rem;
+    height: 10rem;
     width: 14rem;
     justify-content: center;
     align-items: center;
