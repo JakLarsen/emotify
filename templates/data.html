@@ -14,66 +14,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
-    
-    <script type="text/javascript" charset="utf-8">
-        function update_page(input){
-            //called when data_response handler receives an event (in intervals from server side)
-            //updates page based on push, pull, or neutral input received
-            if (input == 'push'){
-                $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON PUSH COMMAND').html());
-                $('body').css('background-color', 'blue');
-            }
-            else if (input == 'pull'){
-                $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON PULL COMMAND').html());
-                $('body').css('background-color', 'yellow');
-            }
-            else{
-                $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON NEUTRAL COMMAND').html());
-                $('body').css('background-color', 'red');
-            }
-        }
-
-        $(document).ready(function() {
-            // Connect to the Socket.IO server.
-            var socket = io();
-
-            // Event handler for new connections.
-            // The callback function is invoked when a connection with the
-            // server is established.
-            socket.on('connect', function() {
-                socket.emit('my_event', {data: 'I\'m connected!'});
-            });
-            // Event handler for server sent data.
-            // The callback function is invoked whenever the server emits data
-            // to the client with the 'my_response' identifier. The data is then displayed in the "Received"
-            // section of the page.
-            socket.on('my_response', function(msg, cb) {
-                $('#log').append('<br>' + $('<div/>').text('Received #' + msg.count + ': ' + msg.data).html());
-                if (cb)
-                    cb();
-            });
-            // Event handler for Headset sent data (Handled by server).
-            // The callback function is invoked whenever the server emits data
-            // to the client with the 'data_response' identifier. The data is then displayed in the "Received"
-            // section of the page.
-            socket.on('data_response', function(msg, cb) {
-                $('#log').append('<br>' + $('<div/>').text('HEADSET #' + msg.count + ':' + ' Input: ' + msg.input + '. Data: ' + msg.data).html());
-                if (cb)
-                    cb();
-                update_page(msg.input)
-            });
-
-            // On submit, data is emitted across websocket to 'display_data_request' etc. handlers on server
-            $('form#display-data').submit(function(event){
-                socket.emit('display_data_request', {data: ('Clicked to display realtime data or send input to server.')});
-                return false;
-            });
-            $('form#disconnect').submit(function(event) {
-                socket.emit('disconnect_request');
-                return false;
-            });
-        });
-    </script>
+    <script src="../static/js/data.js"></script>
 
 </head>
 
@@ -84,7 +25,12 @@
 
 
 <body>
-    <h1>Neural Nav WebSocket with SocketIO</h1>
+
+
+
+
+
+    <h1 id = "test-color">Neural Nav WebSocket with SocketIO</h1>
     <h2>Send message from client to Flask-server:</h2>
     <form id="display-data" method="POST" action='#'>
         <input type="submit" value="Display Data">
@@ -108,5 +54,7 @@
     </div>
     <h2>Received:</h2>
     <div id="log"></div>
+   
+
 </body>
 </html>

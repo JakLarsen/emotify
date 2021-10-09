@@ -31,7 +31,7 @@
           if (input == 'push'){
               $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON PUSH COMMAND').html());
               // $('#mid-mid-con').css('background-color', 'blue');
-              nextEvent()
+              // nextEvent()
           }
           else if (input == 'pull'){
               $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON PULL COMMAND').html());
@@ -40,8 +40,8 @@
           }
           else{
               $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON NEUTRAL COMMAND').html());
-              // $('#mid-mid-con').css('background-color', 'red');
-              // nextEvent()
+              $('#mid-mid-con').css('background-color', 'red');
+              nextEvent()
               // playPauseEvent()
           }
       }
@@ -96,9 +96,6 @@
 <body>
 
   <div id="body">
-
-
-
     <div id="main-con">
 
       <div id="left-con">
@@ -313,14 +310,12 @@
 
   </div>
 
+  
+  <!-- SCRIPTS -->
 
-
-  <!-- <script src="../../static/js/audio.js"></script> -->
   <script src="../../static/js/audio2.js"></script>
   <script src="../../static/js/app.js"></script>
 
-
-  
 </body>
 
 </html>

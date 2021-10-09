@@ -216,7 +216,7 @@ def add_user_to_g():
     """If we're logged in, add curr user to Flask global."""
     if CURR_USER_KEY in session:
         g.user = User.query.get(session[CURR_USER_KEY])
-        addLibrary() #MOVE TO LOGIN PERHAPS
+        addLibrary()
     else:
         g.user = None
 

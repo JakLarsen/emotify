@@ -67,7 +67,77 @@ $(function() {
 
 
 
-//RIGHT CLICK ADD SONG TO PLAYLIST HANDLER
+//                     // WEBSOCKET HANDLERS
+
+
+
+// function update_page(input){
+//     //called when data_response handler receives an event (in intervals from server side)
+//     //updates page based on push, pull, or neutral input received
+//     if (input == 'push'){
+//         $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON PUSH COMMAND').html());
+//         // $('#mid-mid-con').css('background-color', 'blue');
+//         nextEvent()
+//     }
+//     else if (input == 'pull'){
+//         $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON PULL COMMAND').html());
+//         // $('#mid-mid-con').css('background-color', 'yellow');
+//         // prevEvent()
+//     }
+//     else{
+//         $('#log').append('<br>' + $('<div/>').text('PAGE UPDATED ON NEUTRAL COMMAND').html());
+//         $('#mid-mid-con').css('background-color', 'red');
+//         // nextEvent()
+//         // playPauseEvent()
+//     }
+// }
+// $(document).ready(function() {
+//     // Connect to the Socket.IO server.
+//     var socket = io();
+
+//     // Event handler for new connections.
+//     // The callback function is invoked when a connection with the
+//     // server is established.
+//     socket.on('connect', function() {
+//         socket.emit('my_event', {data: 'I\'m connected!'});
+//     });
+
+//     // Event handler for server sent data.
+//     // The callback function is invoked whenever the server emits data
+//     // to the client with the 'my_response' identifier. The data is then displayed in the "Received"
+//     // section of the page.
+//     socket.on('my_response', function(msg, cb) {
+//         $('#log').append('<br>' + $('<div/>').text('Received #' + msg.count + ': ' + msg.data).html());
+//         if (cb)
+//             cb();
+//     });
+
+//     // Event handler for Headset sent data (Handled by server).
+//     // The callback function is invoked whenever the server emits data
+//     // to the client with the 'data_response' identifier. The data is then displayed in the "Received"
+//     // section of the page.
+//     socket.on('data_response', function(msg, cb) {
+//         $('#log').append('<br>' + $('<div/>').text('HEADSET #' + msg.count + ':' + ' Input: ' + msg.input + '. Data: ' + msg.data).html());
+//         if (cb)
+//             cb();
+//         update_page(msg.input)
+//     });
+
+
+//     $('form#display-data').submit(function(event){
+//         socket.emit('display_data_request', {data: ('Clicked to display realtime data or send input to server.')});
+//         return false;
+//     });
+//     $('form#disconnect').submit(function(event) {
+//         socket.emit('disconnect_request');
+//         return false;
+//     });
+// });
+
+
+
+                    //RIGHT CLICK ADD SONG TO PLAYLIST HANDLER
+
 
 
 //DETERMINES THE SONG TO INTERACT WITH FROM DIFFERENT CLICKABLE ITEMS ON THE SONG DIV
