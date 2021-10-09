@@ -4,16 +4,17 @@
 *** FOR DEMO ***
 
 
-****** DONE ********APP.HTML**
-****** DONE ******- See about moving the websocket events into a separate js file
-****** DONE ******- Same for data.html
-****** DONE ********DATA.HTML**
-****** DONE ******- Think about a good way to display the data, and style BRIEFLY
+****** DONE ****** **APP.HTML**
+****** DONE ****** - See about moving the websocket events into a separate js file
+****** DONE ****** - Same for data.html
+****** DONE ****** **DATA.HTML**
+****** DONE ****** - Think about a good way to display the data, and style BRIEFLY
 
 
 **GENERAL**
 
-- REMAIN ON PAGE AFTER YOU ADD SONG TO A PLAYLIST - DO NOT REROUTE
+****** DONE ****** - REMAIN ON PAGE AFTER YOU ADD SONG TO A PLAYLIST - DO NOT REROUTE
+****** DONE ****** - RIGHT CLICK HANDLER NEEDS TO GO AWAY ON LEFT CLICK
 - ACTUAL PLAY/PAUSE button
 - ACTUAL NEXT AND PREVIOUS BUTTONS
 - PLAYING GIF (IF TIME) FOR ID # OF SONG PLAYING
@@ -59,7 +60,13 @@
 
 
 
+*****BUGS*****
 
+***TO FIX
+- Deleting song from other playlists other than Library or Rock On doesn't work now...hmm 
+
+***IRRELEVANT TO PROOF OF CONCEPT
+ - Deleting song from Library stops music (Not going to worry about this right now - APP is Proof of Concept - State Management is NOT handled well in this app)
 
 
 

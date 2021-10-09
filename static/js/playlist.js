@@ -73,8 +73,13 @@ if(typeof songArea == 'undefined'){
     })
 }
 
+async function addSongToPlaylist(playlistID, songID){
+    let songToPlaylist = await axios.get(`/playlist/${playlistID}/add-song/${songID}`)
+    console.log(songToPlaylist)
+}
+
 //RIGHT CLICK FORM ON PLAYLIST SONG HANDLER
-$('.rc-pl-btn').click(function(evt){
+$('.rc-pl-btn').click(async function(evt){
     console.log('rc-pl-form clicked')
 
     let songID = tossSong
@@ -82,7 +87,7 @@ $('.rc-pl-btn').click(function(evt){
 
     let target = evt.currentTarget.id
     let playlistID = target.substr(10)
-    midCon.load(`/playlist/${playlistID}/add-song/${tossSong}`)
+    addSongToPlaylist(playlistID, songID)
 });
 
 //DELETE SONG THAT YOU'VE ADDED

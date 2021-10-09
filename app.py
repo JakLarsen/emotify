@@ -412,6 +412,7 @@ def delete_song(id):
     """Delete a Song that a User has created"""
 
     print("hit delete endpoint", flush=True)
+
     if not g.user:
         flash("Access unauthorized.")
         return redirect('/')
@@ -520,6 +521,8 @@ def remove_song_from_playlist(playlist_id, song_id):
 
 @app.route('/playlist-data/<int:playlist_id>')
 def retrieve_playlist_data(playlist_id):
+    """Get playlist information by id"""
+
     if not g.user:
         flash("Access unauthorized.")
         return redirect('/')
@@ -552,9 +555,8 @@ def add_song_to_playlist(playlist_id, song_id):
     playlist.playlistsongs.append(songToAdd)
 
     db.session.commit()
-
-    return redirect(f'/playlist/{playlist.id}')
-
+    
+    return redirect('/')
 
 
 def on_message(ws, message):

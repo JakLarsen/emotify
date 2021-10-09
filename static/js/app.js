@@ -157,37 +157,53 @@ function showMenu(e){
 
 }
 
-// //MAIN RIGHT CLICK MENU HANDLER
-// if (document.addEventListener) {
-//     document.addEventListener('contextmenu', function(e) {
-//         e.preventDefault();
+//MAIN RIGHT CLICK MENU HANDLER
+if (document.addEventListener) {
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
 
-//         let songID = discernSongDivSongID(e.path)
-//         tossSong = songID
+        let songID = discernSongDivSongID(e.path)
+        tossSong = songID
 
-//         //DRAW MENU
-//         let menu = document.getElementById('rc-menu')
-//         if (menu.style.display == 'flex'){
-//             hideMenu()
-//         }
-//         //IF YOU RIGHT CLICK A SONG DIV
-//         else{
-//             if (e.path[0].classList.contains('pl-song-wrap') 
-//             || e.path[0].classList.contains('pl-song-index') 
-//             || e.path[0].classList.contains('pl-song-img')
-//             || e.path[0].classList.contains('pl-song-title-artist-wrap')
-//             || e.path[0].classList.contains('pl-song-title')
-//             || e.path[0].classList.contains('pl-song-artist')
-//             || e.path[0].classList.contains('pl-song-album')
-//             || e.path[0].classList.contains('pl-song-like-img')
-//             ){
-//                 showMenu(e)   
-//              }
-//         }
-//     }, false);
-// } 
-// else {
-//     document.attachEvent('oncontextmenu', function(e) {
-//         window.event.returnValue = false;
-//     });
-// }
+        //DRAW MENU
+        let menu = document.getElementById('rc-menu')
+        menu.addEventListener('click', function(){
+            console.log('menu clicked')
+            if (menu.style.display == 'flex'){
+                hideMenu()
+            }
+        })
+        
+        if (menu.style.display == 'flex'){
+            hideMenu()
+        }
+        //IF YOU RIGHT CLICK A SONG DIV
+        else{
+            if (e.path[0].classList.contains('pl-song-wrap') 
+            || e.path[0].classList.contains('pl-song-index') 
+            || e.path[0].classList.contains('pl-song-img')
+            || e.path[0].classList.contains('pl-song-title-artist-wrap')
+            || e.path[0].classList.contains('pl-song-title')
+            || e.path[0].classList.contains('pl-song-artist')
+            || e.path[0].classList.contains('pl-song-album')
+            || e.path[0].classList.contains('pl-song-like-img'))
+            {
+                //SHOW MENU
+                showMenu(e) 
+                //ADD LISTENER TO RIGHT CLICK PLAYLIST MENU TO CLOSE MENU ON CLICK
+                let rcPlaylists = document.getElementById('rc-playlists')
+                rcPlaylists.addEventListener('click', function(){
+                    console.log('RIGHT CLICK PLAYLIST CLICKED')
+                    if (menu.style.display == 'flex'){
+                        hideMenu()
+                    }
+                })
+            }
+        }
+    }, false);
+} 
+else {
+    document.attachEvent('oncontextmenu', function(e) {
+        window.event.returnValue = false;
+    });
+}
