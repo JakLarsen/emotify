@@ -1,3 +1,4 @@
+                    /* STYLES FOR DATA.HTML - DISPLAYING DATA FOR DEVELOPMENT */
 
 
 
@@ -22,6 +23,11 @@ h1, button{
 }
 
 
+
+                    /* MAIN STYLES */
+
+
+
 #data-main-container{
     /* background-color: orange; */
     position: relative;
@@ -31,7 +37,6 @@ h1, button{
     width: 100%;
     align-items: center;
 }
-
 #data-title{
     margin-top: 2rem;
     /* background-color: pink; */
@@ -43,14 +48,12 @@ h1, button{
     font-size: 1.5rem;
     font-weight: 600;
 }
-
 #data-buttons-container{
     /* background-color: blueviolet; */
     position: relative;
     display: flex;
     flex-flow: row nowrap;
 }
-
 .btn{
     margin-top: 2rem;
     border-style: none;
@@ -71,7 +74,6 @@ h1, button{
 #disconnect-btn{
     margin-left: 1rem;
 }
-
 #data-log-container{
     margin-top: 2rem;
     /* background-color: burlywood; */
@@ -89,7 +91,6 @@ h1, button{
     flex-flow: column nowrap;
     border: 3px solid #ba1212;
 }
-
 .data-command, .data-number{
     position: relative;
     display: flex;
@@ -113,6 +114,11 @@ h1, button{
 }
 
 
+
+                    /* CLASS STYLES FOR INPUT DISPLAY BOX */
+
+
+                    
 .neutral{
     background-color: cyan;
 }

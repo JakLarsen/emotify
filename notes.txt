@@ -9,16 +9,15 @@
 
 10/10
  - LIKED SONGS PLAYLIST
-       ****** DONE ****** - Give all users their OWN liked songs playlist
-       ****** DONE ****** - Make it so when clicking a heart. It adds the song to your liked-songs playlist 
-       ****** DONE ****** - Make sure audio logic works on it like all playlists
+        ****** DONE ****** - Give all users their OWN liked songs playlist
+        ****** DONE ****** - Make it so when clicking a heart. It adds the song to your liked-songs playlist 
+        ****** DONE ****** - Make sure audio logic works on it like all playlists
 
         ****** DONE ****** - UPDATE AUDIO LOGIC
-    - Code a mock input flow to demonstrate (Play 5s, Pause 5s, Play 5s, Next 5s, Next playlist 5s, Pause 5s, Prev 5s)
-    - CYCLE PLAYLIST LOGIC
-    - UPDATE SELECTED PLAYLIST
-    
-    - Understand EVERYTHING
+        ****** DONE ****** - MAKE DEMO OF HEADSET WORKING WITH APP
+        ****** DONE ****** - DOCUMENTATION OVEARHAUL
+
+        ****** ALWAYS A WORK IN PROGRESS ****** - Understand EVERYTHING
 
 10/9
     *UPDATES*
@@ -50,10 +49,14 @@
 
                                     ***Major Improvements***
 
+
+
     - Reboot audio logic: 
         - On song click, make a query to get all playlist data for that playlist and use that for updating instead of each song queried separately on every change
         - (ACCESSIBILITY) Change prev/curr/next songs on User commanded playlist cycle, but not on playlist click
     - Most Played Songs Playlist
+    - CYCLE PLAYLIST LOGIC
+        - UPDATE SELECTED PLAYLIST
     - Duration Bar
         - A Duration Bar that updates as song goes on
         - Pauses/Plays on song play/pause
@@ -64,13 +67,7 @@
 
 
 
-
-
-
-
                                     ***Future updates***
-
-
 
 
 

@@ -297,7 +297,7 @@ async function prevEvent(){
         }
         //PREV NEUTRAL PREV = RESTART SONG
         else if (!isPlaying && lastInput != 'prev'){
-            console.log('PREV EVENT = PREV SONG')
+            console.log('PREV EVENT = RESTART SONG')
             lastInput = 'prev'
             //RESTART SONG LOGIC HERE
         }  
