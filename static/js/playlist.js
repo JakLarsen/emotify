@@ -5,17 +5,18 @@
 
 
 
-//GET SONG DATA TO SEND OUT TO AUDIO HANDLER
+//GET SONG DATA FROM SONG DIV TO SEND OUT TO AUDIO HANDLER
+//AGAIN, THERE SHOULD IDEALLY BE A getPlaylistData() THAT QUERIES THE SELECTED PLAYLIST
+//-AND CREATES AN OBJECT OF SONGS THAT WE CAN THEN getSongData(songIDX) ON
+//QUERYING FOR EACH SONG, AND SCRAPING THE DOM OF ALL THINGS, IS NOT IDEAL
 async function getSongData(songIDX){
-    console.log('getSongData() called')
-
-    console.log(`Our songIDX is : ${songIDX}`)
+    // console.log('getSongData() called')
+    // console.log(`Our songIDX is : ${songIDX}`)
     let songDiv = document.getElementById(`pl-song-${songIDX}`)
-    console.log(`Our songDiv is : ${songDiv}`)
-
-    console.log(`Getting Playlist Data for Playlist: ${songDiv.dataset.songpl} `)
+    // console.log(`Our songDiv is : ${songDiv}`)
+    // console.log(`Getting Playlist Data for Playlist: ${songDiv.dataset.songpl} `)
     let playlistData = await axios.get(`/playlist-data/${songDiv.dataset.songpl}`)
-    console.log(playlistData)
+    // console.log(playlistData)
 
     songDiv.dataset.pll = playlistData.data.length
 
@@ -39,7 +40,7 @@ if(typeof songArea == 'undefined'){
     let songArea = document.querySelector('.pl-con')
 
     songArea.addEventListener('click', async function(evt){
-        console.log('Bot Area Clicked')
+        // console.log('Bot Area Clicked')
         
         //IF CLICKING ON A SONG INDEX BUTTON
         //-SEND SONG DATA TO AUDIO HANDLER
@@ -85,10 +86,10 @@ async function addSongToPlaylist(playlistID, songID){
 
 //RIGHT CLICK FORM ON PLAYLIST SONG HANDLER
 $('.rc-pl-btn').click(async function(evt){
-    console.log('rc-pl-form clicked')
+    // console.log('rc-pl-form clicked')
 
     let songID = tossSong
-    console.log(`we know tossSong from pl.js: ${tossSong}`)
+    // console.log(`we know tossSong from pl.js: ${tossSong}`)
 
     let target = evt.currentTarget.id
     let playlistID = target.substr(10)
@@ -98,10 +99,10 @@ $('.rc-pl-btn').click(async function(evt){
 //TAKES A TARGET SONG DIV ID TO MOVE FROM PLAYLIST AND FINDS HOW FAR TO USE SUBSTR METHOD TO STRIP LEFTSIDE
 function findLastNumberInTargetPlaylistID(target){
     console.log('in findLastNumberInTar...')
-    let ourSubVal = 17  //A 1 digit pl in id pushes one space to 17, 2 digit = 18, etc.
+    let ourSubVal = 17  //A 1 digit playlist id pushes one space to 17, 2 digit = 18, etc.
     //First 3 chars of id aren't mutable, so i-2 is our extended id (chars at 0,1,2)
-    //I.E. pl-1-song-remove-13 is pushed 1characters by 1
-    //I.E. pl-145-song-remove-13 is pushed 3characters by 145
+    //I.E. pl-1-song-remove-13 is pushed 1 character by the 1
+    //I.E. pl-145-song-remove-13 is pushed 3 characters by 145
     for (let i = 10; i> 0; i--){
         if (target[i] >= '0' && target[i] <='9') {
            
@@ -112,10 +113,11 @@ function findLastNumberInTargetPlaylistID(target){
 }
 
 //FINDS PLAYLIST ID FROM TARGET SONG DIV ID
+//FOR # PLAYLISTS < 100_000
 function findPlaylistID(target){
     let counter = 0
     target = target.substr(3)
-    console.log('target', target)
+    // console.log('target', target)
     for (let i = 0; i < 5; i++){
         if (target[i] >= '0' && target[i] <='9') {
             counter += 1
@@ -127,16 +129,16 @@ function findPlaylistID(target){
 
 //DELETE SONG THAT YOU'VE ADDED
 $('.pl-song-del-btn').click(function(evt){
-    console.log('pl-song-del-btn clicked')
-    console.log(evt)
+    // console.log('pl-song-del-btn clicked')
+    // console.log(evt)
 
     let target = evt.currentTarget.id
     let playlistID = findPlaylistID(target)
     let ourVal = findLastNumberInTargetPlaylistID(target)
     let ourSongID = target.substr(ourVal)
 
-    console.log('ourPlaylistID', playlistID)
-    console.log('songID to delete: ', ourSongID)
+    // console.log('ourPlaylistID', playlistID)
+    // console.log('songID to delete: ', ourSongID)
     midCon.load(`/playlist/${playlistID}/remove/${ourSongID}`)
 });
 
@@ -147,12 +149,13 @@ $('.pl-song-del-btn').click(function(evt){
 
 
 async function heartClick(songID){
-    console.log('Heart Clicked!')
-    //Best to do this through a query probably user -> userplaylists <- playlists
-    //Decided to add a liked_songs_id to User model on instantiation
-    //Grab playlist ID of liked songs
+    // console.log('Heart Clicked!')
+
+    //CONSIDER ALTERNATIVE METHOD USING A QUERY user -> userplaylists <- playlists
+    //QUERY CURRENT USER FOR THIER LIKED_SONGS_ID
     let playlistIDObj = await axios.get('/users/current/liked-songs-id')
     let playlistID = parseInt(playlistIDObj.data)
-    //Make call to add-to-playlist route
+
+    //ADD SONG TO LIKED PLAYLIST THROUGH GENERAL ADD SONG TO PLAYLIST ROUTE
     await axios.get(`/playlist/${playlistID}/add-song/${songID}`)
 }

@@ -1,3 +1,6 @@
+
+
+
 //LOAD YOUR PLAYLISTS PAGE FROM HOME INTO MID CONTAINER
 $('.home-your-playlist-playlist').click(function(evt){
     console.log(evt)
