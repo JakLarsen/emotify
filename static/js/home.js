@@ -1,4 +1,4 @@
-//YOUR PLAYLISTS PAGE FROM HOME
+//LOAD YOUR PLAYLISTS PAGE FROM HOME INTO MID CONTAINER
 $('.home-your-playlist-playlist').click(function(evt){
     console.log(evt)
     let target = evt.currentTarget.id
@@ -6,7 +6,7 @@ $('.home-your-playlist-playlist').click(function(evt){
     let playlistID = target.substr(14)
     midCon.load(`/playlist/${playlistID}`)
 });
-//YOUR LIKED MUSIC FROM HOME PAGE
+//LOAD YOUR LIKED MUSIC FROM HOME PAGE INTO MID CONTAINER
 $('#home-favorites-con').click(async function(evt){
     console.log('home-favorties-con clicked')
     let playlistData = await axios.get('/users/current/liked-songs-id')
