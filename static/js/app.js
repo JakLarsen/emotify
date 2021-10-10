@@ -1,7 +1,7 @@
 
 
 
-            //GLOBALS
+                    //GLOBALS
 
 
 
@@ -12,15 +12,15 @@ let currentPlaylist = null
 
 
 
-            /**
-            * MAIN PAGE MID CONTENT AREA SWAP HANDLERS
-            * 
-            * I.E. When you click on Logo, Home, Library, Your Playlists
-            *   Create Playlist, an Individual Playlist, or New Song btn, etc.
-            *   The mid-mid con loads the data to display
-            *   -Would benefit greatly from state management    
-            */
-                    
+                    /**
+                    * MAIN PAGE MID CONTENT AREA SWAP HANDLERS
+                    * 
+                    * I.E. When you click on Logo, Home, Library, Your Playlists
+                    *   Create Playlist, an Individual Playlist, or New Song btn, etc.
+                    *   The mid-mid con loads the data to display
+                    *   -Would benefit greatly from state management    
+                    */
+                            
 
 
 //LIBRARY BUTTON
@@ -63,7 +63,7 @@ $('.home-your-playlist-playlist').click(function(evt){
 
 
 
-            //DURATION BAR
+                    //DURATION BAR
 
 
 
@@ -96,11 +96,11 @@ $('.home-your-playlist-playlist').click(function(evt){
 
 
 
-            /**
-             * PLAYLIST CONTAINER EVENT HANDLER
-             * 
-             * ACTIVE PLAYLIST HIGHLIGHT
-             * */
+                    /**
+                     * PLAYLIST CONTAINER EVENT HANDLER
+                     * 
+                     * ACTIVE PLAYLIST HIGHLIGHT
+                     * */
 
 
 
@@ -120,7 +120,7 @@ playlistContainer.addEventListener('click', function(e){
 
 
 
-            // OPEN STREAM TO HEADSET
+                    // OPEN STREAM TO HEADSET
 
 
                     
@@ -136,13 +136,13 @@ $(function() {
 
 
 
-            /**
-             * INPUT HANDLER FROM WEBSOCKET INPUT
-             * 
-             * When 'data_response' is emitted TO
-             * -call this function to distinguish event
-             * -Then call appropriate event()
-             */
+                    /**
+                     * INPUT HANDLER FROM WEBSOCKET INPUT
+                     * 
+                     * When 'data_response' is emitted TO
+                     * -call this function to distinguish event
+                     * -Then call appropriate event()
+                     */
 
 
 
@@ -163,7 +163,7 @@ function enactInputCommand(input){
 
 
 
-            // WEBSOCKET HANDLERS
+                    // WEBSOCKET HANDLERS
 
 
 
@@ -204,7 +204,7 @@ $(document).ready(function() {
 
 
 
-            //RIGHT CLICK HANDLERS
+                    //RIGHT CLICK HANDLERS
 
 
 

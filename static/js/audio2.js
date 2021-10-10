@@ -18,6 +18,11 @@ let lastInput = 'neutral'
 
 
 
+
+
+
+
+//UPDATE CURRENT SONG ON DOM WITH SONG OBJECT
 function updateCurrSongDiv(song){
     let currTitle = document.getElementById('curr-playing-song-title')
     let currArtist = document.getElementById('curr-playing-song-artist')
@@ -31,11 +36,14 @@ function updateCurrSongDiv(song){
     currImg.src = song.img
     currSongData.songid = song.id
     currSongData.songidx = song.idx
+    //pll = playlist length
     currSongData.pll = song.pll
     currSongAudio.id = song.id
     currSongAudio.src = `../static/audio/${song.file}`
     currHeart.src = "../static/img/heart1.png"  
 }
+
+//UPDATE NEXT SONG ON DOM WITH SONG OBJECT
 function updateNextSongDiv(nextSong){
     let nextTitle = document.getElementById('next-playing-song-title')
     let nextArtist = document.getElementById('next-playing-song-artist')
@@ -56,6 +64,8 @@ function updateNextSongDiv(nextSong){
     nextSongAudio.src = `../static/audio/${nextSong.file}`
     nextHeart.src = "../static/img/heart1.png"
 }
+
+//UPDATE PREVIOUS SONG ON DOM WITH SONG OBJECT
 function updatePrevSongDiv(prevSong){
     let prevTitle = document.getElementById('prev-playing-song-title')
     let prevArtist = document.getElementById('prev-playing-song-artist')
@@ -76,6 +86,8 @@ function updatePrevSongDiv(prevSong){
     prevSongAudio.src = `../static/audio/${prevSong.file}`
     prevHeart.src = "../static/img/heart1.png"
 }
+
+//UPDATES OUR CURRENT SONG OBJECT
 function updateCurrSong(song){
     currSong = {
         id:song.id,
@@ -83,6 +95,8 @@ function updateCurrSong(song){
         playlist:song.playlist
     }
 }
+
+//INSTANTIATES DURATION TIME ON DOM
 function updateDuration(song){
     let duration = song.duration
     let end = document.getElementById('end')
@@ -95,12 +109,15 @@ function updateDuration(song){
 
 
 
+//BASIC AUDIO METHOD: PLAY
 function play(song) {
     console.log('play() called')
     let audio = document.getElementById(song.id)
     audio.volume = 0.2;
     audio.play();   
 }
+
+//BASIC AUDIO METHOD: PAUSE
 function pause(currSong){
     console.log('pause() called')
     let audio = document.getElementById(currSong.id)
@@ -182,30 +199,28 @@ function audioHandler(song, prevSong="", nextSong=""){
 
 
 
-/**
- * Handle NEXT input command received:
- * 
- * If there is a current song
- *  If it is playing and the last input wasn't NEXT
- *  - Go to next Song
- *  elif it is playing and the last input WAS NEXT
- *  - Go to next Playlist
- *  elif song isn't playing
- *  - Play!
- */          
+//HANDLE 'NEXT' INPUT RECEIVED      
 async function nextEvent(){
     console.log('NEXT EVENT')
     if(currSong){
         //PLAYING + NOTNEXT NEXT => NEXT SONG
         if(isPlaying && lastInput != 'next'){
             console.log('NEXT EVENT = NEXT SONG')
+
+            //GRABS OUR TO-BE CURRENT SONG FRO THE NEXT-PLAYING-CON DIV
+            //THIS SHOULD IDEALLY BE FROM AN OBJECT WE RECEIVE FROM A DATABASE QUERY WHEN WE LOAD FIRST SONG OF PLAYLIST
+            //NOT FROM THE DOM
             let currSongIDX = parseInt(document.getElementById('next-playing-con').dataset.songidx)
+
+            //GRAB THE PLAYLIST LENGTH FOR CIRCLING THROUGH PLAYLIST LOGIC
             let pll = parseInt(document.getElementById('next-playing-con').dataset.pll)
     
-            console.log(`Our New Song IDX is : ${currSongIDX}`)
-            console.log(`Our playlist length is : ${pll}`)
+            // console.log(`Our New Song IDX is : ${currSongIDX}`)
+            // console.log(`Our playlist length is : ${pll}`)
     
             let nextSongIDX = ""
+            //IF THE SONG-TO-BE-CURRENT IS THE LAST IN THE PLAYLIST
+            //THE NEXT SONG TO PLAY IS THE FIRST
             if (currSongIDX == pll){
                 nextSongIDX = 1
             }
@@ -214,17 +229,25 @@ async function nextEvent(){
             }
     
             let prevSongIDX = ""
+            //IF THE SONG-TO-BE-CURRENT IS THE FIRST SONG
+            //THE PREV-SONG-TO-BE BECOMES THE LAST SONG
             if (currSongIDX == 1){
                 prevSongIDX = pll
             }
             else{
                 prevSongIDX = currSongIDX - 1
             }
+        
             // console.log(`pll: ${pll}, prevSongIDX: ${prevSongIDX}, currSongIDX: ${currSongIDX}, nextSongIDX: ${nextSongIDX}`)
+            
+            //GET OUR SONG DATA FROM PLAYLIST.JS, WHICH GRABS IT FROM THE SONG DIVS IN THE PLAYLIST
+            //AGAIN, THIS SHOULD BE UPDATED TO DO A QUERY ON THE DB, TAKE AN OBJECT OF THE SONG DATA,
+            //- AND ITERATE THROUGH THAT FOR SONG UPDATING. NOT PASSING THROUGH ITEMS ON THE DOM.
             let song = await getSongData(currSongIDX)
             let prevSong = await getSongData(prevSongIDX)
             let nextSong = await getSongData(nextSongIDX)
-    
+            
+            //UPDATE LAST INPUT, BECAUSE OUR LOGIC DEPENDS ON CONSECUTIVE INPUTS
             lastInput = 'next'
 
             //SEND DATA FOR UPDATES TO OUR MAIN AUDIO HANDLER
@@ -246,17 +269,8 @@ async function nextEvent(){
     }
 }
 
-/**
- * Handle PREVIOUS input command received:
- * 
- * If there is a current song
- *  If it is playing
- *  - PAUSE
- *  elif it is not playing and last event WAS PREV
- *  - Go to prev song
- *  elif it is not playing and last event WAS NEUTRAL
- *  - Restart song
- */   
+
+//HANDLE 'PREVIOUS' INPUT COMMAND RECEIVED:
 async function prevEvent(){
     console.log('PREV EVENT')
     if(currSong){
@@ -269,10 +283,12 @@ async function prevEvent(){
         //PREV PREV => PREV SONG
         else if (!isPlaying && lastInput == 'prev'){
             console.log('PREV EVENT = PREV SONG')
+
             let currSongIDX = parseInt(document.getElementById('prev-playing-con').dataset.songidx)
             let pll = parseInt(document.getElementById('prev-playing-con').dataset.pll)
 
             let prevSongIDX = ""
+            //IF TO-BE-CURR SONG IS THE FIRST SONG, PREV SONG BECOMES LAST SONG
             if (currSongIDX == 1){
                 prevSongIDX = pll
             }
@@ -280,6 +296,7 @@ async function prevEvent(){
                 prevSongIDX = currSongIDX - 1
             }
             let nextSongIDX = ""
+            //IF THE TO-BE-CURR SONG IS THE LAST SONG, NEXT SONG BECOMES THE FIRST SONG
             if (currSongIDX == pll){
                 nextSongIDX = 1
             }
@@ -287,6 +304,7 @@ async function prevEvent(){
                 nextSongIDX = currSongIDX + 1
             }
             // console.log(`pll: ${pll}, prevSongIDX: ${prevSongIDX}, currSongIDX: ${currSongIDX}, nextSongIDX: ${nextSongIDX}`)
+    
             let song = await getSongData(currSongIDX)
             let prevSong = await getSongData(prevSongIDX)
             let nextSong = await getSongData(nextSongIDX)
@@ -318,6 +336,7 @@ function playPauseEvent(){
     } 
 }
 
+//SWAP THE PLAY AND PAUSE IMAGES ON THE BUTTON
 function swapPlayPause(){
     let playPauseImg = document.getElementById('play-pause-img')
     if (isPlaying){
@@ -329,21 +348,19 @@ function swapPlayPause(){
     }
 }
 
-//CLICK HANDLERS FOR BOT BUTTONS
+//CLICK HANDLERS FOR BOT AUDIO BUTTONS
 playPause.addEventListener('click', function(evt){
     playPauseEvent()
     swapPlayPause()
 })
-
 nextBtn.addEventListener('click', async function(evt){
     nextEvent()
 })
-
 prevBtn.addEventListener('click', async function(evt){
     prevEvent()
 })
 
-//CLICK HANDLERS FOR BOT DIVS
+//CLICK HANDLERS FOR BOT SONG DIV CLICKS
 $('#prev-playing-con').click(function(){
     prevEvent()
 });
@@ -352,4 +369,5 @@ $('#next-playing-con').click(function(){
 });
 $('#curr-playing-con').click(function(){
     playPauseEvent()
+    swapPlayPause()
 });
