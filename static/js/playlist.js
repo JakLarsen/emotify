@@ -70,6 +70,11 @@ if(typeof songArea == 'undefined'){
 
             audioHandler(newSong, prevSong, nextSong)
         }
+        //CLICK TO LIKE A SONG, SEND SONG ID
+        if (evt.path[0].classList.contains('pl-song-like-img')){
+            let songID = evt.path[0].dataset.songid
+            heartClick(songID)
+        }
     })
 }
 
@@ -134,3 +139,20 @@ $('.pl-song-del-btn').click(function(evt){
     console.log('songID to delete: ', ourSongID)
     midCon.load(`/playlist/${playlistID}/remove/${ourSongID}`)
 });
+
+
+
+                    //LIKE-HEART CLICK HANDLER
+
+
+
+async function heartClick(songID){
+    console.log('Heart Clicked!')
+    //Best to do this through a query probably user -> userplaylists <- playlists
+    //Decided to add a liked_songs_id to User model on instantiation
+    //Grab playlist ID of liked songs
+    let playlistIDObj = await axios.get('/users/current/liked-songs-id')
+    let playlistID = parseInt(playlistIDObj.data)
+    //Make call to add-to-playlist route
+    await axios.get(`/playlist/${playlistID}/add-song/${songID}`)
+}

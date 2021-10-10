@@ -132,6 +132,7 @@ $(function() {
 /**
  * 
  * Logic to implement:
+ * 
  * if isPlaying:
  *  if lastinput == push and current input == push:
  *      nextPlaylistEvent()

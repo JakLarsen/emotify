@@ -138,6 +138,10 @@ class User(db.Model):
         nullable = True,
         unique = True,
     )
+    liked_songs_id = db.Column(
+        db.Integer,
+        nullable = True
+    )
 
     @classmethod
     def signup(cls, username, password):

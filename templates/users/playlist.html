@@ -36,7 +36,7 @@
                     <div class="pl-song-artist">{{song.artist}}</div>
                 </div>
                 <div class="pl-song-album">{{song.album}}</div>
-                <div class="pl-song-like pl-song-item"><img class="pl-song-like-img" src="../../static/img/heart1.png"></div>
+                <div class="pl-song-like pl-song-item"><img class="pl-song-like-img" data-songid="{{song.id}}" src="../../static/img/heart1.png"></div>
                 <div class="pl-song-duration pl-song-item">{{song.duration//60}}:{{song.duration%60}}</div>
                 {% if playlist.id == 1 %}
                     {% if song.user_id == g.user.id %}

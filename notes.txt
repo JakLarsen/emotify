@@ -35,8 +35,8 @@
        ****** DONE ****** - Make sure audio logic works on it like all playlists
         - Liked songs show that way on all playlists
         - Unliking a song from any playlist unlikes it everywhere
-    - MAKE LIKED OR FAVORITE SONGS PLAYLIST LOAD INITIALLY
-
+    - MAKE LIKED SONGS PLAYLIST LOAD INITIALLY
+    - UPDATE AUDIO LOGIC
     - Code a mock input flow to demonstrate (Play 5s, Pause 5s, Play 5s, Next 5s, Next playlist 5s, Pause 5s, Prev 5s)
     - Understand EVERYTHING
 

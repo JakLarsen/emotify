@@ -19,7 +19,7 @@ import websocket
 from sqlalchemy.exc import IntegrityError
 from models import db, connect_db, User, Song, Userplaylist, Playlist, Usersong, Playlistsong
 from forms import LoginForm, UserAddForm, AddSongForm, AddPlaylistForm
-from random import randint
+from random import randint, random
 from cortex import Cortex, jake_data
 from copy import copy
 import pdb
@@ -212,6 +212,8 @@ def addLikedSongs():
     liked_songs = Playlist(title="Liked Songs", description="Your liked music. Ready to be enjoyed.", img="https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/1631/posts/34195/image/Cool%20Electro%20Album%20Cover%20Design%20Template%20copy.jpg")
     g.user.userplaylists.append(liked_songs)
     db.session.commit()
+    g.user.liked_songs_id = liked_songs.id
+    db.session.commit()
 
 
                     # USER LOGIN HANDLERS
@@ -223,7 +225,6 @@ def add_user_to_g():
     """If we're logged in, add curr user to Flask global."""
     if CURR_USER_KEY in session:
         g.user = User.query.get(session[CURR_USER_KEY])
-        addLibrary()
 
     else:
         g.user = None
@@ -257,7 +258,8 @@ def app_home():
 
 @app.route('/add-liked-playlist', methods=["GET"])
 def add_liked_songs_playlist():
-    """On signup, Add Liked Songs playlist"""
+    """On signup, Add Liked Songs playlist and Library"""
+    addLibrary()
     addLikedSongs()
     return redirect('/')
 
@@ -354,6 +356,24 @@ def display_data():
         return ("nothing")
     else:
         return redirect('/')
+
+@app.route('/users/current/liked-songs-id', methods=["GET"])
+def get_current_user():
+    """Get a liked_songs_id for the current user"""
+    our_id = g.user.liked_songs_id
+    #Hmm, won't let me just pass the variable - maybe promise from js file is expecting a specific format? - Research.
+    return (f'{our_id}')
+
+
+
+
+
+
+
+
+
+
+
 
 @app.route('/add-song', methods=["GET", "POST"])
 def add_song():
