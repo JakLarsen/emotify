@@ -9,8 +9,8 @@ Emotify utilizes Neural-Navigation, allowing users to navigate a Spotify-inspire
 - Audio Controls (longer input times due to EEG sensitivity - i.e. with a better headset connect, this could be shortened; with more sensors and specificity, the number of discrete commands could be increased as well): 
 - if paused:
     - "push" 2s : Play
-    - "pull" 2s : Previous Song
-    - "pull" 4s : Previous Playlist
+    - "pull" 2s : Restart Song
+    - "pull" 4s : Previous Song
 - if playing:
     - "pull" 2s : Pause
     - "push" 2s : Next Song
