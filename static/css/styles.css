@@ -1,3 +1,4 @@
+                    /* DISPLAY STYLES FOR MAIN APP */
 
 
 
@@ -69,10 +70,6 @@ h1, button{
 
 
 
-/* TOP LEFT */
-
-
-
 #left-con{
     /* background-color: blue; */
     position: relative;
@@ -81,8 +78,18 @@ h1, button{
     width: 15rem;
     height: 100vh;
 }
+
+
+
+            /* TOP LEFT
+            *
+            * Includes: Logo, Home, Library, Your Playlists Sections
+            */
+
+
+
 #top-left-con{
-    /* background-color: aliceblue; */
+    /* background-color: rgb(53, 115, 170); */
     background-color: #fff;
     position: relative;
     display: flex;
@@ -180,7 +187,10 @@ h1, button{
 
 
 
-/* MIDLEFT */
+            /* MIDLEFT
+            *
+            *Includes Create Playlist -> your playlists
+            */
 
 
 
@@ -284,7 +294,10 @@ h1, button{
 
 
 
-/* BOT LEFT */
+            /* BOT LEFT
+            *
+            *Includes Add Song To Library section
+            */
 
 
 
@@ -393,7 +406,10 @@ h1, button{
 
 
 
-/* TOP MID */
+            /* TOP MID
+            *
+            *Includes Welcome Banner, Connect Headset, and Logout
+            */
 
 
 
@@ -465,7 +481,11 @@ h1, button{
 
 
 
-/* MID MID */
+            /* MID MID
+            *
+            * Populated by other pages
+            * Includes Home, Library, Your Playlists, each separate playlist's page
+            */
 
 
 
@@ -485,7 +505,10 @@ h1, button{
 
 
 
-/* BOT MID */
+            /* BOT MID
+            *
+            * Contains bot Audio Control section
+            */
 
 
 
@@ -506,7 +529,7 @@ h1, button{
 
 
 
-                    /* BOT SONG APP */
+            /* BOT SONG APP */
 
 
 
@@ -736,7 +759,10 @@ h1, button{
 
 
 
-                    /* RIGHT CONTAINER */
+                    /* RIGHT CONTAINER
+                    *
+                    * Not yet populated
+                    */
 
 
 
@@ -768,7 +794,17 @@ h1, button{
 
 
 
-                    /* HOME PAGE */
+                    /* MID MID PAGES TO POPULATE CONTENT
+                    *
+                    *HOME PAGE
+                    *PLAYLIST TEMPLATE: (Library, Your Playlist, Individual Playlists)
+                    *YOUR PLAYLIST PAGE
+                    *INDIVIDUAL PLAYLIST
+                    */
+
+
+
+            /* HOME PAGE */
 
 
 
@@ -906,7 +942,6 @@ h1, button{
     background-color: rgba(49, 49, 49, 0.8);
     transition: 0.3s ease;
 }
-
 #home-your-playlists-con{
     /* background-color: purple; */
     position: relative;
@@ -958,7 +993,11 @@ h1, button{
 
 
 
-                    /* PLAYLIST TEMPLATE CLASSES */
+                    /* PLAYLIST TEMPLATE CLASSES
+                    *
+                    *Used for top by Your Playlists
+                    *Used by Library and all playlists
+                    */
 
 
 
@@ -1032,7 +1071,7 @@ h1, button{
 
 
 
-/* YOUR PLAYLIST PAGE (ALSO UTILIZING TEMPLATE CLASSES ABOVE)*/
+            /* YOUR PLAYLIST PAGE*/
 
 
 
@@ -1128,7 +1167,7 @@ h1, button{
 
 
 
-/*TOP*/
+            /*INDIVIDUAL PLAYLIST: TOP*/
 
 
 
@@ -1162,7 +1201,7 @@ h1, button{
 
 
 
-/*PL CONTAINER AND NAV*/
+            /*INDIVIDUAL PLAYLIST: CONTAINER AND NAV*/
 
 
 
@@ -1240,7 +1279,7 @@ h1, button{
 
 
 
-/* EACH SONG */
+            /*INDIVIDUAL PLAYLIST: EACH SONG */
 
 
 
@@ -1366,7 +1405,10 @@ h1, button{
 
 
 
-                    /* FORMS */
+                    /* FORMS
+                    *
+                    * ADD SONG FORM (Add Song To Library, Create Playlist)
+                    */
 
 
 
