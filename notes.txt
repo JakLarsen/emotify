@@ -12,9 +12,12 @@
        ****** DONE ****** - Give all users their OWN liked songs playlist
        ****** DONE ****** - Make it so when clicking a heart. It adds the song to your liked-songs playlist 
        ****** DONE ****** - Make sure audio logic works on it like all playlists
-       
-    - UPDATE AUDIO LOGIC
+
+        ****** DONE ****** - UPDATE AUDIO LOGIC
     - Code a mock input flow to demonstrate (Play 5s, Pause 5s, Play 5s, Next 5s, Next playlist 5s, Pause 5s, Prev 5s)
+    - CYCLE PLAYLIST LOGIC
+    - UPDATE SELECTED PLAYLIST
+    
     - Understand EVERYTHING
 
 10/9
@@ -79,6 +82,9 @@
     ***IRRELEVANT TO PROOF OF CONCEPT
     - Deleting song from Library stops music (Not going to worry about this right now - APP is Proof of Concept - State Management is NOT handled well in this app) 
     - You should sign up your users in seed.py so when you reset you have useable users.
+
+-Add right click handling for ALL parts of clickable song div - in prog.
+-Restart song logic
 
 --On song finish, nextEvent()
 --CLIP SONG TITLES THAT ARE TOO LONG WHEN MPUTTING INTO PREV/CURR/NEXT DIVS

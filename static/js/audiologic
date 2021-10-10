@@ -1,0 +1,38 @@
+
+                    //MAIN AUDIO LOGIC
+
+//SONG CLICK
+    //IS THERE A CURRENT SONG
+        //IS IT PLAYING
+            //IS IT THE SAME SONG
+                //PAUSE IT
+            //IS IT A DIFFERENT SONG
+                //PLAY IT
+        //IT IS NOT PLAYING
+            //IS IT THE SAME SONG
+                //PLAY IT
+            //IS IT A DIFFERENT SONG
+                //PLAY IT             
+    //NO CURRENT SONG YET
+        //PLAY IT
+
+//NEXT INPUT
+    //IS THERE A CURRENT SONG
+        //IS IT PLAYING
+            //LAST INPUT WAS NOT NEXT
+                //GO TO NEXT SONG
+            //LAST INPUT WAS NEXT
+                //GO TO NEXT PLAYLIST
+        //SONG ISNT PLAYING
+            //PLAY SONG
+
+//PREV INPUT
+    //IS THRE A CURRENT SONG
+        //IS IT PLAYING
+            //PAUSE
+        //SONG ISNT PLAYING
+            //LAST INPUT WAS PREV
+                //GO TO PREV SONG
+            //LAST INPUT WAS NEUTRAL
+                //RESTART SONG
+   
