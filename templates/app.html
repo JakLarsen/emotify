@@ -82,7 +82,9 @@
                 <div id="ml-playlist-wrap">
                   <div class="ml-playlist" id="mid-playlist-{{playlist.id}}">{{playlist.title}}</div>
                   <form class="ml-del-btn-form" action="/playlist/{{playlist.id}}/delete">
+                    {% if playlist.title != 'Liked Songs' %}
                     <button class="ml-del-btn">X</button>
+                    {% endif %}
                   </form>
                 </div>
               {% endif %}

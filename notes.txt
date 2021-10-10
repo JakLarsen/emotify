@@ -8,8 +8,18 @@
 
 
 10/10
+ - LIKED SONGS PLAYLIST
+       ****** DONE ****** - Give all users their OWN liked songs playlist
+       ****** DONE ****** - Make it so when clicking a heart. It adds the song to your liked-songs playlist 
+       ****** DONE ****** - Make sure audio logic works on it like all playlists
+       
+    - UPDATE AUDIO LOGIC
+    - Code a mock input flow to demonstrate (Play 5s, Pause 5s, Play 5s, Next 5s, Next playlist 5s, Pause 5s, Prev 5s)
+    - Understand EVERYTHING
 
 10/9
+    *UPDATES*
+
     ****** DONE ****** **APP.HTML**
     ****** DONE ****** - See about moving the websocket events into a separate js file
     ****** DONE ****** - Same for data.html
@@ -28,29 +38,29 @@
     ****** DONE ****** - FIX DELETE 
     ****** DONE ****** - POPULATE PLAYLISTS
 
+    *BUGS*
 
-    - LIKED SONGS PLAYLIST
-       ****** DONE ****** - Give all users their OWN liked songs playlist
-        - Make it so when clicking a heart. It adds the song to your liked-songs playlist 
-       ****** DONE ****** - Make sure audio logic works on it like all playlists
-        - Liked songs show that way on all playlists
-        - Unliking a song from any playlist unlikes it everywhere
-    - MAKE LIKED SONGS PLAYLIST LOAD INITIALLY
-    - UPDATE AUDIO LOGIC
-    - Code a mock input flow to demonstrate (Play 5s, Pause 5s, Play 5s, Next 5s, Next playlist 5s, Pause 5s, Prev 5s)
-    - Understand EVERYTHING
+    ****** DONE ****** - Deleting song from other playlists other than Library or Rock On doesn't work now...hmm 
+    ****** DONE ****** - HOME is enforcing some sort of min-width that is displacing bot audio controller slightly
 
 
 
+                                    ***Major Improvements***
+
+    - Reboot audio logic: 
+        - On song click, make a query to get all playlist data for that playlist and use that for updating instead of each song queried separately on every change
+        - (ACCESSIBILITY) Change prev/curr/next songs on User commanded playlist cycle, but not on playlist click
+    - Most Played Songs Playlist
+    - Duration Bar
+        - A Duration Bar that updates as song goes on
+        - Pauses/Plays on song play/pause
+        - Scrollable, clickable - changes where you are at in song
+    - On Song Completion - go next song
+    - State management...
+    - Liked Song showing visual cue that it is liked across all playlists and removed when clicked to removed
 
 
-    - MOST PLAYED SONGS PLAYLIST
-        - Logic so after a song is played 10 times, it auto-adds to it
-    - Consider populating right sidebar (IF TIME)
-    - IF TIME, REBOOT AUDIO LOGIC TO REQUEST ALL PLAYLIST DATA ON SONG PLAY CLICK 
-    - PLAYING GIF (IF TIME) FOR ID # OF SONG PLAYING
-    - Duration updating each second
-    - Duration pausing on pause/resuming on play
+
 
 
 
@@ -64,12 +74,12 @@
  *****BUGS*****
 
     ***TO FIX
-    - Deleting song from other playlists other than Library or Rock On doesn't work now...hmm 
-    - You need to sign up your users in seed.py so when you reset you have useable users.
-    ****** DONE ****** - HOME is enforcing some sort of min-width that is displacing bot audio controller slightly
-
+    - Liked Songs (and probably Library) could be removed through a request most likely - validate against this.
+    - Right click runs out of space at bottom of page
     ***IRRELEVANT TO PROOF OF CONCEPT
     - Deleting song from Library stops music (Not going to worry about this right now - APP is Proof of Concept - State Management is NOT handled well in this app) 
+    - You should sign up your users in seed.py so when you reset you have useable users.
+
 --On song finish, nextEvent()
 --CLIP SONG TITLES THAT ARE TOO LONG WHEN MPUTTING INTO PREV/CURR/NEXT DIVS
 
