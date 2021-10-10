@@ -1,17 +1,26 @@
 
 
 
-                    //GLOBALS
+            //GLOBALS
 
 
 
 let midCon = $('#mid-mid-con');
+let playlistContainer = document.getElementById('ml-playlist-con');
 let tossSong= null
 let currentPlaylist = null
 
 
 
-                    //MAIN PAGE MID CONTENT AREA SWAP HANDLERS
+            /**
+            * MAIN PAGE MID CONTENT AREA SWAP HANDLERS
+            * 
+            * I.E. When you click on Logo, Home, Library, Your Playlists
+            *   Create Playlist, an Individual Playlist, or New Song btn, etc.
+            *   The mid-mid con loads the data to display
+            *   -Would benefit greatly from state management    
+            */
+                    
 
 
 //LIBRARY BUTTON
@@ -53,7 +62,9 @@ $('.home-your-playlist-playlist').click(function(evt){
 });
 
 
-                    //DURATION BAR
+
+            //DURATION BAR
+
 
 
 // function updateElapsed(songDuration) {
@@ -85,40 +96,39 @@ $('.home-your-playlist-playlist').click(function(evt){
 
 
 
-                    //ACTIVE PLAYLIST COLOR
+            /**
+             * PLAYLIST CONTAINER EVENT HANDLER
+             * 
+             * ACTIVE PLAYLIST HIGHLIGHT
+             * */
 
 
 
-function handleActivePlaylistSelect(playlist){
-    console.log('in handleActivePlaylistSelect', playlist)
+playlistContainer.addEventListener('click', function(e){
+    console.log('you clicked the playlist container')
+    let playlist = e.target.id
+
     //REMOVE ACTIVE CLASS FROM CURRENT
     if (currentPlaylist){
         currentPlaylist.classList.remove('ml-playlist-active')
     }
-    //THEN UPDATE CURRENT TO NEW CURRENT AND READD
+    //THEN UPDATE CURRENT TO NEW CURRENT AND RE-ADD
     currentPlaylist = document.getElementById(playlist)
     currentPlaylist.classList.add('ml-playlist-active')
     
-}
-
-let playlistContainer = document.getElementById('ml-playlist-con')
-playlistContainer.addEventListener('click', function(e){
-    console.log('you clicked the playlist container')
-    // console.log(e.target.id.substr(13))
-    let playlist = e.target.id
-    handleActivePlaylistSelect(playlist)
 })
 
 
 
-
-                    // OPEN STREAM TO HEADSET
+            // OPEN STREAM TO HEADSET
 
 
                     
 $(function() {
+    //ON CONNECT HEADSET CLICK
     $('#connect-headset').on('click', function(e) {
         e.preventDefault()
+        //SEND REQUEST TO '/display_data' in app.py
         $.getJSON('/display_data', function(data) {});
         return false;
     });
@@ -126,11 +136,17 @@ $(function() {
 
 
 
-                     // INPUT HANDLER FROM WEBSOCKET INPUT
+            /**
+             * INPUT HANDLER FROM WEBSOCKET INPUT
+             * 
+             * When 'data_response' is emitted TO
+             * -call this function to distinguish event
+             * -Then call appropriate event()
+             */
 
 
 
-function enactInputCommand( input){
+function enactInputCommand(input){
     if (input == 'neutral'){
         console.log('NEUTRAL input received and processed.')
         neutralEvent()
@@ -147,7 +163,7 @@ function enactInputCommand( input){
 
 
 
-                    // WEBSOCKET HANDLERS
+            // WEBSOCKET HANDLERS
 
 
 
@@ -162,7 +178,7 @@ $(document).ready(function() {
 
     /**
      * Event listener when websocket info is emitted to 'my_response'
-     * cb, a callback function, would be invoked whenever the server emits data to 'data_response'
+     * cb, a callback function, would be invoked whenever the server emits data to 'my_response'
      */
     socket.on('my_response', function(msg, cb) {
         if (cb)
@@ -171,7 +187,7 @@ $(document).ready(function() {
 
     /**
      * Event listener when websocket info is emitted to 'data_response'
-     * Sends mental command input that has been processed to a logic handler (update_page())
+     * Sends mental command input that has been processed to a logic handler (enactInputCommand())
      * cb, a callback function, would be invoked whenever the server emits data to 'data_response'
      */
     socket.on('data_response', function(msg, cb) {
@@ -188,7 +204,7 @@ $(document).ready(function() {
 
 
 
-//                     //RIGHT CLICK ADD SONG TO PLAYLIST HANDLER
+            //RIGHT CLICK HANDLERS
 
 
 
@@ -196,11 +212,20 @@ $(document).ready(function() {
 function discernSongDivSongID(path){ 
     let songID = null
 
-    //IF YOU CLICK ON THE SONG WRAPPER
+    //IF YOU RIGHT CLICK ON THE SONG WRAPPER
     if (path[0].classList.contains('pl-song-wrap')){
-        songID = path[0].dataset.songid
+        songID = path[0].parentNode.dataset.songid
     }
-    //if [INSERT OTHER CLICKABLE AREAS LIKE TITLE]
+    //YOU RIGHT CLICK THE ALBUM TITLE
+    else if (path[0].classList.contains('pl-song-album')){
+        songID = path[1].dataset.songid
+    }
+    //YOU RIGHT CLICK THE SONG TITLE OR ARTIST
+    else if (path[0].classList.contains('pl-song-title') || path[0].classList.contains('pl-song-artist')){
+        songID = path[2].dataset.songid
+        console.log(songID)
+    }
+    //if [INSERT OTHER CLICKABLE AREAS LIKE DURATION OR IMAGE]
     return songID
 }
 
@@ -209,6 +234,7 @@ function hideMenu(){
     document.getElementById('rc-menu').style.display = 'none'
     document.getElementById('rc-playlists').style.display = 'none'
 }
+
 //SHOW RIGHT CLICK MENU ON FIRST RIGHT CLICK
 function showMenu(e){
     let menu = document.getElementById('rc-menu')
@@ -229,7 +255,9 @@ if (document.addEventListener) {
     document.addEventListener('contextmenu', function(e) {
         e.preventDefault();
 
+        //FIGURE OUT THE SONG ID BASED ON DIFFERENT CLICKABLE AREAS OF SONG DIV
         let songID = discernSongDivSongID(e.path)
+        //GLOBAL SONG ID TO THROW TO PLAYLIST.JS - IM SURE NOT THE CORRECT WAY TO DO THIS
         tossSong = songID
 
         //DRAW MENU
@@ -241,6 +269,7 @@ if (document.addEventListener) {
             }
         })
         
+        //IF MENU IS ALREADY PRESENT, HIDE IT
         if (menu.style.display == 'flex'){
             hideMenu()
         }
