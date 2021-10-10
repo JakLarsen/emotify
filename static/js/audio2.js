@@ -18,10 +18,6 @@ let lastInput = 'neutral'
 
 
 
-
-
-
-
 //UPDATE CURRENT SONG ON DOM WITH SONG OBJECT
 function updateCurrSongDiv(song){
     let currTitle = document.getElementById('curr-playing-song-title')

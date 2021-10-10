@@ -168,17 +168,17 @@ function enactInputCommand(input){
 
 
 $(document).ready(function() {
-    // Connect to the Socket.IO server.
+    // CONNECT TO THE SOCKETIO SERVER
     var socket = io();
 
-    //Event listenerfor new connections.
+    //EVENT LISTENER FOR EMITS ON 'connect' - WHEN A USER CONNECTS
     socket.on('connect', function() {
         socket.emit('my_event', {data: 'I\'m connected!'});
     });
 
     /**
-     * Event listener when websocket info is emitted to 'my_response'
-     * cb, a callback function, would be invoked whenever the server emits data to 'my_response'
+     * EVENT LISTENER FOR WEBSOCKET EMITS TO 'my_response'
+     * cb is a callback function that, if passed, will be invoked on data emit to 'my_response'
      */
     socket.on('my_response', function(msg, cb) {
         if (cb)
@@ -186,9 +186,8 @@ $(document).ready(function() {
     });
 
     /**
-     * Event listener when websocket info is emitted to 'data_response'
-     * Sends mental command input that has been processed to a logic handler (enactInputCommand())
-     * cb, a callback function, would be invoked whenever the server emits data to 'data_response'
+     * EVENT LISTENER FOR WEBSOCKET EMITS TO 'data_response' - OUR MAIN LISTENER FOR HEADSET DATA
+     * SENDS ALREADY-PROCESSED MENTAL COMMAND INPUT TO A LOGIC HANDLER: enactInputCommand()
      */
     socket.on('data_response', function(msg, cb) {
         if (cb)
@@ -196,6 +195,7 @@ $(document).ready(function() {
         enactInputCommand(msg.input)
     });
 
+    //DISCONNECT
     $('form#disconnect').submit(function(event) {
         socket.emit('disconnect_request');
         return false;
